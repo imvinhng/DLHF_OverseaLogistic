@@ -1,0 +1,1000 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00A2C310D021484895F31709 /* PlayfairDisplay-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0AF5ED3966254950AFB82F4A /* PlayfairDisplay-BlackItalic.ttf */; };
+		00E356F31AD99517003FC87E /* DLHF_OverseaLogisticTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* DLHF_OverseaLogisticTests.m */; };
+		03C635DD507946C48A823E29 /* PlayfairDisplay-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 05B5F2011BEA41D3B86F19E0 /* PlayfairDisplay-SemiBold.ttf */; };
+		041EF094AE414681B33F246D /* Mukta-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A19B5B10A39742B7B3E9244E /* Mukta-Light.ttf */; };
+		0493B7AC7D8B4FD28A3DE8D8 /* PlayfairDisplay-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7ED63141DC44A05A9555BDC /* PlayfairDisplay-ExtraBoldItalic.ttf */; };
+		05FCC47F5DB9445CA5997227 /* DancingScript-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 47EE7A82792F4B5AACBE7EA1 /* DancingScript-Medium.ttf */; };
+		08A2D18C5D674204B4E1AB99 /* Ubuntu-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DFDD0B8C576240239791327C /* Ubuntu-Bold.ttf */; };
+		0BE8664F52EF45188549A75D /* Mukta-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 628E60203A6B41A0B2474531 /* Mukta-Bold.ttf */; };
+		0C7DD75495324A88AB963353 /* Oswald-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EF235013E37543509C70F1F9 /* Oswald-SemiBold.ttf */; };
+		0C80B921A6F3F58F76C31292 /* libPods-DLHF_OverseaLogistic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-DLHF_OverseaLogistic.a */; };
+		1129C72FD7B54C74A3914C4D /* Merriweather-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4259931057D048AFA59897EB /* Merriweather-BlackItalic.ttf */; };
+		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
+		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		1460EA3CA8D1479C86DDAD3E /* Ubuntu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 451EEC9BEBF74951B9573268 /* Ubuntu-Regular.ttf */; };
+		1AE8F07EC310459B9A91B22F /* Oswald-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6ED3D1CF42A40E28FA46A5E /* Oswald-Light.ttf */; };
+		1DD7964FB62B4B519AB8A72A /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6E2691C8B2A7405993115598 /* OFL.txt */; };
+		1F245B392AEBB466003021D3 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 1F245B382AEBB466003021D3 /* Fonts */; };
+		21FFF9B9BB874DE3A275AF46 /* DancingScript-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9B3B4294C034601B6758B02 /* DancingScript-SemiBold.ttf */; };
+		2C4EB4DCBEFC4004BA53B671 /* DancingScript-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7113B96B5107446C925633A0 /* DancingScript-Bold.ttf */; };
+		328C9E3403884345B9170BBD /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7D65DF45553140308C4E7885 /* README.txt */; };
+		347DEF83143441428DAFC433 /* PlayfairDisplay-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5A96AB5D31C645E2AC2B863A /* PlayfairDisplay-SemiBoldItalic.ttf */; };
+		3496C69C9436404B8D2821EA /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE7B67FD68D740DC857B7630 /* Roboto-LightItalic.ttf */; };
+		3E3F46E5ACE5416E99B05FFD /* Merriweather-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB5DA2D78227478C8552C485 /* Merriweather-Regular.ttf */; };
+		3E8D7AEC7EB74DDC8069D899 /* TiltNeon-Regular-VariableFont_XROT,YROT.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55F4158EE2014282AB4FD3A0 /* TiltNeon-Regular-VariableFont_XROT,YROT.ttf */; };
+		3F3224BE16DE43E4B0FC9EB4 /* DancingScript-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 806D4E01A08041CAB0269D12 /* DancingScript-Regular.ttf */; };
+		3FBCA648CE604AA58628CA82 /* Ubuntu-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 963E1559F0874DA8BE21B407 /* Ubuntu-Medium.ttf */; };
+		49C036A5F22840F09B3C7620 /* Merriweather-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67B60F422ADE46148DFAB751 /* Merriweather-BoldItalic.ttf */; };
+		4B64F75D884A4DEB86ABCDC0 /* Ubuntu-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A338DC7501546CDAE013B0D /* Ubuntu-BoldItalic.ttf */; };
+		4D46F01D200B4CD7B3A802D5 /* PlayfairDisplay-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AEA849955FC49518041493C /* PlayfairDisplay-Medium.ttf */; };
+		4F60319B396E4D42B01AA6E3 /* Mukta-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 690A6AE05DE24F10B5E648F9 /* Mukta-Regular.ttf */; };
+		5017B14D329C473BB32FB0A1 /* Oswald-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D484C4E3E1D44FB2AC7C16D3 /* Oswald-Medium.ttf */; };
+		56995368DB564F44950890FD /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1FBA61556AC478EAA18AAD6 /* Roboto-Light.ttf */; };
+		59224DAAE0C54E2BA9E2A09F /* PlayfairDisplay-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 25B53F9A3CEC49429695374D /* PlayfairDisplay-BoldItalic.ttf */; };
+		5BFC14E0A49045AD8F5E93E2 /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13EEA61E5AE94535BC687DE0 /* Roboto-BoldItalic.ttf */; };
+		5F286B5359194ADCAC47AE2E /* Oswald-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5AC584F642844B5AC2DBFE4 /* Oswald-VariableFont_wght.ttf */; };
+		62E84B07E31D42BF9E841411 /* PlayfairDisplay-Italic-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 61F27C03AFFD4BA99417351D /* PlayfairDisplay-Italic-VariableFont_wght.ttf */; };
+		655329D41A8449419037895C /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94117A3F71234B1594E87F28 /* Roboto-Thin.ttf */; };
+		666876C131B8469FA70E3D91 /* Mukta-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D8669B5330EF4C489E999E9D /* Mukta-SemiBold.ttf */; };
+		6DBD5CA59BC64DA49595B00F /* Mukta-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1881D626CB4A48F5A66B8217 /* Mukta-Medium.ttf */; };
+		72CCF5508F6C4E2EBE5B4291 /* TiltNeon-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 649B9E2663B04921A48B084C /* TiltNeon-Regular.ttf */; };
+		73C4B0E7035C4AC7BC8E9D12 /* PlayfairDisplay-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F27BDAB4E3B4C38B1E681D4 /* PlayfairDisplay-VariableFont_wght.ttf */; };
+		7699B88040F8A987B510C191 /* libPods-DLHF_OverseaLogistic-DLHF_OverseaLogisticTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-DLHF_OverseaLogistic-DLHF_OverseaLogisticTests.a */; };
+		76C51E90243E4116BD747E90 /* PlayfairDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 34CEF892911648A0B3CF53BB /* PlayfairDisplay-Regular.ttf */; };
+		77DD105715B24B93A68A4291 /* PlayfairDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0136B96F9F804AF49064BE7A /* PlayfairDisplay-Bold.ttf */; };
+		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		829A051FA1B74428AC2CA690 /* Ubuntu-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E0FFC8E2EA44A7484EA3911 /* Ubuntu-Italic.ttf */; };
+		855138E8EDAF428D8BA583CF /* Merriweather-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F3F97F1A357427A8CDC756D /* Merriweather-Light.ttf */; };
+		96D7BCB9DC95408AB7AD5022 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A2C1FCA87B84BDBACE20095 /* Roboto-ThinItalic.ttf */; };
+		9B6C74E9C4DD4E8397D771F5 /* DancingScript-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2FB86B083ABD46BD97E70420 /* DancingScript-VariableFont_wght.ttf */; };
+		9C48C47E07AA404594CC72E8 /* PlayfairDisplay-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD91C2CCFBB14B1E898490D8 /* PlayfairDisplay-MediumItalic.ttf */; };
+		A4A353B674E24C65A546253A /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5C2979B9ED674CC1AD63E75E /* Roboto-Regular.ttf */; };
+		A7F5B9EAA4AC4719BCC8D88C /* Mukta-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6560C694BC8845E781CEBE8E /* Mukta-ExtraLight.ttf */; };
+		A8833D7191BA41B5AFDDE467 /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E504DCB8C53847B0AE32BFA3 /* Roboto-MediumItalic.ttf */; };
+		B0C5F04758544C9C9A5C0FC6 /* Merriweather-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 58E9988CB7C5404DB726D762 /* Merriweather-Italic.ttf */; };
+		B66E95959CB541CD97E2667F /* UFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 30045BABEE69471488C63D0B /* UFL.txt */; };
+		B6AB197D7F494D97824252F0 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA0A6B3F775247D7976BEE29 /* Roboto-Black.ttf */; };
+		B9CA7DE68454478B8E671950 /* PlayfairDisplay-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F203F32DB676492ABFEE46DB /* PlayfairDisplay-Italic.ttf */; };
+		C5AB2C29874B49A9AC5DB5B7 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A58C9E7AA71E4B14A8EA3043 /* Roboto-Medium.ttf */; };
+		C5F650E4C6604E99A1A5F98D /* Ubuntu-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 588B29927F9B4E5AA9ED827C /* Ubuntu-Light.ttf */; };
+		C727556C6F8A4E7C8BE55FE8 /* Ubuntu-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9CC9DE922BBF41549B5A3435 /* Ubuntu-MediumItalic.ttf */; };
+		CAB01C8920C0457BB805E634 /* Oswald-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A3BF7B016DA422C94B870AD /* Oswald-Regular.ttf */; };
+		CC3FA078E7B2450E81767098 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6168DB1D66DA4929B854962B /* Roboto-Italic.ttf */; };
+		CEE96DCC593E44009D364FD5 /* Merriweather-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4BBAB162F6BF445EA305F95A /* Merriweather-Black.ttf */; };
+		D0D96C1273564A1EA6D67D96 /* Oswald-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B9D412BFE4348388FFF696D /* Oswald-ExtraLight.ttf */; };
+		D57F0631DE064A32B8932410 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = BCF798E1AF174001AA20D0FC /* LICENSE.txt */; };
+		D659815BD54F4C0BB164E640 /* Merriweather-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7BFAC0496B194908BC193BDE /* Merriweather-Bold.ttf */; };
+		D97D4E4C0CFB46D2AB8C5CBF /* Merriweather-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD7A22250F4440BDADC780D2 /* Merriweather-LightItalic.ttf */; };
+		DB8B2C56859E4D8F85E064E9 /* Oswald-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0385BCC87B074236BDDAD0F0 /* Oswald-Bold.ttf */; };
+		DE0B619BF09F496E9E450325 /* PlayfairDisplay-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 54A293AC3E374FFE8363C1A7 /* PlayfairDisplay-Black.ttf */; };
+		E1F40DF9D2854D5EB44E3248 /* PlayfairDisplay-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4658F13A0B044BEB9ACBEAB9 /* PlayfairDisplay-ExtraBold.ttf */; };
+		E21BE44494AA4C5D88F292C3 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BCFDAAF1719B4534ACAEF094 /* Roboto-Bold.ttf */; };
+		E2D47DC5E36E4F00AF9530FD /* Mukta-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B3712C08BDAC4D3B9E99FC14 /* Mukta-ExtraBold.ttf */; };
+		E6FBD810F8FA46399F34064C /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD179E74FD9C49FC9CB726C8 /* Roboto-BlackItalic.ttf */; };
+		FE7DE299216F4B65BD57E778 /* Ubuntu-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 20803709295848509B396F9B /* Ubuntu-LightItalic.ttf */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		00E356F41AD99517003FC87E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
+			remoteInfo = DLHF_OverseaLogistic;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		00E356EE1AD99517003FC87E /* DLHF_OverseaLogisticTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DLHF_OverseaLogisticTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* DLHF_OverseaLogisticTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLHF_OverseaLogisticTests.m; sourceTree = "<group>"; };
+		0136B96F9F804AF49064BE7A /* PlayfairDisplay-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "PlayfairDisplay-Bold.ttf"; path = "../src/assets/fonts/Playfair_Display/static/PlayfairDisplay-Bold.ttf"; sourceTree = "<group>"; };
+		0385BCC87B074236BDDAD0F0 /* Oswald-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Oswald-Bold.ttf"; path = "../src/assets/fonts/Oswald/static/Oswald-Bold.ttf"; sourceTree = "<group>"; };
+		05B5F2011BEA41D3B86F19E0 /* PlayfairDisplay-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "PlayfairDisplay-SemiBold.ttf"; path = "../src/assets/fonts/Playfair_Display/static/PlayfairDisplay-SemiBold.ttf"; sourceTree = "<group>"; };
+		0A338DC7501546CDAE013B0D /* Ubuntu-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-BoldItalic.ttf"; path = "../src/assets/fonts/Ubuntu/Ubuntu-BoldItalic.ttf"; sourceTree = "<group>"; };
+		0AF5ED3966254950AFB82F4A /* PlayfairDisplay-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "PlayfairDisplay-BlackItalic.ttf"; path = "../src/assets/fonts/Playfair_Display/static/PlayfairDisplay-BlackItalic.ttf"; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* DLHF_OverseaLogistic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DLHF_OverseaLogistic.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = DLHF_OverseaLogistic/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = DLHF_OverseaLogistic/AppDelegate.mm; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = DLHF_OverseaLogistic/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = DLHF_OverseaLogistic/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = DLHF_OverseaLogistic/main.m; sourceTree = "<group>"; };
+		13EEA61E5AE94535BC687DE0 /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-BoldItalic.ttf"; path = "../src/assets/fonts/Roboto/Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
+		1881D626CB4A48F5A66B8217 /* Mukta-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Mukta-Medium.ttf"; path = "../src/assets/fonts/Mukta/Mukta-Medium.ttf"; sourceTree = "<group>"; };
+		19F6CBCC0A4E27FBF8BF4A61 /* libPods-DLHF_OverseaLogistic-DLHF_OverseaLogisticTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DLHF_OverseaLogistic-DLHF_OverseaLogisticTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F245B382AEBB466003021D3 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; path = "../node_modules/react-native-vector-icons/Fonts"; sourceTree = "<group>"; };
+		20803709295848509B396F9B /* Ubuntu-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-LightItalic.ttf"; path = "../src/assets/fonts/Ubuntu/Ubuntu-LightItalic.ttf"; sourceTree = "<group>"; };
+		25B53F9A3CEC49429695374D /* PlayfairDisplay-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "PlayfairDisplay-BoldItalic.ttf"; path = "../src/assets/fonts/Playfair_Display/static/PlayfairDisplay-BoldItalic.ttf"; sourceTree = "<group>"; };
+		2FB86B083ABD46BD97E70420 /* DancingScript-VariableFont_wght.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "DancingScript-VariableFont_wght.ttf"; path = "../src/assets/fonts/Dancing_Script/DancingScript-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		30045BABEE69471488C63D0B /* UFL.txt */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = UFL.txt; path = ../src/assets/fonts/Ubuntu/UFL.txt; sourceTree = "<group>"; };
+		34CEF892911648A0B3CF53BB /* PlayfairDisplay-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "PlayfairDisplay-Regular.ttf"; path = "../src/assets/fonts/Playfair_Display/static/PlayfairDisplay-Regular.ttf"; sourceTree = "<group>"; };
+		3B4392A12AC88292D35C810B /* Pods-DLHF_OverseaLogistic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DLHF_OverseaLogistic.debug.xcconfig"; path = "Target Support Files/Pods-DLHF_OverseaLogistic/Pods-DLHF_OverseaLogistic.debug.xcconfig"; sourceTree = "<group>"; };
+		3F27BDAB4E3B4C38B1E681D4 /* PlayfairDisplay-VariableFont_wght.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "PlayfairDisplay-VariableFont_wght.ttf"; path = "../src/assets/fonts/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		4259931057D048AFA59897EB /* Merriweather-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Merriweather-BlackItalic.ttf"; path = "../src/assets/fonts/Merriweather/Merriweather-BlackItalic.ttf"; sourceTree = "<group>"; };
+		451EEC9BEBF74951B9573268 /* Ubuntu-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Regular.ttf"; path = "../src/assets/fonts/Ubuntu/Ubuntu-Regular.ttf"; sourceTree = "<group>"; };
+		4658F13A0B044BEB9ACBEAB9 /* PlayfairDisplay-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "PlayfairDisplay-ExtraBold.ttf"; path = "../src/assets/fonts/Playfair_Display/static/PlayfairDisplay-ExtraBold.ttf"; sourceTree = "<group>"; };
+		47EE7A82792F4B5AACBE7EA1 /* DancingScript-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "DancingScript-Medium.ttf"; path = "../src/assets/fonts/Dancing_Script/static/DancingScript-Medium.ttf"; sourceTree = "<group>"; };
+		4A3BF7B016DA422C94B870AD /* Oswald-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Oswald-Regular.ttf"; path = "../src/assets/fonts/Oswald/static/Oswald-Regular.ttf"; sourceTree = "<group>"; };
+		4BBAB162F6BF445EA305F95A /* Merriweather-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Merriweather-Black.ttf"; path = "../src/assets/fonts/Merriweather/Merriweather-Black.ttf"; sourceTree = "<group>"; };
+		4F3F97F1A357427A8CDC756D /* Merriweather-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Merriweather-Light.ttf"; path = "../src/assets/fonts/Merriweather/Merriweather-Light.ttf"; sourceTree = "<group>"; };
+		54A293AC3E374FFE8363C1A7 /* PlayfairDisplay-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "PlayfairDisplay-Black.ttf"; path = "../src/assets/fonts/Playfair_Display/static/PlayfairDisplay-Black.ttf"; sourceTree = "<group>"; };
+		55F4158EE2014282AB4FD3A0 /* TiltNeon-Regular-VariableFont_XROT,YROT.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "TiltNeon-Regular-VariableFont_XROT,YROT.ttf"; path = "../src/assets/fonts/Tilt_Neon/TiltNeon-Regular-VariableFont_XROT,YROT.ttf"; sourceTree = "<group>"; };
+		5709B34CF0A7D63546082F79 /* Pods-DLHF_OverseaLogistic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DLHF_OverseaLogistic.release.xcconfig"; path = "Target Support Files/Pods-DLHF_OverseaLogistic/Pods-DLHF_OverseaLogistic.release.xcconfig"; sourceTree = "<group>"; };
+		588B29927F9B4E5AA9ED827C /* Ubuntu-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Light.ttf"; path = "../src/assets/fonts/Ubuntu/Ubuntu-Light.ttf"; sourceTree = "<group>"; };
+		58E9988CB7C5404DB726D762 /* Merriweather-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Merriweather-Italic.ttf"; path = "../src/assets/fonts/Merriweather/Merriweather-Italic.ttf"; sourceTree = "<group>"; };
+		5A96AB5D31C645E2AC2B863A /* PlayfairDisplay-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "PlayfairDisplay-SemiBoldItalic.ttf"; path = "../src/assets/fonts/Playfair_Display/static/PlayfairDisplay-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		5B7EB9410499542E8C5724F5 /* Pods-DLHF_OverseaLogistic-DLHF_OverseaLogisticTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DLHF_OverseaLogistic-DLHF_OverseaLogisticTests.debug.xcconfig"; path = "Target Support Files/Pods-DLHF_OverseaLogistic-DLHF_OverseaLogisticTests/Pods-DLHF_OverseaLogistic-DLHF_OverseaLogisticTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5C2979B9ED674CC1AD63E75E /* Roboto-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Regular.ttf"; path = "../src/assets/fonts/Roboto/Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		5DCACB8F33CDC322A6C60F78 /* libPods-DLHF_OverseaLogistic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DLHF_OverseaLogistic.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6168DB1D66DA4929B854962B /* Roboto-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Italic.ttf"; path = "../src/assets/fonts/Roboto/Roboto-Italic.ttf"; sourceTree = "<group>"; };
+		61F27C03AFFD4BA99417351D /* PlayfairDisplay-Italic-VariableFont_wght.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "PlayfairDisplay-Italic-VariableFont_wght.ttf"; path = "../src/assets/fonts/Playfair_Display/PlayfairDisplay-Italic-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		628E60203A6B41A0B2474531 /* Mukta-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Mukta-Bold.ttf"; path = "../src/assets/fonts/Mukta/Mukta-Bold.ttf"; sourceTree = "<group>"; };
+		649B9E2663B04921A48B084C /* TiltNeon-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "TiltNeon-Regular.ttf"; path = "../src/assets/fonts/Tilt_Neon/static/TiltNeon-Regular.ttf"; sourceTree = "<group>"; };
+		6560C694BC8845E781CEBE8E /* Mukta-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Mukta-ExtraLight.ttf"; path = "../src/assets/fonts/Mukta/Mukta-ExtraLight.ttf"; sourceTree = "<group>"; };
+		67B60F422ADE46148DFAB751 /* Merriweather-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Merriweather-BoldItalic.ttf"; path = "../src/assets/fonts/Merriweather/Merriweather-BoldItalic.ttf"; sourceTree = "<group>"; };
+		690A6AE05DE24F10B5E648F9 /* Mukta-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Mukta-Regular.ttf"; path = "../src/assets/fonts/Mukta/Mukta-Regular.ttf"; sourceTree = "<group>"; };
+		6B9D412BFE4348388FFF696D /* Oswald-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Oswald-ExtraLight.ttf"; path = "../src/assets/fonts/Oswald/static/Oswald-ExtraLight.ttf"; sourceTree = "<group>"; };
+		6E2691C8B2A7405993115598 /* OFL.txt */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = OFL.txt; path = ../src/assets/fonts/Dancing_Script/OFL.txt; sourceTree = "<group>"; };
+		7113B96B5107446C925633A0 /* DancingScript-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "DancingScript-Bold.ttf"; path = "../src/assets/fonts/Dancing_Script/static/DancingScript-Bold.ttf"; sourceTree = "<group>"; };
+		7BFAC0496B194908BC193BDE /* Merriweather-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Merriweather-Bold.ttf"; path = "../src/assets/fonts/Merriweather/Merriweather-Bold.ttf"; sourceTree = "<group>"; };
+		7D65DF45553140308C4E7885 /* README.txt */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = README.txt; path = ../src/assets/fonts/Dancing_Script/README.txt; sourceTree = "<group>"; };
+		7E0FFC8E2EA44A7484EA3911 /* Ubuntu-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Italic.ttf"; path = "../src/assets/fonts/Ubuntu/Ubuntu-Italic.ttf"; sourceTree = "<group>"; };
+		806D4E01A08041CAB0269D12 /* DancingScript-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "DancingScript-Regular.ttf"; path = "../src/assets/fonts/Dancing_Script/static/DancingScript-Regular.ttf"; sourceTree = "<group>"; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = DLHF_OverseaLogistic/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		89C6BE57DB24E9ADA2F236DE /* Pods-DLHF_OverseaLogistic-DLHF_OverseaLogisticTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DLHF_OverseaLogistic-DLHF_OverseaLogisticTests.release.xcconfig"; path = "Target Support Files/Pods-DLHF_OverseaLogistic-DLHF_OverseaLogisticTests/Pods-DLHF_OverseaLogistic-DLHF_OverseaLogisticTests.release.xcconfig"; sourceTree = "<group>"; };
+		94117A3F71234B1594E87F28 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Thin.ttf"; path = "../src/assets/fonts/Roboto/Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		963E1559F0874DA8BE21B407 /* Ubuntu-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Medium.ttf"; path = "../src/assets/fonts/Ubuntu/Ubuntu-Medium.ttf"; sourceTree = "<group>"; };
+		9A2C1FCA87B84BDBACE20095 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-ThinItalic.ttf"; path = "../src/assets/fonts/Roboto/Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
+		9AEA849955FC49518041493C /* PlayfairDisplay-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "PlayfairDisplay-Medium.ttf"; path = "../src/assets/fonts/Playfair_Display/static/PlayfairDisplay-Medium.ttf"; sourceTree = "<group>"; };
+		9CC9DE922BBF41549B5A3435 /* Ubuntu-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-MediumItalic.ttf"; path = "../src/assets/fonts/Ubuntu/Ubuntu-MediumItalic.ttf"; sourceTree = "<group>"; };
+		A19B5B10A39742B7B3E9244E /* Mukta-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Mukta-Light.ttf"; path = "../src/assets/fonts/Mukta/Mukta-Light.ttf"; sourceTree = "<group>"; };
+		A58C9E7AA71E4B14A8EA3043 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Medium.ttf"; path = "../src/assets/fonts/Roboto/Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		A5AC584F642844B5AC2DBFE4 /* Oswald-VariableFont_wght.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Oswald-VariableFont_wght.ttf"; path = "../src/assets/fonts/Oswald/Oswald-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		AB5DA2D78227478C8552C485 /* Merriweather-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Merriweather-Regular.ttf"; path = "../src/assets/fonts/Merriweather/Merriweather-Regular.ttf"; sourceTree = "<group>"; };
+		AD91C2CCFBB14B1E898490D8 /* PlayfairDisplay-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "PlayfairDisplay-MediumItalic.ttf"; path = "../src/assets/fonts/Playfair_Display/static/PlayfairDisplay-MediumItalic.ttf"; sourceTree = "<group>"; };
+		AE7B67FD68D740DC857B7630 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-LightItalic.ttf"; path = "../src/assets/fonts/Roboto/Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
+		B3712C08BDAC4D3B9E99FC14 /* Mukta-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Mukta-ExtraBold.ttf"; path = "../src/assets/fonts/Mukta/Mukta-ExtraBold.ttf"; sourceTree = "<group>"; };
+		BCF798E1AF174001AA20D0FC /* LICENSE.txt */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = LICENSE.txt; path = ../src/assets/fonts/Roboto/LICENSE.txt; sourceTree = "<group>"; };
+		BCFDAAF1719B4534ACAEF094 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Bold.ttf"; path = "../src/assets/fonts/Roboto/Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		BD179E74FD9C49FC9CB726C8 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-BlackItalic.ttf"; path = "../src/assets/fonts/Roboto/Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
+		D484C4E3E1D44FB2AC7C16D3 /* Oswald-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Oswald-Medium.ttf"; path = "../src/assets/fonts/Oswald/static/Oswald-Medium.ttf"; sourceTree = "<group>"; };
+		D7ED63141DC44A05A9555BDC /* PlayfairDisplay-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "PlayfairDisplay-ExtraBoldItalic.ttf"; path = "../src/assets/fonts/Playfair_Display/static/PlayfairDisplay-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		D8669B5330EF4C489E999E9D /* Mukta-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Mukta-SemiBold.ttf"; path = "../src/assets/fonts/Mukta/Mukta-SemiBold.ttf"; sourceTree = "<group>"; };
+		DFDD0B8C576240239791327C /* Ubuntu-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Bold.ttf"; path = "../src/assets/fonts/Ubuntu/Ubuntu-Bold.ttf"; sourceTree = "<group>"; };
+		E1FBA61556AC478EAA18AAD6 /* Roboto-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Light.ttf"; path = "../src/assets/fonts/Roboto/Roboto-Light.ttf"; sourceTree = "<group>"; };
+		E504DCB8C53847B0AE32BFA3 /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-MediumItalic.ttf"; path = "../src/assets/fonts/Roboto/Roboto-MediumItalic.ttf"; sourceTree = "<group>"; };
+		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		EF235013E37543509C70F1F9 /* Oswald-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Oswald-SemiBold.ttf"; path = "../src/assets/fonts/Oswald/static/Oswald-SemiBold.ttf"; sourceTree = "<group>"; };
+		F203F32DB676492ABFEE46DB /* PlayfairDisplay-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "PlayfairDisplay-Italic.ttf"; path = "../src/assets/fonts/Playfair_Display/static/PlayfairDisplay-Italic.ttf"; sourceTree = "<group>"; };
+		F6ED3D1CF42A40E28FA46A5E /* Oswald-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Oswald-Light.ttf"; path = "../src/assets/fonts/Oswald/static/Oswald-Light.ttf"; sourceTree = "<group>"; };
+		F9B3B4294C034601B6758B02 /* DancingScript-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "DancingScript-SemiBold.ttf"; path = "../src/assets/fonts/Dancing_Script/static/DancingScript-SemiBold.ttf"; sourceTree = "<group>"; };
+		FA0A6B3F775247D7976BEE29 /* Roboto-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Black.ttf"; path = "../src/assets/fonts/Roboto/Roboto-Black.ttf"; sourceTree = "<group>"; };
+		FD7A22250F4440BDADC780D2 /* Merriweather-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Merriweather-LightItalic.ttf"; path = "../src/assets/fonts/Merriweather/Merriweather-LightItalic.ttf"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		00E356EB1AD99517003FC87E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7699B88040F8A987B510C191 /* libPods-DLHF_OverseaLogistic-DLHF_OverseaLogisticTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F8C1A680F5B00A75B9A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C80B921A6F3F58F76C31292 /* libPods-DLHF_OverseaLogistic.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		00E356EF1AD99517003FC87E /* DLHF_OverseaLogisticTests */ = {
+			isa = PBXGroup;
+			children = (
+				00E356F21AD99517003FC87E /* DLHF_OverseaLogisticTests.m */,
+				00E356F01AD99517003FC87E /* Supporting Files */,
+			);
+			path = DLHF_OverseaLogisticTests;
+			sourceTree = "<group>";
+		};
+		00E356F01AD99517003FC87E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				00E356F11AD99517003FC87E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		13B07FAE1A68108700A75B9A /* DLHF_OverseaLogistic */ = {
+			isa = PBXGroup;
+			children = (
+				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
+				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
+				13B07FB51A68108700A75B9A /* Images.xcassets */,
+				13B07FB61A68108700A75B9A /* Info.plist */,
+				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
+				13B07FB71A68108700A75B9A /* main.m */,
+			);
+			name = DLHF_OverseaLogistic;
+			sourceTree = "<group>";
+		};
+		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
+				5DCACB8F33CDC322A6C60F78 /* libPods-DLHF_OverseaLogistic.a */,
+				19F6CBCC0A4E27FBF8BF4A61 /* libPods-DLHF_OverseaLogistic-DLHF_OverseaLogisticTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		70F38EF13C84433FA7CAEE20 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2FB86B083ABD46BD97E70420 /* DancingScript-VariableFont_wght.ttf */,
+				7113B96B5107446C925633A0 /* DancingScript-Bold.ttf */,
+				47EE7A82792F4B5AACBE7EA1 /* DancingScript-Medium.ttf */,
+				806D4E01A08041CAB0269D12 /* DancingScript-Regular.ttf */,
+				F9B3B4294C034601B6758B02 /* DancingScript-SemiBold.ttf */,
+				4BBAB162F6BF445EA305F95A /* Merriweather-Black.ttf */,
+				4259931057D048AFA59897EB /* Merriweather-BlackItalic.ttf */,
+				7BFAC0496B194908BC193BDE /* Merriweather-Bold.ttf */,
+				67B60F422ADE46148DFAB751 /* Merriweather-BoldItalic.ttf */,
+				58E9988CB7C5404DB726D762 /* Merriweather-Italic.ttf */,
+				4F3F97F1A357427A8CDC756D /* Merriweather-Light.ttf */,
+				FD7A22250F4440BDADC780D2 /* Merriweather-LightItalic.ttf */,
+				AB5DA2D78227478C8552C485 /* Merriweather-Regular.ttf */,
+				628E60203A6B41A0B2474531 /* Mukta-Bold.ttf */,
+				B3712C08BDAC4D3B9E99FC14 /* Mukta-ExtraBold.ttf */,
+				6560C694BC8845E781CEBE8E /* Mukta-ExtraLight.ttf */,
+				A19B5B10A39742B7B3E9244E /* Mukta-Light.ttf */,
+				1881D626CB4A48F5A66B8217 /* Mukta-Medium.ttf */,
+				690A6AE05DE24F10B5E648F9 /* Mukta-Regular.ttf */,
+				D8669B5330EF4C489E999E9D /* Mukta-SemiBold.ttf */,
+				A5AC584F642844B5AC2DBFE4 /* Oswald-VariableFont_wght.ttf */,
+				0385BCC87B074236BDDAD0F0 /* Oswald-Bold.ttf */,
+				6B9D412BFE4348388FFF696D /* Oswald-ExtraLight.ttf */,
+				F6ED3D1CF42A40E28FA46A5E /* Oswald-Light.ttf */,
+				D484C4E3E1D44FB2AC7C16D3 /* Oswald-Medium.ttf */,
+				4A3BF7B016DA422C94B870AD /* Oswald-Regular.ttf */,
+				EF235013E37543509C70F1F9 /* Oswald-SemiBold.ttf */,
+				61F27C03AFFD4BA99417351D /* PlayfairDisplay-Italic-VariableFont_wght.ttf */,
+				3F27BDAB4E3B4C38B1E681D4 /* PlayfairDisplay-VariableFont_wght.ttf */,
+				54A293AC3E374FFE8363C1A7 /* PlayfairDisplay-Black.ttf */,
+				0AF5ED3966254950AFB82F4A /* PlayfairDisplay-BlackItalic.ttf */,
+				0136B96F9F804AF49064BE7A /* PlayfairDisplay-Bold.ttf */,
+				25B53F9A3CEC49429695374D /* PlayfairDisplay-BoldItalic.ttf */,
+				4658F13A0B044BEB9ACBEAB9 /* PlayfairDisplay-ExtraBold.ttf */,
+				D7ED63141DC44A05A9555BDC /* PlayfairDisplay-ExtraBoldItalic.ttf */,
+				F203F32DB676492ABFEE46DB /* PlayfairDisplay-Italic.ttf */,
+				9AEA849955FC49518041493C /* PlayfairDisplay-Medium.ttf */,
+				AD91C2CCFBB14B1E898490D8 /* PlayfairDisplay-MediumItalic.ttf */,
+				34CEF892911648A0B3CF53BB /* PlayfairDisplay-Regular.ttf */,
+				05B5F2011BEA41D3B86F19E0 /* PlayfairDisplay-SemiBold.ttf */,
+				5A96AB5D31C645E2AC2B863A /* PlayfairDisplay-SemiBoldItalic.ttf */,
+				FA0A6B3F775247D7976BEE29 /* Roboto-Black.ttf */,
+				BD179E74FD9C49FC9CB726C8 /* Roboto-BlackItalic.ttf */,
+				BCFDAAF1719B4534ACAEF094 /* Roboto-Bold.ttf */,
+				13EEA61E5AE94535BC687DE0 /* Roboto-BoldItalic.ttf */,
+				6168DB1D66DA4929B854962B /* Roboto-Italic.ttf */,
+				E1FBA61556AC478EAA18AAD6 /* Roboto-Light.ttf */,
+				AE7B67FD68D740DC857B7630 /* Roboto-LightItalic.ttf */,
+				A58C9E7AA71E4B14A8EA3043 /* Roboto-Medium.ttf */,
+				E504DCB8C53847B0AE32BFA3 /* Roboto-MediumItalic.ttf */,
+				5C2979B9ED674CC1AD63E75E /* Roboto-Regular.ttf */,
+				94117A3F71234B1594E87F28 /* Roboto-Thin.ttf */,
+				9A2C1FCA87B84BDBACE20095 /* Roboto-ThinItalic.ttf */,
+				55F4158EE2014282AB4FD3A0 /* TiltNeon-Regular-VariableFont_XROT,YROT.ttf */,
+				649B9E2663B04921A48B084C /* TiltNeon-Regular.ttf */,
+				DFDD0B8C576240239791327C /* Ubuntu-Bold.ttf */,
+				0A338DC7501546CDAE013B0D /* Ubuntu-BoldItalic.ttf */,
+				7E0FFC8E2EA44A7484EA3911 /* Ubuntu-Italic.ttf */,
+				588B29927F9B4E5AA9ED827C /* Ubuntu-Light.ttf */,
+				20803709295848509B396F9B /* Ubuntu-LightItalic.ttf */,
+				963E1559F0874DA8BE21B407 /* Ubuntu-Medium.ttf */,
+				9CC9DE922BBF41549B5A3435 /* Ubuntu-MediumItalic.ttf */,
+				451EEC9BEBF74951B9573268 /* Ubuntu-Regular.ttf */,
+				6E2691C8B2A7405993115598 /* OFL.txt */,
+				7D65DF45553140308C4E7885 /* README.txt */,
+				BCF798E1AF174001AA20D0FC /* LICENSE.txt */,
+				30045BABEE69471488C63D0B /* UFL.txt */,
+			);
+			name = Resources;
+			path = "";
+			sourceTree = "<group>";
+		};
+		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		83CBB9F61A601CBA00E9B192 = {
+			isa = PBXGroup;
+			children = (
+				1F245B382AEBB466003021D3 /* Fonts */,
+				13B07FAE1A68108700A75B9A /* DLHF_OverseaLogistic */,
+				832341AE1AAA6A7D00B99B32 /* Libraries */,
+				00E356EF1AD99517003FC87E /* DLHF_OverseaLogisticTests */,
+				83CBBA001A601CBA00E9B192 /* Products */,
+				2D16E6871FA4F8E400B85C8A /* Frameworks */,
+				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				70F38EF13C84433FA7CAEE20 /* Resources */,
+			);
+			indentWidth = 2;
+			sourceTree = "<group>";
+			tabWidth = 2;
+			usesTabs = 0;
+		};
+		83CBBA001A601CBA00E9B192 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				13B07F961A680F5B00A75B9A /* DLHF_OverseaLogistic.app */,
+				00E356EE1AD99517003FC87E /* DLHF_OverseaLogisticTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3B4392A12AC88292D35C810B /* Pods-DLHF_OverseaLogistic.debug.xcconfig */,
+				5709B34CF0A7D63546082F79 /* Pods-DLHF_OverseaLogistic.release.xcconfig */,
+				5B7EB9410499542E8C5724F5 /* Pods-DLHF_OverseaLogistic-DLHF_OverseaLogisticTests.debug.xcconfig */,
+				89C6BE57DB24E9ADA2F236DE /* Pods-DLHF_OverseaLogistic-DLHF_OverseaLogisticTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		00E356ED1AD99517003FC87E /* DLHF_OverseaLogisticTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "DLHF_OverseaLogisticTests" */;
+			buildPhases = (
+				A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */,
+				00E356EA1AD99517003FC87E /* Sources */,
+				00E356EB1AD99517003FC87E /* Frameworks */,
+				00E356EC1AD99517003FC87E /* Resources */,
+				C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */,
+				F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				00E356F51AD99517003FC87E /* PBXTargetDependency */,
+			);
+			name = DLHF_OverseaLogisticTests;
+			productName = DLHF_OverseaLogisticTests;
+			productReference = 00E356EE1AD99517003FC87E /* DLHF_OverseaLogisticTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		13B07F861A680F5B00A75B9A /* DLHF_OverseaLogistic */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "DLHF_OverseaLogistic" */;
+			buildPhases = (
+				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
+				FD10A7F022414F080027D42C /* Start Packager */,
+				13B07F871A680F5B00A75B9A /* Sources */,
+				13B07F8C1A680F5B00A75B9A /* Frameworks */,
+				13B07F8E1A680F5B00A75B9A /* Resources */,
+				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
+				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DLHF_OverseaLogistic;
+			productName = DLHF_OverseaLogistic;
+			productReference = 13B07F961A680F5B00A75B9A /* DLHF_OverseaLogistic.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		83CBB9F71A601CBA00E9B192 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1210;
+				TargetAttributes = {
+					00E356ED1AD99517003FC87E = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = 13B07F861A680F5B00A75B9A;
+					};
+					13B07F861A680F5B00A75B9A = {
+						LastSwiftMigration = 1120;
+					};
+				};
+			};
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "DLHF_OverseaLogistic" */;
+			compatibilityVersion = "Xcode 12.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 83CBB9F61A601CBA00E9B192;
+			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				13B07F861A680F5B00A75B9A /* DLHF_OverseaLogistic */,
+				00E356ED1AD99517003FC87E /* DLHF_OverseaLogisticTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		00E356EC1AD99517003FC87E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F8E1A680F5B00A75B9A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F245B392AEBB466003021D3 /* Fonts in Resources */,
+				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				9B6C74E9C4DD4E8397D771F5 /* DancingScript-VariableFont_wght.ttf in Resources */,
+				2C4EB4DCBEFC4004BA53B671 /* DancingScript-Bold.ttf in Resources */,
+				05FCC47F5DB9445CA5997227 /* DancingScript-Medium.ttf in Resources */,
+				3F3224BE16DE43E4B0FC9EB4 /* DancingScript-Regular.ttf in Resources */,
+				21FFF9B9BB874DE3A275AF46 /* DancingScript-SemiBold.ttf in Resources */,
+				CEE96DCC593E44009D364FD5 /* Merriweather-Black.ttf in Resources */,
+				1129C72FD7B54C74A3914C4D /* Merriweather-BlackItalic.ttf in Resources */,
+				D659815BD54F4C0BB164E640 /* Merriweather-Bold.ttf in Resources */,
+				49C036A5F22840F09B3C7620 /* Merriweather-BoldItalic.ttf in Resources */,
+				B0C5F04758544C9C9A5C0FC6 /* Merriweather-Italic.ttf in Resources */,
+				855138E8EDAF428D8BA583CF /* Merriweather-Light.ttf in Resources */,
+				D97D4E4C0CFB46D2AB8C5CBF /* Merriweather-LightItalic.ttf in Resources */,
+				3E3F46E5ACE5416E99B05FFD /* Merriweather-Regular.ttf in Resources */,
+				0BE8664F52EF45188549A75D /* Mukta-Bold.ttf in Resources */,
+				E2D47DC5E36E4F00AF9530FD /* Mukta-ExtraBold.ttf in Resources */,
+				A7F5B9EAA4AC4719BCC8D88C /* Mukta-ExtraLight.ttf in Resources */,
+				041EF094AE414681B33F246D /* Mukta-Light.ttf in Resources */,
+				6DBD5CA59BC64DA49595B00F /* Mukta-Medium.ttf in Resources */,
+				4F60319B396E4D42B01AA6E3 /* Mukta-Regular.ttf in Resources */,
+				666876C131B8469FA70E3D91 /* Mukta-SemiBold.ttf in Resources */,
+				5F286B5359194ADCAC47AE2E /* Oswald-VariableFont_wght.ttf in Resources */,
+				DB8B2C56859E4D8F85E064E9 /* Oswald-Bold.ttf in Resources */,
+				D0D96C1273564A1EA6D67D96 /* Oswald-ExtraLight.ttf in Resources */,
+				1AE8F07EC310459B9A91B22F /* Oswald-Light.ttf in Resources */,
+				5017B14D329C473BB32FB0A1 /* Oswald-Medium.ttf in Resources */,
+				CAB01C8920C0457BB805E634 /* Oswald-Regular.ttf in Resources */,
+				0C7DD75495324A88AB963353 /* Oswald-SemiBold.ttf in Resources */,
+				62E84B07E31D42BF9E841411 /* PlayfairDisplay-Italic-VariableFont_wght.ttf in Resources */,
+				73C4B0E7035C4AC7BC8E9D12 /* PlayfairDisplay-VariableFont_wght.ttf in Resources */,
+				DE0B619BF09F496E9E450325 /* PlayfairDisplay-Black.ttf in Resources */,
+				00A2C310D021484895F31709 /* PlayfairDisplay-BlackItalic.ttf in Resources */,
+				77DD105715B24B93A68A4291 /* PlayfairDisplay-Bold.ttf in Resources */,
+				59224DAAE0C54E2BA9E2A09F /* PlayfairDisplay-BoldItalic.ttf in Resources */,
+				E1F40DF9D2854D5EB44E3248 /* PlayfairDisplay-ExtraBold.ttf in Resources */,
+				0493B7AC7D8B4FD28A3DE8D8 /* PlayfairDisplay-ExtraBoldItalic.ttf in Resources */,
+				B9CA7DE68454478B8E671950 /* PlayfairDisplay-Italic.ttf in Resources */,
+				4D46F01D200B4CD7B3A802D5 /* PlayfairDisplay-Medium.ttf in Resources */,
+				9C48C47E07AA404594CC72E8 /* PlayfairDisplay-MediumItalic.ttf in Resources */,
+				76C51E90243E4116BD747E90 /* PlayfairDisplay-Regular.ttf in Resources */,
+				03C635DD507946C48A823E29 /* PlayfairDisplay-SemiBold.ttf in Resources */,
+				347DEF83143441428DAFC433 /* PlayfairDisplay-SemiBoldItalic.ttf in Resources */,
+				B6AB197D7F494D97824252F0 /* Roboto-Black.ttf in Resources */,
+				E6FBD810F8FA46399F34064C /* Roboto-BlackItalic.ttf in Resources */,
+				E21BE44494AA4C5D88F292C3 /* Roboto-Bold.ttf in Resources */,
+				5BFC14E0A49045AD8F5E93E2 /* Roboto-BoldItalic.ttf in Resources */,
+				CC3FA078E7B2450E81767098 /* Roboto-Italic.ttf in Resources */,
+				56995368DB564F44950890FD /* Roboto-Light.ttf in Resources */,
+				3496C69C9436404B8D2821EA /* Roboto-LightItalic.ttf in Resources */,
+				C5AB2C29874B49A9AC5DB5B7 /* Roboto-Medium.ttf in Resources */,
+				A8833D7191BA41B5AFDDE467 /* Roboto-MediumItalic.ttf in Resources */,
+				A4A353B674E24C65A546253A /* Roboto-Regular.ttf in Resources */,
+				655329D41A8449419037895C /* Roboto-Thin.ttf in Resources */,
+				96D7BCB9DC95408AB7AD5022 /* Roboto-ThinItalic.ttf in Resources */,
+				3E8D7AEC7EB74DDC8069D899 /* TiltNeon-Regular-VariableFont_XROT,YROT.ttf in Resources */,
+				72CCF5508F6C4E2EBE5B4291 /* TiltNeon-Regular.ttf in Resources */,
+				08A2D18C5D674204B4E1AB99 /* Ubuntu-Bold.ttf in Resources */,
+				4B64F75D884A4DEB86ABCDC0 /* Ubuntu-BoldItalic.ttf in Resources */,
+				829A051FA1B74428AC2CA690 /* Ubuntu-Italic.ttf in Resources */,
+				C5F650E4C6604E99A1A5F98D /* Ubuntu-Light.ttf in Resources */,
+				FE7DE299216F4B65BD57E778 /* Ubuntu-LightItalic.ttf in Resources */,
+				3FBCA648CE604AA58628CA82 /* Ubuntu-Medium.ttf in Resources */,
+				C727556C6F8A4E7C8BE55FE8 /* Ubuntu-MediumItalic.ttf in Resources */,
+				1460EA3CA8D1479C86DDAD3E /* Ubuntu-Regular.ttf in Resources */,
+				1DD7964FB62B4B519AB8A72A /* OFL.txt in Resources */,
+				328C9E3403884345B9170BBD /* README.txt in Resources */,
+				D57F0631DE064A32B8932410 /* LICENSE.txt in Resources */,
+				B66E95959CB541CD97E2667F /* UFL.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/.xcode.env.local",
+				"$(SRCROOT)/.xcode.env",
+			);
+			name = "Bundle React Native code and images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
+		};
+		00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DLHF_OverseaLogistic/Pods-DLHF_OverseaLogistic-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DLHF_OverseaLogistic/Pods-DLHF_OverseaLogistic-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DLHF_OverseaLogistic/Pods-DLHF_OverseaLogistic-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DLHF_OverseaLogistic-DLHF_OverseaLogisticTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DLHF_OverseaLogistic-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DLHF_OverseaLogistic-DLHF_OverseaLogisticTests/Pods-DLHF_OverseaLogistic-DLHF_OverseaLogisticTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DLHF_OverseaLogistic-DLHF_OverseaLogisticTests/Pods-DLHF_OverseaLogistic-DLHF_OverseaLogisticTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DLHF_OverseaLogistic-DLHF_OverseaLogisticTests/Pods-DLHF_OverseaLogistic-DLHF_OverseaLogisticTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E235C05ADACE081382539298 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DLHF_OverseaLogistic/Pods-DLHF_OverseaLogistic-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DLHF_OverseaLogistic/Pods-DLHF_OverseaLogistic-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DLHF_OverseaLogistic/Pods-DLHF_OverseaLogistic-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DLHF_OverseaLogistic-DLHF_OverseaLogisticTests/Pods-DLHF_OverseaLogistic-DLHF_OverseaLogisticTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DLHF_OverseaLogistic-DLHF_OverseaLogisticTests/Pods-DLHF_OverseaLogistic-DLHF_OverseaLogisticTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DLHF_OverseaLogistic-DLHF_OverseaLogisticTests/Pods-DLHF_OverseaLogistic-DLHF_OverseaLogisticTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FD10A7F022414F080027D42C /* Start Packager */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Start Packager";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		00E356EA1AD99517003FC87E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00E356F31AD99517003FC87E /* DLHF_OverseaLogisticTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13B07F871A680F5B00A75B9A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
+				13B07FC11A68108700A75B9A /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 13B07F861A680F5B00A75B9A /* DLHF_OverseaLogistic */;
+			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		00E356F61AD99517003FC87E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-DLHF_OverseaLogistic-DLHF_OverseaLogisticTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = DLHF_OverseaLogisticTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+					"$(inherited)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DLHF_OverseaLogistic.app/DLHF_OverseaLogistic";
+			};
+			name = Debug;
+		};
+		00E356F71AD99517003FC87E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-DLHF_OverseaLogistic-DLHF_OverseaLogisticTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COPY_PHASE_STRIP = NO;
+				INFOPLIST_FILE = DLHF_OverseaLogisticTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+					"$(inherited)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DLHF_OverseaLogistic.app/DLHF_OverseaLogistic";
+			};
+			name = Release;
+		};
+		13B07F941A680F5B00A75B9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-DLHF_OverseaLogistic.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = DLHF_OverseaLogistic/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = DLHF_OverseaLogistic;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+		13B07F951A680F5B00A75B9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-DLHF_OverseaLogistic.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = DLHF_OverseaLogistic/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = DLHF_OverseaLogistic;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		83CBBA201A601CBA00E9B192 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					_LIBCPP_ENABLE_CXX17_REMOVED_UNARY_BINARY_FUNCTION,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SDKROOT)/usr/lib/swift\"",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
+					"\"$(inherited)\"",
+				);
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-DFOLLY_NO_CONFIG",
+					"-DFOLLY_MOBILE=1",
+					"-DFOLLY_USE_LIBCPP=1",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		83CBBA211A601CBA00E9B192 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					_LIBCPP_ENABLE_CXX17_REMOVED_UNARY_BINARY_FUNCTION,
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SDKROOT)/usr/lib/swift\"",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
+					"\"$(inherited)\"",
+				);
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-DFOLLY_NO_CONFIG",
+					"-DFOLLY_MOBILE=1",
+					"-DFOLLY_USE_LIBCPP=1",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "DLHF_OverseaLogisticTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00E356F61AD99517003FC87E /* Debug */,
+				00E356F71AD99517003FC87E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "DLHF_OverseaLogistic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13B07F941A680F5B00A75B9A /* Debug */,
+				13B07F951A680F5B00A75B9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "DLHF_OverseaLogistic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83CBBA201A601CBA00E9B192 /* Debug */,
+				83CBBA211A601CBA00E9B192 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 83CBB9F71A601CBA00E9B192 /* Project object */;
+}
