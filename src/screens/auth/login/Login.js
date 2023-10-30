@@ -6,24 +6,39 @@ import { useNavigation } from '@react-navigation/native';
 import { CloseButton } from '../../../components/CustomButton';
 import { black, darkgray, lightorange, red, white } from '../../../assets/styles/Colors';
 import GlobalStyle from '../../../assets/styles/GlobalStyle';
+import { USERS } from '../../../database/Credentials';
 
 
 const Login = (props) => {
     const [loginBtnColor, setLoginBtnColor] = useState(red);
 
     const [phoneNumber, setPhoneNumber] = useState('');
+    const [password, setPassword] = useState('');
 
     const navigation = useNavigation();
 
     const passwordCheck = () => {
-        navigation.navigate('Main', { screen: 'HomeScreen', params: { loggedIn: true } })
+        const database = USERS;
+        for (let i = 0; i < USERS.length; i++) {
+            if (database[i].phone_number == phoneNumber && database[i].password == password) {
+                navigation.navigate('Main', {
+                    screen: 'Home', params: {
+                        screen: 'HomeScreen', params: { loggedIn: true, phone_number: phoneNumber }
+                    }
+                })
+            }
+        }
+
+        //TODO: Implement redux
+
+
     }
 
     return (
         <View style={styles.home}>
             <Image
                 style={styles.image}
-                source={require('../../../assets/images/background/dutch-windmill.png')}
+                source={require('../../../assets/images/background/6.jpg')}
             />
             <CloseButton buttonStyle={styles.close_btn} />
             <ScrollView style={styles.body}>
@@ -34,11 +49,13 @@ const Login = (props) => {
                         style={styles.textInput}
                         keyboardType='number-pad'
                         placeholder={'Enter your phone number'}
+                        onChangeText={(number) => setPhoneNumber(number)}
                     />
                     <TextInput
                         style={styles.textInput}
                         secureTextEntry
                         placeholder={'Enter password'}
+                        onChangeText={(text) => setPassword(text)}
                         onSubmitEditing={passwordCheck}
                     />
 
@@ -115,7 +132,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         position: 'absolute',
         // top: Platform.OS == 'ios' ? bodyHeight * 0.75 : bodyHeight * 0.80,
-        bottom: '10%',
+        bottom: Platform.OS == 'ios' ? '8%' : '12%',
         ...GlobalStyle.row_wrapper,
     },
     fp_hyperlink: {

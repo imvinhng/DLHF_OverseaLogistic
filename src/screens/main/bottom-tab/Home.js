@@ -8,14 +8,13 @@ import { tan } from '../../../assets/styles/Colors';
 function Home(props) {
     const route = useRoute();
 
-    const { loggedIn } = route.params;
-    // console.log('loggedIn: ', loggedIn)
+    const { loggedIn, phone_number } = route.params;
 
 
     return (
         <SafeAreaView style={styles.home}>
             {/* <Text style={GlobalStyle.screen_title}>Home</Text> */}
-            <HomeHeader />
+            <HomeHeader phone_number={phone_number} />
             {/* <FlatList
                 data={DATA_SPECIAL_OFFER}
                 numColumns={2}

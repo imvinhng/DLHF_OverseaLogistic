@@ -72,19 +72,20 @@ export const HeaderPNBack = (props) => {
     )
 }
 
-const findNameByUsername = (username) => {
+const findNameByPhone = (phone) => {
     const database = USERS;
     for (let i = 0; i < USERS.length; i++) {
-        if (database[i].username == username) {
+        if (database[i].phone_number == phone) {
             return database[i].name;
         }
 
     }
 }
 
-export const HomeHeader = () => {
+export const HomeHeader = (props) => {
     const [searchPhrase, setSearchPhrase] = useState('');
-    const userName = findNameByUsername('thevinh');
+    console.log('HomeHeader, Phone number passed: ', props.phone_number);
+    const userName = findNameByPhone(props.phone_number);
 
     return (
         <View style={homeStyle.header}>
