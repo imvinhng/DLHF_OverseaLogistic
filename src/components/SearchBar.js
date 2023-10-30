@@ -1,37 +1,24 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, TextInput, Dimensions } from 'react-native';
 import { SquareButton, RoundButton } from './CustomButton';
-import { backgroundGray } from '../assets/style/Colors';
+import { backgroundGray, white } from '../assets/styles/Colors';
+import GlobalStyle from '../assets/styles/GlobalStyle';
 
 function SearchBar(props) {
-    const [clicked, setClicked] = useState(false);
 
     return (
-        <View style={[styles.row_wrapper, props.containerStyle]}>
+        <View style={[styles.searchbarContainer, props.containerStyle]}>
             <SquareButton
                 iconName='search'
-                style={[styles.searchbar_icon, props.searchIconStyle]}
+                iconSize={15}
+                buttonStyle={[styles.searchbar_icon, props.searchIconStyle]}
             />
             <TextInput
                 style={[styles.searchbar, props.searchInputStyle]}
-                placeholder={'Search'}
+                placeholder={props.searchPlaceholder}
                 value={props.searchPhrase}
                 onChangeText={props.setSearchPhrase}
-                onFocus={() => setClicked(true)}
-                onBlur={() => {
-                    console.log('User clicked outside of the textbox')
-                    setClicked(false)
-                }}
-
             />
-            {clicked
-                && (<RoundButton
-                    iconName='times'
-                    bgColor='#f1f1f0'
-                    buttonStyle={[styles.close_btn, props.closeBtnStyle]}
-                    onPressFunction={() => { props.setSearchPhrase('') }}
-                />)
-            }
         </View>
     );
 }
@@ -40,27 +27,29 @@ export default SearchBar;
 
 const { width: screenWidth } = Dimensions.get('screen');
 const searchbarWidth = .60 * screenWidth;
+const searchbarHeight = 40;
 
 const styles = StyleSheet.create({
+    searchbarContainer: {
+        ...GlobalStyle.box_shadow,
+        ...GlobalStyle.row_wrapper,
+    },
     searchbar: {
-        backgroundColor: backgroundGray,
+        backgroundColor: white,
         width: searchbarWidth,
-        height: 40,
+        height: searchbarHeight,
         borderRadius: 10,
-        padding: 10,
+        padding: 15,
         // position: 'absolute',
-        marginLeft: -12,
+        marginLeft: -0.33 * searchbarHeight,
     },
     searchbar_icon: {
-        backgroundColor: backgroundGray,
-        width: 40,
-        height: 40,
+        backgroundColor: white,
+        width: searchbarHeight,
+        height: searchbarHeight,
     },
     close_btn: {
         height: 10,
         width: 10,
     },
-    row_wrapper: {
-        flexDirection: 'row',
-    }
 })

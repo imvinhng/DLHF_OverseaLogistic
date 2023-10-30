@@ -1,4 +1,5 @@
 import { StyleSheet, View } from "react-native"
+import { white } from "../assets/styles/Colors"
 export const BlackLine = () => {
     return (
         <View style={{ width: '90%', height: 0.7, backgroundColor: '#000' }} />
@@ -28,6 +29,11 @@ export const GrayLine_Full = () => {
 export const GrayLine_Full_Thick = () => {
     return (
         <View style={{ width: '100%', height: 3, backgroundColor: 'lightgray' }} />
+    )
+}
+export const WhiteLine_Full_Thick = () => {
+    return (
+        <View style={{ width: '100%', height: 6, backgroundColor: white }} />
     )
 }
 

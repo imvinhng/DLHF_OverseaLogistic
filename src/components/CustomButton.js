@@ -73,7 +73,7 @@ export const SquareButton = (props) => {
             style={({ pressed }) => [
                 styles.square_button,
                 { backgroundColor: pressed ? '#ddd' : props.bgColor },
-                props.style,
+                props.buttonStyle,
             ]}
         // onPress={() => console.log('Round Button clicked')}
         >
@@ -200,7 +200,7 @@ export const NotificationButton = (props) => {
             ]}
             onPress={() => navigation.navigate('More', { screen: 'NotificationScreen' })}
         >
-            <FontAwesome5 name={'bell'} size={25} />
+            <FontAwesome5 name={'bell'} size={20} />
         </Pressable>
     );
 }
@@ -427,26 +427,18 @@ const styles = StyleSheet.create({
         height: 50,
         width: 50,
         borderRadius: 25,
-        margin: 5,
         alignItems: 'center',
         justifyContent: 'center',
     },
     shadow_round_button: {
-        height: 50,
-        width: 50,
+        height: 40,
+        width: 40,
         borderRadius: 25,
         margin: 5,
         alignItems: 'center',
         justifyContent: 'center',
 
-        //ios
-        shadowColor: '#000',
-        shadowOpacity: 0.2,
-        shadowRadius: 3,
-        shadowOffset: { width: 1, height: 7 },
-
-        //android
-        elevation: 7,
+        ...GlobalStyle.box_shadow,
     },
     square_button: {
         height: 50,

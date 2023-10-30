@@ -1,12 +1,12 @@
 import React from "react"
 import { StyleSheet } from "react-native"
-import { darkgray, lightgray } from "./Colors";
+import { black, darkgray, lightgray } from "./Colors";
 
 const GlobalStyle = StyleSheet.create({
     box_shadow: {
-        shadowColor: darkgray,
-        shadowOffset: { width: 1, height: 1.5 },
-        shadowOpacity: 0.2,
+        shadowColor: black,
+        shadowOffset: { width: 1, height: 3 },
+        shadowOpacity: 0.3,
         shadowRadius: 3,
 
         elevation: 5,

@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Dimensions, Platform, StyleSheet, Text, View } from 'react-native';
-import { white } from '../assets/style/Colors';
+import { white, tan } from '../assets/styles/Colors';
 import { useNavigation } from '@react-navigation/native';
-import { NotificationButton, PromotionButton, RoundButton } from './CustomButton';
-import GlobalStyle from '../assets/style/GlobalStyle';
+import { NotificationButton, PromotionButton, RoundButton, RoundButton_Image, SquareButton } from './CustomButton';
+import GlobalStyle from '../assets/styles/GlobalStyle';
+import SearchBar from './SearchBar';
+import { WhiteLine_Full_Thick } from './Line';
+import { USERS } from '../database/Credentials';
 
 export const Header = (props) => {
     return (
@@ -69,8 +72,70 @@ export const HeaderPNBack = (props) => {
     )
 }
 
+const findNameByUsername = (username) => {
+    const database = USERS;
+    for (let i = 0; i < USERS.length; i++) {
+        if (database[i].username == username) {
+            return database[i].name;
+        }
+
+    }
+}
+
+export const HomeHeader = () => {
+    const [searchPhrase, setSearchPhrase] = useState('');
+    const userName = findNameByUsername('thevinh');
+
+    return (
+        <View style={homeStyle.header}>
+            <View style={homeStyle.top_header}>
+                <View style={homeStyle.sub_header_left}>
+                    <RoundButton_Image
+                        image_uri={require('../assets/images/icons/red-flower-icon.png')}
+                        bgColor={'#FEF7E5'}
+                        iconStyle={homeStyle.icon_image}
+                    />
+                    <View>
+                        <Text style={homeStyle.headerText_regular}>Good morning!</Text>
+                        <Text style={homeStyle.headerText_bold}>{userName}</Text>
+                    </View>
+                </View>
+
+                <View style={homeStyle.sub_header_right}>
+                    <NotificationButton />
+                </View>
+            </View>
+
+            <View style={homeStyle.bottom_header}>
+                <SearchBar
+                    searchPhrase={searchPhrase}
+                    setSearchPhrase={(text) => setSearchPhrase(text)}
+                    containerStyle={homeStyle.search_container}
+                    searchInputStyle={homeStyle.search_input}
+                    searchPlaceholder={'Search by Vesssel, B/L, Container No...'}
+                    closeBtnStyle={homeStyle.search_close}
+                />
+                <SquareButton
+                    iconName={'plus'}
+                    iconSize={16}
+                    buttonStyle={{ height: searchbarHeight }}
+                />
+            </View>
+
+            <WhiteLine_Full_Thick />
+
+        </View>
+    )
+}
+
 const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get('screen');
 const headerHeight = Platform.OS == 'ios' ? 120 : 80; const headerWidth = ScreenWidth;
+const searchInputLength = 290;
+const searchContainerMargin = 10;
+const bottomHeaderHeight = 50;
+const searchbarHeight = 40;
+
+const iconSize = 25;
 
 const styles = StyleSheet.create({
     header: {
@@ -100,5 +165,80 @@ const styles = StyleSheet.create({
     title_no_margin: {
         fontSize: 25,
         ...GlobalStyle.screen_title,
+    },
+})
+
+const homeStyle = StyleSheet.create({
+    home: {
+        flex: 1,
+    },
+    body: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#fff',
+        paddingTop: 5,
+        marginTop: -30,
+        borderWidth: 0.2,
+        borderColor: 'lightgray',
+
+        //ios
+        shadowColor: 'lightgray',
+        shadowOpacity: 0.2,
+        shadowRadius: 2,
+        shadowOffset: { width: 0, height: -10 },
+
+        //android
+        elevation: 10,
+    },
+    header: {
+        flexDirection: 'column',
+        backgroundColor: tan,
+        // paddingTop: Platform.OS == 'ios' ? 56 : 0,
+    },
+    top_header: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom: 10,
+    },
+    bottom_header: {
+        height: bottomHeaderHeight, // to be change
+        alignItems: 'center',
+        marginTop: 10,
+        marginBottom: 15,
+        ...GlobalStyle.row_wrapper,
+    },
+    sub_header_right: {
+        flexDirection: 'row',
+        marginRight: 10,
+    },
+    sub_header_left: {
+        flexDirection: 'row',
+        // justifyContent: 'center',
+        alignItems: 'center',
+        // textAlign: 'center',
+    },
+    headerText_regular: {
+        ...GlobalStyle.text,
+    },
+    headerText_bold: {
+        ...GlobalStyle.text,
+        fontWeight: 'bold',
+    },
+    icon_image: {
+        height: iconSize,
+        width: iconSize,
+    },
+    search_container: {
+        margin: searchContainerMargin,
+    },
+    search_close: {
+        position: 'absolute',
+        left: searchInputLength + searchContainerMargin,
+        top: '30%',
+    },
+    search_input: {
+        width: searchInputLength,
+        height: searchbarHeight,
+        fontSize: 14,
     },
 })
