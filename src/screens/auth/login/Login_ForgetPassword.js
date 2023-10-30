@@ -29,7 +29,7 @@ function ForgetPassword(props) {
         <View style={styles.background}>
             <Image
                 style={styles.image}
-                source={require('../../../assets/images/background/dutch-windmill.png')}
+                source={require('../../../assets/images/background/10.jpg')}
             />
             <CloseButton buttonStyle={styles.close_btn} />
             <View style={styles.body}>

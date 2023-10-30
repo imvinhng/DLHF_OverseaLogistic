@@ -27,7 +27,7 @@ export default SearchBar;
 
 const { width: screenWidth } = Dimensions.get('screen');
 const searchbarWidth = .60 * screenWidth;
-const searchbarHeight = 40;
+const searchbarHeight = 50;
 
 const styles = StyleSheet.create({
     searchbarContainer: {

@@ -2,6 +2,9 @@ import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
 import OTPTextInput from 'react-native-otp-textinput';
+import { useDispatch } from 'react-redux';
+import { USERS } from '../../../database/Credentials';
+import { loginAction } from '../../../services/redux/actions';
 
 const otpValue = '000000';
 
@@ -9,6 +12,8 @@ export const OTP_Login = (props) => {
     const [time, setTime] = React.useState(120);
     const timerRef = React.useRef(time);
     const navigation = useNavigation();
+    const dispatch = useDispatch();
+    const database = USERS;
 
     React.useEffect(() => {
         const timerId = setInterval(() => {
@@ -56,6 +61,7 @@ export const OTP_Login = (props) => {
                     handleTextChange={(code) => {
                         if (code == otpValue) {
                             navigation.navigate('Main', { screen: 'HomeScreen', params: { loggedIn: true } })
+                            dispatch(loginAction({ phone_number: props.phone_number }))
                         }
                     }}
                 />

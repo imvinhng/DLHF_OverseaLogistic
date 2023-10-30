@@ -7,6 +7,7 @@ import GlobalStyle from '../assets/styles/GlobalStyle';
 import SearchBar from './SearchBar';
 import { WhiteLine_Full_Thick } from './Line';
 import { USERS } from '../database/Credentials';
+import { useSelector } from 'react-redux';
 
 export const Header = (props) => {
     return (
@@ -84,8 +85,8 @@ const findNameByPhone = (phone) => {
 
 export const HomeHeader = (props) => {
     const [searchPhrase, setSearchPhrase] = useState('');
-    console.log('HomeHeader, Phone number passed: ', props.phone_number);
-    const userName = findNameByPhone(props.phone_number);
+    const { phone_number } = useSelector(state => state.userReducer)
+    const userName = findNameByPhone(phone_number);
 
     return (
         <View style={homeStyle.header}>
@@ -119,7 +120,7 @@ export const HomeHeader = (props) => {
                 <SquareButton
                     iconName={'plus'}
                     iconSize={16}
-                    buttonStyle={{ height: searchbarHeight }}
+                    buttonStyle={homeStyle.plusButton}
                 />
             </View>
 
@@ -131,10 +132,10 @@ export const HomeHeader = (props) => {
 
 const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get('screen');
 const headerHeight = Platform.OS == 'ios' ? 120 : 80; const headerWidth = ScreenWidth;
-const searchInputLength = 290;
+const searchInputLength = 285;
 const searchContainerMargin = 10;
 const bottomHeaderHeight = 50;
-const searchbarHeight = 40;
+const searchbarHeight = 50;
 
 const iconSize = 25;
 
@@ -242,4 +243,10 @@ const homeStyle = StyleSheet.create({
         height: searchbarHeight,
         fontSize: 14,
     },
+    plusButton: {
+        height: searchbarHeight,
+        position: 'absolute',
+        right: 5,
+        width: 50,
+    }
 })

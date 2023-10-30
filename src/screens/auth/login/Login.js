@@ -7,9 +7,13 @@ import { CloseButton } from '../../../components/CustomButton';
 import { black, darkgray, lightorange, red, white } from '../../../assets/styles/Colors';
 import GlobalStyle from '../../../assets/styles/GlobalStyle';
 import { USERS } from '../../../database/Credentials';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { loginAction } from '../../../services/redux/actions';
 
 const Login = (props) => {
+    const dispatch = useDispatch();
+    const { name } = useSelector(state => state.userReducer)
+
     const [loginBtnColor, setLoginBtnColor] = useState(red);
 
     const [phoneNumber, setPhoneNumber] = useState('');
@@ -26,6 +30,7 @@ const Login = (props) => {
                         screen: 'HomeScreen', params: { loggedIn: true, phone_number: phoneNumber }
                     }
                 })
+                dispatch(loginAction({ phone_number: phoneNumber, name: database[i].name, password: database[i].password }))
             }
         }
 
@@ -38,13 +43,13 @@ const Login = (props) => {
         <View style={styles.home}>
             <Image
                 style={styles.image}
-                source={require('../../../assets/images/background/6.jpg')}
+                source={require('../../../assets/images/background/9.jpg')}
             />
             <CloseButton buttonStyle={styles.close_btn} />
             <ScrollView style={styles.body}>
                 <View style={{ alignItems: 'center', height: bodyHeight }}>
                     <Text style={styles.title}>Welcome!</Text>
-                    <Text>Sign in to continue</Text>
+                    <Text>Sign in to continue{name}</Text>
                     <TextInput
                         style={styles.textInput}
                         keyboardType='number-pad'
@@ -59,7 +64,10 @@ const Login = (props) => {
                         onSubmitEditing={passwordCheck}
                     />
 
-                    <Text style={styles.fp_hyperlink} onPress={() => navigation.navigate('Login', { screen: 'ForgetPasswordScreen' })}> Forget password?</Text>
+                    <Text style={styles.fp_hyperlink} onPress={() => {
+                        navigation.navigate('Login', { screen: 'ForgetPasswordScreen' })
+
+                    }}> Forget password?</Text>
                     <View style={{ height: 30 }} />
                     <LoginButton
                         style={styles.login_btn}

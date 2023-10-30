@@ -4,17 +4,15 @@ import GlobalStyle from '../../../assets/styles/GlobalStyle';
 import { useRoute } from '@react-navigation/native';
 import { HomeHeader } from '../../../components/Header';
 import { tan } from '../../../assets/styles/Colors';
+import { useSelector } from 'react-redux';
 
 function Home(props) {
     const route = useRoute();
 
-    const { loggedIn, phone_number } = route.params;
-
-
     return (
         <SafeAreaView style={styles.home}>
             {/* <Text style={GlobalStyle.screen_title}>Home</Text> */}
-            <HomeHeader phone_number={phone_number} />
+            <HomeHeader />
             {/* <FlatList
                 data={DATA_SPECIAL_OFFER}
                 numColumns={2}
