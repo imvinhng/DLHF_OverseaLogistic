@@ -1,39 +1,39 @@
 import { StyleSheet, View } from "react-native"
 import { white } from "../assets/styles/Colors"
-export const BlackLine = () => {
+export const BlackLine = (props) => {
     return (
-        <View style={{ width: '90%', height: 0.7, backgroundColor: '#000' }} />
+        <View style={[{ width: '90%', height: 0.7, backgroundColor: '#000' }, props.style]} />
     )
 }
-export const OrangeLine = () => {
+export const OrangeLine = (props) => {
     return (
-        <View style={{ width: '90%', height: 1, backgroundColor: '#F58831' }} />
+        <View style={[{ width: '90%', height: 1, backgroundColor: '#F58831' }, props.style]} />
     )
 }
-export const BlackLine_Full = () => {
+export const BlackLine_Full = (props) => {
     return (
-        <View style={{ width: '100%', height: 0.7, backgroundColor: '#000' }} />
+        <View style={[{ width: '100%', height: 0.7, backgroundColor: '#000' }, props.style]} />
     )
 }
-export const OrangeLine_Full = () => {
+export const OrangeLine_Full = (props) => {
     return (
-        <View style={{ width: '100%', height: 1, backgroundColor: '#F58831' }} />
+        <View style={[{ width: '100%', height: 1, backgroundColor: '#F58831' }, props.style]} />
     )
 }
-export const GrayLine_Full = () => {
+export const GrayLine_Full = (props) => {
     return (
-        <View style={{ width: '100%', height: 1, backgroundColor: 'lightgray' }} />
+        <View style={[{ width: '100%', height: 1, backgroundColor: 'lightgray' }, props.style]} />
     )
 }
 
-export const GrayLine_Full_Thick = () => {
+export const GrayLine_Full_Thick = (props) => {
     return (
-        <View style={{ width: '100%', height: 3, backgroundColor: 'lightgray' }} />
+        <View style={[{ width: '100%', height: 3, backgroundColor: 'lightgray' }, props.style]} />
     )
 }
-export const WhiteLine_Full_Thick = () => {
+export const WhiteLine_Full_Thick = (props) => {
     return (
-        <View style={{ width: '100%', height: 6, backgroundColor: white }} />
+        <View style={[{ width: '100%', height: 6, backgroundColor: white }, props.style]} />
     )
 }
 

@@ -17,7 +17,7 @@ export const RoundButton = (props) => {
                 { backgroundColor: pressed ? '#ddd' : props.bgColor },
                 props.buttonStyle,
             ]}
-            onPress={props.onPressFunction}
+            onPress={props.onPress}
         >
             <FontAwesome5 name={props.iconName} size={props.iconSize} color={props.iconColor} />
         </Pressable>
