@@ -1,8 +1,8 @@
 export const USERS = [
     {
-        phone_number: '0000000000',
+        phone_number: 'admin',
         password: 'admin',
-        name: 'admin',
+        name: 'Admin',
         type: 'admin',
     },
     {
