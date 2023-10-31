@@ -23,16 +23,16 @@ const Login = (props) => {
 
     const passwordCheck = () => {
         const database = USERS;
-        for (let i = 0; i < USERS.length; i++) {
-            if (database[i].phone_number == phoneNumber && database[i].password == password) {
-                navigation.navigate('Main', {
-                    screen: 'Home', params: {
-                        screen: 'HomeScreen', params: { loggedIn: true, phone_number: phoneNumber }
-                    }
-                })
-                dispatch(loginAction({ phone_number: phoneNumber, name: database[i].name, password: database[i].password }))
+        // for (let i = 0; i < USERS.length; i++) {
+        //     if (database[i].phone_number == phoneNumber && database[i].password == password) {
+        navigation.navigate('Main', {
+            screen: 'Home', params: {
+                screen: 'HomeScreen', params: { loggedIn: true, phone_number: phoneNumber }
             }
-        }
+        })
+        // dispatch(loginAction({ phone_number: phoneNumber, name: database[i].name, password: database[i].password }))
+        //     }
+        // }
 
         //TODO: Implement redux
 

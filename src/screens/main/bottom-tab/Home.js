@@ -11,42 +11,31 @@ import { CONTAINER_REPORT } from '../../../database/ContainerReport';
 const Item = ({ order }) => {
     return (
         <View style={[styles.order_item, { backgroundColor: order.color }]}>
-            <Image style={[styles.order_c1, { top: itemPadding }]} source={require('../../../assets/images/icons/american-flag.png')} />
-            <View style={styles.order_status}>
-                <Text style={[
-                    styles.text_bold,
-                    styles.order_c3,
-                    { top: itemPadding },
-                ]}>
-                    Status:
-                </Text>
-                <Text style={[
-                    styles.text_bgray,
-                    styles.order_c4,
-                    { top: itemPadding },
-                ]}>
-                    {order.status}
-                </Text>
-            </View>
-            <View style={styles.order_c1}>
+            <View>
+                <Image
+                    source={require('../../../assets/images/icons/american-flag.png')}
+                    style={styles.order_r1}
+                />
                 <Text style={styles.text_bold}>Vessel No.:</Text>
                 <Text style={styles.text_bold}>B/L No.:</Text>
                 <Text style={styles.text_bold}>Container No.:</Text>
                 <Text style={styles.text_bold}>Container Type:</Text>
             </View>
-            <View style={styles.order_c2}>
+            <View>
                 <Text style={styles.text_regular}>{order.vessel_no}</Text>
                 <Text style={styles.text_regular}>{order.bl_no}</Text>
                 <Text style={styles.text_regular}>{order.container_no}</Text>
                 <Text style={styles.text_regular}>{order.container_type}</Text>
             </View>
-            <View style={styles.order_c3}>
+            <View>
+                <Text style={[styles.text_bold, styles.order_r1]}>Status:</Text>
                 <Text style={styles.text_bold}>ETD:</Text>
                 <Text style={styles.text_bold}>ETA:</Text>
                 <Text style={styles.text_bold}>CSC (Front):</Text>
                 <Text style={styles.text_bold}>CSC (Door):</Text>
             </View>
-            <View style={styles.order_c4}>
+            <View>
+                <Text style={[styles.text_bgray, styles.order_r1]}>{order.status}</Text>
                 <Text style={styles.text_regular}>{order.etd}</Text>
                 <Text style={styles.text_regular}>{order.eta}</Text>
                 <Text style={styles.text_regular}>{order.csc_front}</Text>
@@ -93,36 +82,15 @@ const styles = StyleSheet.create({
         ...GlobalStyle.screen_title,
     },
     order_item: {
-        ...GlobalStyle.row_wrapper,
         height: itemHeight,
         width: itemWidth,
         backgroundColor: red,
         borderWidth: 1,
-        borderColor: white
-    },
-    order_status: {
+        borderColor: white,
+        justifyContent: 'space-around',
+        alignItems: 'flex-end',
+        paddingVertical: itemPadding,
         ...GlobalStyle.row_wrapper,
-    },
-    order_c1: {
-        position: 'absolute',
-        left: itemPadding,
-        bottom: itemPadding,
-    },
-    order_c2: {
-        position: 'absolute',
-        left: itemWidth * 0.3,
-        bottom: itemPadding,
-    },
-    order_c3: {
-        position: 'absolute',
-        left: itemWidth * 0.6,
-        bottom: itemPadding,
-    },
-    order_c4: {
-        position: 'absolute',
-        left: itemWidth * 0.8,
-        bottom: itemPadding,
-
     },
     text_regular: {
         fontSize: itemFontSize,
@@ -136,4 +104,8 @@ const styles = StyleSheet.create({
         fontWeight: '700',
         color: darkgray,
     },
+    order_r1: {
+        position: 'absolute',
+        top: -(itemHeight / 2) + itemPadding * 2, // cause of padding
+    }
 })

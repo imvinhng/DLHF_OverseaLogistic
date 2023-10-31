@@ -139,8 +139,9 @@ const searchInputLength = 285;
 const searchContainerMargin = 10;
 const bottomHeaderHeight = 50;
 const searchbarHeight = 50;
-
 const iconSize = 25;
+const plusButtonMargin = 5;
+const plusButtonWidth = ScreenWidth - (searchInputLength + iconSize + 2 * searchContainerMargin + 2 * plusButtonMargin);
 
 const styles = StyleSheet.create({
     header: {
@@ -250,6 +251,6 @@ const homeStyle = StyleSheet.create({
         height: searchbarHeight,
         position: 'absolute',
         right: 5,
-        width: 50,
+        width: plusButtonWidth,
     }
 })

@@ -23,3 +23,5 @@ export const tan = '#FEF7E5'
 export const offwhite = '#FCFCFC'
 
 export const red = '#f50505'
+
+export const lightred = '#F57878'

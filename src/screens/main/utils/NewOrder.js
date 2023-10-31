@@ -1,11 +1,12 @@
 import { useNavigation } from '@react-navigation/native';
-import { StyleSheet, View, Text, Modal, Image, SafeAreaView, Dimensions } from 'react-native';
+import { StyleSheet, View, Text, Modal, Image, SafeAreaView, Dimensions, ScrollView } from 'react-native';
 import { LongButton } from '../../../utils/CustomButton';
 import React from 'react';
-import { ScrollView } from 'react-native-gesture-handler';
 import { white, yellow } from '../../../assets/styles/Colors';
 import GlobalStyle from '../../../assets/styles/GlobalStyle';
 import { RoundButton } from '../../../components/CustomButton';
+import DropDownPicker from 'react-native-dropdown-picker';
+import { GrayLine_Full } from '../../../components/Line';
 
 function NewOrder(props) {
     const navigation = useNavigation();
@@ -13,6 +14,26 @@ function NewOrder(props) {
     return (
         <ScrollView style={styles.home}>
             <SafeAreaView>
+                <View style={styles.cname_container}>
+                    <Text>Customer Name: </Text>
+                    <View>
+                        <DropDownPicker
+                            style={styles.cname_dropdown}
+                            // textStyle={styles.input}
+                            // open={openMonth}
+                            // value={valueMonth}
+                            // items={monthSelector}
+                            // // key={barChartYear[dataIndex].labels}
+                            // setOpen={setOpenMonth}
+                            // setValue={setValueMonth}
+                            // placeholder={'Select month'}
+                            // listMode='SCROLLVIEW'
+                            containerProps={styles.cname_dropdown}
+                        // dropDownContainerStyle={styles.cname_dropdown}
+                        />
+                        <GrayLine_Full />
+                    </View>
+                </View>
                 <View style={styles.header_container}>
                     <Text style={[
                         styles.header_text,
@@ -112,5 +133,16 @@ const styles = StyleSheet.create({
     header_down: {
         position: 'absolute',
         right: 0,
+    },
+    cname_container: {
+        ...GlobalStyle.row_wrapper,
+        margin: 10,
+        alignItems: 'center',
+    },
+    cname_dropdown: {
+        minHeight: 35,
+        width: 200,
+        backgroundColor: '#fff',
+        borderWidth: 0,
     },
 })

@@ -1,4 +1,4 @@
-import { green, lightgray, red, yellow } from "../assets/styles/Colors";
+import { green, lightgray, lightred, red, yellow } from "../assets/styles/Colors";
 
 export const CONTAINER_REPORT = [
     {
@@ -64,7 +64,7 @@ export const CONTAINER_REPORT = [
         csc_front: '10/2019',
         csc_door: '10/2019',
         status: 'Claimed',
-        color: red,
+        color: lightred,
     },
     {
         id: 6,
