@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 import RegisterScreen from '../../screens/auth/register/Register';
+import { Route } from '../Route';
 // import RegisterAddressScreen from '../../screens/auth/register/Register_Address';
 // import RegisterCompleteScreen from '../../screens/auth/register/Register_Complete';
 // import RegisterPasswordSetScreen from '../../screens/auth/register/Register_PasswordSet';
@@ -17,11 +18,11 @@ const Stack = createStackNavigator();
 function Register(): JSX.Element {
     return (
         <Stack.Navigator
-            initialRouteName='RegisterScreen'
+            initialRouteName={Route.Auth.Register.REGISTER_SCREEN}
             screenOptions={{ headerShown: false }}
         >
             <Stack.Screen
-                name="RegisterScreen"
+                name={Route.Auth.Register.REGISTER_SCREEN}
                 component={RegisterScreen}
             />
             {/* <Stack.Screen

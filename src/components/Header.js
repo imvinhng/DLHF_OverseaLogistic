@@ -8,6 +8,7 @@ import SearchBar from './SearchBar';
 import { WhiteLine_Full_Thick } from './Line';
 import { USERS } from '../database/Credentials';
 import { useSelector } from 'react-redux';
+import { Route } from '../navigations/Route';
 
 export const Header = (props) => {
     return (
@@ -87,6 +88,7 @@ export const HomeHeader = (props) => {
     const [searchPhrase, setSearchPhrase] = useState('');
     const { phone_number } = useSelector(state => state.userReducer)
     const userName = findNameByPhone(phone_number);
+    const navigation = useNavigation();
 
     return (
         <View style={homeStyle.header}>
@@ -121,6 +123,7 @@ export const HomeHeader = (props) => {
                     iconName={'plus'}
                     iconSize={16}
                     buttonStyle={homeStyle.plusButton}
+                    onPress={() => navigation.navigate(Route.MAIN_TAB, { screen: Route.Main.NEW_ORDER_SCREEN })}
                 />
             </View>
 
@@ -195,7 +198,7 @@ const homeStyle = StyleSheet.create({
     header: {
         flexDirection: 'column',
         backgroundColor: tan,
-        // paddingTop: Platform.OS == 'ios' ? 56 : 0,
+        paddingTop: 10,
     },
     top_header: {
         flexDirection: 'row',

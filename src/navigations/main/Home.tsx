@@ -1,7 +1,6 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet, Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { Route } from '../Route';
 
 import HomeScreen from '../../screens/main/bottom-tab/Home';
 
@@ -11,9 +10,8 @@ function Home(): JSX.Element {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen
-                name='HomeScreen'
+                name={Route.Main.BottomTab.Home.HOME_SCREEN}
                 component={HomeScreen}
-            //initialParams={{ loggedIn: false }}
             />
         </Stack.Navigator>
     )

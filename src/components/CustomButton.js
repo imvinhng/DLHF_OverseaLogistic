@@ -75,7 +75,7 @@ export const SquareButton = (props) => {
                 { backgroundColor: pressed ? '#ddd' : props.bgColor },
                 props.buttonStyle,
             ]}
-        // onPress={() => console.log('Round Button clicked')}
+            onPress={props.onPress}
         >
             <FontAwesome5 name={props.iconName} size={props.iconSize} color={props.iconColor} />
         </Pressable>

@@ -1,7 +1,6 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet, Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { Route } from '../Route';
 
 import OtherScreen from '../../screens/main/bottom-tab/Other';
 
@@ -11,7 +10,7 @@ function Other(): JSX.Element {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen
-                name='OtherScreen'
+                name={Route.Main.BottomTab.Other.OTHER_SCREEN}
                 component={OtherScreen}
             />
         </Stack.Navigator>

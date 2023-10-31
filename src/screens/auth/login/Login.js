@@ -49,7 +49,7 @@ const Login = (props) => {
             <ScrollView style={styles.body}>
                 <View style={{ alignItems: 'center', height: bodyHeight }}>
                     <Text style={styles.title}>Welcome!</Text>
-                    <Text>Sign in to continue{name}</Text>
+                    <Text>Sign in to continue</Text>
                     <TextInput
                         style={styles.textInput}
                         keyboardType='number-pad'

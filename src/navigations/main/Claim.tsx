@@ -1,7 +1,6 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet, Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { Route } from '../Route';
 
 import ClaimScreen from '../../screens/main/bottom-tab/Claim';
 
@@ -11,7 +10,7 @@ function Claim(): JSX.Element {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen
-                name='ClaimScreen'
+                name={Route.Main.BottomTab.Claim.CLAIM_SCREEN}
                 component={ClaimScreen}
             />
         </Stack.Navigator>

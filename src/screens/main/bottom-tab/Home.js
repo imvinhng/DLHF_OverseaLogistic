@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Dimensions, FlatList, Image, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import GlobalStyle from '../../../assets/styles/GlobalStyle';
 import { useRoute } from '@react-navigation/native';
 import { HomeHeader } from '../../../components/Header';
-import { tan } from '../../../assets/styles/Colors';
+import { darkgray, lightgray, red, tan, white } from '../../../assets/styles/Colors';
 import { useSelector } from 'react-redux';
 import { HomeBody } from '../../../components/HomeComponents';
 import { CONTAINER_REPORT } from '../../../database/ContainerReport';
@@ -21,7 +21,7 @@ const Item = ({ order }) => {
                     Status:
                 </Text>
                 <Text style={[
-                    styles.text_regular,
+                    styles.text_bgray,
                     styles.order_c4,
                     { top: itemPadding },
                 ]}>
@@ -58,11 +58,12 @@ const Item = ({ order }) => {
 
 function Home(props) {
     const route = useRoute();
+    const [modalVisible, setModalVisible] = useState(false);
 
     return (
         <SafeAreaView style={styles.home}>
             {/* <Text style={GlobalStyle.screen_title}>Home</Text> */}
-            <HomeHeader />
+            <HomeHeader modalVisible={modalVisible} />
             <FlatList
                 data={CONTAINER_REPORT}
                 keyExtractor={item => item.id}
@@ -95,7 +96,9 @@ const styles = StyleSheet.create({
         ...GlobalStyle.row_wrapper,
         height: itemHeight,
         width: itemWidth,
-        backgroundColor: 'red',
+        backgroundColor: red,
+        borderWidth: 1,
+        borderColor: white
     },
     order_status: {
         ...GlobalStyle.row_wrapper,
@@ -127,5 +130,10 @@ const styles = StyleSheet.create({
     text_bold: {
         fontSize: itemFontSize,
         fontWeight: '600',
+    },
+    text_bgray: {
+        fontSize: itemFontSize,
+        fontWeight: '700',
+        color: darkgray,
     },
 })
