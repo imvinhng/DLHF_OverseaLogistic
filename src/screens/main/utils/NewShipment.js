@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { StyleSheet, View, Text, SafeAreaView, Dimensions, ScrollView } from 'react-native';
-import { blue, darkgray, lightgray, white, yellow } from '../../../assets/styles/Colors';
+import { StyleSheet, View, Text, SafeAreaView, Dimensions, ScrollView, Image } from 'react-native';
+import { black, blue, darkgray, lightgray, white, yellow } from '../../../assets/styles/Colors';
 import GlobalStyle from '../../../assets/styles/GlobalStyle';
 import { Radio2Button, RoundButton, SquareButton } from '../../../components/CustomButton';
 import DropDownPicker from 'react-native-dropdown-picker';
@@ -30,7 +30,7 @@ function NewShipment(props) {
                 <View>
                     <DropDownPicker
                         style={styles.cname_dropdown}
-                        // textStyle={styles.input}
+                        textStyle={styles.cname_input}
                         open={openCustomerName}
                         value={valueCustomerName}
                         items={CUSTOMER_NAME}
@@ -44,6 +44,12 @@ function NewShipment(props) {
                     />
                     <GrayLine_Full />
                 </View>
+
+                {valueCustomerName == 'GreenWings' &&
+                    <Image
+                        source={require('../../../assets/images/icons/logo/greenwings.png')}
+                        style={styles.cname_logo}
+                    />}
             </View>
             <ScrollView>
                 <View>
@@ -55,6 +61,8 @@ function NewShipment(props) {
                             CONTAINER REPORT GENERAL INFO.
                         </Text>
                         <RoundButton
+                            includeIcon
+                            iconType='FontAwesome5'
                             iconName={'chevron-down'}
                             iconSize={15}
                             buttonStyle={styles.header_down}
@@ -131,6 +139,8 @@ function NewShipment(props) {
                         </View>
                         <Text style={styles.header_text}>TEMPERATURE</Text>
                         <RoundButton
+                            includeIcon
+                            iconType='FontAwesome5'
                             iconName={'chevron-down'}
                             iconSize={15}
                             buttonStyle={styles.header_down}
@@ -169,6 +179,8 @@ function NewShipment(props) {
                         </View>
                         <Text style={styles.header_text}>CONTAINER TEMPERATURE</Text>
                         <RoundButton
+                            includeIcon
+                            iconType='FontAwesome5'
                             iconName={'chevron-down'}
                             iconSize={15}
                             buttonStyle={styles.header_down}
@@ -209,6 +221,8 @@ function NewShipment(props) {
                         </View>
                         <Text style={styles.header_text}>TIME</Text>
                         <RoundButton
+                            includeIcon
+                            iconType='FontAwesome5'
                             iconName={'chevron-down'}
                             iconSize={15}
                             buttonStyle={styles.header_down}
@@ -244,6 +258,8 @@ function NewShipment(props) {
                         </View>
                         <Text style={styles.header_text}>CHECKLIST</Text>
                         <RoundButton
+                            includeIcon
+                            iconType='FontAwesome5'
                             iconName={'chevron-down'}
                             iconSize={15}
                             buttonStyle={styles.header_down}
@@ -379,6 +395,8 @@ function NewShipment(props) {
                         </View>
                         <Text style={styles.header_text}>COMMENTS</Text>
                         <RoundButton
+                            includeIcon
+                            iconType='FontAwesome5'
                             iconName={'chevron-down'}
                             iconSize={15}
                             buttonStyle={styles.header_down}
@@ -401,7 +419,7 @@ function NewShipment(props) {
                 <SquareButton
                     includeText
                     text='SUBMIT'
-                    bgColor={blue}
+                    backgroundColor={blue}
                     textStyle={styles.submit_text}
                     buttonStyle={styles.submit_button}
                     onPress={() => navigation.navigate(Route.MAIN_TAB, { screen: Route.Main.BOTTOM_TAB, params: { screen: Route.Main.BottomTab.HOME_TAB } })}
@@ -495,9 +513,17 @@ const styles = StyleSheet.create({
     },
     cname_dropdown: {
         minHeight: 35,
-        width: 200,
+        width: ScreenWidth / 2.5,
         backgroundColor: '#fff',
         borderWidth: 0,
+    },
+    cname_input: {
+        fontSize: INPUT_FONTSIZE - 2,
+        fontWeight: '700',
+    },
+    cname_logo: {
+        position: 'absolute',
+        right: 0,
     },
     CRGI_3c: {
         justifyContent: 'space-around',

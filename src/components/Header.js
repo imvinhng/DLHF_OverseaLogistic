@@ -24,11 +24,13 @@ export const HeaderBack = (props) => {
     return (
         <View style={[styles.header, props.style]}>
             <RoundButton
-                bgColor={'#fff'}
+                includeIcon
+                iconType='FontAwesome5'
+                backgroundColor={white}
                 iconName={'angle-left'}
                 iconSize={25}
                 buttonStyle={{ position: 'absolute', left: 10, bottom: 0 }}
-                onPressFunction={() => props.navDest ? navigation.navigate(props.navDest) : navigation.goBack()}
+                onPress={() => props.navDest ? navigation.navigate(props.navDest) : navigation.goBack()}
             />
             <Text style={styles.title_no_margin}>{props.title}</Text>
         </View>
@@ -65,10 +67,12 @@ export const HeaderNBack = (props) => {
         ]}>
             <View style={styles.sub_header_left}>
                 <RoundButton
-                    bgColor={props.backgroundColor ?? white}
+                    includeIcon
+                    iconType='FontAwesome5'
+                    backgroundColor={props.backgroundColor ?? white}
                     iconName={'angle-left'}
                     iconSize={25}
-                    onPressFunction={() => props.navDest ? navigation.navigate(props.navDest) : navigation.goBack()}
+                    onPress={() => props.navDest ? navigation.navigate(props.navDest) : navigation.goBack()}
                 />
                 <Text style={styles.title_no_margin}>{props.title}</Text>
             </View>
@@ -100,9 +104,10 @@ export const HomeHeader = (props) => {
         <View style={homeStyle.header}>
             <View style={homeStyle.top_header}>
                 <View style={homeStyle.sub_header_left}>
-                    <RoundButton_Image
+                    <RoundButton
+                        includeImage
                         image_uri={require('../assets/images/icons/red-flower-icon.png')}
-                        bgColor={'#FEF7E5'}
+                        backgroundColor={'#FEF7E5'}
                         iconStyle={homeStyle.icon_image}
                     />
                     <View>

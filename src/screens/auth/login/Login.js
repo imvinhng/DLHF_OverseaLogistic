@@ -74,9 +74,9 @@ const Login = (props) => {
                     <View style={{ height: 30 }} />
                     <LoginButton
                         style={styles.login_btn}
-                        bgColor={loginBtnColor}
+                        backgroundColor={loginBtnColor}
                         textColor={white}
-                        onPressFunction={passwordCheck}
+                        onPress={passwordCheck}
                     />
 
                     <View style={[styles.footer]}>

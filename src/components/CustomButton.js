@@ -14,55 +14,19 @@ export const RoundButton = (props) => {
         <Pressable
             style={({ pressed }) => [
                 styles.round_button,
-                { backgroundColor: pressed ? '#ddd' : props.bgColor },
+                { backgroundColor: pressed ? lightgray : props.backgroundColor },
                 props.buttonStyle,
             ]}
             onPress={props.onPress}
         >
-            <FontAwesome5 name={props.iconName} size={props.iconSize} color={props.iconColor} />
-        </Pressable>
-    );
-}
-export const RoundButton_Octicons = (props) => {
-    return (
-        <Pressable
-            style={({ pressed }) => [
-                styles.round_button,
-                { backgroundColor: pressed ? '#ddd' : props.bgColor },
-                props.buttonStyle,
-            ]}
-            onPress={props.onPressFunction}
-        >
-            <Octicons name={props.iconName} size={props.iconSize} color={props.iconColor} />
-        </Pressable>
-    );
-}
-export const RoundButton_Ionicons = (props) => {
-    return (
-        <Pressable
-            style={({ pressed }) => [
-                styles.round_button,
-                { backgroundColor: pressed ? '#ddd' : props.bgColor },
-                props.buttonStyle,
-            ]}
-            onPress={props.onPressFunction}
-        >
-            <Ionicons name={props.iconName} size={props.iconSize} color={props.iconColor} />
-        </Pressable>
-    );
-}
-
-export const RoundButton_Image = (props) => {
-    return (
-        <Pressable
-            style={({ pressed }) => [
-                styles.round_button,
-                { backgroundColor: pressed ? '#ddd' : props.bgColor },
-                props.buttonStyle,
-            ]}
-        // onPress={() => console.log('Round Button clicked')}
-        >
-            <Image source={props.image_uri} style={props.iconStyle} />
+            {props.includeIcon && props.iconType == 'FontAwesome5' &&
+                <FontAwesome5 name={props.iconName} size={props.iconSize} color={props.iconColor} />}
+            {props.includeIcon && props.iconType == 'Octicons' &&
+                <Octicons name={props.iconName} size={props.iconSize} color={props.iconColor} />}
+            {props.includeIcon && props.iconType == 'Ionicons' &&
+                <Ionicons name={props.iconName} size={props.iconSize} color={props.iconColor} />}
+            {props.includeImage &&
+                <Image source={props.image_uri} style={props.iconStyle} />}
         </Pressable>
     );
 }
@@ -72,7 +36,7 @@ export const SquareButton = (props) => {
         <Pressable
             style={({ pressed }) => [
                 styles.square_button,
-                { backgroundColor: pressed ? '#ddd' : props.bgColor },
+                { backgroundColor: pressed ? lightgray : props.backgroundColor },
                 props.buttonStyle,
             ]}
             onPress={props.onPress}
@@ -88,23 +52,6 @@ export const SquareButton = (props) => {
         </Pressable>
     );
 }
-export const SquareButton_ImageIcon_Text = (props) => {
-    return (
-        <Pressable
-            style={({ pressed }) => [
-                // styles.square_button,
-                { backgroundColor: pressed ? '#ddd' : props.bgColor },
-                props.buttonStyle,
-            ]}
-            onPress={props.onPressFunction}
-        >
-            <View style={styles.image_icon_wrapper}>
-                <Image source={props.image_uri} style={props.imageStyle} />
-            </View>
-            <Text style={[styles.text_square_button_image_icon, GlobalStyle.text]}>{props.text}</Text>
-        </Pressable>
-    );
-}
 
 export const LoginButton = (props) => {
     return (
@@ -113,11 +60,11 @@ export const LoginButton = (props) => {
                 styles.login_button,
                 props.style,
                 {
-                    backgroundColor: pressed ? '#ddd' : props.bgColor,
+                    backgroundColor: pressed ? lightgray : props.backgroundColor,
                     // borderRadius: 20,
                 },
             ]}
-            onPress={props.onPressFunction}
+            onPress={props.onPress}
             hitSlop={{ top: 10, bottom: 10, right: 10, left: 10 }}
             android_ripple={{ color: '#e5ed8a' }}
         >
@@ -132,84 +79,54 @@ export const LongButton = (props) => {
         <Pressable
             style={({ pressed }) => [
                 styles.long_button,
-                { backgroundColor: pressed ? '#ddd' : props.buttonColor },
+                { backgroundColor: pressed ? lightgray : props.buttonColor },
                 props.buttonStyle
             ]}
-            onPress={props.onPressFunction}
+            onPress={props.onPress}
             onFocus={props.onFocusFunction}
         >
-            <Text style={[styles.text_long_button, props.textStyle, { color: props.textColor }]}>
-                {props.text}
-            </Text>
-        </Pressable>
-    );
-}
+            {props.includeText &&
+                <Text style={[props.textStyle, { color: props.textColor }]}>{props.text}</Text>}
 
-export const LongButton_Icon = (props) => {
-    return (
-        <Pressable
-            style={({ pressed }) => [
-                styles.long_button_icon,
-                { backgroundColor: pressed ? '#ddd' : props.buttonColor },
-                props.buttonStyle
-            ]}
-            onPress={props.onPressFunction}
-        >
-            <View style={props.iconStyle}>
+            {props.includeIcon && props.iconType == 'FontAwesome' &&
                 <FontAwesome name={props.iconName} size={props.iconSize} color={props.iconColor} />
-            </View>
-            <Text style={[{ color: props.textColor }, props.textStyle]}>{props.text}</Text>
-        </Pressable>
-    );
-}
-export const LongButton_Icon5 = (props) => {
-    return (
-        <Pressable
-            style={({ pressed }) => [
-                styles.long_button_icon,
-                { backgroundColor: pressed ? '#ddd' : props.buttonColor },
-                props.buttonStyle
-            ]}
-            onPress={props.onPressFunction}
-        >
-            <View style={props.iconStyle}>
+            }
+            {props.includeIcon && props.iconType == 'FontAwesome5' &&
                 <FontAwesome5 name={props.iconName} size={props.iconSize} color={props.iconColor} />
-            </View>
-            <Text style={[{ color: props.textColor }, props.textStyle]}>{props.text}</Text>
+            }
+
         </Pressable>
     );
 }
 
-export const PromotionButton = (props) => {
-    const navigation = useNavigation();
-    return (
-        <Pressable
-            style={({ pressed }) => [
-                styles.shadow_round_button,
-                { backgroundColor: pressed ? '#ddd' : '#fff' },
-                props.style,
-            ]}
-            onPress={() => navigation.navigate('Promotion', { screen: 'PromotionPopup' })}
-        >
-
-            <FontAwesome5 name={'gift'} size={25} color={lightorange} />
-        </Pressable>
-    );
-}
 export const NotificationButton = (props) => {
     const navigation = useNavigation();
     return (
         <Pressable
             style={({ pressed }) => [
                 styles.shadow_round_button,
-                { backgroundColor: pressed ? '#ddd' : '#fff' },
+                { backgroundColor: pressed ? lightgray : '#fff' },
                 props.style,
             ]}
-            onPress={() => navigation.navigate('More', { screen: 'NotificationScreen' })}
+        // onPress={() => navigation.navigate('More', { screen: 'NotificationScreen' })}
         >
             <FontAwesome5 name={'bell'} size={20} />
         </Pressable>
     );
+}
+
+export const CloseButton = (props) => {
+    const navigation = useNavigation();
+
+    return (
+        <RoundButton
+            iconName='times'
+            iconSize={15}
+            buttonStyle={props.buttonStyle}
+            backgroundColor={props.buttonColor}
+            onPress={() => props.onPress ?? navigation.navigate(props.navDest ?? 'Main', { screen: 'Home' })}
+        />
+    )
 }
 
 export const GenderRadioButton = (props) => {
@@ -321,7 +238,7 @@ export const RadioHeaderCustom = () => {
                 text={'Special Offer'}
                 buttonStyle={styles.grid3_button}
                 textStyle={styles.grid_btn_txt}
-                onPressFunction={() => onFocusRadio('1')}
+                onPress={() => onFocusRadio('1')}
             />
             <LongButton
                 buttonColor={focusedTwo ? '#FEF7E5' : '#fff'}
@@ -329,7 +246,7 @@ export const RadioHeaderCustom = () => {
                 text={'#FlowerCare'}
                 buttonStyle={styles.grid3_button}
                 textStyle={styles.grid_btn_txt}
-                onPressFunction={() => onFocusRadio('2')}
+                onPress={() => onFocusRadio('2')}
             />
             <LongButton
                 buttonColor={focusedThree ? '#FEF7E5' : '#fff'}
@@ -337,7 +254,7 @@ export const RadioHeaderCustom = () => {
                 text={'#FlowerLover'}
                 buttonStyle={styles.grid3_button}
                 textStyle={styles.grid_btn_txt}
-                onPressFunction={() => onFocusRadio('3')}
+                onPress={() => onFocusRadio('3')}
             />
         </View>
     )
@@ -382,7 +299,7 @@ export const RadioPeriodCustom = (props) => {
                 buttonStyle={styles.grid4_button}
                 textColor={focusedOne ? white : darkgray}
                 textStyle={styles.grid_btn_txt}
-                onPressFunction={() => { onFocusRadio('1'), props.onPressFunctionYear() }}
+                onPress={() => { onFocusRadio('1'), props.onPressYear() }}
             />
             <LongButton
                 buttonColor={focusedTwo ? darkorange : offwhite}
@@ -390,7 +307,7 @@ export const RadioPeriodCustom = (props) => {
                 buttonStyle={styles.grid4_button}
                 textColor={focusedTwo ? white : darkgray}
                 textStyle={styles.grid_btn_txt}
-                onPressFunction={() => { onFocusRadio('2'), props.onPressFunctionMonth() }}
+                onPress={() => { onFocusRadio('2'), props.onPressMonth() }}
             />
             <LongButton
                 buttonColor={focusedThree ? darkorange : offwhite}
@@ -398,7 +315,7 @@ export const RadioPeriodCustom = (props) => {
                 buttonStyle={styles.grid4_button}
                 textColor={focusedThree ? white : darkgray}
                 textStyle={styles.grid_btn_txt}
-                onPressFunction={() => { onFocusRadio('3'), props.onPressFunctionWeek() }}
+                onPress={() => { onFocusRadio('3'), props.onPressWeek() }}
             />
             <LongButton
                 buttonColor={focusedFour ? darkorange : offwhite}
@@ -406,7 +323,7 @@ export const RadioPeriodCustom = (props) => {
                 buttonStyle={styles.grid4_button}
                 textColor={focusedFour ? white : darkgray}
                 textStyle={styles.grid_btn_txt}
-                onPressFunction={() => { onFocusRadio('4'), props.onPressFunctionDay() }}
+                onPress={() => { onFocusRadio('4'), props.onPressDay() }}
             />
         </View>
     )
@@ -450,7 +367,7 @@ export const Header4ButtonRadio = (props) => {
                 buttonStyle={styles.grid4_button}
                 textColor={focusedOne ? darkgray : black}
                 textStyle={styles.grid_btn_txt}
-                onPressFunction={() => { onFocusRadio('1'), props.onPressOption1 }}
+                onPress={() => { onFocusRadio('1'), props.onPressOption1 }}
             />
             <LongButton
                 buttonColor={focusedTwo ? lightgray : white}
@@ -458,7 +375,7 @@ export const Header4ButtonRadio = (props) => {
                 buttonStyle={styles.grid4_button}
                 textColor={focusedTwo ? darkgray : black}
                 textStyle={styles.grid_btn_txt}
-                onPressFunction={() => { onFocusRadio('2'), props.onPressOption2 }}
+                onPress={() => { onFocusRadio('2'), props.onPressOption2 }}
             />
             <LongButton
                 buttonColor={focusedThree ? lightgray : white}
@@ -466,7 +383,7 @@ export const Header4ButtonRadio = (props) => {
                 buttonStyle={styles.grid4_button}
                 textColor={focusedThree ? darkgray : black}
                 textStyle={styles.grid_btn_txt}
-                onPressFunction={() => { onFocusRadio('3'), props.onPressOption3 }}
+                onPress={() => { onFocusRadio('3'), props.onPressOption3 }}
             />
             <LongButton
                 buttonColor={focusedFour ? lightgray : white}
@@ -474,7 +391,7 @@ export const Header4ButtonRadio = (props) => {
                 buttonStyle={styles.grid4_button}
                 textColor={focusedFour ? darkgray : black}
                 textStyle={styles.grid_btn_txt}
-                onPressFunction={() => { onFocusRadio('4'), props.onPressOption4 }}
+                onPress={() => { onFocusRadio('4'), props.onPressOption4 }}
             />
         </View>
     )
@@ -546,20 +463,6 @@ export const Radio2Button = (props) => {
     );
 }
 
-export const CloseButton = (props) => {
-    const navigation = useNavigation();
-
-    return (
-        <RoundButton
-            iconName='times'
-            iconSize={15}
-            buttonStyle={props.buttonStyle}
-            bgColor={props.buttonColor}
-            onPressFunction={() => props.onPressFunction ?? navigation.navigate(props.navDest ?? 'Main', { screen: 'Home' })}
-        />
-    )
-}
-
 const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get('screen');
 const periodButtonHeight = 30;
 const GRID4_MARGIN = 5;
@@ -624,10 +527,6 @@ const styles = StyleSheet.create({
     long_button_icon: {
         height: 40,
         width: 130,
-        // backgroundColor: '#68ede9',
-        // alignItems: 'center',
-        // justifyContent: 'center',
-        // borderRadius: 5,
         margin: 5,
         flexDirection: 'row',
     },
@@ -655,7 +554,7 @@ const styles = StyleSheet.create({
         width: ScreenWidth / 3 - 4,
     },
     grid4_button: {
-        // width: GRID4_ITEM_WIDTH,
+        width: GRID4_ITEM_WIDTH,
     },
     grid4_container: {
         justifyContent: 'space-between',
