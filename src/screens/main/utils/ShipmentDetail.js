@@ -3,9 +3,13 @@ import { HeaderNBack } from '../../../components/Header';
 import { Dimensions, Image, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { darkgray, red, tan, white } from '../../../assets/styles/Colors';
 import GlobalStyle from '../../../assets/styles/GlobalStyle';
-import { Header4ButtonRadio } from '../../../components/CustomButton';
+import { Header4ButtonRadio, RoundButton } from '../../../components/CustomButton';
+import { useRoute } from '@react-navigation/native';
 
 function ShipmentDetail(props) {
+    const route = useRoute();
+    const { Order } = route.params;
+
     return (
         <View style={styles.home}>
             <HeaderNBack title={'Shipment Detail'} backgroundColor={tan} />
@@ -22,10 +26,10 @@ function ShipmentDetail(props) {
                         <Text style={styles.text_bold}>Container Type:</Text>
                     </View>
                     <View>
-                        {/* <Text style={styles.text_regular}>{props.Order.vessel_no}</Text>
-                        <Text style={styles.text_regular}>{props.Order.bl_no}</Text>
-                        <Text style={styles.text_regular}>{props.Order.container_no}</Text>
-                        <Text style={styles.text_regular}>{props.Order.container_type}</Text> */}
+                        <Text style={styles.text_regular}>{Order.vessel_no}</Text>
+                        <Text style={styles.text_regular}>{Order.bl_no}</Text>
+                        <Text style={styles.text_regular}>{Order.container_no}</Text>
+                        <Text style={styles.text_regular}>{Order.container_type}</Text>
                     </View>
                     <View>
                         <Text style={[styles.text_bold, styles.order_r1]}>Status:</Text>
@@ -35,17 +39,23 @@ function ShipmentDetail(props) {
                         <Text style={styles.text_bold}>CSC (Door):</Text>
                     </View>
                     <View>
-                        {/* <Text style={[styles.text_bgray, styles.order_r1]}>{order.status}</Text>
-                        <Text style={styles.text_regular}>{props.Order.etd}</Text>
-                        <Text style={styles.text_regular}>{props.Order.eta}</Text>
-                        <Text style={styles.text_regular}>{props.Order.csc_front}</Text>
-                        <Text style={styles.text_regular}>{props.Order.csc_door}</Text> */}
+                        <Text style={[styles.text_bgray, styles.order_r1]}>{Order.status}</Text>
+                        <Text style={styles.text_regular}>{Order.etd}</Text>
+                        <Text style={styles.text_regular}>{Order.eta}</Text>
+                        <Text style={styles.text_regular}>{Order.csc_front}</Text>
+                        <Text style={styles.text_regular}>{Order.csc_door}</Text>
                     </View>
                 </View>
-                <Text style={{ textAlign: 'center' }}>View More</Text>
+                <View>
+                    <Text>View More</Text>
+                    <RoundButton
+                        includeIcon
+                        iconType='FontAwesome'
+                    />
+                </View>
 
                 <Header4ButtonRadio
-                    option1Text='Status Tracking'
+                    option1Text='Status'
                     option2Text='Photo'
                     option3Text='Messages'
                     option4Text='Claims'
@@ -72,12 +82,14 @@ const styles = StyleSheet.create({
     description: {
         height: itemHeight,
         width: itemWidth,
-        borderWidth: 1,
-        borderColor: white,
         justifyContent: 'space-around',
         alignItems: 'flex-end',
         paddingVertical: itemPadding,
         ...GlobalStyle.row_wrapper,
+        backgroundColor: 'yellow',
+    },
+    text_regular: {
+        fontSize: itemFontSize,
     },
     text_bold: {
         fontSize: itemFontSize,
