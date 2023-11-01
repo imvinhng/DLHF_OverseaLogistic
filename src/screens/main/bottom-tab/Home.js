@@ -1,16 +1,24 @@
 import React, { useState } from 'react';
-import { Dimensions, FlatList, Image, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, FlatList, Image, Pressable, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import GlobalStyle from '../../../assets/styles/GlobalStyle';
-import { useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { HomeHeader } from '../../../components/Header';
 import { darkgray, lightgray, red, tan, white } from '../../../assets/styles/Colors';
 import { useSelector } from 'react-redux';
 import { HomeBody } from '../../../components/HomeComponents';
 import { CONTAINER_REPORT } from '../../../database/ContainerReport';
+import { Route } from '../../../navigations/Route';
 
 const Item = ({ order }) => {
+    const navigation = useNavigation();
     return (
-        <View style={[styles.order_item, { backgroundColor: order.color }]}>
+        <Pressable
+            style={[
+                styles.order_item,
+                { backgroundColor: order.color }
+            ]}
+            onPress={() => navigation.navigate(Route.Main.BottomTab.Home.SHIPMENT_DETAIL_SCREEN, { Order: order })}
+        >
             <View>
                 <Image
                     source={require('../../../assets/images/icons/american-flag.png')}
@@ -41,7 +49,7 @@ const Item = ({ order }) => {
                 <Text style={styles.text_regular}>{order.csc_front}</Text>
                 <Text style={styles.text_regular}>{order.csc_door}</Text>
             </View>
-        </View>
+        </Pressable>
     )
 }
 

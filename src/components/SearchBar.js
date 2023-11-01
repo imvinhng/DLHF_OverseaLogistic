@@ -9,6 +9,7 @@ function SearchBar(props) {
     return (
         <View style={[styles.searchbarContainer, props.containerStyle]}>
             <SquareButton
+                includeIcon
                 iconName='search'
                 iconSize={15}
                 buttonStyle={[styles.searchbar_icon, props.searchIconStyle]}
@@ -31,6 +32,8 @@ const searchbarHeight = 50;
 
 const styles = StyleSheet.create({
     searchbarContainer: {
+        backgroundColor: white,
+        borderRadius: 10,
         ...GlobalStyle.box_shadow,
         ...GlobalStyle.row_wrapper,
     },

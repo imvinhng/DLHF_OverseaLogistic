@@ -36,7 +36,7 @@ export const HeaderBack = (props) => {
 
 }
 
-export const HeaderPN = (props) => {
+export const HeaderN = (props) => {
     return (
         <View style={[styles.header, props.style, { justifyContent: 'space-between' }]}>
             <View style={styles.sub_header_left}>
@@ -51,14 +51,21 @@ export const HeaderPN = (props) => {
     )
 
 }
-export const HeaderPNBack = (props) => {
+export const HeaderNBack = (props) => {
     const navigation = useNavigation();
 
     return (
-        <View style={[styles.header, props.style, { justifyContent: 'space-between' }]}>
+        <View style={[
+            styles.header,
+            {
+                justifyContent: 'space-between',
+                backgroundColor: props.backgroundColor ?? white
+            },
+            props.style
+        ]}>
             <View style={styles.sub_header_left}>
                 <RoundButton
-                    bgColor={'#fff'}
+                    bgColor={props.backgroundColor ?? white}
                     iconName={'angle-left'}
                     iconSize={25}
                     onPressFunction={() => props.navDest ? navigation.navigate(props.navDest) : navigation.goBack()}
@@ -67,7 +74,6 @@ export const HeaderPNBack = (props) => {
             </View>
 
             <View style={styles.sub_header_right}>
-                <PromotionButton />
                 <NotificationButton />
             </View>
         </View>
@@ -120,10 +126,11 @@ export const HomeHeader = (props) => {
                     closeBtnStyle={homeStyle.search_close}
                 />
                 <SquareButton
+                    includeIcon
                     iconName={'plus'}
                     iconSize={16}
                     buttonStyle={homeStyle.plusButton}
-                    onPress={() => navigation.navigate(Route.MAIN_TAB, { screen: Route.Main.NEW_ORDER_SCREEN })}
+                    onPress={() => navigation.navigate(Route.MAIN_TAB, { screen: Route.Main.NEW_SHIPMENT_SCREEN })}
                 />
             </View>
 

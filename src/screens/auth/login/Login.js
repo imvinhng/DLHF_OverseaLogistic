@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Image, View, Text, TextInput, ScrollView, Dimensions, SafeAreaView } from 'react-native';
+import { StyleSheet, Image, View, Text, TextInput, ScrollView, Dimensions, SafeAreaView, Alert } from 'react-native';
 import { LoginButton } from '../../../components/CustomButton';
 import { OTP_Login } from '../OTP';
 import { useNavigation } from '@react-navigation/native';
@@ -23,20 +23,23 @@ const Login = (props) => {
 
     const passwordCheck = () => {
         const database = USERS;
-        // for (let i = 0; i < USERS.length; i++) {
-        //     if (database[i].phone_number == phoneNumber && database[i].password == password) {
-        navigation.navigate('Main', {
-            screen: 'Home', params: {
-                screen: 'HomeScreen', params: { loggedIn: true, phone_number: phoneNumber }
+        if (phoneNumber == '') {
+            Alert.alert('You cannot leave phone number blank!')
+        } else if (password == '') {
+            Alert.alert('You cannot leave password blank!')
+        }
+
+        for (let i = 0; i < USERS.length; i++) {
+            if (database[i].phone_number == phoneNumber && database[i].password == password) {
+                navigation.navigate('Main', {
+                    screen: 'Home', params: {
+                        screen: 'HomeScreen', params: { loggedIn: true, phone_number: phoneNumber }
+                    }
+                })
+                // Redux
+                dispatch(loginAction({ phone_number: phoneNumber, name: database[i].name, password: database[i].password }))
             }
-        })
-        // dispatch(loginAction({ phone_number: phoneNumber, name: database[i].name, password: database[i].password }))
-        //     }
-        // }
-
-        //TODO: Implement redux
-
-
+        }
     }
 
     return (

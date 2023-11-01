@@ -2,7 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import BottomTab from './BottomTab';
-import NewOrder from '../screens/main/utils/NewOrder';
+import NewShipment from '../screens/main/utils/NewShipment';
 import { Route } from './Route';
 
 
@@ -16,8 +16,8 @@ function Main(): JSX.Element {
                 component={BottomTab}
             />
             <Stack.Screen
-                name={Route.Main.NEW_ORDER_SCREEN}
-                component={NewOrder}
+                name={Route.Main.NEW_SHIPMENT_SCREEN}
+                component={NewShipment}
             />
         </Stack.Navigator>
     )

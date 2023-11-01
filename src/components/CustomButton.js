@@ -77,8 +77,14 @@ export const SquareButton = (props) => {
             ]}
             onPress={props.onPress}
         >
-            <Text style={props.textStyle}>{props.text}</Text>
-            {/* <FontAwesome5 name={props.iconName} size={props.iconSize} color={props.iconColor} /> */}
+            {props.includeText &&
+                <Text style={props.textStyle}>{props.text}</Text>}
+            {props.includeIcon &&
+                <FontAwesome5 name={props.iconName} size={props.iconSize} color={props.iconColor} />}
+            {props.includeImage &&
+                <View style={styles.image_icon_wrapper}>
+                    <Image source={props.image_uri} style={props.imageStyle} />
+                </View>}
         </Pressable>
     );
 }
@@ -405,6 +411,74 @@ export const RadioPeriodCustom = (props) => {
         </View>
     )
 }
+export const Header4ButtonRadio = (props) => {
+    const [focusedOne, setFocusedOne] = useState(true);
+    const [focusedTwo, setFocusedTwo] = useState(false);
+    const [focusedThree, setFocusedThree] = useState(false);
+    const [focusedFour, setFocusedFour] = useState(false);
+
+
+    const onFocusRadio = (focusedID) => {
+        if (focusedID == '1') {
+            setFocusedOne(true)
+            setFocusedTwo(false)
+            setFocusedThree(false)
+            setFocusedFour(false)
+        } else if (focusedID == '2') {
+            setFocusedOne(false)
+            setFocusedTwo(true)
+            setFocusedThree(false)
+            setFocusedFour(false)
+        } else if (focusedID == '3') {
+            setFocusedOne(false)
+            setFocusedTwo(false)
+            setFocusedThree(true)
+            setFocusedFour(false)
+        } else if (focusedID == '4') {
+            setFocusedOne(false)
+            setFocusedTwo(false)
+            setFocusedThree(false)
+            setFocusedFour(true)
+        }
+    }
+
+    return (
+        <View style={styles.grid4_container}>
+            <LongButton
+                buttonColor={focusedOne ? lightgray : white}
+                text={props.option1Text}
+                buttonStyle={styles.grid4_button}
+                textColor={focusedOne ? darkgray : black}
+                textStyle={styles.grid_btn_txt}
+                onPressFunction={() => { onFocusRadio('1'), props.onPressOption1 }}
+            />
+            <LongButton
+                buttonColor={focusedTwo ? lightgray : white}
+                text={props.option2Text}
+                buttonStyle={styles.grid4_button}
+                textColor={focusedTwo ? darkgray : black}
+                textStyle={styles.grid_btn_txt}
+                onPressFunction={() => { onFocusRadio('2'), props.onPressOption2 }}
+            />
+            <LongButton
+                buttonColor={focusedThree ? lightgray : white}
+                text={props.option3Text}
+                buttonStyle={styles.grid4_button}
+                textColor={focusedThree ? darkgray : black}
+                textStyle={styles.grid_btn_txt}
+                onPressFunction={() => { onFocusRadio('3'), props.onPressOption3 }}
+            />
+            <LongButton
+                buttonColor={focusedFour ? lightgray : white}
+                text={props.option4Text}
+                buttonStyle={styles.grid4_button}
+                textColor={focusedFour ? darkgray : black}
+                textStyle={styles.grid_btn_txt}
+                onPressFunction={() => { onFocusRadio('4'), props.onPressOption4 }}
+            />
+        </View>
+    )
+}
 
 export const Radio2Button = (props) => {
     const [option1Selected, setOption1Selected] = useState(false);
@@ -488,6 +562,9 @@ export const CloseButton = (props) => {
 
 const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get('screen');
 const periodButtonHeight = 30;
+const GRID4_MARGIN = 5;
+const GRID4_CONTAINER_WIDTH = ScreenWidth - 2 * GRID4_MARGIN;
+const GRID4_ITEM_WIDTH = GRID4_CONTAINER_WIDTH / 4;
 
 const styles = StyleSheet.create({
     round_button: {
@@ -504,6 +581,7 @@ const styles = StyleSheet.create({
         margin: 5,
         alignItems: 'center',
         justifyContent: 'center',
+        backgroundColor: white,
 
         ...GlobalStyle.box_shadow,
     },
@@ -536,18 +614,11 @@ const styles = StyleSheet.create({
     login_button: {
         height: 50,
         width: 170,
-        backgroundColor: '#68ede9',
         borderRadius: 5,
         margin: 10,
     },
     long_button: {
-        height: 40,
-        width: 130,
-        backgroundColor: '#68ede9',
-        alignItems: 'center',
-        justifyContent: 'center',
         borderRadius: 5,
-        margin: 5,
         flexDirection: 'row',
     },
     long_button_icon: {
@@ -556,7 +627,7 @@ const styles = StyleSheet.create({
         // backgroundColor: '#68ede9',
         // alignItems: 'center',
         // justifyContent: 'center',
-        borderRadius: 5,
+        // borderRadius: 5,
         margin: 5,
         flexDirection: 'row',
     },
@@ -577,26 +648,21 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         marginRight: 30,
     },
-    grid4_button: {
-        width: (ScreenWidth - 10) / 4 - 20,
-        borderRadius: 10,
-        margin: 0,
-    },
     grid_btn_txt: {
-        fontFamily: 'Merriweather-Light',
-        fontSize: 14,
+        fontSize: 13,
     },
     grid3_button: {
-        margin: 0,
         width: ScreenWidth / 3 - 4,
     },
-    periodButtonContainer: {
+    grid4_button: {
+        // width: GRID4_ITEM_WIDTH,
+    },
+    grid4_container: {
         justifyContent: 'space-between',
-        borderColor: tan,
-        borderWidth: 0.5,
-        backgroundColor: offwhite,
-        borderRadius: 10,
-        margin: 10
+        width: GRID4_CONTAINER_WIDTH,
+        margin: GRID4_MARGIN,
+        // backgroundColor: 'yellow',
+        ...GlobalStyle.row_wrapper,
     }
 
 })

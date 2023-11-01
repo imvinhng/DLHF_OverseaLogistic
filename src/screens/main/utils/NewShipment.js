@@ -1,16 +1,16 @@
-import { useNavigation } from '@react-navigation/native';
-import { StyleSheet, View, Text, Modal, Image, SafeAreaView, Dimensions, ScrollView } from 'react-native';
-import { LongButton } from '../../../utils/CustomButton';
 import React, { useState } from 'react';
-import { blue, darkgray, lightgray, lightred, red, white, yellow } from '../../../assets/styles/Colors';
+import { useNavigation } from '@react-navigation/native';
+import { StyleSheet, View, Text, SafeAreaView, Dimensions, ScrollView } from 'react-native';
+import { blue, darkgray, lightgray, white, yellow } from '../../../assets/styles/Colors';
 import GlobalStyle from '../../../assets/styles/GlobalStyle';
 import { Radio2Button, RoundButton, SquareButton } from '../../../components/CustomButton';
 import DropDownPicker from 'react-native-dropdown-picker';
-import { Gray, GrayLine_Full, GrayLine_Half } from '../../../components/Line';
+import { GrayLine_Full, GrayLine_Half } from '../../../components/Line';
 import { CUSTOMER_NAME } from '../../../database/CustomerList';
 import { TextInput } from 'react-native-gesture-handler';
+import { Route } from '../../../navigations/Route';
 
-function NewOrder(props) {
+function NewShipment(props) {
     const navigation = useNavigation();
     const [openCustomerName, setOpenCustomerName] = useState(false);
     const [openCRGI, setOpenCRGI] = useState(false);
@@ -399,10 +399,12 @@ function NewOrder(props) {
             </ScrollView>
             <View style={styles.submit_container}>
                 <SquareButton
+                    includeText
                     text='SUBMIT'
                     bgColor={blue}
                     textStyle={styles.submit_text}
                     buttonStyle={styles.submit_button}
+                    onPress={() => navigation.navigate(Route.MAIN_TAB, { screen: Route.Main.BOTTOM_TAB, params: { screen: Route.Main.BottomTab.HOME_TAB } })}
                 />
             </View>
 
@@ -411,7 +413,7 @@ function NewOrder(props) {
     );
 }
 
-export default NewOrder;
+export default NewShipment;
 
 const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get('screen');
 

@@ -6,6 +6,7 @@ export const Route = {
             HOME_TAB: 'Home',
             Home: {
                 HOME_SCREEN: 'HOME_SCREEN',
+                SHIPMENT_DETAIL_SCREEN: 'SHIPMENT_DETAIL_SCREEN',
             },
 
             SHIPMENT_TAB: 'Shipments',
@@ -28,7 +29,7 @@ export const Route = {
                 OTHER_SCREEN: 'OTHER_SCREEN',
             },
         },
-        NEW_ORDER_SCREEN: 'NewOrderScreen'
+        NEW_SHIPMENT_SCREEN: 'NewShipmentScreen'
     },
 
     AUTH_TAB: 'Auth',
