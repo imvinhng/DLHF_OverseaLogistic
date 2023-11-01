@@ -25,6 +25,11 @@ export const GrayLine_Full = (props) => {
         <View style={[{ width: '100%', height: 1, backgroundColor: 'lightgray' }, props.style]} />
     )
 }
+export const GrayLine_Half = (props) => {
+    return (
+        <View style={[{ width: '50%', height: 1, backgroundColor: 'lightgray' }, props.style]} />
+    )
+}
 
 export const GrayLine_Full_Thick = (props) => {
     return (

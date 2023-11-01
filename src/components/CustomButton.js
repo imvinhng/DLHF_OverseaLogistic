@@ -77,7 +77,8 @@ export const SquareButton = (props) => {
             ]}
             onPress={props.onPress}
         >
-            <FontAwesome5 name={props.iconName} size={props.iconSize} color={props.iconColor} />
+            <Text style={props.textStyle}>{props.text}</Text>
+            {/* <FontAwesome5 name={props.iconName} size={props.iconSize} color={props.iconColor} /> */}
         </Pressable>
     );
 }
@@ -405,6 +406,72 @@ export const RadioPeriodCustom = (props) => {
     )
 }
 
+export const Radio2Button = (props) => {
+    const [option1Selected, setOption1Selected] = useState(false);
+    const [option2Selected, setOption2Selected] = useState(false);
+    return (
+        <View style={[styles.radio_group, props.buttonGroupStyle]}>
+            <View style={[GlobalStyle.row_wrapper, props.option1Style]}>
+                <TouchableOpacity
+                    style={[{
+                        height: 16,
+                        width: 16,
+                        borderRadius: 12,
+                        borderWidth: 2,
+                        borderColor: lightorange,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }, props.style]}
+                    onPress={() => {
+                        setOption1Selected(true)
+                        setOption2Selected(false)
+                    }}>
+                    {
+                        option1Selected ?
+                            <View style={{
+                                height: 6,
+                                width: 6,
+                                borderRadius: 6,
+                                backgroundColor: lightorange,
+                            }} />
+                            : null
+                    }
+                </TouchableOpacity>
+                <Text style={[styles.radio_text, props.textStyle]}>{props.option1Text ?? 'Yes'}</Text>
+            </View>
+
+            <View style={[GlobalStyle.row_wrapper, props.option2Style]}>
+                <TouchableOpacity
+                    style={[{
+                        height: 16,
+                        width: 16,
+                        borderRadius: 12,
+                        borderWidth: 2,
+                        borderColor: lightorange,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }, props.style]}
+                    onPress={() => {
+                        setOption1Selected(false)
+                        setOption2Selected(true)
+                    }}>
+                    {
+                        option2Selected ?
+                            <View style={{
+                                height: 6,
+                                width: 6,
+                                borderRadius: 6,
+                                backgroundColor: lightorange,
+                            }} />
+                            : null
+                    }
+                </TouchableOpacity>
+                <Text style={[styles.radio_text, props.textStyle]}>{props.option2Text ?? 'No'}</Text>
+            </View>
+        </View>
+    );
+}
+
 export const CloseButton = (props) => {
     const navigation = useNavigation();
 
@@ -501,6 +568,7 @@ const styles = StyleSheet.create({
     },
     radio_group: {
         margin: 10,
+        width: 'auto',
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
