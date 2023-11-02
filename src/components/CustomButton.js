@@ -20,6 +20,8 @@ export const RoundButton = (props) => {
             ]}
             onPress={props.onPress}
         >
+            {props.includeIcon && props.iconType == 'FontAwesome' &&
+                <FontAwesome name={props.iconName} size={props.iconSize} color={props.iconColor} />}
             {props.includeIcon && props.iconType == 'FontAwesome5' &&
                 <FontAwesome5 name={props.iconName} size={props.iconSize} color={props.iconColor} />}
             {props.includeIcon && props.iconType == 'Octicons' &&
@@ -357,7 +359,7 @@ export const Header4ButtonRadio = (props) => {
     }
 
     return (
-        <View style={GlobalStyle.column_wrapper}>
+        <View style={[GlobalStyle.column_wrapper, props.groupStyle]}>
             <View style={styles.grid4_container}>
                 <LongButton
                     includeText
@@ -366,7 +368,7 @@ export const Header4ButtonRadio = (props) => {
                     buttonStyle={styles.grid4_button}
                     textColor={focusedOne ? darkgray : black}
                     textStyle={styles.grid_btn_txt}
-                    onPress={() => { onFocusRadio('1'), props.onPressOption1 }}
+                    onPress={() => { onFocusRadio('1'); props.onPressOption1() }}
                 />
                 <LongButton
                     includeText
@@ -375,7 +377,7 @@ export const Header4ButtonRadio = (props) => {
                     buttonStyle={styles.grid4_button}
                     textColor={focusedTwo ? darkgray : black}
                     textStyle={styles.grid_btn_txt}
-                    onPress={() => { onFocusRadio('2'), props.onPressOption2 }}
+                    onPress={() => { onFocusRadio('2'); props.onPressOption2() }}
                 />
                 <LongButton
                     includeText
@@ -384,7 +386,7 @@ export const Header4ButtonRadio = (props) => {
                     buttonStyle={styles.grid4_button}
                     textColor={focusedThree ? darkgray : black}
                     textStyle={styles.grid_btn_txt}
-                    onPress={() => { onFocusRadio('3'), props.onPressOption3 }}
+                    onPress={() => { onFocusRadio('3'); props.onPressOption3() }}
                 />
                 <LongButton
                     includeText
@@ -393,7 +395,7 @@ export const Header4ButtonRadio = (props) => {
                     buttonStyle={styles.grid4_button}
                     textColor={focusedFour ? darkgray : black}
                     textStyle={styles.grid_btn_txt}
-                    onPress={() => { onFocusRadio('4'), props.onPressOption4 }}
+                    onPress={() => { onFocusRadio('4'); props.onPressOption4() }}
                 />
 
             </View>

@@ -43,7 +43,7 @@ const Item = ({ order }) => {
                 <Text style={styles.text_bold}>CSC (Door):</Text>
             </View>
             <View>
-                <Text style={[styles.text_bgray, styles.order_r1]}>{order.status.latest}</Text>
+                <Text style={[styles.text_bgray, styles.order_r1]}>{order.status_all[order.status_all.length - 1].status}</Text>
                 <Text style={styles.text_regular}>{order.etd}</Text>
                 <Text style={styles.text_regular}>{order.eta}</Text>
                 <Text style={styles.text_regular}>{order.csc_front}</Text>

@@ -12,13 +12,9 @@ export const CONTAINER_REPORT = [
         csc_front: '10/2019',
         csc_door: '10/2019',
         color: lightgray,
-        status: {
-            latest: 'Draft', latest_date: '10/9/2023'
-            // status: 'Created', date: '30/10/2023',
-            // status: 'Submitted', date: '1/11/2023',
-            // status: 'Depature', date: '3/11/2023',
-            // status: 'Arrived', date: '23/12/2023',
-        },
+        status_all: [
+            { id: 1, status: 'Draft', created_at: '01/08/2023' },
+        ],
         photo: [
             // { url },
             // { ur }
@@ -37,13 +33,10 @@ export const CONTAINER_REPORT = [
         csc_front: '10/2019',
         csc_door: '10/2019',
         color: 'lightgreen',
-        status: {
-            latest: 'Submitted', latest_date: '10/9/2023'
-            // status: 'Created', date: '30/10/2023',
-            // status: 'Submitted', date: '1/11/2023',
-            // status: 'Depature', date: '3/11/2023',
-            // status: 'Arrived', date: '23/12/2023',
-        },
+        status_all: [
+            { id: 1, status: 'Draft', created_at: '01/08/2023' },
+            { id: 2, status: 'Submitted', created_at: '08/08/2023' },
+        ],
         photo: [
             // { url },
             // { ur }
@@ -62,13 +55,11 @@ export const CONTAINER_REPORT = [
         csc_front: '10/2019',
         csc_door: '10/2019',
         color: yellow,
-        status: {
-            latest: 'On Delivery', latest_date: '10/9/2023'
-            // status: 'Created', date: '30/10/2023',
-            // status: 'Submitted', date: '1/11/2023',
-            // status: 'Depature', date: '3/11/2023',
-            // status: 'Arrived', date: '23/12/2023',
-        },
+        status_all: [
+            { id: 1, status: 'Draft', created_at: '01/08/2023' },
+            { id: 2, status: 'Submitted', created_at: '08/08/2023' },
+            { id: 3, status: 'On Delivery', created_at: '15/8/2023' },
+        ],
         photo: [
             // { url },
             // { ur }
@@ -88,13 +79,12 @@ export const CONTAINER_REPORT = [
         csc_front: '10/2019',
         csc_door: '10/2019',
         color: 'lightblue',
-        status: {
-            latest: 'Arrived', latest_date: '10/9/2023'
-            // status: 'Created', date: '30/10/2023',
-            // status: 'Submitted', date: '1/11/2023',
-            // status: 'Depature', date: '3/11/2023',
-            // status: 'Arrived', date: '23/12/2023',
-        },
+        status_all: [
+            { id: 1, status: 'Draft', created_at: '01/08/2023' },
+            { id: 2, status: 'Submitted', created_at: '08/08/2023' },
+            { id: 3, status: 'On Delivery', created_at: '15/8/2023' },
+            { id: 4, status: 'Arrived', created_at: '22/8/2023' },
+        ],
         photo: [
             // { url },
             // { ur }
@@ -113,13 +103,13 @@ export const CONTAINER_REPORT = [
         csc_front: '10/2019',
         csc_door: '10/2019',
         color: lightred,
-        status: {
-            latest: 'Claimed', latest_date: '10/9/2023'
-            // status: 'Created', date: '30/10/2023',
-            // status: 'Submitted', date: '1/11/2023',
-            // status: 'Depature', date: '3/11/2023',
-            // status: 'Arrived', date: '23/12/2023',
-        },
+        status_all: [
+            { id: 1, status: 'Draft', created_at: '01/08/2023' },
+            { id: 2, status: 'Submitted', created_at: '08/08/2023' },
+            { id: 3, status: 'On Delivery', created_at: '15/8/2023' },
+            { id: 4, status: 'Arrived', created_at: '22/8/2023' },
+            { id: 4, status: 'Claimed', created_at: '29/8/2023' },
+        ],
         photo: [
             // { url },
             // { ur }
@@ -138,13 +128,14 @@ export const CONTAINER_REPORT = [
         csc_front: '10/2019',
         csc_door: '10/2019',
         color: green,
-        status: {
-            latest: 'Completed', latest_date: '10/9/2023'
-            // status: 'Created', date: '30/10/2023',
-            // status: 'Submitted', date: '1/11/2023',
-            // status: 'Depature', date: '3/11/2023',
-            // status: 'Arrived', date: '23/12/2023',
-        },
+        status_all: [
+            { id: 1, status: 'Draft', created_at: '01/08/2023' },
+            { id: 2, status: 'Submitted', created_at: '08/08/2023' },
+            { id: 3, status: 'On Delivery', created_at: '15/8/2023' },
+            { id: 4, status: 'Arrived', created_at: '22/8/2023' },
+            { id: 4, status: 'Claimed', created_at: '29/8/2023' },
+            { id: 5, status: 'Completed', created_at: '10/9/2023' },
+        ],
         photo: [
             // { url },
             // { ur }
