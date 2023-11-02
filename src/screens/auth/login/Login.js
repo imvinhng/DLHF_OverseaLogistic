@@ -73,7 +73,8 @@ const Login = (props) => {
                     }}> Forget password?</Text>
                     <View style={{ height: 30 }} />
                     <LoginButton
-                        style={styles.login_btn}
+                        buttonStyle={styles.login_btn}
+                        textStyle={styles.login_text}
                         backgroundColor={loginBtnColor}
                         textColor={white}
                         onPress={passwordCheck}
@@ -117,6 +118,12 @@ const styles = StyleSheet.create({
     },
     login_btn: {
         width: '90%',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    login_text: {
+        fontWeight: '700',
+        fontSize: 20,
     },
     image: {
         width: ScreenWidth,

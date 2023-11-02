@@ -7,6 +7,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import { useNavigation } from '@react-navigation/native';
 import { black, darkgray, darkorange, lightgray, lightorange, offwhite, tan, white } from '../assets/styles/Colors';
 import GlobalStyle from '../assets/styles/GlobalStyle';
+import { Line } from './Line';
 
 
 export const RoundButton = (props) => {
@@ -53,27 +54,6 @@ export const SquareButton = (props) => {
     );
 }
 
-export const LoginButton = (props) => {
-    return (
-        <Pressable
-            style={({ pressed }) => [
-                styles.login_button,
-                props.style,
-                {
-                    backgroundColor: pressed ? lightgray : props.backgroundColor,
-                    // borderRadius: 20,
-                },
-            ]}
-            onPress={props.onPress}
-            hitSlop={{ top: 10, bottom: 10, right: 10, left: 10 }}
-            android_ripple={{ color: '#e5ed8a' }}
-        >
-            <Text style={[styles.text, { color: props.textColor, fontSize: 20 }]}>
-                LOGIN
-            </Text>
-        </Pressable>
-    );
-}
 export const LongButton = (props) => {
     return (
         <Pressable
@@ -98,20 +78,37 @@ export const LongButton = (props) => {
         </Pressable>
     );
 }
+export const LoginButton = (props) => {
+    return (
+        <Pressable
+            style={({ pressed }) => [
+                styles.login_button,
+                props.buttonStyle,
+                {
+                    backgroundColor: pressed ? lightgray : props.backgroundColor,
+                },
+            ]}
+            onPress={props.onPress}
+            hitSlop={{ top: 10, bottom: 10, right: 10, left: 10 }}
+            android_ripple={{ color: '#e5ed8a' }}
+        >
+            <Text style={[props.textStyle, { color: props.textColor }]}>
+                LOGIN
+            </Text>
+        </Pressable>
+    );
+}
 
 export const NotificationButton = (props) => {
     const navigation = useNavigation();
     return (
-        <Pressable
-            style={({ pressed }) => [
-                styles.shadow_round_button,
-                { backgroundColor: pressed ? lightgray : '#fff' },
-                props.style,
-            ]}
-        // onPress={() => navigation.navigate('More', { screen: 'NotificationScreen' })}
-        >
-            <FontAwesome5 name={'bell'} size={20} />
-        </Pressable>
+        <RoundButton
+            includeIcon
+            iconType={'FontAwesome5'}
+            iconName={'bell'}
+            iconSize={20}
+            buttonStyle={styles.shadow_round_button}
+        />
     );
 }
 
@@ -360,39 +357,49 @@ export const Header4ButtonRadio = (props) => {
     }
 
     return (
-        <View style={styles.grid4_container}>
-            <LongButton
-                buttonColor={focusedOne ? lightgray : white}
-                text={props.option1Text}
-                buttonStyle={styles.grid4_button}
-                textColor={focusedOne ? darkgray : black}
-                textStyle={styles.grid_btn_txt}
-                onPress={() => { onFocusRadio('1'), props.onPressOption1 }}
-            />
-            <LongButton
-                buttonColor={focusedTwo ? lightgray : white}
-                text={props.option2Text}
-                buttonStyle={styles.grid4_button}
-                textColor={focusedTwo ? darkgray : black}
-                textStyle={styles.grid_btn_txt}
-                onPress={() => { onFocusRadio('2'), props.onPressOption2 }}
-            />
-            <LongButton
-                buttonColor={focusedThree ? lightgray : white}
-                text={props.option3Text}
-                buttonStyle={styles.grid4_button}
-                textColor={focusedThree ? darkgray : black}
-                textStyle={styles.grid_btn_txt}
-                onPress={() => { onFocusRadio('3'), props.onPressOption3 }}
-            />
-            <LongButton
-                buttonColor={focusedFour ? lightgray : white}
-                text={props.option4Text}
-                buttonStyle={styles.grid4_button}
-                textColor={focusedFour ? darkgray : black}
-                textStyle={styles.grid_btn_txt}
-                onPress={() => { onFocusRadio('4'), props.onPressOption4 }}
-            />
+        <View style={GlobalStyle.column_wrapper}>
+            <View style={styles.grid4_container}>
+                <LongButton
+                    includeText
+                    buttonColor={focusedOne ? lightgray : white}
+                    text={props.option1Text}
+                    buttonStyle={styles.grid4_button}
+                    textColor={focusedOne ? darkgray : black}
+                    textStyle={styles.grid_btn_txt}
+                    onPress={() => { onFocusRadio('1'), props.onPressOption1 }}
+                />
+                <LongButton
+                    includeText
+                    buttonColor={focusedTwo ? lightgray : white}
+                    text={props.option2Text}
+                    buttonStyle={styles.grid4_button}
+                    textColor={focusedTwo ? darkgray : black}
+                    textStyle={styles.grid_btn_txt}
+                    onPress={() => { onFocusRadio('2'), props.onPressOption2 }}
+                />
+                <LongButton
+                    includeText
+                    buttonColor={focusedThree ? lightgray : white}
+                    text={props.option3Text}
+                    buttonStyle={styles.grid4_button}
+                    textColor={focusedThree ? darkgray : black}
+                    textStyle={styles.grid_btn_txt}
+                    onPress={() => { onFocusRadio('3'), props.onPressOption3 }}
+                />
+                <LongButton
+                    includeText
+                    buttonColor={focusedFour ? lightgray : white}
+                    text={props.option4Text}
+                    buttonStyle={styles.grid4_button}
+                    textColor={focusedFour ? darkgray : black}
+                    textStyle={styles.grid_btn_txt}
+                    onPress={() => { onFocusRadio('4'), props.onPressOption4 }}
+                />
+
+            </View>
+            <View>
+                <Line color={lightgray} thickness={2} />
+            </View>
         </View>
     )
 }
@@ -465,23 +472,29 @@ export const Radio2Button = (props) => {
 
 const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get('screen');
 const periodButtonHeight = 30;
-const GRID4_MARGIN = 5;
+const GRID4_MARGIN = 10;
 const GRID4_CONTAINER_WIDTH = ScreenWidth - 2 * GRID4_MARGIN;
 const GRID4_ITEM_WIDTH = GRID4_CONTAINER_WIDTH / 4;
 
+const BUTTON_MARGIN = 5;
+const BUTTON_PADDING = 10;
+
+const BUTTON_SIZE = 40;
+
 const styles = StyleSheet.create({
     round_button: {
-        height: 50,
-        width: 50,
+        height: BUTTON_SIZE,
+        width: BUTTON_SIZE,
         borderRadius: 25,
+        // padding: 10,
         alignItems: 'center',
         justifyContent: 'center',
     },
     shadow_round_button: {
-        height: 40,
-        width: 40,
+        height: BUTTON_SIZE,
+        width: BUTTON_SIZE,
         borderRadius: 25,
-        margin: 5,
+        padding: 10,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: white,
@@ -489,52 +502,22 @@ const styles = StyleSheet.create({
         ...GlobalStyle.box_shadow,
     },
     square_button: {
-        height: 50,
-        width: 50,
+        height: BUTTON_SIZE,
+        width: BUTTON_SIZE,
         borderRadius: 10,
+        padding: 10,
         alignItems: 'center',
         justifyContent: 'center',
     },
-    text: {
-        color: '#000',
-        fontSize: 20,
-        margin: 10,
-        textAlign: 'center',
-        fontFamily: 'Roboto-Bold'
-    },
-    text_long_button: {
-        fontSize: 15,
-        color: lightorange,
-        fontWeight: '600',
-        margin: 10,
-    },
-    text_square_button_image_icon: {
-        fontSize: 13,
-        fontWeight: '500',
-        marginTop: 12,
-        // fontFamily: 'Mukta-Bold',
+    long_button: {
+        borderRadius: 5,
+        ...GlobalStyle.row_wrapper,
     },
     login_button: {
         height: 50,
         width: 170,
         borderRadius: 5,
         margin: 10,
-    },
-    long_button: {
-        borderRadius: 5,
-        flexDirection: 'row',
-    },
-    long_button_icon: {
-        height: 40,
-        width: 130,
-        margin: 5,
-        flexDirection: 'row',
-    },
-    image_icon_wrapper: {
-        paddingTop: 10,
-    },
-    row_wrapper: {
-        flexDirection: 'row',
     },
     radio_group: {
         margin: 10,
@@ -548,20 +531,23 @@ const styles = StyleSheet.create({
         marginRight: 30,
     },
     grid_btn_txt: {
-        fontSize: 13,
+        fontSize: 14,
+        fontWeight: '500',
     },
     grid3_button: {
         width: ScreenWidth / 3 - 4,
     },
     grid4_button: {
         width: GRID4_ITEM_WIDTH,
+        borderRadius: 0,
+        padding: 10,
+        justifyContent: 'center',
     },
     grid4_container: {
         justifyContent: 'space-between',
         width: GRID4_CONTAINER_WIDTH,
-        margin: GRID4_MARGIN,
+        // margin: GRID4_MARGIN,
         // backgroundColor: 'yellow',
         ...GlobalStyle.row_wrapper,
     }
-
 })

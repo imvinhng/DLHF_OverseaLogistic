@@ -17,7 +17,7 @@ const Item = ({ order }) => {
                 styles.order_item,
                 { backgroundColor: order.color }
             ]}
-            onPress={() => { console.log(order); navigation.navigate(Route.Main.BottomTab.Home.SHIPMENT_DETAIL_SCREEN, { Order: order }) }}
+            onPress={() => { navigation.navigate(Route.Main.BottomTab.Home.SHIPMENT_DETAIL_SCREEN, { Order: order }) }}
         >
             <View>
                 <Image

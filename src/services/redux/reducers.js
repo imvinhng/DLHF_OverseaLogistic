@@ -10,7 +10,6 @@ function userReducer(state = initialState, action) {
     switch (action.type) {
         case SET_LOGIN:
             return {
-                ...state,
                 phone_number: action.payload.phone_number,
                 password: action.payload.password,
                 name: action.payload.name

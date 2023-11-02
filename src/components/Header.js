@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Dimensions, Platform, StyleSheet, Text, View } from 'react-native';
-import { white, tan } from '../assets/styles/Colors';
+import { white, tan, yellow } from '../assets/styles/Colors';
 import { useNavigation } from '@react-navigation/native';
 import { NotificationButton, PromotionButton, RoundButton, RoundButton_Image, SquareButton } from './CustomButton';
 import GlobalStyle from '../assets/styles/GlobalStyle';
 import SearchBar from './SearchBar';
-import { WhiteLine_Full_Thick } from './Line';
+import { Line } from './Line';
 import { USERS } from '../database/Credentials';
 import { useSelector } from 'react-redux';
 import { Route } from '../navigations/Route';
@@ -107,7 +107,7 @@ export const HomeHeader = (props) => {
                     <RoundButton
                         includeImage
                         image_uri={require('../assets/images/icons/red-flower-icon.png')}
-                        backgroundColor={'#FEF7E5'}
+                        backgroundColor={tan}
                         iconStyle={homeStyle.icon_image}
                     />
                     <View>
@@ -139,7 +139,7 @@ export const HomeHeader = (props) => {
                 />
             </View>
 
-            <WhiteLine_Full_Thick />
+            <Line color={white} thickness={5} />
 
         </View>
     )
@@ -193,28 +193,21 @@ const homeStyle = StyleSheet.create({
     body: {
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#fff',
+        backgroundColor: white,
         paddingTop: 5,
         marginTop: -30,
         borderWidth: 0.2,
         borderColor: 'lightgray',
 
-        //ios
-        shadowColor: 'lightgray',
-        shadowOpacity: 0.2,
-        shadowRadius: 2,
-        shadowOffset: { width: 0, height: -10 },
-
-        //android
-        elevation: 10,
+        ...GlobalStyle.box_shadow,
     },
     header: {
-        flexDirection: 'column',
+        ...GlobalStyle.column_wrapper,
         backgroundColor: tan,
         paddingTop: 10,
     },
     top_header: {
-        flexDirection: 'row',
+        ...GlobalStyle.row_wrapper,
         justifyContent: 'space-between',
         marginBottom: 10,
     },
@@ -226,12 +219,11 @@ const homeStyle = StyleSheet.create({
         ...GlobalStyle.row_wrapper,
     },
     sub_header_right: {
-        flexDirection: 'row',
+        ...GlobalStyle.row_wrapper,
         marginRight: 10,
     },
     sub_header_left: {
-        flexDirection: 'row',
-        // justifyContent: 'center',
+        ...GlobalStyle.row_wrapper,
         alignItems: 'center',
         // textAlign: 'center',
     },
@@ -245,6 +237,7 @@ const homeStyle = StyleSheet.create({
     icon_image: {
         height: iconSize,
         width: iconSize,
+        margin: 10,
     },
     search_container: {
         margin: searchContainerMargin,

@@ -5,7 +5,7 @@ import { black, blue, darkgray, lightgray, white, yellow } from '../../../assets
 import GlobalStyle from '../../../assets/styles/GlobalStyle';
 import { Radio2Button, RoundButton, SquareButton } from '../../../components/CustomButton';
 import DropDownPicker from 'react-native-dropdown-picker';
-import { GrayLine_Full, GrayLine_Half } from '../../../components/Line';
+import { Line } from '../../../components/Line';
 import { CUSTOMER_NAME } from '../../../database/CustomerList';
 import { TextInput } from 'react-native-gesture-handler';
 import { Route } from '../../../navigations/Route';
@@ -34,7 +34,7 @@ function NewShipment(props) {
                         open={openCustomerName}
                         value={valueCustomerName}
                         items={CUSTOMER_NAME}
-                        // key={barChartYear[dataIndex].labels}
+                        // key={CUSTOMER_NAME.labels}
                         setOpen={setOpenCustomerName}
                         setValue={setValueCustomerName}
                         placeholder={'Select customer'}
@@ -42,7 +42,7 @@ function NewShipment(props) {
                         containerProps={styles.cname_dropdown}
                     // dropDownContainerStyle={styles.cname_dropdown}
                     />
-                    <GrayLine_Full />
+                    <Line color={darkgray} />
                 </View>
 
                 {valueCustomerName == 'GreenWings' &&
@@ -76,17 +76,17 @@ function NewShipment(props) {
                                 <View style={styles.CRGI_3c_item}>
                                     <Text style={styles.item_title}>Date:</Text>
                                     <TextInput style={styles.input} value={'20 Sep. 2023'} />
-                                    <GrayLine_Full style={styles.mb5} />
+                                    <Line color={darkgray} style={styles.mb5} />
                                 </View>
                                 <View style={styles.CRGI_3c_item}>
                                     <Text style={styles.item_title}>Weather:</Text>
                                     <TextInput style={styles.input} value={'Cloudy'} />
-                                    <GrayLine_Full style={styles.mb5} />
+                                    <Line color={darkgray} style={styles.mb5} />
                                 </View>
                                 <View style={styles.CRGI_3c_item}>
                                     <Text style={styles.item_title}>Reported by:</Text>
                                     <TextInput style={styles.input} value={'Duong'} />
-                                    <GrayLine_Full style={styles.mb5} />
+                                    <Line color={darkgray} style={styles.mb5} />
                                 </View>
                             </View>
 
@@ -94,36 +94,36 @@ function NewShipment(props) {
                                 <View style={styles.CRGI_2c_item}>
                                     <Text style={styles.item_title}>Vessel No.</Text>
                                     <TextInput style={styles.input} />
-                                    <GrayLine_Full style={styles.mb5} />
+                                    <Line color={darkgray} style={styles.mb5} />
 
                                     <Text style={styles.item_title}>B/L No.</Text>
                                     <TextInput style={styles.input} />
-                                    <GrayLine_Full style={styles.mb5} />
+                                    <Line color={darkgray} style={styles.mb5} />
 
                                     <Text style={styles.item_title}>Container No.</Text>
                                     <TextInput style={styles.input} />
-                                    <GrayLine_Full style={styles.mb5} />
+                                    <Line color={darkgray} style={styles.mb5} />
 
                                     <Text style={styles.item_title}>Container Type</Text>
                                     <TextInput style={styles.input} />
-                                    <GrayLine_Full style={styles.mb5} />
+                                    <Line color={darkgray} style={styles.mb5} />
                                 </View >
                                 <View style={styles.CRGI_2c_item}>
                                     <Text style={styles.item_title}>ETD</Text>
                                     <TextInput style={styles.input} />
-                                    <GrayLine_Full style={styles.mb5} />
+                                    <Line color={darkgray} style={styles.mb5} />
 
                                     <Text style={styles.item_title}>ETA</Text>
                                     <TextInput style={styles.input} />
-                                    <GrayLine_Full style={styles.mb5} />
+                                    <Line color={darkgray} style={styles.mb5} />
 
                                     <Text style={styles.item_title}>CSC (Front)</Text>
                                     <TextInput style={styles.input} />
-                                    <GrayLine_Full style={styles.mb5} />
+                                    <Line color={darkgray} style={styles.mb5} />
 
                                     <Text style={styles.item_title}>CSC (Door)</Text>
                                     <TextInput style={styles.input} />
-                                    <GrayLine_Full style={styles.mb5} />
+                                    <Line color={darkgray} style={styles.mb5} />
                                 </View>
 
                             </View>
@@ -154,18 +154,18 @@ function NewShipment(props) {
                                 <View style={styles.temperature_2c_item}>
                                     <Text style={styles.item_title}>Box Seri Number</Text>
                                     <TextInput style={styles.input} />
-                                    <GrayLine_Full style={styles.mb5} />
+                                    <Line color={darkgray} style={styles.mb5} />
                                 </View>
                                 <View style={styles.temperature_2c_item}>
                                     <Text style={styles.item_title}>Box Temperature</Text>
                                     <TextInput style={styles.input} />
-                                    <GrayLine_Full style={styles.mb5} />
+                                    <Line color={darkgray} style={styles.mb5} />
                                 </View>
                                 <SquareButton iconName={'plus'} iconSize={15} buttonStyle={styles.temperature_plus} />
                                 <View style={styles.temperature_2c_item}>
                                     <Text style={styles.item_title}>Outside Temperature</Text>
                                     <TextInput style={styles.input} />
-                                    <GrayLine_Full style={styles.mb5} />
+                                    <Line color={darkgray} style={styles.mb5} />
                                 </View>
                             </View>
                         </View>
@@ -193,22 +193,22 @@ function NewShipment(props) {
                             <View style={styles.item}>
                                 <Text style={styles.item_title}>Set Temp</Text>
                                 <TextInput style={styles.input} />
-                                <GrayLine_Half style={styles.mb5} />
+                                <Line color={darkgray} style={styles.mb5} />
                             </View>
                             <View style={styles.item}>
                                 <Text style={styles.item_title}>Supply Temp.</Text>
                                 <TextInput style={styles.input} />
-                                <GrayLine_Half style={styles.mb5} />
+                                <Line color={darkgray} style={styles.mb5} />
                             </View>
                             <View style={styles.item}>
                                 <Text style={styles.item_title}>Return Temp.</Text>
                                 <TextInput style={styles.input} />
-                                <GrayLine_Half style={styles.mb5} />
+                                <Line color={darkgray} style={styles.mb5} />
                             </View>
                             <View style={styles.item}>
                                 <Text style={styles.item_title}>Before Loading</Text>
                                 <TextInput style={styles.input} />
-                                <GrayLine_Half style={styles.mb5} />
+                                <Line color={darkgray} style={styles.mb5} />
                             </View>
                         </View>
                     }
@@ -235,17 +235,17 @@ function NewShipment(props) {
                             <View style={styles.item}>
                                 <Text style={styles.item_title}>Start Loading Time</Text>
                                 <TextInput style={styles.input} />
-                                <GrayLine_Full style={styles.mb5} />
+                                <Line color={darkgray} style={styles.mb5} />
                             </View>
                             <View style={styles.item}>
                                 <Text style={styles.item_title}>Finish Loading Time</Text>
                                 <TextInput style={styles.input} />
-                                <GrayLine_Full style={styles.mb5} />
+                                <Line color={darkgray} style={styles.mb5} />
                             </View>
                             <View style={styles.item}>
                                 <Text style={styles.item_title}>Departure Daron Time</Text>
                                 <TextInput style={styles.input} />
-                                <GrayLine_Full style={styles.mb5} />
+                                <Line color={darkgray} style={styles.mb5} />
                             </View>
                         </View>
                     }
@@ -273,21 +273,21 @@ function NewShipment(props) {
                                 <View style={styles.item}>
                                     <Text style={styles.item_title}># of corner strips</Text>
                                     <TextInput style={styles.input} />
-                                    <GrayLine_Half style={styles.mb5} />
+                                    <Line color={darkgray} style={styles.mb5} />
                                 </View>
                             </View>
                             <View style={styles.checklist_item}>
                                 <View style={styles.item}>
                                     <Text style={styles.item_title}>Ventilation setting</Text>
                                     <TextInput style={styles.input} />
-                                    <GrayLine_Half style={styles.mb5} />
+                                    <Line color={darkgray} style={styles.mb5} />
                                 </View>
                             </View>
                             <View style={styles.checklist_item}>
                                 <View style={styles.item}>
                                     <Text style={styles.item_title}>Drainage valves</Text>
                                     <TextInput style={styles.input} />
-                                    <GrayLine_Half style={styles.mb5} />
+                                    <Line color={darkgray} style={styles.mb5} />
                                 </View>
                             </View>
                             <View style={styles.checklist_item}>
@@ -362,7 +362,7 @@ function NewShipment(props) {
                                 <View style={styles.item}>
                                     <Text style={styles.item_title}>Space between front wall and first pallets</Text>
                                     <TextInput style={styles.input} />
-                                    <GrayLine_Half style={styles.mb5} />
+                                    <Line color={darkgray} style={styles.mb5} />
                                 </View>
                             </View>
                             <View style={styles.checklist_item}>
@@ -380,7 +380,7 @@ function NewShipment(props) {
                                 <View style={styles.item}>
                                     <Text style={styles.item_title}>Drainage Plug</Text>
                                     <TextInput style={styles.input} />
-                                    <GrayLine_Half style={styles.mb5} />
+                                    <Line color={darkgray} style={styles.mb5} />
                                 </View>
                             </View>
                         </View>
@@ -409,7 +409,7 @@ function NewShipment(props) {
                             <View style={styles.item}>
                                 <Text style={styles.item_title}>Any comments?</Text>
                                 <TextInput style={styles.input} />
-                                <GrayLine_Half style={styles.mb5} />
+                                <Line color={darkgray} style={styles.mb5} />
                             </View>
                         </View>
                     }

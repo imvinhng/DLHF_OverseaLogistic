@@ -10,7 +10,7 @@ const Stack = createStackNavigator();
 
 function Main(): JSX.Element {
     return (
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Navigator initialRouteName={Route.Main.BOTTOM_TAB} screenOptions={{ headerShown: false }}>
             <Stack.Screen
                 name={Route.Main.BOTTOM_TAB}
                 component={BottomTab}

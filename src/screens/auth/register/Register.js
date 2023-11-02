@@ -28,7 +28,6 @@ function Register(props) {
         if (phoneNumber == '' || phoneNumber.length < 10) {
             Alert.alert('Your phone number is not a valid number!')
         } else {
-            // console.log(phoneNumber)
             navigation.navigate('OTPRegisterScreen', { phone_number: phoneNumber })
         }
     }

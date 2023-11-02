@@ -10,7 +10,7 @@ export const backgroundGray = '#f2f2f2'
 
 export const lightgray = '#f2f2f2'
 
-export const darkgray = 'gray'
+export const darkgray = '#747474'
 
 export const yellow = '#fcba03'
 
