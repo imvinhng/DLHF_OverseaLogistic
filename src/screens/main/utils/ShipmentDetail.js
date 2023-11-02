@@ -6,6 +6,7 @@ import GlobalStyle from '../../../assets/styles/GlobalStyle';
 import { Header4ButtonRadio, RoundButton } from '../../../components/CustomButton';
 import { useRoute } from '@react-navigation/native';
 import { Line } from '../../../components/Line';
+import { CONTAINER_REPORT } from '../../../database/ContainerReport';
 
 function ShipmentDetail(props) {
     const route = useRoute();
@@ -41,7 +42,7 @@ function ShipmentDetail(props) {
                             <Text style={styles.text_bold}>CSC (Door):</Text>
                         </View>
                         <View>
-                            <Text style={[styles.text_bgray, styles.order_r1]}>{Order.status}</Text>
+                            <Text style={[styles.text_bgray, styles.order_r1]}>{Order.status.latest}</Text>
                             <Text style={styles.text_regular}>{Order.etd}</Text>
                             <Text style={styles.text_regular}>{Order.eta}</Text>
                             <Text style={styles.text_regular}>{Order.csc_front}</Text>

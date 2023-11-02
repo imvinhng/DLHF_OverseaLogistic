@@ -11,8 +11,20 @@ export const CONTAINER_REPORT = [
         eta: 'Oct. 1 (Sun)',
         csc_front: '10/2019',
         csc_door: '10/2019',
-        status: 'Draft',
         color: lightgray,
+        status: {
+            latest: 'Draft', latest_date: '10/9/2023'
+            // status: 'Created', date: '30/10/2023',
+            // status: 'Submitted', date: '1/11/2023',
+            // status: 'Depature', date: '3/11/2023',
+            // status: 'Arrived', date: '23/12/2023',
+        },
+        photo: [
+            // { url },
+            // { ur }
+        ],
+        messages: [],
+        claim: []
     },
     {
         id: 2,
@@ -24,8 +36,20 @@ export const CONTAINER_REPORT = [
         eta: 'Oct. 1 (Sun)',
         csc_front: '10/2019',
         csc_door: '10/2019',
-        status: 'Submitted',
         color: 'lightgreen',
+        status: {
+            latest: 'Submitted', latest_date: '10/9/2023'
+            // status: 'Created', date: '30/10/2023',
+            // status: 'Submitted', date: '1/11/2023',
+            // status: 'Depature', date: '3/11/2023',
+            // status: 'Arrived', date: '23/12/2023',
+        },
+        photo: [
+            // { url },
+            // { ur }
+        ],
+        messages: [],
+        claim: []
     },
     {
         id: 3,
@@ -37,8 +61,21 @@ export const CONTAINER_REPORT = [
         eta: 'Oct. 1 (Sun)',
         csc_front: '10/2019',
         csc_door: '10/2019',
-        status: 'On Delivery',
         color: yellow,
+        status: {
+            latest: 'On Delivery', latest_date: '10/9/2023'
+            // status: 'Created', date: '30/10/2023',
+            // status: 'Submitted', date: '1/11/2023',
+            // status: 'Depature', date: '3/11/2023',
+            // status: 'Arrived', date: '23/12/2023',
+        },
+        photo: [
+            // { url },
+            // { ur }
+        ],
+        messages: [],
+        claim: []
+
     },
     {
         id: 4,
@@ -50,8 +87,20 @@ export const CONTAINER_REPORT = [
         eta: 'Oct. 1 (Sun)',
         csc_front: '10/2019',
         csc_door: '10/2019',
-        status: 'Arrived',
         color: 'lightblue',
+        status: {
+            latest: 'Arrived', latest_date: '10/9/2023'
+            // status: 'Created', date: '30/10/2023',
+            // status: 'Submitted', date: '1/11/2023',
+            // status: 'Depature', date: '3/11/2023',
+            // status: 'Arrived', date: '23/12/2023',
+        },
+        photo: [
+            // { url },
+            // { ur }
+        ],
+        messages: [],
+        claim: []
     },
     {
         id: 5,
@@ -63,8 +112,20 @@ export const CONTAINER_REPORT = [
         eta: 'Oct. 1 (Sun)',
         csc_front: '10/2019',
         csc_door: '10/2019',
-        status: 'Claimed',
         color: lightred,
+        status: {
+            latest: 'Claimed', latest_date: '10/9/2023'
+            // status: 'Created', date: '30/10/2023',
+            // status: 'Submitted', date: '1/11/2023',
+            // status: 'Depature', date: '3/11/2023',
+            // status: 'Arrived', date: '23/12/2023',
+        },
+        photo: [
+            // { url },
+            // { ur }
+        ],
+        messages: [],
+        claim: []
     },
     {
         id: 6,
@@ -76,7 +137,19 @@ export const CONTAINER_REPORT = [
         eta: 'Oct. 1 (Sun)',
         csc_front: '10/2019',
         csc_door: '10/2019',
-        status: 'Completed',
         color: green,
+        status: {
+            latest: 'Completed', latest_date: '10/9/2023'
+            // status: 'Created', date: '30/10/2023',
+            // status: 'Submitted', date: '1/11/2023',
+            // status: 'Depature', date: '3/11/2023',
+            // status: 'Arrived', date: '23/12/2023',
+        },
+        photo: [
+            // { url },
+            // { ur }
+        ],
+        messages: [],
+        claim: []
     },
 ]

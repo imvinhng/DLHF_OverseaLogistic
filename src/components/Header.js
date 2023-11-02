@@ -163,6 +163,7 @@ const styles = StyleSheet.create({
         backgroundColor: white,
         paddingTop: Platform.OS == 'ios' ? 56 : 10,
         paddingBottom: 10,
+        paddingHorizontal: 10,
 
         height: headerHeight,
         width: headerWidth,
