@@ -327,34 +327,24 @@ export const RadioPeriodCustom = (props) => {
         </View>
     )
 }
-export const Header4ButtonRadio = (props) => {
+export const Header3ButtonRadio = (props) => {
     const [focusedOne, setFocusedOne] = useState(true);
     const [focusedTwo, setFocusedTwo] = useState(false);
     const [focusedThree, setFocusedThree] = useState(false);
-    const [focusedFour, setFocusedFour] = useState(false);
-
 
     const onFocusRadio = (focusedID) => {
         if (focusedID == '1') {
             setFocusedOne(true)
             setFocusedTwo(false)
             setFocusedThree(false)
-            setFocusedFour(false)
         } else if (focusedID == '2') {
             setFocusedOne(false)
             setFocusedTwo(true)
             setFocusedThree(false)
-            setFocusedFour(false)
         } else if (focusedID == '3') {
             setFocusedOne(false)
             setFocusedTwo(false)
             setFocusedThree(true)
-            setFocusedFour(false)
-        } else if (focusedID == '4') {
-            setFocusedOne(false)
-            setFocusedTwo(false)
-            setFocusedThree(false)
-            setFocusedFour(true)
         }
     }
 
@@ -388,16 +378,6 @@ export const Header4ButtonRadio = (props) => {
                     textStyle={styles.grid_btn_txt}
                     onPress={() => { onFocusRadio('3'); props.onPressOption3() }}
                 />
-                <LongButton
-                    includeText
-                    buttonColor={focusedFour ? lightgray : white}
-                    text={props.option4Text}
-                    buttonStyle={styles.grid4_button}
-                    textColor={focusedFour ? darkgray : black}
-                    textStyle={styles.grid_btn_txt}
-                    onPress={() => { onFocusRadio('4'); props.onPressOption4() }}
-                />
-
             </View>
             <View>
                 <Line color={lightgray} thickness={2} />
@@ -476,7 +456,7 @@ const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get('screen');
 const periodButtonHeight = 30;
 const GRID4_MARGIN = 10;
 const GRID4_CONTAINER_WIDTH = ScreenWidth - 2 * GRID4_MARGIN;
-const GRID4_ITEM_WIDTH = GRID4_CONTAINER_WIDTH / 4;
+const GRID4_ITEM_WIDTH = GRID4_CONTAINER_WIDTH / 3;
 
 const BUTTON_MARGIN = 5;
 const BUTTON_PADDING = 10;

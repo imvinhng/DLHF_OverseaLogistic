@@ -3,7 +3,7 @@ import { HeaderNBack } from '../../../components/Header';
 import { Dimensions, FlatList, Image, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { darkgray, darkorange, red, tan, white } from '../../../assets/styles/Colors';
 import GlobalStyle from '../../../assets/styles/GlobalStyle';
-import { Header4ButtonRadio, RoundButton } from '../../../components/CustomButton';
+import { Header3ButtonRadio, Header4ButtonRadio, RoundButton } from '../../../components/CustomButton';
 import { useRoute } from '@react-navigation/native';
 import { Line } from '../../../components/Line';
 import { CONTAINER_REPORT } from '../../../database/ContainerReport';
@@ -14,9 +14,8 @@ function ShipmentDetail(props) {
     const { Order } = route.params;
 
     const [showStatus, setShowStatus] = useState(true);
-    const [showPhoto, setShowPhoto] = useState(false);
-    const [showMessages, setShowMessages] = useState(false);
-    const [showClaims, setShowClaims] = useState(false);
+    const [showPhotos, setShowPhotos] = useState(false);
+    const [showReports, setShowReports] = useState(false);
 
     return (
         <View style={styles.home}>
@@ -67,37 +66,27 @@ function ShipmentDetail(props) {
                         />
                     </View>
 
-                    <Header4ButtonRadio
+                    <Header3ButtonRadio
                         groupStyle={{ alignSelf: 'center' }}
 
                         option1Text='Status'
-                        option2Text='Photo'
-                        option3Text='Messages'
-                        option4Text='Claims'
+                        option2Text='Photos'
+                        option3Text='Reports'
 
                         onPressOption1={() => {
                             setShowStatus(true)
-                            setShowPhoto(false)
-                            setShowMessages(false)
-                            setShowClaims(false)
+                            setShowPhotos(false)
+                            setShowReports(false)
                         }}
                         onPressOption2={() => {
                             setShowStatus(false)
-                            setShowPhoto(true)
-                            setShowMessages(false)
-                            setShowClaims(false)
+                            setShowPhotos(true)
+                            setShowReports(false)
                         }}
                         onPressOption3={() => {
                             setShowStatus(false)
-                            setShowPhoto(false)
-                            setShowMessages(true)
-                            setShowClaims(false)
-                        }}
-                        onPressOption4={() => {
-                            setShowStatus(false)
-                            setShowPhoto(false)
-                            setShowMessages(false)
-                            setShowClaims(true)
+                            setShowPhotos(false)
+                            setShowReports(true)
                         }}
                     />
 
@@ -123,14 +112,26 @@ function ShipmentDetail(props) {
                             </View>
                         }
 
-                        {showPhoto &&
+                        {showPhotos &&
+                            <View style={styles.photo_container}>
+                                <View style={styles.photo_item}>
+                                    <Image style={styles.photo} source={require('../../../assets/images/container-report/TA1.png')} />
+                                    <Text style={styles.photo_alt}>Damange Front Wall TA1</Text>
+                                </View>
+                                <View style={styles.photo_item}>
+                                    <Image style={styles.photo} source={require('../../../assets/images/container-report/TA1.png')} />
+                                    <Text style={styles.photo_alt}>Damange Front Wall TA1</Text>
+                                </View>
+                                <View style={styles.photo_item}>
+                                    <Image style={styles.photo} source={require('../../../assets/images/container-report/TA1.png')} />
+                                    <Text style={styles.photo_alt}>Damange Front Wall TA1</Text>
+                                </View>
+                            </View>
+                        }
+
+                        {showReports &&
                             <View />}
 
-                        {showMessages &&
-                            <View />}
-
-                        {showClaims &&
-                            <View />}
                     </View>
                 </View>
 
@@ -146,6 +147,9 @@ const itemWidth = ScreenWidth; const itemHeight = 130;
 const itemFontSize = 13;
 const itemPadding = 15;
 const STATUS_CONTAINER_WIDTH = 200;
+const PHOTO_MARGIN = 10;
+const PHOTO_WIDTH = ScreenWidth / 2 - 2 * PHOTO_MARGIN;
+const PHOTO_HEIGHT = PHOTO_WIDTH;
 
 const styles = StyleSheet.create({
     home: {
@@ -225,4 +229,23 @@ const styles = StyleSheet.create({
         left: 29,
         top: 35,
     },
+    photo_container: {
+        ...GlobalStyle.row_wrapper,
+        width: ScreenWidth,
+        alignSelf: 'center',
+        flexWrap: 'wrap',
+    },
+    photo: {
+        width: ScreenWidth / 2 - 2 * PHOTO_MARGIN,
+        height: ScreenWidth / 2 - 2 * PHOTO_MARGIN,
+        margin: PHOTO_MARGIN,
+    },
+    photo_alt: {
+        position: 'absolute',
+        bottom: 1.5 * PHOTO_MARGIN,
+        left: 1.5 * PHOTO_MARGIN,
+        color: white,
+        fontWeight: '600',
+    },
+
 })
