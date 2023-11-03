@@ -1,21 +1,148 @@
 import React, { useState } from 'react';
 import { HeaderNBack } from '../../../components/Header';
-import { Dimensions, FlatList, Image, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, FlatList, Image, PermissionsAndroid, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { darkgray, darkorange, red, tan, white } from '../../../assets/styles/Colors';
 import GlobalStyle from '../../../assets/styles/GlobalStyle';
-import { Header3ButtonRadio, Header4ButtonRadio, RoundButton } from '../../../components/CustomButton';
+import { Header3ButtonRadio, Header4ButtonRadio, LongButton, RoundButton, SquareButton } from '../../../components/CustomButton';
 import { useRoute } from '@react-navigation/native';
 import { Line } from '../../../components/Line';
 import { CONTAINER_REPORT } from '../../../database/ContainerReport';
 import DashedLine from 'react-native-dashed-line';
+import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 
 function ShipmentDetail(props) {
     const route = useRoute();
     const { Order } = route.params;
 
+    const [openCRGI, setOpenCRGI] = useState(false);
+    const [openTemperature, setOpenTemperature] = useState(false);
+    const [openContainerTemperature, setOpenContainerTemperature] = useState(false);
+    const [openTime, setOpenTime] = useState(false);
+    const [openChecklist, setOpenChecklist] = useState(false);
+    const [openComments, setOpenComments] = useState(false);
+
     const [showStatus, setShowStatus] = useState(true);
     const [showPhotos, setShowPhotos] = useState(false);
     const [showReports, setShowReports] = useState(false);
+    const [showPhotoTypeSelector, setShowPhotoTypeSelector] = useState(false);
+
+    const [imageCamera, setImageCamera] = useState(null);
+    const [imageLibrary, setImageLibrary] = useState(null);
+    const [filePath, setFilePath] = useState({});
+
+    const requestCameraPermission = async () => {
+        if (Platform.OS === 'android') {
+            try {
+                const granted = await PermissionsAndroid.request(
+                    PermissionsAndroid.PERMISSIONS.CAMERA,
+                    {
+                        title: 'Camera Permission',
+                        message: 'App needs camera permission',
+                    },
+                );
+                // If CAMERA Permission is granted
+                return granted === PermissionsAndroid.RESULTS.GRANTED;
+            } catch (err) {
+                console.warn(err);
+                return false;
+            }
+        } else return true;
+    };
+
+    const requestExternalWritePermission = async () => {
+        if (Platform.OS === 'android') {
+            try {
+                const granted = await PermissionsAndroid.request(
+                    PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+                    {
+                        title: 'External Storage Write Permission',
+                        message: 'App needs write permission',
+                    },
+                );
+                // If WRITE_EXTERNAL_STORAGE Permission is granted
+                return granted === PermissionsAndroid.RESULTS.GRANTED;
+            } catch (err) {
+                console.warn(err);
+                alert('Write permission err', err);
+            }
+            return false;
+        } else return true;
+    };
+
+    const captureImage = async (type) => {
+        let options = {
+            mediaType: type,
+            maxWidth: 300,
+            maxHeight: 550,
+            quality: 1,
+            videoQuality: 'low',
+            durationLimit: 30, //Video max duration in seconds
+            saveToPhotos: true,
+        };
+        let isCameraPermitted = await requestCameraPermission();
+        // let isStoragePermitted = await requestExternalWritePermission();
+        if (isCameraPermitted) {
+            launchCamera(options, (response) => {
+                console.log('Response = ', response);
+
+                if (response.didCancel) {
+                    alert('User cancelled camera picker');
+                    return;
+                } else if (response.errorCode == 'camera_unavailable') {
+                    alert('Camera not available on device');
+                    return;
+                } else if (response.errorCode == 'permission') {
+                    alert('Permission not satisfied');
+                    return;
+                } else if (response.errorCode == 'others') {
+                    alert(response.errorMessage);
+                    return;
+                }
+                console.log('base64 -> ', response.base64);
+                console.log('uri -> ', response.uri);
+                console.log('width -> ', response.width);
+                console.log('height -> ', response.height);
+                console.log('fileSize -> ', response.fileSize);
+                console.log('type -> ', response.type);
+                console.log('fileName -> ', response.fileName);
+                setFilePath(response);
+            });
+        }
+    };
+
+    const chooseFile = (type) => {
+        let options = {
+            mediaType: type,
+            maxWidth: 300,
+            maxHeight: 550,
+            quality: 1,
+        };
+        launchImageLibrary(options, (response) => {
+            console.log('Response = ', response);
+
+            if (response.didCancel) {
+                alert('User cancelled camera picker');
+                return;
+            } else if (response.errorCode == 'camera_unavailable') {
+                alert('Camera not available on device');
+                return;
+            } else if (response.errorCode == 'permission') {
+                alert('Permission not satisfied');
+                return;
+            } else if (response.errorCode == 'others') {
+                alert(response.errorMessage);
+                return;
+            }
+            console.log('base64 -> ', response.base64);
+            console.log('uri -> ', response.uri);
+            console.log('width -> ', response.width);
+            console.log('height -> ', response.height);
+            console.log('fileSize -> ', response.fileSize);
+            console.log('type -> ', response.type);
+            console.log('fileName -> ', response.fileName);
+            setFilePath(response);
+        });
+    };
 
     return (
         <View style={styles.home}>
@@ -113,19 +240,61 @@ function ShipmentDetail(props) {
                         }
 
                         {showPhotos &&
-                            <View style={styles.photo_container}>
-                                <View style={styles.photo_item}>
-                                    <Image style={styles.photo} source={require('../../../assets/images/container-report/TA1.png')} />
-                                    <Text style={styles.photo_alt}>Damange Front Wall TA1</Text>
+                            <View>
+                                <View style={[GlobalStyle.row_wrapper, { justifyContent: 'space-between' }]}>
+                                    <View style={styles.photo_type_container}>
+                                        <Text style={styles.photo_type_text}>Type of photo</Text>
+                                        <RoundButton
+                                            includeIcon
+                                            iconType='FontAwesome5'
+                                            iconName='chevron-down'
+                                            iconSize={ICON_SIZE}
+                                            iconColor={white}
+                                            buttonStyle={styles.photo_type_down}
+                                        />
+                                    </View>
+                                    <SquareButton
+                                        includeIcon
+                                        iconName='plus'
+                                        iconSize={ICON_SIZE}
+                                        onPress={() => setShowPhotoTypeSelector(!showPhotoTypeSelector)}
+                                    />
                                 </View>
-                                <View style={styles.photo_item}>
-                                    <Image style={styles.photo} source={require('../../../assets/images/container-report/TA1.png')} />
-                                    <Text style={styles.photo_alt}>Damange Front Wall TA1</Text>
+                                {showPhotoTypeSelector &&
+                                    <View style={styles.photoTypeSelector}>
+                                        <LongButton
+                                            includeText
+                                            text='Choose from library'
+                                            buttonStyle={styles.photoTypeSelectorItem}
+                                            textStyle={styles.photoTypeSelectorText}
+                                            onPress={() => chooseFile('photo')}
+                                        />
+                                        <LongButton
+                                            includeText
+                                            text='Take a photo'
+                                            buttonStyle={styles.photoTypeSelectorItem}
+                                            textStyle={styles.photoTypeSelectorText}
+                                            onPress={() => captureImage('photo')}
+                                        />
+
+                                    </View>
+                                }
+                                <View style={styles.photo_container}>
+
+                                    <View style={styles.photo_item}>
+                                        <Image style={styles.photo} source={require('../../../assets/images/container-report/TA1.png')} />
+                                        <Text style={styles.photo_alt}>Damaged Front Wall TA1</Text>
+                                    </View>
+                                    <View style={styles.photo_item}>
+                                        <Image style={styles.photo} source={require('../../../assets/images/container-report/TA2.png')} />
+                                        <Text style={styles.photo_alt}>Damaged Front Wall TA2</Text>
+                                    </View>
+                                    <View style={styles.photo_item}>
+                                        <Image style={styles.photo} source={require('../../../assets/images/container-report/TA3.png')} />
+                                        <Text style={styles.photo_alt}>Damaged Front Wall TA3</Text>
+                                    </View>
                                 </View>
-                                <View style={styles.photo_item}>
-                                    <Image style={styles.photo} source={require('../../../assets/images/container-report/TA1.png')} />
-                                    <Text style={styles.photo_alt}>Damange Front Wall TA1</Text>
-                                </View>
+
                             </View>
                         }
 
@@ -150,6 +319,7 @@ const STATUS_CONTAINER_WIDTH = 200;
 const PHOTO_MARGIN = 10;
 const PHOTO_WIDTH = ScreenWidth / 2 - 2 * PHOTO_MARGIN;
 const PHOTO_HEIGHT = PHOTO_WIDTH;
+const ICON_SIZE = 15;
 
 const styles = StyleSheet.create({
     home: {
@@ -190,7 +360,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         alignSelf: 'center',
         width: 130,
-        height: 30,
+        height: 25,
         justifyContent: 'space-between',
         backgroundColor: darkgray,
         paddingHorizontal: 5,
@@ -247,5 +417,42 @@ const styles = StyleSheet.create({
         color: white,
         fontWeight: '600',
     },
-
+    photo_type_container: {
+        ...GlobalStyle.row_wrapper,
+        alignItems: 'center',
+        width: 160,
+        height: 25,
+        justifyContent: 'space-between',
+        backgroundColor: darkgray,
+        paddingHorizontal: 5,
+        margin: PHOTO_MARGIN,
+        borderRadius: 25,
+    },
+    photo_type_text: {
+        fontWeight: '600',
+        color: white,
+        marginHorizontal: 5,
+    },
+    photo_type_down: {
+        width: 20,
+        height: 20,
+        marginLeft: 10,
+    },
+    photoTypeSelector: {
+        width: 'auto',
+        position: 'absolute',
+        right: PHOTO_MARGIN,
+        top: 2 * PHOTO_MARGIN + ICON_SIZE,
+        zIndex: 2,
+        backgroundColor: white,
+        borderWidth: 0.2,
+        borderRadius: 5,
+    },
+    photoTypeSelectorItem: {
+        padding: 10,
+        paddingHorizontal: 20,
+    },
+    photoTypeSelectorText: {
+        fontSize: 16,
+    }
 })

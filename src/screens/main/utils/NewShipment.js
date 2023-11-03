@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { StyleSheet, View, Text, SafeAreaView, Dimensions, ScrollView, Image } from 'react-native';
+import { StyleSheet, View, Text, SafeAreaView, Dimensions, ScrollView, Image, TextInput } from 'react-native';
 import { black, blue, darkgray, lightgray, white, yellow } from '../../../assets/styles/Colors';
 import GlobalStyle from '../../../assets/styles/GlobalStyle';
 import { Radio2Button, RoundButton, SquareButton } from '../../../components/CustomButton';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { Line } from '../../../components/Line';
 import { CUSTOMER_NAME } from '../../../database/CustomerList';
-import { TextInput } from 'react-native-gesture-handler';
 import { Route } from '../../../navigations/Route';
+import { CRGI, Checklist, Comments, ContainerTemperature, Temperature, Time } from '../../../components/CustomComponents';
 
 function NewShipment(props) {
     const navigation = useNavigation();
     const [openCustomerName, setOpenCustomerName] = useState(false);
+
     const [openCRGI, setOpenCRGI] = useState(false);
     const [openTemperature, setOpenTemperature] = useState(false);
     const [openContainerTemperature, setOpenContainerTemperature] = useState(false);
@@ -51,370 +52,23 @@ function NewShipment(props) {
                         style={styles.cname_logo}
                     />}
             </View>
+
             <ScrollView>
                 <View>
-                    <View style={styles.header_container}>
-                        <Text style={[
-                            styles.header_text,
-                            { paddingLeft: HEADER_PADDING }
-                        ]}>
-                            CONTAINER REPORT GENERAL INFO.
-                        </Text>
-                        <RoundButton
-                            includeIcon
-                            iconType='FontAwesome5'
-                            iconName={'chevron-down'}
-                            iconSize={15}
-                            buttonStyle={styles.header_down}
-                            onPress={() => setOpenCRGI(!openCRGI)}
-                        />
-                    </View>
+                    <CRGI />
 
-                    {openCRGI &&
-                        <View>
-                            <View style={styles.CRGI_3c}>
-                                <View style={styles.CRGI_3c_item}>
-                                    <Text style={styles.item_title}>Date:</Text>
-                                    <TextInput style={styles.input} value={'20 Sep. 2023'} />
-                                    <Line color={darkgray} style={styles.mb5} />
-                                </View>
-                                <View style={styles.CRGI_3c_item}>
-                                    <Text style={styles.item_title}>Weather:</Text>
-                                    <TextInput style={styles.input} value={'Cloudy'} />
-                                    <Line color={darkgray} style={styles.mb5} />
-                                </View>
-                                <View style={styles.CRGI_3c_item}>
-                                    <Text style={styles.item_title}>Reported by:</Text>
-                                    <TextInput style={styles.input} value={'Duong'} />
-                                    <Line color={darkgray} style={styles.mb5} />
-                                </View>
-                            </View>
+                    <Temperature />
 
-                            <View style={styles.CRGI_2c}>
-                                <View style={styles.CRGI_2c_item}>
-                                    <Text style={styles.item_title}>Vessel No.</Text>
-                                    <TextInput style={styles.input} />
-                                    <Line color={darkgray} style={styles.mb5} />
+                    <ContainerTemperature />
 
-                                    <Text style={styles.item_title}>B/L No.</Text>
-                                    <TextInput style={styles.input} />
-                                    <Line color={darkgray} style={styles.mb5} />
+                    <Time />
 
-                                    <Text style={styles.item_title}>Container No.</Text>
-                                    <TextInput style={styles.input} />
-                                    <Line color={darkgray} style={styles.mb5} />
+                    <Checklist />
 
-                                    <Text style={styles.item_title}>Container Type</Text>
-                                    <TextInput style={styles.input} />
-                                    <Line color={darkgray} style={styles.mb5} />
-                                </View >
-                                <View style={styles.CRGI_2c_item}>
-                                    <Text style={styles.item_title}>ETD</Text>
-                                    <TextInput style={styles.input} />
-                                    <Line color={darkgray} style={styles.mb5} />
-
-                                    <Text style={styles.item_title}>ETA</Text>
-                                    <TextInput style={styles.input} />
-                                    <Line color={darkgray} style={styles.mb5} />
-
-                                    <Text style={styles.item_title}>CSC (Front)</Text>
-                                    <TextInput style={styles.input} />
-                                    <Line color={darkgray} style={styles.mb5} />
-
-                                    <Text style={styles.item_title}>CSC (Door)</Text>
-                                    <TextInput style={styles.input} />
-                                    <Line color={darkgray} style={styles.mb5} />
-                                </View>
-
-                            </View>
-
-                        </View>
-                    }
-
-                    <View style={styles.header_container}>
-                        <View style={styles.header_circle}>
-                            <Text style={styles.header_text}>
-                                1
-                            </Text>
-                        </View>
-                        <Text style={styles.header_text}>TEMPERATURE</Text>
-                        <RoundButton
-                            includeIcon
-                            iconType='FontAwesome5'
-                            iconName={'chevron-down'}
-                            iconSize={15}
-                            buttonStyle={styles.header_down}
-                            onPress={() => setOpenTemperature(!openTemperature)}
-                        />
-                    </View>
-
-                    {openTemperature &&
-                        <View>
-                            <View style={styles.temperature_2c}>
-                                <View style={styles.temperature_2c_item}>
-                                    <Text style={styles.item_title}>Box Seri Number</Text>
-                                    <TextInput style={styles.input} />
-                                    <Line color={darkgray} style={styles.mb5} />
-                                </View>
-                                <View style={styles.temperature_2c_item}>
-                                    <Text style={styles.item_title}>Box Temperature</Text>
-                                    <TextInput style={styles.input} />
-                                    <Line color={darkgray} style={styles.mb5} />
-                                </View>
-                                <SquareButton iconName={'plus'} iconSize={15} buttonStyle={styles.temperature_plus} />
-                                <View style={styles.temperature_2c_item}>
-                                    <Text style={styles.item_title}>Outside Temperature</Text>
-                                    <TextInput style={styles.input} />
-                                    <Line color={darkgray} style={styles.mb5} />
-                                </View>
-                            </View>
-                        </View>
-                    }
-
-                    <View style={styles.header_container}>
-                        <View style={styles.header_circle}>
-                            <Text style={styles.header_text}>
-                                2
-                            </Text>
-                        </View>
-                        <Text style={styles.header_text}>CONTAINER TEMPERATURE</Text>
-                        <RoundButton
-                            includeIcon
-                            iconType='FontAwesome5'
-                            iconName={'chevron-down'}
-                            iconSize={15}
-                            buttonStyle={styles.header_down}
-                            onPress={() => setOpenContainerTemperature(!openContainerTemperature)}
-                        />
-                    </View>
-
-                    {openContainerTemperature &&
-                        <View>
-                            <View style={styles.item}>
-                                <Text style={styles.item_title}>Set Temp</Text>
-                                <TextInput style={styles.input} />
-                                <Line color={darkgray} style={styles.mb5} />
-                            </View>
-                            <View style={styles.item}>
-                                <Text style={styles.item_title}>Supply Temp.</Text>
-                                <TextInput style={styles.input} />
-                                <Line color={darkgray} style={styles.mb5} />
-                            </View>
-                            <View style={styles.item}>
-                                <Text style={styles.item_title}>Return Temp.</Text>
-                                <TextInput style={styles.input} />
-                                <Line color={darkgray} style={styles.mb5} />
-                            </View>
-                            <View style={styles.item}>
-                                <Text style={styles.item_title}>Before Loading</Text>
-                                <TextInput style={styles.input} />
-                                <Line color={darkgray} style={styles.mb5} />
-                            </View>
-                        </View>
-                    }
-
-                    <View style={styles.header_container}>
-                        <View style={styles.header_circle}>
-                            <Text style={styles.header_text}>
-                                3
-                            </Text>
-                        </View>
-                        <Text style={styles.header_text}>TIME</Text>
-                        <RoundButton
-                            includeIcon
-                            iconType='FontAwesome5'
-                            iconName={'chevron-down'}
-                            iconSize={15}
-                            buttonStyle={styles.header_down}
-                            onPress={() => setOpenTime(!openTime)}
-                        />
-                    </View>
-
-                    {openTime &&
-                        <View>
-                            <View style={styles.item}>
-                                <Text style={styles.item_title}>Start Loading Time</Text>
-                                <TextInput style={styles.input} />
-                                <Line color={darkgray} style={styles.mb5} />
-                            </View>
-                            <View style={styles.item}>
-                                <Text style={styles.item_title}>Finish Loading Time</Text>
-                                <TextInput style={styles.input} />
-                                <Line color={darkgray} style={styles.mb5} />
-                            </View>
-                            <View style={styles.item}>
-                                <Text style={styles.item_title}>Departure Daron Time</Text>
-                                <TextInput style={styles.input} />
-                                <Line color={darkgray} style={styles.mb5} />
-                            </View>
-                        </View>
-                    }
-
-                    <View style={styles.header_container}>
-                        <View style={styles.header_circle}>
-                            <Text style={styles.header_text}>
-                                4
-                            </Text>
-                        </View>
-                        <Text style={styles.header_text}>CHECKLIST</Text>
-                        <RoundButton
-                            includeIcon
-                            iconType='FontAwesome5'
-                            iconName={'chevron-down'}
-                            iconSize={15}
-                            buttonStyle={styles.header_down}
-                            onPress={() => setOpenChecklist(!openChecklist)}
-                        />
-                    </View>
-
-                    {openChecklist &&
-                        <View>
-                            <View style={styles.checklist_item}>
-                                <View style={styles.item}>
-                                    <Text style={styles.item_title}># of corner strips</Text>
-                                    <TextInput style={styles.input} />
-                                    <Line color={darkgray} style={styles.mb5} />
-                                </View>
-                            </View>
-                            <View style={styles.checklist_item}>
-                                <View style={styles.item}>
-                                    <Text style={styles.item_title}>Ventilation setting</Text>
-                                    <TextInput style={styles.input} />
-                                    <Line color={darkgray} style={styles.mb5} />
-                                </View>
-                            </View>
-                            <View style={styles.checklist_item}>
-                                <View style={styles.item}>
-                                    <Text style={styles.item_title}>Drainage valves</Text>
-                                    <TextInput style={styles.input} />
-                                    <Line color={darkgray} style={styles.mb5} />
-                                </View>
-                            </View>
-                            <View style={styles.checklist_item}>
-                                <View style={styles.item}>
-                                    <Text style={styles.item_title}>4 drainage holes</Text>
-                                    <Radio2Button
-                                        option1Text={'Opened'}
-                                        option2Text={'Closed'}
-                                        buttonGroupStyle={styles.radio}
-                                        option1Style={styles.radio_option1}
-                                        option2Style={styles.radio_option2}
-                                        textStyle={styles.radio_text}
-                                    />
-                                </View>
-                            </View>
-                            <View style={styles.checklist_item}>
-                                <View style={styles.item}>
-                                    <Text style={styles.item_title}>Clean inside container</Text>
-                                    <Radio2Button
-                                        buttonGroupStyle={styles.radio}
-                                        option1Style={styles.radio_option1}
-                                        option2Style={styles.radio_option2}
-                                        textStyle={styles.radio_text}
-                                    />
-                                </View>
-                            </View>
-                            <View style={styles.checklist_item}>
-                                <View style={styles.item}>
-                                    <Text style={styles.item_title}>Outside wall SERVERE damage</Text>
-                                    <Radio2Button
-                                        buttonGroupStyle={styles.radio}
-                                        option1Style={styles.radio_option1}
-                                        option2Style={styles.radio_option2}
-                                        textStyle={styles.radio_text}
-                                    />
-                                </View>
-                            </View>
-                            <View style={styles.checklist_item}>
-                                <View style={styles.item}>
-                                    <Text style={styles.item_title}>Inside FRONT wall ANY damage</Text>
-                                    <Radio2Button
-                                        buttonGroupStyle={styles.radio}
-                                        option1Style={styles.radio_option1}
-                                        option2Style={styles.radio_option2}
-                                        textStyle={styles.radio_text}
-                                    />
-                                </View>
-                            </View>
-                            <View style={styles.checklist_item}>
-                                <View style={styles.item}>
-                                    <Text style={styles.item_title}>Inside wall, floor and ceiling SERVERE damage</Text>
-                                    <Radio2Button
-                                        buttonGroupStyle={styles.radio}
-                                        option1Style={styles.radio_option1}
-                                        option2Style={styles.radio_option2}
-                                        textStyle={styles.radio_text}
-                                    />
-                                </View>
-                            </View>
-                            <View style={styles.checklist_item}>
-                                <View style={styles.item}>
-                                    <Text style={styles.item_title}>Cover plastic pallet number 1-2</Text>
-                                    <Radio2Button
-                                        buttonGroupStyle={styles.radio}
-                                        option1Style={styles.radio_option1}
-                                        option2Style={styles.radio_option2}
-                                        textStyle={styles.radio_text}
-                                    />
-                                </View>
-                            </View>
-                            <View style={styles.checklist_item}>
-                                <View style={styles.item}>
-                                    <Text style={styles.item_title}>Space between front wall and first pallets</Text>
-                                    <TextInput style={styles.input} />
-                                    <Line color={darkgray} style={styles.mb5} />
-                                </View>
-                            </View>
-                            <View style={styles.checklist_item}>
-                                <View style={styles.item}>
-                                    <Text style={styles.item_title}>Fumigation stamp on pallet visible</Text>
-                                    <Radio2Button
-                                        buttonGroupStyle={styles.radio}
-                                        option1Style={styles.radio_option1}
-                                        option2Style={styles.radio_option2}
-                                        textStyle={styles.radio_text}
-                                    />
-                                </View>
-                            </View>
-                            <View style={styles.checklist_item}>
-                                <View style={styles.item}>
-                                    <Text style={styles.item_title}>Drainage Plug</Text>
-                                    <TextInput style={styles.input} />
-                                    <Line color={darkgray} style={styles.mb5} />
-                                </View>
-                            </View>
-                        </View>
-
-                    }
-
-                    <View style={styles.header_container}>
-                        <View style={styles.header_circle}>
-                            <Text style={styles.header_text}>
-                                5
-                            </Text>
-                        </View>
-                        <Text style={styles.header_text}>COMMENTS</Text>
-                        <RoundButton
-                            includeIcon
-                            iconType='FontAwesome5'
-                            iconName={'chevron-down'}
-                            iconSize={15}
-                            buttonStyle={styles.header_down}
-                            onPress={() => setOpenComments(!openComments)}
-                        />
-                    </View>
-
-                    {openComments &&
-                        <View>
-                            <View style={styles.item}>
-                                <Text style={styles.item_title}>Any comments?</Text>
-                                <TextInput style={styles.input} />
-                                <Line color={darkgray} style={styles.mb5} />
-                            </View>
-                        </View>
-                    }
+                    <Comments />
                 </View>
             </ScrollView>
+
             <View style={styles.submit_container}>
                 <SquareButton
                     includeText
@@ -441,11 +95,8 @@ const HEADER_CIRCLE_WIDTH = HEADER_HEIGHT / 2;
 const HEADER_CIRCLE_HEIGHT = HEADER_HEIGHT / 2;
 const HEADER_MARGIN = 10;
 const HEADER_PADDING = 20;
-const CRGI_3C_MARGIN = 10;
-const CRGI_2C_MARGIN = 10;
 const INPUT_HEIGHT = 30;
 const ITEM_MARGIN = 5;
-const TEMPERATURE_PLUS_WIDTH = 20;
 const INPUT_FONTSIZE = 14;
 const RADIO_WIDTH = 200;
 const ITEM_WIDTH = ScreenWidth - 2 * ITEM_MARGIN;
@@ -525,52 +176,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         right: 0,
     },
-    CRGI_3c: {
-        justifyContent: 'space-around',
-        ...GlobalStyle.row_wrapper,
-    },
-    CRGI_2c: {
-        justifyContent: 'space-evenly',
-        padding: CRGI_2C_MARGIN,
-        ...GlobalStyle.row_wrapper,
-    },
-    CRGI_3c_item: {
-        width: (ScreenWidth / 3) - 2 * CRGI_3C_MARGIN,
-        margin: CRGI_3C_MARGIN,
-        ...GlobalStyle.column_wrapper
-    },
-    CRGI_2c_item: {
-        width: (ScreenWidth / 2) - 2 * CRGI_2C_MARGIN,
-        margin: CRGI_2C_MARGIN,
-        ...GlobalStyle.column_wrapper
-    },
-    temperature_2c: {
-        // justifyContent: 'space-between',
-        padding: ITEM_MARGIN,
-        flexWrap: 'wrap',
-        ...GlobalStyle.row_wrapper,
-    },
-    temperature_2c_item: {
-        width: (ScreenWidth / 2) - 2 * ITEM_MARGIN - TEMPERATURE_PLUS_WIDTH,
-        margin: ITEM_MARGIN,
-        ...GlobalStyle.column_wrapper
-    },
-    temperature_plus: {
-        width: TEMPERATURE_PLUS_WIDTH,
-        height: INPUT_HEIGHT,
-        position: 'absolute',
-        right: ITEM_MARGIN,
-        top: INPUT_HEIGHT - 5,
-    },
-    checklist_item: {
-        margin: 10,
-        // padding: 10,
-        borderWidth: 0.5,
-        borderColor: lightgray,
-        borderRadius: 10,
-        backgroundColor: white,
-        ...GlobalStyle.box_shadow,
-    },
+
     radio: {
         marginLeft: 30,
         width: RADIO_WIDTH,
