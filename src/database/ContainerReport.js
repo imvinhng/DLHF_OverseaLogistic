@@ -144,3 +144,8 @@ export const CONTAINER_REPORT = [
         claim: []
     },
 ]
+
+export const CONTAINER_PHOTO_TYPE = [
+    { label: 'General Report', value: 'General Report' },
+    { label: 'Damage', value: 'Damage' },
+]

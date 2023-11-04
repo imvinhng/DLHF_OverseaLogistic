@@ -56,15 +56,10 @@ function NewShipment(props) {
             <ScrollView>
                 <View>
                     <CRGI />
-
                     <Temperature />
-
                     <ContainerTemperature />
-
                     <Time />
-
                     <Checklist />
-
                     <Comments />
                 </View>
             </ScrollView>

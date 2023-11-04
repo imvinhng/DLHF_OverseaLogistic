@@ -1,34 +1,47 @@
 import React, { useState } from 'react';
 import { HeaderNBack } from '../../../components/Header';
 import { Dimensions, FlatList, Image, PermissionsAndroid, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
-import { darkgray, darkorange, red, tan, white } from '../../../assets/styles/Colors';
+import { black, darkgray, darkorange, lightgray, red, tan, white } from '../../../assets/styles/Colors';
 import GlobalStyle from '../../../assets/styles/GlobalStyle';
 import { Header3ButtonRadio, Header4ButtonRadio, LongButton, RoundButton, SquareButton } from '../../../components/CustomButton';
 import { useRoute } from '@react-navigation/native';
-import { Line } from '../../../components/Line';
-import { CONTAINER_REPORT } from '../../../database/ContainerReport';
+import { Line, Triangle } from '../../../components/Line';
+import { CONTAINER_PHOTO_TYPE, CONTAINER_REPORT } from '../../../database/ContainerReport';
 import DashedLine from 'react-native-dashed-line';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
+import { CRGI, Checklist, Comments, ContainerTemperature, Temperature, Time } from '../../../components/CustomComponents';
+import DropDownPicker from 'react-native-dropdown-picker';
 
 function ShipmentDetail(props) {
     const route = useRoute();
     const { Order } = route.params;
 
-    const [openCRGI, setOpenCRGI] = useState(false);
-    const [openTemperature, setOpenTemperature] = useState(false);
-    const [openContainerTemperature, setOpenContainerTemperature] = useState(false);
-    const [openTime, setOpenTime] = useState(false);
-    const [openChecklist, setOpenChecklist] = useState(false);
-    const [openComments, setOpenComments] = useState(false);
+    const [openPhotoType, setOpenPhotoType] = useState(false);
+    const [valuePhotoType, setValuePhotoType] = useState('');
 
     const [showStatus, setShowStatus] = useState(true);
     const [showPhotos, setShowPhotos] = useState(false);
     const [showReports, setShowReports] = useState(false);
     const [showPhotoTypeSelector, setShowPhotoTypeSelector] = useState(false);
+    const [showViewMore, setShowViewMore] = useState(false);
 
     const [imageCamera, setImageCamera] = useState(null);
     const [imageLibrary, setImageLibrary] = useState(null);
     const [filePath, setFilePath] = useState({});
+
+    const ArrowDownIcon = () => {
+        return (
+            <RoundButton
+                includeIcon
+                iconType='FontAwesome5'
+                iconName='chevron-down'
+                iconSize={ICON_SIZE}
+                iconColor={white}
+                buttonStyle={styles.photo_type_down}
+                onPress={() => setOpenPhotoType(!openPhotoType)}
+            />
+        )
+    }
 
     const requestCameraPermission = async () => {
         if (Platform.OS === 'android') {
@@ -181,17 +194,30 @@ function ShipmentDetail(props) {
                             <Text style={styles.text_regular}>{Order.csc_door}</Text>
                         </View>
                     </View>
+
+                    {showViewMore &&
+                        <View>
+                            <CRGI />
+                            <Temperature />
+                            <ContainerTemperature />
+                            <Time />
+                            <Checklist />
+                            <Comments />
+                        </View>}
+
                     <View style={styles.view_more}>
-                        <Text style={styles.view_more_text}>View More</Text>
+                        <Text style={styles.view_more_text}>{showViewMore ? 'View Less' : 'View More'}</Text>
                         <RoundButton
                             includeIcon
                             iconType='FontAwesome5'
-                            iconName='chevron-down'
+                            iconName={showViewMore ? 'chevron-up' : 'chevron-down'}
                             iconSize={15}
                             iconColor={white}
                             buttonStyle={styles.view_more_down}
+                            onPress={() => setShowViewMore(!showViewMore)}
                         />
                     </View>
+
 
                     <Header3ButtonRadio
                         groupStyle={{ alignSelf: 'center' }}
@@ -241,18 +267,40 @@ function ShipmentDetail(props) {
 
                         {showPhotos &&
                             <View>
-                                <View style={[GlobalStyle.row_wrapper, { justifyContent: 'space-between' }]}>
-                                    <View style={styles.photo_type_container}>
-                                        <Text style={styles.photo_type_text}>Type of photo</Text>
-                                        <RoundButton
-                                            includeIcon
-                                            iconType='FontAwesome5'
-                                            iconName='chevron-down'
-                                            iconSize={ICON_SIZE}
-                                            iconColor={white}
-                                            buttonStyle={styles.photo_type_down}
+                                <View style={styles.photo_header}>
+                                    <View>
+                                        {/* <View style={styles.photo_type_container}>
+                                            <Text style={styles.photo_type_text}>Type of photo</Text>
+                                            <RoundButton
+                                                includeIcon
+                                                iconType='FontAwesome5'
+                                                iconName='chevron-down'
+                                                iconSize={ICON_SIZE}
+                                                iconColor={white}
+                                                buttonStyle={styles.photo_type_down}
+                                            />
+                                        </View> */}
+                                        <DropDownPicker
+                                            style={styles.photo_type_dropdown}
+                                            textStyle={styles.photo_type_text}
+                                            open={openPhotoType}
+                                            value={valuePhotoType}
+                                            items={CONTAINER_PHOTO_TYPE}
+                                            // key={CUSTOMER_NAME.labels}
+                                            setOpen={setOpenPhotoType}
+                                            setValue={setValuePhotoType}
+                                            placeholder={'Type of photo'}
+                                            listMode='SCROLLVIEW'
+                                            // containerProps={{ height: 20 }}
+                                            ArrowDownIconComponent={ArrowDownIcon}
+                                            selectedItemLabelStyle={{
+                                                color: black
+                                            }}
+                                            dropDownContainerStyle={{ backgroundColor: 'darkgray' }}
                                         />
                                     </View>
+
+
                                     <SquareButton
                                         includeIcon
                                         iconName='plus'
@@ -369,6 +417,7 @@ const styles = StyleSheet.create({
     },
     view_more_text: {
         fontWeight: '600',
+        fontSize: itemFontSize,
         color: white,
         marginHorizontal: 5,
     },
@@ -417,26 +466,31 @@ const styles = StyleSheet.create({
         color: white,
         fontWeight: '600',
     },
-    photo_type_container: {
+    photo_type_dropdown: {
         ...GlobalStyle.row_wrapper,
         alignItems: 'center',
         width: 160,
-        height: 25,
-        justifyContent: 'space-between',
+        height: 20,
+        // justifyContent: 'space-between',
         backgroundColor: darkgray,
-        paddingHorizontal: 5,
-        margin: PHOTO_MARGIN,
+        // paddingHorizontal: 5,
         borderRadius: 25,
     },
     photo_type_text: {
         fontWeight: '600',
+        fontSize: itemFontSize,
         color: white,
         marginHorizontal: 5,
     },
     photo_type_down: {
         width: 20,
         height: 20,
-        marginLeft: 10,
+    },
+    photo_header: {
+        ...GlobalStyle.row_wrapper,
+        justifyContent: 'space-between',
+        margin: PHOTO_MARGIN,
+        zIndex: 10,
     },
     photoTypeSelector: {
         width: 'auto',
