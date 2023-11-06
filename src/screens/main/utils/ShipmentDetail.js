@@ -25,9 +25,10 @@ function ShipmentDetail(props) {
     const [showPhotoTypeSelector, setShowPhotoTypeSelector] = useState(false);
     const [showViewMore, setShowViewMore] = useState(false);
 
-    const [imageCamera, setImageCamera] = useState(null);
-    const [imageLibrary, setImageLibrary] = useState(null);
-    const [filePath, setFilePath] = useState({});
+    const [photoDB, setPhotoDB] = useState([]);
+    const [nextID, setNextID] = useState(1);
+    const FILE_NAME = `User-defined Image #${nextID}`;
+
 
     const ArrowDownIcon = () => {
         return (
@@ -37,6 +38,21 @@ function ShipmentDetail(props) {
                 iconName='chevron-down'
                 iconSize={ICON_SIZE}
                 iconColor={white}
+                backgroundColor={darkgray}
+                buttonStyle={styles.photo_type_down}
+                onPress={() => setOpenPhotoType(!openPhotoType)}
+            />
+        )
+    }
+    const ArrowUpIcon = () => {
+        return (
+            <RoundButton
+                includeIcon
+                iconType='FontAwesome5'
+                iconName='chevron-up'
+                iconSize={ICON_SIZE}
+                iconColor={white}
+                backgroundColor={darkgray}
                 buttonStyle={styles.photo_type_down}
                 onPress={() => setOpenPhotoType(!openPhotoType)}
             />
@@ -83,6 +99,7 @@ function ShipmentDetail(props) {
     };
 
     const captureImage = async (type) => {
+
         let options = {
             mediaType: type,
             maxWidth: 300,
@@ -96,8 +113,6 @@ function ShipmentDetail(props) {
         // let isStoragePermitted = await requestExternalWritePermission();
         if (isCameraPermitted) {
             launchCamera(options, (response) => {
-                console.log('Response = ', response);
-
                 if (response.didCancel) {
                     alert('User cancelled camera picker');
                     return;
@@ -111,19 +126,20 @@ function ShipmentDetail(props) {
                     alert(response.errorMessage);
                     return;
                 }
-                console.log('base64 -> ', response.base64);
-                console.log('uri -> ', response.uri);
-                console.log('width -> ', response.width);
-                console.log('height -> ', response.height);
-                console.log('fileSize -> ', response.fileSize);
-                console.log('type -> ', response.type);
-                console.log('fileName -> ', response.fileName);
-                setFilePath(response);
+
+                setPhotoDB(
+                    [
+                        ...photoDB,
+                        { id: nextID, uri: response.assets[0].uri, alt: FILE_NAME }
+                    ]
+                )
+                setNextID(nextID + 1);
             });
         }
     };
 
     const chooseFile = (type) => {
+
         let options = {
             mediaType: type,
             maxWidth: 300,
@@ -131,8 +147,6 @@ function ShipmentDetail(props) {
             quality: 1,
         };
         launchImageLibrary(options, (response) => {
-            console.log('Response = ', response);
-
             if (response.didCancel) {
                 alert('User cancelled camera picker');
                 return;
@@ -146,14 +160,14 @@ function ShipmentDetail(props) {
                 alert(response.errorMessage);
                 return;
             }
-            console.log('base64 -> ', response.base64);
-            console.log('uri -> ', response.uri);
-            console.log('width -> ', response.width);
-            console.log('height -> ', response.height);
-            console.log('fileSize -> ', response.fileSize);
-            console.log('type -> ', response.type);
-            console.log('fileName -> ', response.fileName);
-            setFilePath(response);
+
+            setPhotoDB(
+                [
+                    ...photoDB,
+                    { id: nextID, uri: response.assets[0].uri, alt: FILE_NAME }
+                ]
+            )
+            setNextID(nextID + 1);
         });
     };
 
@@ -269,17 +283,6 @@ function ShipmentDetail(props) {
                             <View>
                                 <View style={styles.photo_header}>
                                     <View>
-                                        {/* <View style={styles.photo_type_container}>
-                                            <Text style={styles.photo_type_text}>Type of photo</Text>
-                                            <RoundButton
-                                                includeIcon
-                                                iconType='FontAwesome5'
-                                                iconName='chevron-down'
-                                                iconSize={ICON_SIZE}
-                                                iconColor={white}
-                                                buttonStyle={styles.photo_type_down}
-                                            />
-                                        </View> */}
                                         <DropDownPicker
                                             style={styles.photo_type_dropdown}
                                             textStyle={styles.photo_type_text}
@@ -293,6 +296,7 @@ function ShipmentDetail(props) {
                                             listMode='SCROLLVIEW'
                                             // containerProps={{ height: 20 }}
                                             ArrowDownIconComponent={ArrowDownIcon}
+                                            ArrowUpIconComponent={ArrowUpIcon}
                                             selectedItemLabelStyle={{
                                                 color: black
                                             }}
@@ -304,6 +308,7 @@ function ShipmentDetail(props) {
                                     <SquareButton
                                         includeIcon
                                         iconName='plus'
+                                        buttonStyle={styles.photo_plus}
                                         iconSize={ICON_SIZE}
                                         onPress={() => setShowPhotoTypeSelector(!showPhotoTypeSelector)}
                                     />
@@ -315,32 +320,44 @@ function ShipmentDetail(props) {
                                             text='Choose from library'
                                             buttonStyle={styles.photoTypeSelectorItem}
                                             textStyle={styles.photoTypeSelectorText}
-                                            onPress={() => chooseFile('photo')}
+                                            onPress={() => {
+                                                chooseFile('photo')
+                                                setShowPhotoTypeSelector(!showPhotoTypeSelector)
+                                            }}
                                         />
                                         <LongButton
                                             includeText
                                             text='Take a photo'
                                             buttonStyle={styles.photoTypeSelectorItem}
                                             textStyle={styles.photoTypeSelectorText}
-                                            onPress={() => captureImage('photo')}
+                                            onPress={() => {
+                                                captureImage('photo')
+                                                setShowPhotoTypeSelector(!showPhotoTypeSelector)
+                                            }}
                                         />
 
                                     </View>
                                 }
                                 <View style={styles.photo_container}>
+                                    {Order.photo.map((item, index) => {
+                                        return (
+                                            <View key={index} style={styles.photo_item}>
+                                                <Image style={styles.photo} source={item.uri} />
+                                                <Text style={styles.photo_alt}>{item.alt}</Text>
+                                            </View>
+                                        )
+                                    })}
 
-                                    <View style={styles.photo_item}>
-                                        <Image style={styles.photo} source={require('../../../assets/images/container-report/TA1.png')} />
-                                        <Text style={styles.photo_alt}>Damaged Front Wall TA1</Text>
-                                    </View>
-                                    <View style={styles.photo_item}>
-                                        <Image style={styles.photo} source={require('../../../assets/images/container-report/TA2.png')} />
-                                        <Text style={styles.photo_alt}>Damaged Front Wall TA2</Text>
-                                    </View>
-                                    <View style={styles.photo_item}>
-                                        <Image style={styles.photo} source={require('../../../assets/images/container-report/TA3.png')} />
-                                        <Text style={styles.photo_alt}>Damaged Front Wall TA3</Text>
-                                    </View>
+                                    {/* TODO: Make this work */}
+                                    {photoDB.map((item, index) => {
+                                        return (
+                                            <View key={index} style={styles.photo_item}>
+                                                <Image style={styles.photo} source={{ uri: item.uri }} />
+                                                <Text style={styles.photo_alt}>{item.alt}</Text>
+                                            </View>
+                                        )
+                                    })}
+                                    {/* <Image source={{ uri: filePath }} width={100} height={100} /> */}
                                 </View>
 
                             </View>
@@ -368,6 +385,7 @@ const PHOTO_MARGIN = 10;
 const PHOTO_WIDTH = ScreenWidth / 2 - 2 * PHOTO_MARGIN;
 const PHOTO_HEIGHT = PHOTO_WIDTH;
 const ICON_SIZE = 15;
+const PLUS_SIZE = ICON_SIZE + 4 * PHOTO_MARGIN;
 
 const styles = StyleSheet.create({
     home: {
@@ -385,7 +403,6 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end',
         paddingVertical: itemPadding,
         ...GlobalStyle.row_wrapper,
-        // backgroundColor: 'yellow',
     },
     text_regular: {
         fontSize: itemFontSize,
@@ -422,14 +439,14 @@ const styles = StyleSheet.create({
         marginHorizontal: 5,
     },
     view_more_down: {
-        padding: 5,
+        height: 20,
+        width: 25,
         marginLeft: 10,
     },
     status_container: {
         width: STATUS_CONTAINER_WIDTH,
         height: 'auto',
         margin: 10,
-        // backgroundColor: 'yellow',
     },
     status_item: {
         ...GlobalStyle.row_wrapper,
@@ -441,7 +458,6 @@ const styles = StyleSheet.create({
         left: STATUS_CONTAINER_WIDTH - 50,
     },
     status_dashed_line: {
-        // borderWidth: 10,
         borderRadius: 1,
         height: '120%',
         position: 'absolute',
@@ -466,14 +482,16 @@ const styles = StyleSheet.create({
         color: white,
         fontWeight: '600',
     },
+    photo_plus: {
+        height: PLUS_SIZE,
+        width: PLUS_SIZE,
+    },
     photo_type_dropdown: {
         ...GlobalStyle.row_wrapper,
         alignItems: 'center',
         width: 160,
-        height: 20,
-        // justifyContent: 'space-between',
+        minHeight: 25,
         backgroundColor: darkgray,
-        // paddingHorizontal: 5,
         borderRadius: 25,
     },
     photo_type_text: {
@@ -489,14 +507,16 @@ const styles = StyleSheet.create({
     photo_header: {
         ...GlobalStyle.row_wrapper,
         justifyContent: 'space-between',
+        alignItems: 'center',
         margin: PHOTO_MARGIN,
+        marginBottom: 0,
         zIndex: 10,
     },
     photoTypeSelector: {
         width: 'auto',
         position: 'absolute',
         right: PHOTO_MARGIN,
-        top: 2 * PHOTO_MARGIN + ICON_SIZE,
+        top: PHOTO_MARGIN + PLUS_SIZE,
         zIndex: 2,
         backgroundColor: white,
         borderWidth: 0.2,
