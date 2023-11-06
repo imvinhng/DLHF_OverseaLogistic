@@ -44,6 +44,8 @@ export const Route = {
         REGISTER_TAB: 'Register',
         Register: {
             REGISTER_SCREEN: 'REGISTER_SCREEN',
+            OTP_SCREEN: 'OTP_SCREEN',
+            COMPLETE_SCREEN: 'COMPLETE_SCREEN',
         },
     },
 }

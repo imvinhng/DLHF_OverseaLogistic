@@ -5,6 +5,7 @@ import OTPTextInput from 'react-native-otp-textinput';
 import { useDispatch } from 'react-redux';
 import { USERS } from '../../../database/Credentials';
 import { loginAction } from '../../../services/redux/actions';
+import { Route } from '../../../navigations/Route';
 
 const otpValue = '000000';
 
@@ -47,7 +48,7 @@ export const OTP_Login = (props) => {
                                 }
                             ]}
                         >
-                            {props.phone_number}
+                            {/* {props.phone_number} */}
                         </Text>
                     </View>
                     <Text style={styles.text2}>Enter code to continue</Text>
@@ -71,9 +72,10 @@ export const OTP_Login = (props) => {
         </View>
     );
 }
-export function OTP_Register({ navigation, route }) {
+export function OTP_Register(props) {
     const [time, setTime] = React.useState(120);
     const timerRef = React.useRef(time);
+    const navigation = useNavigation();
 
     React.useEffect(() => {
         const timerId = setInterval(() => {
@@ -107,7 +109,7 @@ export function OTP_Register({ navigation, route }) {
                                 }
                             ]}
                         >
-                            {route.params.phone_number}
+                            {/* {route.params.phone_number} */}
                         </Text>
                     </View>
                     <Text style={styles.text2}>Enter code to continue</Text>
@@ -120,7 +122,7 @@ export function OTP_Register({ navigation, route }) {
                     autoFocus
                     handleTextChange={(code) => {
                         if (code == otpValue) {
-                            // navigation.navigate('RegisterPasswordSetScreen')
+                            navigation.navigate(Route.Auth.Register.COMPLETE_SCREEN)
                         }
                     }}
                 />

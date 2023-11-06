@@ -398,7 +398,7 @@ export const Radio2Button = (props) => {
                         width: 16,
                         borderRadius: 12,
                         borderWidth: 2,
-                        borderColor: lightorange,
+                        borderColor: props.color ?? lightorange,
                         alignItems: 'center',
                         justifyContent: 'center',
                     }, props.style]}
@@ -412,12 +412,12 @@ export const Radio2Button = (props) => {
                                 height: 6,
                                 width: 6,
                                 borderRadius: 6,
-                                backgroundColor: lightorange,
+                                backgroundColor: props.color ?? lightorange,
                             }} />
                             : null
                     }
                 </TouchableOpacity>
-                <Text style={[styles.radio_text, props.textStyle]}>{props.option1Text ?? 'Yes'}</Text>
+                <Text style={[styles.radio_text, props.textStyle, { color: props.color }]}>{props.option1Text ?? 'Yes'}</Text>
             </View>
 
             <View style={[GlobalStyle.row_wrapper, props.option2Style]}>
@@ -427,7 +427,7 @@ export const Radio2Button = (props) => {
                         width: 16,
                         borderRadius: 12,
                         borderWidth: 2,
-                        borderColor: lightorange,
+                        borderColor: props.color ?? lightorange,
                         alignItems: 'center',
                         justifyContent: 'center',
                     }, props.style]}
@@ -441,12 +441,12 @@ export const Radio2Button = (props) => {
                                 height: 6,
                                 width: 6,
                                 borderRadius: 6,
-                                backgroundColor: lightorange,
+                                backgroundColor: props.color ?? lightorange,
                             }} />
                             : null
                     }
                 </TouchableOpacity>
-                <Text style={[styles.radio_text, props.textStyle]}>{props.option2Text ?? 'No'}</Text>
+                <Text style={[styles.radio_text, props.textStyle, { color: props.color }]}>{props.option2Text ?? 'No'}</Text>
             </View>
         </View>
     );

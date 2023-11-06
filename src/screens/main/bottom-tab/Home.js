@@ -55,12 +55,11 @@ const Item = ({ order }) => {
 
 function Home(props) {
     const route = useRoute();
-    const [modalVisible, setModalVisible] = useState(false);
 
     return (
         <SafeAreaView style={styles.home}>
             {/* <Text style={GlobalStyle.screen_title}>Home</Text> */}
-            <HomeHeader modalVisible={modalVisible} />
+            <HomeHeader />
             <FlatList
                 data={CONTAINER_REPORT}
                 keyExtractor={item => item.id}

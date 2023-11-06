@@ -4,6 +4,8 @@ import { LongButton } from '../../../components/CustomButton';
 import { OTP_Register } from '../OTP';
 import { useNavigation } from '@react-navigation/native';
 import { CloseButton } from '../../../components/CustomButton';
+import { red, white } from '../../../assets/styles/Colors';
+import { Route } from '../../../navigations/Route';
 
 
 function Register(props) {
@@ -15,8 +17,8 @@ function Register(props) {
 
     const registerStyleFn = (value) => {
         if (value != '') {
-            setLoginBtnColor('#eb9f1c');
-            setLoginBtnBorderColor('#eb9f1c');
+            setLoginBtnColor(red);
+            setLoginBtnBorderColor(red);
             setPhoneNumber(value);
         } else {
             setLoginBtnColor('gray');
@@ -28,7 +30,7 @@ function Register(props) {
         if (phoneNumber == '' || phoneNumber.length < 10) {
             Alert.alert('Your phone number is not a valid number!')
         } else {
-            navigation.navigate('OTPRegisterScreen', { phone_number: phoneNumber })
+            navigation.navigate(Route.AUTH_TAB, { screen: Route.Auth.REGISTER_TAB, params: { screen: Route.Auth.Register.OTP_SCREEN } })
         }
     }
 
@@ -55,11 +57,13 @@ function Register(props) {
                     onSubmitEditing={submitInput}
                 />
                 <LongButton
-                    text='Continue'
+                    includeText
+                    text='CONTINUE'
+                    textColor={white}
                     buttonColor={loginBtnColor}
                     buttonStyle={styles.long_btn}
                     textStyle={styles.button_text}
-                    onPressFunction={submitInput}
+                    onPress={submitInput}
 
                 />
             </ScrollView>
@@ -114,7 +118,8 @@ const styles = StyleSheet.create({
         padding: 15,
     },
     button_text: {
-        color: '#fff',
+        fontSize: 20,
+        fontWeight: '700',
     },
     long_btn: {
         width: '90%',

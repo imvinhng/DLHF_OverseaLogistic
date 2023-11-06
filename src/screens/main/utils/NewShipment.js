@@ -55,12 +55,12 @@ function NewShipment(props) {
 
             <ScrollView>
                 <View>
-                    <CRGI />
-                    <Temperature />
-                    <ContainerTemperature />
-                    <Time />
-                    <Checklist />
-                    <Comments />
+                    <CRGI audience={'receiver'} />
+                    <Temperature audience={'receiver'} />
+                    <ContainerTemperature audience={'receiver'} />
+                    <Time audience={'receiver'} />
+                    <Checklist audience={'receiver'} />
+                    <Comments audience={'receiver'} />
                 </View>
             </ScrollView>
 

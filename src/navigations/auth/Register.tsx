@@ -8,10 +8,10 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import RegisterScreen from '../../screens/auth/register/Register';
 import { Route } from '../Route';
 // import RegisterAddressScreen from '../../screens/auth/register/Register_Address';
-// import RegisterCompleteScreen from '../../screens/auth/register/Register_Complete';
+import RegisterCompleteScreen from '../../screens/auth/register/Register_Complete';
 // import RegisterPasswordSetScreen from '../../screens/auth/register/Register_PasswordSet';
 // import RegisterPersonalInfoScreen from '../../screens/auth/register/Register_PersonalInfo';
-// import { OTP_Register } from '../../screens/auth/OTP';
+import RegiterOTPScreen from '../../screens/auth/register/Register_OTP';
 
 const Stack = createStackNavigator();
 
@@ -25,11 +25,11 @@ function Register(): JSX.Element {
                 name={Route.Auth.Register.REGISTER_SCREEN}
                 component={RegisterScreen}
             />
-            {/* <Stack.Screen
-                name="OTPRegisterScreen"
-                component={OTP_Register}
-            />
             <Stack.Screen
+                name={Route.Auth.Register.OTP_SCREEN}
+                component={RegiterOTPScreen}
+            />
+            {/*<Stack.Screen
                 name="RegisterPasswordSetScreen"
                 component={RegisterPasswordSetScreen}
             />
@@ -40,11 +40,11 @@ function Register(): JSX.Element {
             <Stack.Screen
                 name="RegisterAddressScreen"
                 component={RegisterAddressScreen}
-            />
+            />*/}
             <Stack.Screen
-                name="RegisterCompleteScreen"
+                name={Route.Auth.Register.COMPLETE_SCREEN}
                 component={RegisterCompleteScreen}
-            /> */}
+            />
         </Stack.Navigator>
     )
 }

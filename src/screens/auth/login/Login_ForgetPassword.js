@@ -22,7 +22,10 @@ function ForgetPassword(props) {
     }
 
     function promptOTP() {
-        navigation.navigate('Login', { screen: 'OTPLoginScreen', params: { phone_number: phoneNumber } })
+        navigation.navigate('Login', { screen: 'OTPLoginScreen' })
+
+        // TODO: Make registerAction
+        // dispatch(loginAction({ phone_number: phoneNumber, name: database[i].name, password: database[i].password }))
     }
 
     return (
@@ -51,7 +54,7 @@ function ForgetPassword(props) {
                     style={styles.login_btn}
                     bgColor={loginBtnColor}
                     textColor={'#fff'}
-                    onPressFunction={promptOTP}
+                    onPress={promptOTP}
                 />
 
             </View>
