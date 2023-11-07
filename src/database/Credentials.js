@@ -38,4 +38,10 @@ export const USERS = [
         name: 'The Vinh',
         type: 'customers',
     },
+    {
+        phone_number: 'receiver',
+        password: 'receiver',
+        name: 'Receiver',
+        type: 'receiver',
+    },
 ]

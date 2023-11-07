@@ -9,144 +9,110 @@ import { Line, Triangle } from '../../../components/Line';
 import { CONTAINER_PHOTO_TYPE, CONTAINER_REPORT } from '../../../database/ContainerReport';
 import DashedLine from 'react-native-dashed-line';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
-import { CRGI, Checklist, Comments, ContainerTemperature, Temperature, Time } from '../../../components/CustomComponents';
 import DropDownPicker from 'react-native-dropdown-picker';
+import { useSelector } from 'react-redux';
+import { USERS } from '../../../database/Credentials';
 
-function ShipmentDetail(props) {
-    const route = useRoute();
-    const { Order } = route.params;
+import CRGI from '../../../components/report/CRGI';
+import Temperature from '../../../components/report/Temperature';
+import ContainerTemperature from '../../../components/report/ContainerTemperature';
+import Time from '../../../components/report/Time';
+import Checklist from '../../../components/report/Checklist';
+import Comments from '../../../components/report/Comments';
 
-    const [openPhotoType, setOpenPhotoType] = useState(false);
-    const [valuePhotoType, setValuePhotoType] = useState('');
-
-    const [showStatus, setShowStatus] = useState(true);
-    const [showPhotos, setShowPhotos] = useState(false);
-    const [showReports, setShowReports] = useState(false);
-    const [showPhotoTypeSelector, setShowPhotoTypeSelector] = useState(false);
-    const [showViewMore, setShowViewMore] = useState(false);
-
-    const [photoDB, setPhotoDB] = useState([]);
-    const [nextID, setNextID] = useState(1);
-    const FILE_NAME = `User-defined Image #${nextID}`;
-
-
-    const ArrowDownIcon = () => {
-        return (
-            <RoundButton
-                includeIcon
-                iconType='FontAwesome5'
-                iconName='chevron-down'
-                iconSize={ICON_SIZE}
-                iconColor={white}
-                backgroundColor={darkgray}
-                buttonStyle={styles.photo_type_down}
-                onPress={() => setOpenPhotoType(!openPhotoType)}
-            />
-        )
-    }
-    const ArrowUpIcon = () => {
-        return (
-            <RoundButton
-                includeIcon
-                iconType='FontAwesome5'
-                iconName='chevron-up'
-                iconSize={ICON_SIZE}
-                iconColor={white}
-                backgroundColor={darkgray}
-                buttonStyle={styles.photo_type_down}
-                onPress={() => setOpenPhotoType(!openPhotoType)}
-            />
-        )
-    }
-
-    const requestCameraPermission = async () => {
-        if (Platform.OS === 'android') {
-            try {
-                const granted = await PermissionsAndroid.request(
-                    PermissionsAndroid.PERMISSIONS.CAMERA,
-                    {
-                        title: 'Camera Permission',
-                        message: 'App needs camera permission',
-                    },
-                );
-                // If CAMERA Permission is granted
-                return granted === PermissionsAndroid.RESULTS.GRANTED;
-            } catch (err) {
-                console.warn(err);
-                return false;
-            }
-        } else return true;
-    };
-
-    const requestExternalWritePermission = async () => {
-        if (Platform.OS === 'android') {
-            try {
-                const granted = await PermissionsAndroid.request(
-                    PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
-                    {
-                        title: 'External Storage Write Permission',
-                        message: 'App needs write permission',
-                    },
-                );
-                // If WRITE_EXTERNAL_STORAGE Permission is granted
-                return granted === PermissionsAndroid.RESULTS.GRANTED;
-            } catch (err) {
-                console.warn(err);
-                alert('Write permission err', err);
-            }
-            return false;
-        } else return true;
-    };
-
-    const captureImage = async (type) => {
-
-        let options = {
-            mediaType: type,
-            maxWidth: 300,
-            maxHeight: 550,
-            quality: 1,
-            videoQuality: 'low',
-            durationLimit: 30, //Video max duration in seconds
-            saveToPhotos: true,
-        };
-        let isCameraPermitted = await requestCameraPermission();
-        // let isStoragePermitted = await requestExternalWritePermission();
-        if (isCameraPermitted) {
-            launchCamera(options, (response) => {
-                if (response.didCancel) {
-                    alert('User cancelled camera picker');
-                    return;
-                } else if (response.errorCode == 'camera_unavailable') {
-                    alert('Camera not available on device');
-                    return;
-                } else if (response.errorCode == 'permission') {
-                    alert('Permission not satisfied');
-                    return;
-                } else if (response.errorCode == 'others') {
-                    alert(response.errorMessage);
-                    return;
-                }
-
-                setPhotoDB(
-                    [
-                        ...photoDB,
-                        { id: nextID, uri: response.assets[0].uri, alt: FILE_NAME }
-                    ]
-                )
-                setNextID(nextID + 1);
-            });
+const findUserTypeByPhone = (phone) => {
+    const database = USERS;
+    for (let i = 0; i < USERS.length; i++) {
+        if (database[i].phone_number == phone) {
+            return database[i].type;
         }
+
+    }
+}
+
+const ArrowDownIcon = () => {
+    return (
+        <RoundButton
+            includeIcon
+            iconType='FontAwesome5'
+            iconName='chevron-down'
+            iconSize={ICON_SIZE}
+            iconColor={white}
+            backgroundColor={darkgray}
+            buttonStyle={styles.photo_type_down}
+            onPress={() => setOpenPhotoType(!openPhotoType)}
+        />
+    )
+}
+const ArrowUpIcon = () => {
+    return (
+        <RoundButton
+            includeIcon
+            iconType='FontAwesome5'
+            iconName='chevron-up'
+            iconSize={ICON_SIZE}
+            iconColor={white}
+            backgroundColor={darkgray}
+            buttonStyle={styles.photo_type_down}
+            onPress={() => setOpenPhotoType(!openPhotoType)}
+        />
+    )
+}
+
+const requestCameraPermission = async () => {
+    if (Platform.OS === 'android') {
+        try {
+            const granted = await PermissionsAndroid.request(
+                PermissionsAndroid.PERMISSIONS.CAMERA,
+                {
+                    title: 'Camera Permission',
+                    message: 'App needs camera permission',
+                },
+            );
+            // If CAMERA Permission is granted
+            return granted === PermissionsAndroid.RESULTS.GRANTED;
+        } catch (err) {
+            console.warn(err);
+            return false;
+        }
+    } else return true;
+};
+
+const requestExternalWritePermission = async () => {
+    if (Platform.OS === 'android') {
+        try {
+            const granted = await PermissionsAndroid.request(
+                PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+                {
+                    title: 'External Storage Write Permission',
+                    message: 'App needs write permission',
+                },
+            );
+            // If WRITE_EXTERNAL_STORAGE Permission is granted
+            return granted === PermissionsAndroid.RESULTS.GRANTED;
+        } catch (err) {
+            console.warn(err);
+            alert('Write permission err', err);
+        }
+        return false;
+    } else return true;
+};
+
+const captureImage = async (type) => {
+
+    let options = {
+        mediaType: type,
+        maxWidth: 300,
+        maxHeight: 550,
+        quality: 1,
+        videoQuality: 'low',
+        durationLimit: 30, //Video max duration in seconds
+        saveToPhotos: true,
     };
-
-    const chooseFile = (type) => {
-
-        let options = {
-            mediaType: type,
-            maxWidth: 300,
-            maxHeight: 550,
-            quality: 1,
-        };
-        launchImageLibrary(options, (response) => {
+    let isCameraPermitted = await requestCameraPermission();
+    // let isStoragePermitted = await requestExternalWritePermission();
+    if (isCameraPermitted) {
+        launchCamera(options, (response) => {
             if (response.didCancel) {
                 alert('User cancelled camera picker');
                 return;
@@ -169,7 +135,60 @@ function ShipmentDetail(props) {
             )
             setNextID(nextID + 1);
         });
+    }
+};
+
+const chooseFile = (type) => {
+
+    let options = {
+        mediaType: type,
+        maxWidth: 300,
+        maxHeight: 550,
+        quality: 1,
     };
+    launchImageLibrary(options, (response) => {
+        if (response.didCancel) {
+            alert('User cancelled camera picker');
+            return;
+        } else if (response.errorCode == 'camera_unavailable') {
+            alert('Camera not available on device');
+            return;
+        } else if (response.errorCode == 'permission') {
+            alert('Permission not satisfied');
+            return;
+        } else if (response.errorCode == 'others') {
+            alert(response.errorMessage);
+            return;
+        }
+
+        setPhotoDB(
+            [
+                ...photoDB,
+                { id: nextID, uri: response.assets[0].uri, alt: FILE_NAME }
+            ]
+        )
+        setNextID(nextID + 1);
+    });
+};
+
+function ShipmentDetail(props) {
+    const route = useRoute();
+    const { Order } = route.params;
+    const { phone_number } = useSelector(state => state.userReducer);
+    const userType = findUserTypeByPhone(phone_number);
+
+    const [openPhotoType, setOpenPhotoType] = useState(false);
+    const [valuePhotoType, setValuePhotoType] = useState('');
+
+    const [showStatus, setShowStatus] = useState(true);
+    const [showPhotos, setShowPhotos] = useState(false);
+    const [showReports, setShowReports] = useState(false);
+    const [showPhotoTypeSelector, setShowPhotoTypeSelector] = useState(false);
+    const [showViewMore, setShowViewMore] = useState(false);
+
+    const [photoDB, setPhotoDB] = useState([]);
+    const [nextID, setNextID] = useState(1);
+    const FILE_NAME = `User-defined Image #${nextID}`;
 
     return (
         <View style={styles.home}>
@@ -211,12 +230,12 @@ function ShipmentDetail(props) {
 
                     {showViewMore &&
                         <View>
-                            <CRGI />
-                            <Temperature />
-                            <ContainerTemperature />
-                            <Time />
-                            <Checklist />
-                            <Comments />
+                            <CRGI audience={userType == 'receiver' ? 'receiver' : 'sender'} />
+                            <Temperature audience={userType == 'receiver' ? 'receiver' : 'sender'} />
+                            <ContainerTemperature audience={userType == 'receiver' ? 'receiver' : 'sender'} />
+                            <Time audience={userType == 'receiver' ? 'receiver' : 'sender'} />
+                            <Checklist audience={userType == 'receiver' ? 'receiver' : 'sender'} />
+                            <Comments audience={userType == 'receiver' ? 'receiver' : 'sender'} />
                         </View>}
 
                     <View style={styles.view_more}>

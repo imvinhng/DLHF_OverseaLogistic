@@ -12,7 +12,6 @@ import { loginAction } from '../../../services/redux/actions';
 
 const Login = (props) => {
     const dispatch = useDispatch();
-    const { name } = useSelector(state => state.userReducer)
 
     const [loginBtnColor, setLoginBtnColor] = useState(red);
 

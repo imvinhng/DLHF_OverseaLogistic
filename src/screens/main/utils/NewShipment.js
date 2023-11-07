@@ -8,21 +8,19 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import { Line } from '../../../components/Line';
 import { CUSTOMER_NAME } from '../../../database/CustomerList';
 import { Route } from '../../../navigations/Route';
-import { CRGI, Checklist, Comments, ContainerTemperature, Temperature, Time } from '../../../components/CustomComponents';
+// import { CRGI, Checklist, Comments, ContainerTemperature, Temperature, Time } from '../../../components/CustomComponents';
+
+import CRGI from '../../../components/report/CRGI';
+import Temperature from '../../../components/report/Temperature';
+import ContainerTemperature from '../../../components/report/ContainerTemperature';
+import Time from '../../../components/report/Time';
+import Checklist from '../../../components/report/Checklist';
+import Comments from '../../../components/report/Comments';
 
 function NewShipment(props) {
     const navigation = useNavigation();
     const [openCustomerName, setOpenCustomerName] = useState(false);
-
-    const [openCRGI, setOpenCRGI] = useState(false);
-    const [openTemperature, setOpenTemperature] = useState(false);
-    const [openContainerTemperature, setOpenContainerTemperature] = useState(false);
-    const [openTime, setOpenTime] = useState(false);
-    const [openChecklist, setOpenChecklist] = useState(false);
-    const [openComments, setOpenComments] = useState(false);
-
     const [valueCustomerName, setValueCustomerName] = useState(false);
-
 
     return (
         <SafeAreaView style={styles.home}>
@@ -55,12 +53,12 @@ function NewShipment(props) {
 
             <ScrollView>
                 <View>
-                    <CRGI audience={'receiver'} />
-                    <Temperature audience={'receiver'} />
-                    <ContainerTemperature audience={'receiver'} />
-                    <Time audience={'receiver'} />
-                    <Checklist audience={'receiver'} />
-                    <Comments audience={'receiver'} />
+                    <CRGI audience={'sender'} />
+                    <Temperature audience={'sender'} />
+                    <ContainerTemperature audience={'sender'} />
+                    <Time audience={'sender'} />
+                    <Checklist audience={'sender'} />
+                    <Comments audience={'sender'} />
                 </View>
             </ScrollView>
 
@@ -79,6 +77,7 @@ function NewShipment(props) {
 
     );
 }
+
 
 export default NewShipment;
 

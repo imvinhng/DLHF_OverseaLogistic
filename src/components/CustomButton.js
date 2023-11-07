@@ -391,7 +391,7 @@ export const Radio2Button = (props) => {
     const [option2Selected, setOption2Selected] = useState(false);
     return (
         <View style={[styles.radio_group, props.buttonGroupStyle]}>
-            <View style={[GlobalStyle.row_wrapper, props.option1Style]}>
+            <View style={[styles.radio_item, props.option1Style]}>
                 <TouchableOpacity
                     style={[{
                         height: 16,
@@ -402,12 +402,13 @@ export const Radio2Button = (props) => {
                         alignItems: 'center',
                         justifyContent: 'center',
                     }, props.style]}
+                    disabled={props.editable == false ?? true}
                     onPress={() => {
                         setOption1Selected(true)
                         setOption2Selected(false)
                     }}>
                     {
-                        option1Selected ?
+                        props.option1Selected || option1Selected ?
                             <View style={{
                                 height: 6,
                                 width: 6,
@@ -420,7 +421,7 @@ export const Radio2Button = (props) => {
                 <Text style={[styles.radio_text, props.textStyle, { color: props.color }]}>{props.option1Text ?? 'Yes'}</Text>
             </View>
 
-            <View style={[GlobalStyle.row_wrapper, props.option2Style]}>
+            <View style={[styles.radio_item, props.option2Style]}>
                 <TouchableOpacity
                     style={[{
                         height: 16,
@@ -431,12 +432,13 @@ export const Radio2Button = (props) => {
                         alignItems: 'center',
                         justifyContent: 'center',
                     }, props.style]}
+                    disabled={props.editable == false ?? true}
                     onPress={() => {
                         setOption1Selected(false)
                         setOption2Selected(true)
                     }}>
                     {
-                        option2Selected ?
+                        props.option2Selected || option2Selected ?
                             <View style={{
                                 height: 6,
                                 width: 6,
@@ -506,9 +508,16 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    radio_item: {
+        marginHorizontal: 5,
+        ...GlobalStyle.row_wrapper,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
     radio_text: {
-        marginLeft: 10,
-        marginRight: 30,
+        margin: 5,
+        // marginLeft: 10,
+        // marginRight: 30,
     },
     grid_btn_txt: {
         fontSize: 14,
