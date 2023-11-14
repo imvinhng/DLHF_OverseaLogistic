@@ -44,4 +44,10 @@ export const USERS = [
         name: 'Receiver',
         type: 'receiver',
     },
+    {
+        phone_number: '69',
+        password: 'receiver',
+        name: 'Receiver',
+        type: 'receiver',
+    },
 ]

@@ -25,3 +25,5 @@ export const offwhite = '#FCFCFC'
 export const red = '#f50505'
 
 export const lightred = '#F57878'
+
+export const placeholderGray = '#C7C7CD'

@@ -1,81 +1,6 @@
-import React, { useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
-import { StyleSheet, View, Text, SafeAreaView, Dimensions, ScrollView, Image, TextInput } from 'react-native';
-import { black, blue, darkgray, green, lightgray, placeholderGray, white, yellow } from '../../assets/styles/Colors';
-import GlobalStyle from '../../assets/styles/GlobalStyle';
-import { Radio2Button, RoundButton, SquareButton } from '../../components/CustomButton';
-import DropDownPicker from 'react-native-dropdown-picker';
-import { Line } from '../../components/Line';
-import { CUSTOMER_NAME } from '../../database/CustomerList';
-import { Route } from '../../navigations/Route';
-import ReportStyle from '../../assets/styles/ReportStyle';
-
-
-export const Time = (props) => {
-    const [openTime, setOpenTime] = useState(false);
-
-    return (
-        <View>
-            <View style={ReportStyle.header_container}>
-                <View style={ReportStyle.header_circle}>
-                    <Text style={ReportStyle.header_text}>
-                        3
-                    </Text>
-                </View>
-                <Text style={ReportStyle.header_text}>TIME</Text>
-                <RoundButton
-                    includeIcon
-                    iconType='FontAwesome5'
-                    iconName={'chevron-down'}
-                    iconSize={15}
-                    buttonStyle={ReportStyle.header_down}
-                    onPress={() => setOpenTime(!openTime)}
-                />
-            </View>
-
-            {openTime &&
-                props.audience == 'sender' &&
-                <View style={ReportStyle.halfbox}>
-                    <View style={ReportStyle.item_half}>
-                        <Text style={ReportStyle.item_title}>Start Loading Time</Text>
-                        <TextInput style={ReportStyle.input} />
-                        <Line color={placeholderGray} style={ReportStyle.mb5} />
-                    </View>
-                    <View style={ReportStyle.item_half}>
-                        <Text style={ReportStyle.item_title}>Finish Loading Time</Text>
-                        <TextInput style={ReportStyle.input} />
-                        <Line color={placeholderGray} style={ReportStyle.mb5} />
-                    </View>
-                    <View style={ReportStyle.item_half}>
-                        <Text style={ReportStyle.item_title}>Departure Daron Time</Text>
-                        <TextInput style={ReportStyle.input} />
-                        <Line color={placeholderGray} style={ReportStyle.mb5} />
-                    </View>
-                </View>}
-            {openTime &&
-                props.audience == 'receiver' &&
-                <View style={ReportStyle.halfbox}>
-                    <View style={ReportStyle.item_half}>
-                        <Text style={ReportStyle.item_title}>Start Loading Time</Text>
-                        <TextInput style={ReportStyle.input} placeholder={'19:30'} editable={false} />
-                        <Line color={placeholderGray} style={ReportStyle.mb5} />
-                    </View>
-                    <View style={ReportStyle.item_half}>
-                        <Text style={ReportStyle.item_title}>Finish Loading Time</Text>
-                        <TextInput style={ReportStyle.input} placeholder={'20:30'} editable={false} />
-                        <Line color={placeholderGray} style={ReportStyle.mb5} />
-                    </View>
-                    <View style={ReportStyle.item_half}>
-                        <Text style={ReportStyle.item_title}>Departure Daron Time</Text>
-                        <TextInput style={ReportStyle.input} placeholder={'21:30'} editable={false} />
-                        <Line color={placeholderGray} style={ReportStyle.mb5} />
-                    </View>
-                </View>}
-        </View>
-    )
-}
-
-export default Time;
+import { Dimensions, StyleSheet } from "react-native";
+import { darkgray, green, lightgray, placeholderGray, white, yellow } from "./Colors";
+import GlobalStyle from "./GlobalStyle";
 
 const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get('screen');
 
@@ -84,23 +9,22 @@ const HEADER_HEIGHT = ScreenHeight / 20;
 const HEADER_CIRCLE_WIDTH = HEADER_HEIGHT / 2;
 const HEADER_CIRCLE_HEIGHT = HEADER_HEIGHT / 2;
 const HEADER_MARGIN = 10;
-const HEADER_PADDING = 20;
+export const HEADER_PADDING = 20;
 const CRGI_3C_MARGIN = 10;
 const CRGI_2C_MARGIN = 10;
-const INPUT_HEIGHT = 20;
-const ITEM_MARGIN = 5;
+const INPUT_HEIGHT = 40;  // need to be at least 40 to fit on Android and IOS
+const ITEM_MARGIN = 10;
 const ITEM_PADDING = 5;
 const TEMPERATURE_PLUS_WIDTH = 20;
-const INPUT_FONTSIZE = 8; // don't go pass 8 or text will break
-const ITEM_WIDTH = ScreenWidth - 2 * ITEM_MARGIN;
+const INPUT_FONTSIZE = 12; // don't go pass 8 or text will break
+const ITEM_WIDTH = ScreenWidth - 4 * ITEM_MARGIN;
 const ITEM_HALF_WIDTH = ScreenWidth / 2 - 2 * ITEM_MARGIN;
-const RADIO_WIDTH = ITEM_HALF_WIDTH;
 const SUBMIT_BUTTON_HEIGHT = 50;
 const SUBMIT_BUTTON_MARGIN = 20;
 const SUBMIT_CONTAINER_HEIGHT = SUBMIT_BUTTON_HEIGHT + SUBMIT_BUTTON_MARGIN;
 const SUBMIT_BUTTON_WIDTH = ScreenWidth - SUBMIT_BUTTON_MARGIN;
 
-const styles = StyleSheet.create({
+const ReportStyle = StyleSheet.create({
     home: {
         flex: 1,
         backgroundColor: white,
@@ -121,6 +45,23 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginHorizontal: HEADER_MARGIN,
+    },
+    dropdown: {
+        minHeight: INPUT_HEIGHT,
+        // width: ScreenWidth / 3.5,
+        paddingLeft: 5,
+        borderWidth: 0,
+        // backgroundColor: 'red',
+
+    },
+    dropdown_text: {
+        fontSize: INPUT_FONTSIZE,
+        fontWeight: '700',
+    },
+    dropdown_text_grayed: {
+        fontSize: INPUT_FONTSIZE,
+        fontWeight: '700',
+        color: placeholderGray,
     },
     input: {
         height: INPUT_HEIGHT,
@@ -197,7 +138,7 @@ const styles = StyleSheet.create({
         borderWidth: 0,
     },
     cname_input: {
-        fontSize: INPUT_FONTSIZE - 2,
+        fontSize: INPUT_FONTSIZE,
         fontWeight: '700',
     },
     cname_logo: {
@@ -216,6 +157,7 @@ const styles = StyleSheet.create({
     CRGI_3c_item: {
         width: (ScreenWidth / 3) - 2 * CRGI_3C_MARGIN,
         margin: CRGI_3C_MARGIN,
+        justifyContent: 'flex-end',
         ...GlobalStyle.column_wrapper
     },
     CRGI_2c_item: {
@@ -242,20 +184,20 @@ const styles = StyleSheet.create({
         top: INPUT_HEIGHT - 5,
     },
     checklist_item: {
-        margin: 10,
+        margin: ITEM_MARGIN,
         // padding: 10,
         borderWidth: 0.5,
         borderColor: lightgray,
         borderRadius: 10,
         backgroundColor: white,
         ...GlobalStyle.box_shadow,
-        ...GlobalStyle.row_wrapper,
+        // ...GlobalStyle.row_wrapper,
     },
     radio: {
         // marginLeft: 30,
         width: 'auto',
         justifyContent: 'space-evenly',
-        // padding: 10,
+        padding: 10,
         // backgroundColor: 'lightblue',
     },
     radio_text: {
@@ -296,3 +238,5 @@ const styles = StyleSheet.create({
     },
 
 })
+
+export default ReportStyle;

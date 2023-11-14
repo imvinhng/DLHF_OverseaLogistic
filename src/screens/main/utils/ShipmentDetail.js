@@ -30,89 +30,143 @@ const findUserTypeByPhone = (phone) => {
     }
 }
 
-const ArrowDownIcon = () => {
-    return (
-        <RoundButton
-            includeIcon
-            iconType='FontAwesome5'
-            iconName='chevron-down'
-            iconSize={ICON_SIZE}
-            iconColor={white}
-            backgroundColor={darkgray}
-            buttonStyle={styles.photo_type_down}
-            onPress={() => setOpenPhotoType(!openPhotoType)}
-        />
-    )
-}
-const ArrowUpIcon = () => {
-    return (
-        <RoundButton
-            includeIcon
-            iconType='FontAwesome5'
-            iconName='chevron-up'
-            iconSize={ICON_SIZE}
-            iconColor={white}
-            backgroundColor={darkgray}
-            buttonStyle={styles.photo_type_down}
-            onPress={() => setOpenPhotoType(!openPhotoType)}
-        />
-    )
-}
 
-const requestCameraPermission = async () => {
-    if (Platform.OS === 'android') {
-        try {
-            const granted = await PermissionsAndroid.request(
-                PermissionsAndroid.PERMISSIONS.CAMERA,
-                {
-                    title: 'Camera Permission',
-                    message: 'App needs camera permission',
-                },
-            );
-            // If CAMERA Permission is granted
-            return granted === PermissionsAndroid.RESULTS.GRANTED;
-        } catch (err) {
-            console.warn(err);
-            return false;
-        }
-    } else return true;
-};
+function ShipmentDetail(props) {
+    const route = useRoute();
+    const { Order } = route.params;
+    const { phone_number } = useSelector(state => state.userReducer);
+    const userType = findUserTypeByPhone(phone_number);
 
-const requestExternalWritePermission = async () => {
-    if (Platform.OS === 'android') {
-        try {
-            const granted = await PermissionsAndroid.request(
-                PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
-                {
-                    title: 'External Storage Write Permission',
-                    message: 'App needs write permission',
-                },
-            );
-            // If WRITE_EXTERNAL_STORAGE Permission is granted
-            return granted === PermissionsAndroid.RESULTS.GRANTED;
-        } catch (err) {
-            console.warn(err);
-            alert('Write permission err', err);
-        }
-        return false;
-    } else return true;
-};
+    const [openPhotoType, setOpenPhotoType] = useState(false);
+    const [valuePhotoType, setValuePhotoType] = useState('');
 
-const captureImage = async (type) => {
+    const [showStatus, setShowStatus] = useState(true);
+    const [showPhotos, setShowPhotos] = useState(false);
+    const [showReports, setShowReports] = useState(false);
+    const [showPhotoTypeSelector, setShowPhotoTypeSelector] = useState(false);
+    const [showViewMore, setShowViewMore] = useState(false);
 
-    let options = {
-        mediaType: type,
-        maxWidth: 300,
-        maxHeight: 550,
-        quality: 1,
-        videoQuality: 'low',
-        durationLimit: 30, //Video max duration in seconds
-        saveToPhotos: true,
+    const [photoDB, setPhotoDB] = useState([]);
+    const [nextID, setNextID] = useState(1);
+    const FILE_NAME = `User-defined Image #${nextID}`;
+
+    const ArrowDownIcon = () => {
+        return (
+            <RoundButton
+                includeIcon
+                iconType='FontAwesome5'
+                iconName='chevron-down'
+                iconSize={ICON_SIZE}
+                iconColor={white}
+                backgroundColor={darkgray}
+                buttonStyle={styles.photo_type_down}
+                onPress={() => setOpenPhotoType(!openPhotoType)}
+            />
+        )
+    }
+    const ArrowUpIcon = () => {
+        return (
+            <RoundButton
+                includeIcon
+                iconType='FontAwesome5'
+                iconName='chevron-up'
+                iconSize={ICON_SIZE}
+                iconColor={white}
+                backgroundColor={darkgray}
+                buttonStyle={styles.photo_type_down}
+                onPress={() => setOpenPhotoType(!openPhotoType)}
+            />
+        )
+    }
+
+    const requestCameraPermission = async () => {
+        if (Platform.OS === 'android') {
+            try {
+                const granted = await PermissionsAndroid.request(
+                    PermissionsAndroid.PERMISSIONS.CAMERA,
+                    {
+                        title: 'Camera Permission',
+                        message: 'App needs camera permission',
+                    },
+                );
+                // If CAMERA Permission is granted
+                return granted === PermissionsAndroid.RESULTS.GRANTED;
+            } catch (err) {
+                console.warn(err);
+                return false;
+            }
+        } else return true;
     };
-    let isCameraPermitted = await requestCameraPermission();
-    // let isStoragePermitted = await requestExternalWritePermission();
-    if (isCameraPermitted) {
-        launchCamera(options, (response) => {
+
+    const requestExternalWritePermission = async () => {
+        if (Platform.OS === 'android') {
+            try {
+                const granted = await PermissionsAndroid.request(
+                    PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+                    {
+                        title: 'External Storage Write Permission',
+                        message: 'App needs write permission',
+                    },
+                );
+                // If WRITE_EXTERNAL_STORAGE Permission is granted
+                return granted === PermissionsAndroid.RESULTS.GRANTED;
+            } catch (err) {
+                console.warn(err);
+                alert('Write permission err', err);
+            }
+            return false;
+        } else return true;
+    };
+
+    const captureImage = async (type) => {
+
+        let options = {
+            mediaType: type,
+            maxWidth: 300,
+            maxHeight: 550,
+            quality: 1,
+            videoQuality: 'low',
+            durationLimit: 30, //Video max duration in seconds
+            saveToPhotos: true,
+        };
+        let isCameraPermitted = await requestCameraPermission();
+        // let isStoragePermitted = await requestExternalWritePermission();
+        if (isCameraPermitted) {
+            launchCamera(options, (response) => {
+                if (response.didCancel) {
+                    alert('User cancelled camera picker');
+                    return;
+                } else if (response.errorCode == 'camera_unavailable') {
+                    alert('Camera not available on device');
+                    return;
+                } else if (response.errorCode == 'permission') {
+                    alert('Permission not satisfied');
+                    return;
+                } else if (response.errorCode == 'others') {
+                    alert(response.errorMessage);
+                    return;
+                }
+
+                setPhotoDB(
+                    [
+                        ...photoDB,
+                        { id: nextID, uri: response.assets[0].uri, alt: FILE_NAME }
+                    ]
+                )
+                setNextID(nextID + 1);
+            });
+        }
+    };
+
+    const chooseFile = (type) => {
+
+        let options = {
+            mediaType: type,
+            maxWidth: 300,
+            maxHeight: 550,
+            quality: 1,
+        };
+        launchImageLibrary(options, (response) => {
             if (response.didCancel) {
                 alert('User cancelled camera picker');
                 return;
@@ -135,60 +189,8 @@ const captureImage = async (type) => {
             )
             setNextID(nextID + 1);
         });
-    }
-};
-
-const chooseFile = (type) => {
-
-    let options = {
-        mediaType: type,
-        maxWidth: 300,
-        maxHeight: 550,
-        quality: 1,
     };
-    launchImageLibrary(options, (response) => {
-        if (response.didCancel) {
-            alert('User cancelled camera picker');
-            return;
-        } else if (response.errorCode == 'camera_unavailable') {
-            alert('Camera not available on device');
-            return;
-        } else if (response.errorCode == 'permission') {
-            alert('Permission not satisfied');
-            return;
-        } else if (response.errorCode == 'others') {
-            alert(response.errorMessage);
-            return;
-        }
 
-        setPhotoDB(
-            [
-                ...photoDB,
-                { id: nextID, uri: response.assets[0].uri, alt: FILE_NAME }
-            ]
-        )
-        setNextID(nextID + 1);
-    });
-};
-
-function ShipmentDetail(props) {
-    const route = useRoute();
-    const { Order } = route.params;
-    const { phone_number } = useSelector(state => state.userReducer);
-    const userType = findUserTypeByPhone(phone_number);
-
-    const [openPhotoType, setOpenPhotoType] = useState(false);
-    const [valuePhotoType, setValuePhotoType] = useState('');
-
-    const [showStatus, setShowStatus] = useState(true);
-    const [showPhotos, setShowPhotos] = useState(false);
-    const [showReports, setShowReports] = useState(false);
-    const [showPhotoTypeSelector, setShowPhotoTypeSelector] = useState(false);
-    const [showViewMore, setShowViewMore] = useState(false);
-
-    const [photoDB, setPhotoDB] = useState([]);
-    const [nextID, setNextID] = useState(1);
-    const FILE_NAME = `User-defined Image #${nextID}`;
 
     return (
         <View style={styles.home}>

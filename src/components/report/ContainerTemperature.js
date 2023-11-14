@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, View, Text, SafeAreaView, Dimensions, ScrollView, Image, TextInput } from 'react-native';
-import { black, blue, darkgray, green, lightgray, white, yellow } from '../../assets/styles/Colors';
+import { black, blue, darkgray, green, lightgray, placeholderGray, white, yellow } from '../../assets/styles/Colors';
 import GlobalStyle from '../../assets/styles/GlobalStyle';
 import { Radio2Button, RoundButton, SquareButton } from '../../components/CustomButton';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { Line } from '../../components/Line';
 import { CUSTOMER_NAME } from '../../database/CustomerList';
 import { Route } from '../../navigations/Route';
+import ReportStyle from '../../assets/styles/ReportStyle';
 
 
 export const ContainerTemperature = (props) => {
@@ -15,19 +16,19 @@ export const ContainerTemperature = (props) => {
 
     return (
         <View>
-            <View style={styles.header_container}>
-                <View style={styles.header_circle}>
-                    <Text style={styles.header_text}>
+            <View style={ReportStyle.header_container}>
+                <View style={ReportStyle.header_circle}>
+                    <Text style={ReportStyle.header_text}>
                         2
                     </Text>
                 </View>
-                <Text style={styles.header_text}>CONTAINER TEMPERATURE</Text>
+                <Text style={ReportStyle.header_text}>CONTAINER TEMPERATURE</Text>
                 <RoundButton
                     includeIcon
                     iconType='FontAwesome5'
                     iconName={'chevron-down'}
                     iconSize={15}
-                    buttonStyle={styles.header_down}
+                    buttonStyle={ReportStyle.header_down}
                     onPress={() => setOpenContainerTemperature(!openContainerTemperature)}
                 />
             </View>
@@ -35,73 +36,73 @@ export const ContainerTemperature = (props) => {
             {openContainerTemperature &&
                 props.audience == 'sender' &&
                 <View>
-                    <View style={styles.item}>
-                        <Text style={styles.item_title}>Set Temp</Text>
-                        <TextInput style={styles.input} />
-                        <Line color={darkgray} style={styles.mb5} />
+                    <View style={ReportStyle.item}>
+                        <Text style={ReportStyle.item_title}>Set Temp</Text>
+                        <TextInput style={ReportStyle.input} />
+                        <Line color={placeholderGray} style={ReportStyle.mb5} />
                     </View>
-                    <View style={styles.item}>
-                        <Text style={styles.item_title}>Supply Temp.</Text>
-                        <TextInput style={styles.input} />
-                        <Line color={darkgray} style={styles.mb5} />
+                    <View style={ReportStyle.item}>
+                        <Text style={ReportStyle.item_title}>Supply Temp.</Text>
+                        <TextInput style={ReportStyle.input} />
+                        <Line color={placeholderGray} style={ReportStyle.mb5} />
                     </View>
-                    <View style={styles.item}>
-                        <Text style={styles.item_title}>Return Temp.</Text>
-                        <TextInput style={styles.input} />
-                        <Line color={darkgray} style={styles.mb5} />
+                    <View style={ReportStyle.item}>
+                        <Text style={ReportStyle.item_title}>Return Temp.</Text>
+                        <TextInput style={ReportStyle.input} />
+                        <Line color={placeholderGray} style={ReportStyle.mb5} />
                     </View>
-                    <View style={styles.item}>
-                        <Text style={styles.item_title}>Before Loading</Text>
-                        <TextInput style={styles.input} />
-                        <Line color={darkgray} style={styles.mb5} />
+                    <View style={ReportStyle.item}>
+                        <Text style={ReportStyle.item_title}>Before Loading</Text>
+                        <TextInput style={ReportStyle.input} />
+                        <Line color={placeholderGray} style={ReportStyle.mb5} />
                     </View>
                 </View>
             }
             {openContainerTemperature &&
                 props.audience == 'receiver' &&
-                <View style={styles.fullbox}>
-                    <View style={styles.halfbox}>
-                        <View style={styles.item_half}>
-                            <Text style={styles.item_title}>Set Temp.</Text>
-                            <TextInput style={styles.input} placeholder={'1.0oC'} editable={false} />
-                            <Line color={darkgray} style={styles.mb5} />
+                <View style={ReportStyle.fullbox}>
+                    <View style={ReportStyle.halfbox}>
+                        <View style={ReportStyle.item_half}>
+                            <Text style={ReportStyle.item_title}>Set Temp.</Text>
+                            <TextInput style={ReportStyle.input} placeholder={'1.0oC'} editable={false} />
+                            <Line color={placeholderGray} style={ReportStyle.mb5} />
                         </View>
-                        <View style={styles.item_half}>
-                            <Text style={styles.item_title}>Supply Temp.</Text>
-                            <TextInput style={styles.input} placeholder={'1.1oC'} editable={false} />
-                            <Line color={darkgray} style={styles.mb5} />
+                        <View style={ReportStyle.item_half}>
+                            <Text style={ReportStyle.item_title}>Supply Temp.</Text>
+                            <TextInput style={ReportStyle.input} placeholder={'1.1oC'} editable={false} />
+                            <Line color={placeholderGray} style={ReportStyle.mb5} />
                         </View>
-                        <View style={styles.item_half}>
-                            <Text style={styles.item_title}>Return Temp.</Text>
-                            <TextInput style={styles.input} placeholder={'1.7oC'} editable={false} />
-                            <Line color={darkgray} style={styles.mb5} />
+                        <View style={ReportStyle.item_half}>
+                            <Text style={ReportStyle.item_title}>Return Temp.</Text>
+                            <TextInput style={ReportStyle.input} placeholder={'1.7oC'} editable={false} />
+                            <Line color={placeholderGray} style={ReportStyle.mb5} />
                         </View>
-                        <View style={styles.item_half}>
-                            <Text style={styles.item_title}>Before Loading</Text>
-                            <TextInput style={styles.input} placeholder={'2.5oC'} editable={false} />
-                            <Line color={darkgray} style={styles.mb5} />
+                        <View style={ReportStyle.item_half}>
+                            <Text style={ReportStyle.item_title}>Before Loading</Text>
+                            <TextInput style={ReportStyle.input} placeholder={'2.5oC'} editable={false} />
+                            <Line color={placeholderGray} style={ReportStyle.mb5} />
                         </View>
                     </View>
-                    <View style={styles.halfbox}>
-                        <View style={styles.item_half}>
-                            <Text style={styles.item_title_green}>Set Temp. (by receiver)</Text>
-                            <TextInput style={styles.input} />
-                            <Line color={darkgray} style={styles.mb5} />
+                    <View style={ReportStyle.halfbox}>
+                        <View style={ReportStyle.item_half}>
+                            <Text style={ReportStyle.item_title_green}>Set Temp. (by receiver)</Text>
+                            <TextInput style={ReportStyle.input} />
+                            <Line color={placeholderGray} style={ReportStyle.mb5} />
+                        </View>
+                        <View style={ReportStyle.item_half}>
+                            <Text style={ReportStyle.item_title_green}>Supply Temp. (by receiver)</Text>
+                            <TextInput style={ReportStyle.input} />
+                            <Line color={placeholderGray} style={ReportStyle.mb5} />
                         </View>
                         <View style={styles.item_half}>
-                            <Text style={styles.item_title_green}>Supply Temp. (by receiver)</Text>
-                            <TextInput style={styles.input} />
-                            <Line color={darkgray} style={styles.mb5} />
+                            <Text style={ReportStyle.item_title_green}>Return Temp. (by receiver)</Text>
+                            <TextInput style={ReportStyle.input} />
+                            <Line color={placeholderGray} style={ReportStyle.mb5} />
                         </View>
-                        <View style={styles.item_half}>
-                            <Text style={styles.item_title_green}>Return Temp. (by receiver)</Text>
-                            <TextInput style={styles.input} />
-                            <Line color={darkgray} style={styles.mb5} />
-                        </View>
-                        <View style={styles.item_half}>
-                            <Text style={styles.item_title_green}>Before Loading (by receiver)</Text>
-                            <TextInput style={styles.input} />
-                            <Line color={darkgray} style={styles.mb5} />
+                        <View style={ReportStyle.item_half}>
+                            <Text style={ReportStyle.item_title_green}>Before Loading (by receiver)</Text>
+                            <TextInput style={ReportStyle.input} />
+                            <Line color={placeholderGray} style={ReportStyle.mb5} />
                         </View>
                     </View>
                 </View>

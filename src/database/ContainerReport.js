@@ -19,8 +19,6 @@ export let CONTAINER_REPORT = [
             { id: 1, uri: require('../assets/images/container-report/TA1.png'), type: 'Damaged', alt: 'Damaged Front Wall TA1' },
             { id: 2, uri: require('../assets/images/container-report/TA2.png'), type: 'Damaged', alt: 'Damaged Front Wall TA2' },
             { id: 3, uri: require('../assets/images/container-report/TA3.png'), type: 'Damaged', alt: 'Damaged Front Wall TA3' },
-            // { url },
-            // { ur }
         ],
         messages: [],
         claim: []
