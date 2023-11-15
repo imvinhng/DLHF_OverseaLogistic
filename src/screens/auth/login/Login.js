@@ -35,6 +35,8 @@ const Login = (props) => {
                         screen: 'HomeScreen', params: { loggedIn: true, phone_number: phoneNumber }
                     }
                 })
+                setPhoneNumber('')
+                setPassword('')
                 // Redux
                 dispatch(loginAction({ phone_number: phoneNumber, name: database[i].name, password: database[i].password }))
             }
@@ -54,14 +56,16 @@ const Login = (props) => {
                     <Text>Sign in to continue</Text>
                     <TextInput
                         style={styles.textInput}
-                        keyboardType='number-pad'
-                        placeholder={'Enter your phone number'}
+                        keyboardType='default'
+                        placeholder={'Enter your username / email'}
+                        value={phoneNumber}
                         onChangeText={(number) => setPhoneNumber(number)}
                     />
                     <TextInput
                         style={styles.textInput}
                         secureTextEntry
                         placeholder={'Enter password'}
+                        value={password}
                         onChangeText={(text) => setPassword(text)}
                         onSubmitEditing={passwordCheck}
                     />

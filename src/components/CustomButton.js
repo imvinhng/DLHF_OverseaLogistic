@@ -67,8 +67,6 @@ export const LongButton = (props) => {
             onPress={props.onPress}
             onFocus={props.onFocusFunction}
         >
-            {props.includeText &&
-                <Text style={[props.textStyle, { color: props.textColor }]}>{props.text}</Text>}
 
             {props.includeIcon && props.iconType == 'FontAwesome' &&
                 <FontAwesome name={props.iconName} size={props.iconSize} color={props.iconColor} />
@@ -76,6 +74,8 @@ export const LongButton = (props) => {
             {props.includeIcon && props.iconType == 'FontAwesome5' &&
                 <FontAwesome5 name={props.iconName} size={props.iconSize} color={props.iconColor} />
             }
+            {props.includeText &&
+                <Text style={[props.textStyle, { color: props.textColor }]}>{props.text}</Text>}
 
         </Pressable>
     );

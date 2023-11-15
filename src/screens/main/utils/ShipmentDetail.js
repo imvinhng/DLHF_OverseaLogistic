@@ -195,200 +195,209 @@ function ShipmentDetail(props) {
     return (
         <View style={styles.home}>
             <HeaderNBack title={'Shipment Detail'} backgroundColor={tan} />
-            <ScrollView>
-                <View style={styles.body}>
-                    <View style={styles.description}>
-                        <View>
-                            <Image
-                                source={require('../../../assets/images/icons/american-flag.png')}
-                                style={styles.order_r1}
-                            />
-                            <Text style={styles.text_bold}>Vessel No.:</Text>
-                            <Text style={styles.text_bold}>B/L No.:</Text>
-                            <Text style={styles.text_bold}>Container No.:</Text>
-                            <Text style={styles.text_bold}>Container Type:</Text>
-                        </View>
-                        <View>
-                            <Text style={styles.text_regular}>{Order.vessel_no}</Text>
-                            <Text style={styles.text_regular}>{Order.bl_no}</Text>
-                            <Text style={styles.text_regular}>{Order.container_no}</Text>
-                            <Text style={styles.text_regular}>{Order.container_type}</Text>
-                        </View>
-                        <View>
-                            <Text style={[styles.text_bold, styles.order_r1]}>Status:</Text>
-                            <Text style={styles.text_bold}>ETD:</Text>
-                            <Text style={styles.text_bold}>ETA:</Text>
-                            <Text style={styles.text_bold}>CSC (Front):</Text>
-                            <Text style={styles.text_bold}>CSC (Door):</Text>
-                        </View>
-                        <View>
-                            <Text style={[styles.text_bgray, styles.order_r1]}>{Order.status_all[Order.status_all.length - 1].status}</Text>
-                            <Text style={styles.text_regular}>{Order.etd}</Text>
-                            <Text style={styles.text_regular}>{Order.eta}</Text>
-                            <Text style={styles.text_regular}>{Order.csc_front}</Text>
-                            <Text style={styles.text_regular}>{Order.csc_door}</Text>
-                        </View>
-                    </View>
+            <ScrollView style={styles.body}>
 
-                    {showViewMore &&
-                        <View>
-                            <CRGI audience={userType == 'receiver' ? 'receiver' : 'sender'} />
-                            <Temperature audience={userType == 'receiver' ? 'receiver' : 'sender'} />
-                            <ContainerTemperature audience={userType == 'receiver' ? 'receiver' : 'sender'} />
-                            <Time audience={userType == 'receiver' ? 'receiver' : 'sender'} />
-                            <Checklist audience={userType == 'receiver' ? 'receiver' : 'sender'} />
-                            <Comments audience={userType == 'receiver' ? 'receiver' : 'sender'} />
-                        </View>}
-
-                    <View style={styles.view_more}>
-                        <Text style={styles.view_more_text}>{showViewMore ? 'View Less' : 'View More'}</Text>
-                        <RoundButton
-                            includeIcon
-                            iconType='FontAwesome5'
-                            iconName={showViewMore ? 'chevron-up' : 'chevron-down'}
-                            iconSize={15}
-                            iconColor={white}
-                            buttonStyle={styles.view_more_down}
-                            onPress={() => setShowViewMore(!showViewMore)}
-                        />
-                    </View>
-
-
-                    <Header3ButtonRadio
-                        groupStyle={{ alignSelf: 'center' }}
-
-                        option1Text='Status'
-                        option2Text='Photos'
-                        option3Text='Reports'
-
-                        onPressOption1={() => {
-                            setShowStatus(true)
-                            setShowPhotos(false)
-                            setShowReports(false)
-                        }}
-                        onPressOption2={() => {
-                            setShowStatus(false)
-                            setShowPhotos(true)
-                            setShowReports(false)
-                        }}
-                        onPressOption3={() => {
-                            setShowStatus(false)
-                            setShowPhotos(false)
-                            setShowReports(true)
-                        }}
-                    />
-
+                <View style={styles.description}>
                     <View>
-                        {showStatus &&
-                            <View style={styles.status_container}>
-                                {Order.status_all.slice(0).reverse().map((item, index) => (
-                                    <View style={styles.status_item} key={index}>
-                                        <RoundButton
-                                            includeIcon
-                                            iconType='FontAwesome'
-                                            iconName={'dot-circle-o'}
-                                            iconColor='green'
-                                            iconSize={18}
-                                        />
-                                        {index != Order.status_all.length - 1
-                                            && <DashedLine axis='vertical' dashColor='green' style={styles.status_dashed_line} />}
+                        <Image
+                            source={require('../../../assets/images/icons/american-flag.png')}
+                            style={styles.order_r1}
+                        />
+                        <Text style={styles.text_bold}>Vessel No.:</Text>
+                        <Text style={styles.text_bold}>B/L No.:</Text>
+                        <Text style={styles.text_bold}>Container No.:</Text>
+                        <Text style={styles.text_bold}>Container Type:</Text>
+                    </View>
+                    <View>
+                        <Text style={styles.text_regular}>{Order.vessel_no}</Text>
+                        <Text style={styles.text_regular}>{Order.bl_no}</Text>
+                        <Text style={styles.text_regular}>{Order.container_no}</Text>
+                        <Text style={styles.text_regular}>{Order.container_type}</Text>
+                    </View>
+                    <View>
+                        <Text style={[styles.text_bold, styles.order_r1]}>Status:</Text>
+                        <Text style={styles.text_bold}>ETD:</Text>
+                        <Text style={styles.text_bold}>ETA:</Text>
+                        <Text style={styles.text_bold}>CSC (Front):</Text>
+                        <Text style={styles.text_bold}>CSC (Door):</Text>
+                    </View>
+                    <View>
+                        <Text style={[styles.text_bgray, styles.order_r1]}>{Order.status_all[Order.status_all.length - 1].status}</Text>
+                        <Text style={styles.text_regular}>{Order.etd}</Text>
+                        <Text style={styles.text_regular}>{Order.eta}</Text>
+                        <Text style={styles.text_regular}>{Order.csc_front}</Text>
+                        <Text style={styles.text_regular}>{Order.csc_door}</Text>
+                    </View>
+                </View>
 
-                                        <Text style={index == 0 && styles.text_bold}>{item.created_at}</Text>
-                                        <Text style={[styles.status_c3, index == 0 && styles.text_bold]}>{item.status}</Text>
-                                    </View>
-                                ))}
-                            </View>
-                        }
+                {showViewMore &&
+                    <View>
+                        <CRGI audience={userType == 'receiver' ? 'receiver' : 'sender'} />
+                        <Temperature audience={userType == 'receiver' ? 'receiver' : 'sender'} />
+                        <ContainerTemperature audience={userType == 'receiver' ? 'receiver' : 'sender'} />
+                        <Time audience={userType == 'receiver' ? 'receiver' : 'sender'} />
+                        <Checklist audience={userType == 'receiver' ? 'receiver' : 'sender'} />
+                        <Comments audience={userType == 'receiver' ? 'receiver' : 'sender'} />
+                    </View>}
 
-                        {showPhotos &&
-                            <View>
-                                <View style={styles.photo_header}>
-                                    <View>
-                                        <DropDownPicker
-                                            style={styles.photo_type_dropdown}
-                                            textStyle={styles.photo_type_text}
-                                            open={openPhotoType}
-                                            value={valuePhotoType}
-                                            items={CONTAINER_PHOTO_TYPE}
-                                            // key={CUSTOMER_NAME.labels}
-                                            setOpen={setOpenPhotoType}
-                                            setValue={setValuePhotoType}
-                                            placeholder={'Type of photo'}
-                                            listMode='SCROLLVIEW'
-                                            // containerProps={{ height: 20 }}
-                                            ArrowDownIconComponent={ArrowDownIcon}
-                                            ArrowUpIconComponent={ArrowUpIcon}
-                                            selectedItemLabelStyle={{
-                                                color: black
-                                            }}
-                                            dropDownContainerStyle={{ backgroundColor: 'darkgray' }}
-                                        />
-                                    </View>
+                <View style={styles.view_more}>
+                    <Text style={styles.view_more_text}>{showViewMore ? 'View Less' : 'View More'}</Text>
+                    <RoundButton
+                        includeIcon
+                        iconType='FontAwesome5'
+                        iconName={showViewMore ? 'chevron-up' : 'chevron-down'}
+                        iconSize={15}
+                        iconColor={white}
+                        buttonStyle={styles.view_more_down}
+                        onPress={() => setShowViewMore(!showViewMore)}
+                    />
+                </View>
 
 
-                                    <SquareButton
+                <Header3ButtonRadio
+                    groupStyle={{ alignSelf: 'center' }}
+
+                    option1Text='Status'
+                    option2Text='Photos'
+                    option3Text='Reports'
+
+                    onPressOption1={() => {
+                        setShowStatus(true)
+                        setShowPhotos(false)
+                        setShowReports(false)
+                    }}
+                    onPressOption2={() => {
+                        setShowStatus(false)
+                        setShowPhotos(true)
+                        setShowReports(false)
+                    }}
+                    onPressOption3={() => {
+                        setShowStatus(false)
+                        setShowPhotos(false)
+                        setShowReports(true)
+                    }}
+                />
+
+                <View style={{ zIndex: 99 }}>
+                    {showStatus &&
+                        <View style={styles.status_container}>
+                            {Order.status_all.slice(0).reverse().map((item, index) => (
+                                <View style={styles.status_item} key={index}>
+                                    <RoundButton
                                         includeIcon
-                                        iconName='plus'
-                                        buttonStyle={styles.photo_plus}
-                                        iconSize={ICON_SIZE}
-                                        onPress={() => setShowPhotoTypeSelector(!showPhotoTypeSelector)}
+                                        iconType='FontAwesome'
+                                        iconName={'dot-circle-o'}
+                                        iconColor='green'
+                                        iconSize={18}
+                                    />
+                                    {index != Order.status_all.length - 1
+                                        && <DashedLine axis='vertical' dashColor='green' style={styles.status_dashed_line} />}
+
+                                    <Text style={index == 0 && styles.text_bold}>{item.created_at}</Text>
+                                    <Text style={[styles.status_c3, index == 0 && styles.text_bold]}>{item.status}</Text>
+                                </View>
+                            ))}
+                        </View>
+                    }
+
+                    {showPhotos &&
+                        <View style={{ zIndex: 99, height: 'auto', minHeight: 200 }}>
+                            <View style={styles.photo_header}>
+                                <View>
+                                    <DropDownPicker
+                                        style={styles.photo_type_dropdown}
+                                        textStyle={styles.photo_type_text}
+                                        open={openPhotoType}
+                                        value={valuePhotoType}
+                                        items={CONTAINER_PHOTO_TYPE}
+                                        // key={CUSTOMER_NAME.labels}
+                                        setOpen={setOpenPhotoType}
+                                        setValue={setValuePhotoType}
+                                        placeholder={'Type of photo'}
+                                        listMode='SCROLLVIEW'
+                                        // containerProps={{ height: 20 }}
+                                        ArrowDownIconComponent={ArrowDownIcon}
+                                        ArrowUpIconComponent={ArrowUpIcon}
+                                        selectedItemLabelStyle={{
+                                            color: black
+                                        }}
+                                        dropDownContainerStyle={{ backgroundColor: 'darkgray' }}
                                     />
                                 </View>
-                                {showPhotoTypeSelector &&
-                                    <View style={styles.photoTypeSelector}>
-                                        <LongButton
-                                            includeText
-                                            text='Choose from library'
-                                            buttonStyle={styles.photoTypeSelectorItem}
-                                            textStyle={styles.photoTypeSelectorText}
-                                            onPress={() => {
-                                                chooseFile('photo')
-                                                setShowPhotoTypeSelector(!showPhotoTypeSelector)
-                                            }}
-                                        />
-                                        <LongButton
-                                            includeText
-                                            text='Take a photo'
-                                            buttonStyle={styles.photoTypeSelectorItem}
-                                            textStyle={styles.photoTypeSelectorText}
-                                            onPress={() => {
-                                                captureImage('photo')
-                                                setShowPhotoTypeSelector(!showPhotoTypeSelector)
-                                            }}
-                                        />
 
-                                    </View>
-                                }
-                                <View style={styles.photo_container}>
-                                    {Order.photo.map((item, index) => {
+
+                                <SquareButton
+                                    includeIcon
+                                    iconName='plus'
+                                    buttonStyle={styles.photo_plus}
+                                    iconSize={ICON_SIZE}
+                                    onPress={() => setShowPhotoTypeSelector(!showPhotoTypeSelector)}
+                                />
+                            </View>
+                            {showPhotoTypeSelector &&
+                                <View style={styles.photoTypeSelector}>
+                                    <LongButton
+                                        includeText
+                                        text='Choose from library'
+                                        buttonStyle={styles.photoTypeSelectorItem}
+                                        textStyle={styles.photoTypeSelectorText}
+                                        onPress={() => {
+                                            chooseFile('photo')
+                                            setShowPhotoTypeSelector(!showPhotoTypeSelector)
+                                        }}
+                                    />
+                                    <LongButton
+                                        includeText
+                                        text='Take a photo'
+                                        buttonStyle={styles.photoTypeSelectorItem}
+                                        textStyle={styles.photoTypeSelectorText}
+                                        onPress={() => {
+                                            captureImage('photo')
+                                            setShowPhotoTypeSelector(!showPhotoTypeSelector)
+                                        }}
+                                    />
+
+                                </View>
+                            }
+                            <View style={styles.photo_container}>
+                                {Order.photo.map((item, index) => {
+                                    if (valuePhotoType == 'All' || valuePhotoType == '') {
                                         return (
                                             <View key={index} style={styles.photo_item}>
                                                 <Image style={styles.photo} source={item.uri} />
                                                 <Text style={styles.photo_alt}>{item.alt}</Text>
                                             </View>
                                         )
-                                    })}
-
-                                    {/* TODO: Make this work */}
-                                    {photoDB.map((item, index) => {
+                                    } else if (item.type == valuePhotoType) {
                                         return (
                                             <View key={index} style={styles.photo_item}>
-                                                <Image style={styles.photo} source={{ uri: item.uri }} />
+                                                <Image style={styles.photo} source={item.uri} />
                                                 <Text style={styles.photo_alt}>{item.alt}</Text>
                                             </View>
                                         )
-                                    })}
-                                    {/* <Image source={{ uri: filePath }} width={100} height={100} /> */}
-                                </View>
+                                    }
+                                })}
 
+                                {/* TODO: Make this work */}
+                                {photoDB.map((item, index) => {
+                                    return (
+                                        <View key={index} style={styles.photo_item}>
+                                            <Image style={styles.photo} source={{ uri: item.uri }} />
+                                            <Text style={styles.photo_alt}>{item.alt}</Text>
+                                        </View>
+                                    )
+                                })}
+                                {/* <Image source={{ uri: filePath }} width={100} height={100} /> */}
                             </View>
-                        }
 
-                        {showReports &&
-                            <View />}
+                        </View>
+                    }
 
-                    </View>
+                    {showReports &&
+                        <View />}
+
                 </View>
+
 
             </ScrollView >
         </View >
@@ -416,6 +425,7 @@ const styles = StyleSheet.create({
     body: {
         // alignItems: 'center',
         // backgroundColor: 'red',
+        // flex: 1,
     },
     description: {
         height: itemHeight,
@@ -528,10 +538,12 @@ const styles = StyleSheet.create({
     photo_header: {
         ...GlobalStyle.row_wrapper,
         justifyContent: 'space-between',
+        // height: 200,
+        // backgroundColor: 'yellow',
         alignItems: 'center',
         margin: PHOTO_MARGIN,
         marginBottom: 0,
-        zIndex: 10,
+        zIndex: 99,
     },
     photoTypeSelector: {
         width: 'auto',

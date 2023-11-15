@@ -127,7 +127,7 @@ export const HomeHeader = (props) => {
                     setSearchPhrase={(text) => setSearchPhrase(text)}
                     containerStyle={homeStyle.search_container}
                     searchInputStyle={homeStyle.search_input}
-                    searchPlaceholder={'Search by Vesssel, B/L, Container No...'}
+                    searchPlaceholder={'Search by Vesssel, B/L, Container No, Type...'}
                     closeBtnStyle={homeStyle.search_close}
                 />
                 <SquareButton
@@ -147,11 +147,12 @@ export const HomeHeader = (props) => {
 
 const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get('screen');
 const headerHeight = Platform.OS == 'ios' ? 120 : 80; const headerWidth = ScreenWidth;
-const searchInputLength = 285;
+const searchInputLength = ScreenWidth * 0.75;
 const searchContainerMargin = 10;
 const bottomHeaderHeight = 50;
 const searchbarHeight = 50;
 const iconSize = 25;
+const SEARCH_FONT_SIZE = 14;
 const plusButtonMargin = 5;
 const plusButtonWidth = ScreenWidth - (searchInputLength + iconSize + 2 * searchContainerMargin + 2 * plusButtonMargin);
 
@@ -251,7 +252,7 @@ const homeStyle = StyleSheet.create({
     search_input: {
         width: searchInputLength,
         height: searchbarHeight,
-        fontSize: 14,
+        fontSize: SEARCH_FONT_SIZE,
     },
     plusButton: {
         height: searchbarHeight,

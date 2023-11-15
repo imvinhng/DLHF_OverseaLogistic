@@ -15,7 +15,7 @@
 
 export const USERS = [
     {
-        phone_number: 'admin',
+        phone_number: 'Admin',
         password: 'admin',
         name: 'Admin',
         type: 'sales_order_creator',
@@ -39,7 +39,7 @@ export const USERS = [
         type: 'customers',
     },
     {
-        phone_number: 'receiver',
+        phone_number: 'Receiver',
         password: 'receiver',
         name: 'Receiver',
         type: 'receiver',

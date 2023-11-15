@@ -159,6 +159,7 @@ export let CONTAINER_REPORT = [
 ]
 
 export const CONTAINER_PHOTO_TYPE = [
+    { label: 'All', value: 'All' },
     { label: 'General Report', value: 'General Report' },
-    { label: 'Damage', value: 'Damage' },
+    { label: 'Damaged', value: 'Damaged' },
 ]

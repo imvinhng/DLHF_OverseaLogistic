@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, View, Text, SafeAreaView, Dimensions, ScrollView, Image, TextInput } from 'react-native';
-import { black, blue, darkgray, green, lightgray, placeholderGray, white, yellow } from '../../assets/styles/Colors';
+import { backgroundGray, black, blue, darkgray, green, lightgray, placeholderGray, white, yellow } from '../../assets/styles/Colors';
 import GlobalStyle from '../../assets/styles/GlobalStyle';
 import { Radio2Button, RoundButton, SquareButton } from '../../components/CustomButton';
 import DropDownPicker from 'react-native-dropdown-picker';
