@@ -1,3 +1,4 @@
+import { ARRIVED_COLOR, CLAIMED_COLOR, COMPLETED_COLOR, DRAFT_COLOR, SUBMITTED_COLOR } from "../assets/styles/COLOR_INDEX";
 import { green, lightgray, lightred, red, yellow } from "../assets/styles/Colors";
 
 export let CONTAINER_REPORT = [
@@ -11,7 +12,7 @@ export let CONTAINER_REPORT = [
         eta: 'Oct. 1 (Sun)',
         csc_front: '10/2019',
         csc_door: '10/2019',
-        color: lightgray,
+        color: DRAFT_COLOR,
         status_all: [
             { id: 1, status: 'Draft', created_at: '01/08/2023' },
         ],
@@ -33,7 +34,7 @@ export let CONTAINER_REPORT = [
         eta: 'Oct. 1 (Sun)',
         csc_front: '10/2019',
         csc_door: '10/2019',
-        color: 'lightgreen',
+        color: SUBMITTED_COLOR,
         status_all: [
             { id: 1, status: 'Draft', created_at: '01/08/2023' },
             { id: 2, status: 'Submitted', created_at: '08/08/2023' },
@@ -85,7 +86,7 @@ export let CONTAINER_REPORT = [
         eta: 'Oct. 1 (Sun)',
         csc_front: '10/2019',
         csc_door: '10/2019',
-        color: 'lightblue',
+        color: ARRIVED_COLOR,
         status_all: [
             { id: 1, status: 'Draft', created_at: '01/08/2023' },
             { id: 2, status: 'Submitted', created_at: '08/08/2023' },
@@ -112,7 +113,7 @@ export let CONTAINER_REPORT = [
         eta: 'Oct. 1 (Sun)',
         csc_front: '10/2019',
         csc_door: '10/2019',
-        color: lightred,
+        color: CLAIMED_COLOR,
         status_all: [
             { id: 1, status: 'Draft', created_at: '01/08/2023' },
             { id: 2, status: 'Submitted', created_at: '08/08/2023' },
@@ -137,7 +138,7 @@ export let CONTAINER_REPORT = [
         eta: 'Oct. 1 (Sun)',
         csc_front: '10/2019',
         csc_door: '10/2019',
-        color: green,
+        color: COMPLETED_COLOR,
         status_all: [
             { id: 1, status: 'Draft', created_at: '01/08/2023' },
             { id: 2, status: 'Submitted', created_at: '08/08/2023' },

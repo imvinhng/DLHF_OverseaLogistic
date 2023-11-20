@@ -183,6 +183,13 @@ const ReportStyle = StyleSheet.create({
         right: ITEM_MARGIN,
         top: INPUT_HEIGHT - 5,
     },
+    temperature_minus: {
+        width: TEMPERATURE_PLUS_WIDTH,
+        height: INPUT_HEIGHT,
+        position: 'absolute',
+        right: ITEM_MARGIN,
+        top: INPUT_HEIGHT * 2 - 5,
+    },
     checklist_item: {
         margin: ITEM_MARGIN,
         // padding: 10,

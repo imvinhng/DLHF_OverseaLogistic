@@ -59,6 +59,7 @@ const Login = (props) => {
                         keyboardType='default'
                         placeholder={'Enter your username / email'}
                         value={phoneNumber}
+                        autoCapitalize='none'  // important
                         onChangeText={(number) => setPhoneNumber(number)}
                     />
                     <TextInput

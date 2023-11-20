@@ -10,8 +10,9 @@ import { CUSTOMER_NAME } from '../../database/CustomerList';
 import { Route } from '../../navigations/Route';
 import { CONTAINER_TYPE_OPTIONS, WEATHER_OPTIONS } from '../../database/Options';
 import ReportStyle, { HEADER_PADDING } from '../../assets/styles/ReportStyle';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { USERS } from '../../database/Credentials';
+import { crgiAction } from '../../services/redux/actions';
 
 const findUserNameByPhone = (phone) => {
     const database = USERS;
@@ -25,15 +26,28 @@ const findUserNameByPhone = (phone) => {
 
 const CRGI = (props) => {
     const { phone_number } = useSelector(state => state.userReducer);
+    const dispatch = useDispatch();
+
     const userName = findUserNameByPhone(phone_number);
 
     const [openCRGI, setOpenCRGI] = useState(false);
     const [openWeather, setOpenWeather] = useState(false);
-    const [valueWeather, setValueWeather] = useState(false);
     const [openContainerType, setOpenContainerType] = useState(false);
+
+    // TODO: Need to export these variables to NewShipment
+    const [valueDate, setValueDate] = useState('20 Sep. 2023');
+    const [valueWeather, setValueWeather] = useState(false);
+    const [valueVesselNo, setValueVesselNo] = useState('');
+    const [valueBLNo, setValueBLNo] = useState('');
+    const [valueContainerNo, setValueContainerNo] = useState('');
     const [valueContainerType, setValueContainerType] = useState(false);
+    const [valueETD, setValueETD] = useState('');
+    const [valueETA, setValueETA] = useState('');
+    const [valueCSCFront, setValueCSCFront] = useState('');
+    const [valueCSCDoor, setValueCSCDoor] = useState('');
+
     return (
-        <View>
+        <View style={{ zIndex: 99 }}>
 
             <View style={ReportStyle.header_container}>
                 <Text style={[
@@ -56,9 +70,10 @@ const CRGI = (props) => {
                 props.audience == 'sender' &&
                 <View>
                     <View style={[ReportStyle.CRGI_3c, { zIndex: 99 }]}>
+                        {/* TODO: Add DatePicker */}
                         <View style={ReportStyle.CRGI_3c_item}>
                             <Text style={ReportStyle.item_title}>Date:</Text>
-                            <TextInput style={ReportStyle.input} value={'20 Sep. 2023'} />
+                            <TextInput style={ReportStyle.input} value={valueDate} />
                             <Line color={placeholderGray} style={ReportStyle.mb5} />
                         </View>
                         <View style={ReportStyle.CRGI_3c_item}>
@@ -89,15 +104,15 @@ const CRGI = (props) => {
                     <View style={ReportStyle.CRGI_2c}>
                         <View style={ReportStyle.CRGI_2c_item}>
                             <Text style={ReportStyle.item_title}>Vessel No.</Text>
-                            <TextInput style={ReportStyle.input} />
+                            <TextInput style={ReportStyle.input} value={valueVesselNo} onChangeText={(text) => setValueVesselNo(text)} />
                             <Line color={placeholderGray} style={ReportStyle.mb5} />
 
                             <Text style={ReportStyle.item_title}>B/L No.</Text>
-                            <TextInput style={ReportStyle.input} />
+                            <TextInput style={ReportStyle.input} value={valueBLNo} onChangeText={(text) => setValueBLNo(text)} />
                             <Line color={placeholderGray} style={ReportStyle.mb5} />
 
                             <Text style={ReportStyle.item_title}>Container No.</Text>
-                            <TextInput style={ReportStyle.input} />
+                            <TextInput style={ReportStyle.input} value={valueContainerNo} onChangeText={(text) => setValueContainerNo(text)} />
                             <Line color={placeholderGray} style={ReportStyle.mb5} />
 
                             <Text style={ReportStyle.item_title}>Container Type</Text>
@@ -110,7 +125,7 @@ const CRGI = (props) => {
                                 // key={CUSTOMER_NAME.labels}
                                 setOpen={setOpenContainerType}
                                 setValue={setValueContainerType}
-                                placeholder={'Select container type'}
+                                placeholder={'Select type'}
                                 listMode='SCROLLVIEW'
                                 containerProps={[ReportStyle.dropdown, { paddingLeft: 0 }]}
                             // dropDownContainerStyle={ReportStyle.cname_dropdown}
@@ -119,19 +134,19 @@ const CRGI = (props) => {
                         </View >
                         <View style={ReportStyle.CRGI_2c_item}>
                             <Text style={ReportStyle.item_title}>ETD</Text>
-                            <TextInput style={ReportStyle.input} />
+                            <TextInput style={ReportStyle.input} value={valueETD} onChangeText={(date) => setValueETD(date)} />
                             <Line color={placeholderGray} style={ReportStyle.mb5} />
 
                             <Text style={ReportStyle.item_title}>ETA</Text>
-                            <TextInput style={ReportStyle.input} />
+                            <TextInput style={ReportStyle.input} value={valueETA} onChangeText={(date) => setValueETA(date)} />
                             <Line color={placeholderGray} style={ReportStyle.mb5} />
 
                             <Text style={ReportStyle.item_title}>CSC (Front)</Text>
-                            <TextInput style={ReportStyle.input} />
+                            <TextInput style={ReportStyle.input} value={valueCSCFront} onChangeText={(date) => setValueCSCFront(date)} />
                             <Line color={placeholderGray} style={ReportStyle.mb5} />
 
                             <Text style={ReportStyle.item_title}>CSC (Door)</Text>
-                            <TextInput style={ReportStyle.input} />
+                            <TextInput style={ReportStyle.input} value={valueCSCDoor} onChangeText={(date) => setValueCSCDoor(date)} />
                             <Line color={placeholderGray} style={ReportStyle.mb5} />
                         </View>
 

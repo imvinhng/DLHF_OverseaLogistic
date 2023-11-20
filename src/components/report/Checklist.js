@@ -46,8 +46,10 @@ export const Checklist = (props) => {
                     <View style={ReportStyle.checklist_item}>
                         <View style={ReportStyle.item}>
                             <Text style={ReportStyle.item_title}>Is all pallets tightly strapped?</Text>
-                            <TextInput style={ReportStyle.input} />
-                            <Line color={placeholderGray} style={ReportStyle.mb5} />
+                            <Radio2Button
+                                buttonGroupStyle={ReportStyle.radio}
+                                textStyle={ReportStyle.radio_text}
+                            />
                         </View>
                     </View>
                     <View style={ReportStyle.checklist_item}>
@@ -78,8 +80,6 @@ export const Checklist = (props) => {
                                 option1Text={'Opened'}
                                 option2Text={'Closed'}
                                 buttonGroupStyle={ReportStyle.radio}
-                                option1Style={ReportStyle.radio_option1}
-                                option2Style={ReportStyle.radio_option2}
                                 textStyle={ReportStyle.radio_text}
                             />
                         </View>
@@ -89,8 +89,6 @@ export const Checklist = (props) => {
                             <Text style={ReportStyle.item_title}>Clean inside container</Text>
                             <Radio2Button
                                 buttonGroupStyle={ReportStyle.radio}
-                                option1Style={ReportStyle.radio_option1}
-                                option2Style={ReportStyle.radio_option2}
                                 textStyle={ReportStyle.radio_text}
                             />
                         </View>
@@ -100,8 +98,6 @@ export const Checklist = (props) => {
                             <Text style={ReportStyle.item_title}>Outside wall SERVERE damage</Text>
                             <Radio2Button
                                 buttonGroupStyle={ReportStyle.radio}
-                                option1Style={ReportStyle.radio_option1}
-                                option2Style={ReportStyle.radio_option2}
                                 textStyle={ReportStyle.radio_text}
                             />
                         </View>
@@ -111,8 +107,6 @@ export const Checklist = (props) => {
                             <Text style={ReportStyle.item_title}>Inside FRONT wall ANY damage</Text>
                             <Radio2Button
                                 buttonGroupStyle={ReportStyle.radio}
-                                option1Style={ReportStyle.radio_option1}
-                                option2Style={ReportStyle.radio_option2}
                                 textStyle={ReportStyle.radio_text}
                             />
                         </View>
@@ -122,8 +116,6 @@ export const Checklist = (props) => {
                             <Text style={ReportStyle.item_title}>Inside wall, floor and ceiling SERVERE damage</Text>
                             <Radio2Button
                                 buttonGroupStyle={ReportStyle.radio}
-                                option1Style={ReportStyle.radio_option1}
-                                option2Style={ReportStyle.radio_option2}
                                 textStyle={ReportStyle.radio_text}
                             />
                         </View>
@@ -133,8 +125,6 @@ export const Checklist = (props) => {
                             <Text style={ReportStyle.item_title}>Cover plastic pallet number 1-2</Text>
                             <Radio2Button
                                 buttonGroupStyle={ReportStyle.radio}
-                                option1Style={ReportStyle.radio_option1}
-                                option2Style={ReportStyle.radio_option2}
                                 textStyle={ReportStyle.radio_text}
                             />
                         </View>
@@ -151,8 +141,6 @@ export const Checklist = (props) => {
                             <Text style={ReportStyle.item_title}>Fumigation stamp on pallet visible</Text>
                             <Radio2Button
                                 buttonGroupStyle={ReportStyle.radio}
-                                option1Style={ReportStyle.radio_option1}
-                                option2Style={ReportStyle.radio_option2}
                                 textStyle={ReportStyle.radio_text}
                             />
                         </View>

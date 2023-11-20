@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { ReportStyleheet, View, Text, SafeAreaView, Dimensions, ScrollView, Image, TextInput } from 'react-native';
 import { black, blue, darkgray, green, lightgray, placeholderGray, white, yellow } from '../../assets/styles/Colors';
@@ -13,6 +13,20 @@ import ReportStyle from '../../assets/styles/ReportStyle';
 
 export const Temperature = (props) => {
     const [openTemperature, setOpenTemperature] = useState(false);
+    const [numLines, setNumLines] = useState(1);
+    const [boxSeriNumber, setBoxSeriNumber] = useState([]);
+    const [boxTemp, setBoxTemp] = useState([]);
+    const [outsideTemp, setOutsideTemp] = useState('');
+
+
+    const populateBSNLine = useCallback(() => {
+        return <>{Array(numLines).fill(<TextInput style={ReportStyle.input} />)}</>
+
+    }, [numLines])
+    const populateBTLine = useCallback(() => {
+        return <>{Array(numLines).fill(<TextInput style={ReportStyle.input} />)}</>
+
+    }, [numLines])
 
     return (
         <View>
@@ -39,24 +53,38 @@ export const Temperature = (props) => {
                     <View style={ReportStyle.temperature_2c}>
                         <View style={ReportStyle.temperature_2c_item}>
                             <Text style={ReportStyle.item_title}>Box Seri Number</Text>
-                            <TextInput style={ReportStyle.input} />
+                            {populateBSNLine()}
                             <Line color={placeholderGray} style={ReportStyle.mb5} />
                         </View>
                         <View style={ReportStyle.temperature_2c_item}>
                             <Text style={ReportStyle.item_title}>Box Temperature</Text>
-                            <TextInput style={ReportStyle.input} />
+                            {populateBTLine()}
                             <Line color={placeholderGray} style={ReportStyle.mb5} />
                         </View>
-                        {/* TODO: Add onPress functionality */}
                         <SquareButton
                             includeIcon
                             iconName={'plus'}
                             iconSize={15}
                             buttonStyle={ReportStyle.temperature_plus}
+                            onPress={() => {
+                                setNumLines(numLines + 1)
+                            }}
+                        />
+                        <SquareButton
+                            includeIcon
+                            iconName={'minus'}
+                            iconSize={15}
+                            buttonStyle={ReportStyle.temperature_minus}
+                            onPress={() => {
+                                if (numLines > 1) {
+                                    setNumLines(numLines - 1)
+                                }
+                                console.log(numLines)
+                            }}
                         />
                         <View style={ReportStyle.temperature_2c_item}>
                             <Text style={ReportStyle.item_title}>Outside Temperature</Text>
-                            <TextInput style={ReportStyle.input} />
+                            <TextInput style={ReportStyle.input} value={outsideTemp} onChangeText={(text) => setOutsideTemp(text)} />
                             <Line color={placeholderGray} style={ReportStyle.mb5} />
                         </View>
                     </View>

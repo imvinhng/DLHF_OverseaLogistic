@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, View, Text, SafeAreaView, Dimensions, ScrollView, Image, TextInput } from 'react-native';
-import { black, blue, darkgray, lightgray, white, yellow } from '../../../assets/styles/Colors';
+import { black, blue, darkgray, green, lightgray, white, yellow } from '../../../assets/styles/Colors';
 import GlobalStyle from '../../../assets/styles/GlobalStyle';
 import { Radio2Button, RoundButton, SquareButton } from '../../../components/CustomButton';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { Line } from '../../../components/Line';
 import { CUSTOMER_NAME } from '../../../database/CustomerList';
 import { Route } from '../../../navigations/Route';
-// import { CRGI, Checklist, Comments, ContainerTemperature, Temperature, Time } from '../../../components/CustomComponents';
 
 import CRGI from '../../../components/report/CRGI';
 import Temperature from '../../../components/report/Temperature';
@@ -16,12 +15,15 @@ import ContainerTemperature from '../../../components/report/ContainerTemperatur
 import Time from '../../../components/report/Time';
 import Checklist from '../../../components/report/Checklist';
 import Comments from '../../../components/report/Comments';
+import { CONTAINER_REPORT } from '../../../database/ContainerReport';
+import { DRAFT_COLOR } from '../../../assets/styles/COLOR_INDEX';
 
 function NewShipment(props) {
     const navigation = useNavigation();
     const [openCustomerName, setOpenCustomerName] = useState(false);
     const [valueCustomerName, setValueCustomerName] = useState(false);
 
+    const [newItemIndex, setNewItemIndex] = useState(CONTAINER_REPORT.length + 1);
     return (
         <SafeAreaView style={styles.home}>
             <View style={styles.cname_container}>
@@ -69,7 +71,34 @@ function NewShipment(props) {
                     backgroundColor={blue}
                     textStyle={styles.submit_text}
                     buttonStyle={styles.submit_button}
-                    onPress={() => navigation.navigate(Route.MAIN_TAB, { screen: Route.Main.BOTTOM_TAB, params: { screen: Route.Main.BottomTab.HOME_TAB } })}
+                    onPress={() => {
+                        CONTAINER_REPORT.push({
+                            id: newItemIndex,
+                            vessel_no: `Cười đi :))) ${newItemIndex}`,
+                            bl_no: '34130097428',
+                            container_no: 'SEGU9790245',
+                            container_type: '40FT',
+                            etd: 'Sep. 23 (Sat)',
+                            eta: 'Oct. 1 (Sun)',
+                            csc_front: '10/2019',
+                            csc_door: '10/2019',
+                            color: DRAFT_COLOR,
+                            status_all: [
+                                { id: 1, status: 'Draft', created_at: '20/11/2023' },
+                            ],
+                            photo: [
+                                { id: 1, uri: require('../../../assets/images/container-report/TA1.png'), type: 'Damaged', alt: 'Damaged Front Wall TA1' },
+                                { id: 2, uri: require('../../../assets/images/container-report/TA2.png'), type: 'Damaged', alt: 'Damaged Front Wall TA2' },
+                                { id: 3, uri: require('../../../assets/images/container-report/TA3.png'), type: 'Damaged', alt: 'Damaged Front Wall TA3' },
+                                // { url },
+                                // { url }
+                            ],
+                            messages: [],
+                            claim: []
+                        }),
+                            setNewItemIndex(newItemIndex + 1);
+                        navigation.navigate(Route.MAIN_TAB, { screen: Route.Main.BOTTOM_TAB, params: { screen: Route.Main.BottomTab.HOME_TAB } });
+                    }}
                 />
             </View>
 

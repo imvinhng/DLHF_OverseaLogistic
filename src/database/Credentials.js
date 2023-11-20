@@ -15,37 +15,31 @@
 
 export const USERS = [
     {
-        phone_number: 'Admin',
+        phone_number: 'admin',
         password: 'admin',
         name: 'Admin',
         type: 'sales_order_creator',
     },
     {
-        phone_number: '0123456789',
+        phone_number: 'thanhnga',
         password: 'thanhnga',
         name: 'Thanh Nga',
         type: 'manager',
     },
     {
-        phone_number: '0989181123',
+        phone_number: 'thedong',
         password: 'thedong',
         name: 'The Dong',
         type: 'customers',
     },
     {
-        phone_number: '0373404205',
+        phone_number: 'thevinh',
         password: 'thevinh',
         name: 'The Vinh',
         type: 'customers',
     },
     {
-        phone_number: 'Receiver',
-        password: 'receiver',
-        name: 'Receiver',
-        type: 'receiver',
-    },
-    {
-        phone_number: '69',
+        phone_number: 'receiver',
         password: 'receiver',
         name: 'Receiver',
         type: 'receiver',

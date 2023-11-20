@@ -1,4 +1,4 @@
-import { SET_USER_NAME, SET_USER_AGE, INCREASE_AGE, GET_CITIES, SET_LOGIN } from './actions';
+import { SET_LOGIN } from './actions';
 
 const initialState = {
     phone_number: '',

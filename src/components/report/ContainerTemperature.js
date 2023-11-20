@@ -14,6 +14,11 @@ import ReportStyle from '../../assets/styles/ReportStyle';
 export const ContainerTemperature = (props) => {
     const [openContainerTemperature, setOpenContainerTemperature] = useState(false);
 
+    const [setTemp, setSetTemp] = useState('');
+    const [supplyTemp, setSupplyTemp] = useState('');
+    const [returnTemp, setReturnTemp] = useState('');
+    const [beforeLoading, setBeforeLoading] = useState('');
+
     return (
         <View>
             <View style={ReportStyle.header_container}>
@@ -36,24 +41,24 @@ export const ContainerTemperature = (props) => {
             {openContainerTemperature &&
                 props.audience == 'sender' &&
                 <View>
-                    <View style={ReportStyle.item}>
+                    <View style={ReportStyle.item_half}>
                         <Text style={ReportStyle.item_title}>Set Temp</Text>
-                        <TextInput style={ReportStyle.input} />
+                        <TextInput style={ReportStyle.input} value={setTemp} onChangeText={(text) => setSetTemp(text)} />
                         <Line color={placeholderGray} style={ReportStyle.mb5} />
                     </View>
-                    <View style={ReportStyle.item}>
+                    <View style={ReportStyle.item_half}>
                         <Text style={ReportStyle.item_title}>Supply Temp.</Text>
-                        <TextInput style={ReportStyle.input} />
+                        <TextInput style={ReportStyle.input} value={supplyTemp} onChangeText={(text) => setSupplyTemp(text)} />
                         <Line color={placeholderGray} style={ReportStyle.mb5} />
                     </View>
-                    <View style={ReportStyle.item}>
+                    <View style={ReportStyle.item_half}>
                         <Text style={ReportStyle.item_title}>Return Temp.</Text>
-                        <TextInput style={ReportStyle.input} />
+                        <TextInput style={ReportStyle.input} value={returnTemp} onChangeText={(text) => setReturnTemp(text)} />
                         <Line color={placeholderGray} style={ReportStyle.mb5} />
                     </View>
-                    <View style={ReportStyle.item}>
+                    <View style={ReportStyle.item_half}>
                         <Text style={ReportStyle.item_title}>Before Loading</Text>
-                        <TextInput style={ReportStyle.input} />
+                        <TextInput style={ReportStyle.input} value={beforeLoading} onChangeText={(text) => setBeforeLoading(text)} />
                         <Line color={placeholderGray} style={ReportStyle.mb5} />
                     </View>
                 </View>
