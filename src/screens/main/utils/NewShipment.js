@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, View, Text, SafeAreaView, Dimensions, ScrollView, Image, TextInput } from 'react-native';
 import { black, blue, darkgray, green, lightgray, white, yellow } from '../../../assets/styles/Colors';
-import GlobalStyle from '../../../assets/styles/GlobalStyle';
+import GlobalStyle, { GLOBAL_FONTSIZE } from '../../../assets/styles/GlobalStyle';
 import { Radio2Button, RoundButton, SquareButton } from '../../../components/CustomButton';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { Line } from '../../../components/Line';
@@ -17,6 +17,7 @@ import Checklist from '../../../components/report/Checklist';
 import Comments from '../../../components/report/Comments';
 import { CONTAINER_REPORT } from '../../../database/ContainerReport';
 import { DRAFT_COLOR } from '../../../assets/styles/COLOR_INDEX';
+import ReportStyle from '../../../assets/styles/ReportStyle';
 
 function NewShipment(props) {
     const navigation = useNavigation();
@@ -24,10 +25,58 @@ function NewShipment(props) {
     const [valueCustomerName, setValueCustomerName] = useState(false);
 
     const [newItemIndex, setNewItemIndex] = useState(CONTAINER_REPORT.length + 1);
+
+    const [crgi, setCrgi] = useState({
+        id: '',
+        date: '',
+        vessel_no: '',
+        bl_no: '',
+        container_no: '',
+        container_type: '',
+        etd: '',
+        eta: '',
+        csc_front: '',
+        csc_door: '',
+    })
+    const [temperature, setTemperature] = useState({
+        outside_temp: 0,
+        box_seri_no: [],
+        box_temperature: [],
+    })
+    const [containerTemperature, setContainerTemperature] = useState({
+        set_temp: 0,
+        supply_temp: 0,
+        return_temp: 0,
+        before_loading: 0,
+    })
+    const [time, setTime] = useState({
+        start_loading_time: '',
+        finish_loading_time: '',
+        departure_daron_time: '',
+    })
+    const [checklist, setChecklist] = useState({
+        no_of_pallets: 0,
+        pallets_strapped: null,
+        no_of_corner_strips: 0,
+        ventilation_setting: string,
+        drainage_valves: 0,
+        drainage_holes: null,
+        clean_inside_container: null,
+        outside_wall_dmg: null,
+        inside_front_wall_dmg: null,
+        inside_wall_floor_ceilling_dmg: null,
+        plastic_cover: null,
+        space_btw_front_and_first: 0,
+        fumigation_stamp: null,
+        drainage_plug: 0,
+    })
+
+    const [comments, setComments] = useState('')
+
     return (
         <SafeAreaView style={styles.home}>
             <View style={styles.cname_container}>
-                <Text>Customer Name: </Text>
+                <Text style={ReportStyle.item_title}>Customer Name: </Text>
                 <View>
                     <DropDownPicker
                         style={styles.cname_dropdown}
@@ -38,7 +87,7 @@ function NewShipment(props) {
                         // key={CUSTOMER_NAME.labels}
                         setOpen={setOpenCustomerName}
                         setValue={setValueCustomerName}
-                        placeholder={'Select customer'}
+                        placeholder={'Select.'}
                         listMode='SCROLLVIEW'
                         containerProps={styles.cname_dropdown}
                     // dropDownContainerStyle={styles.cname_dropdown}
@@ -55,12 +104,37 @@ function NewShipment(props) {
 
             <ScrollView>
                 <View>
-                    <CRGI audience={'sender'} />
-                    <Temperature audience={'sender'} />
-                    <ContainerTemperature audience={'sender'} />
-                    <Time audience={'sender'} />
-                    <Checklist audience={'sender'} />
-                    <Comments audience={'sender'} />
+                    <CRGI
+                        audience={'sender'}
+
+                        crgi={crgi}
+                        setCrgi={setCrgi}
+                    />
+                    <Temperature
+                        audience={'sender'}
+                        temperature={temperature}
+                        setTemperature={setTemperature}
+                    />
+                    <ContainerTemperature
+                        audience={'sender'}
+                        containerTemperature={containerTemperature}
+                        setContainerTemperature={setContainerTemperature}
+                    />
+                    <Time
+                        audience={'sender'}
+                        time={time}
+                        setTime={setTime}
+                    />
+                    <Checklist
+                        audience={'sender'}
+                        checklist={checklist}
+                        setChecklist={setChecklist}
+                    />
+                    <Comments
+                        audience={'sender'}
+                        comments={comments}
+                        setComments={setComments}
+                    />
                 </View>
             </ScrollView>
 
@@ -74,17 +148,23 @@ function NewShipment(props) {
                     onPress={() => {
                         CONTAINER_REPORT.push({
                             id: newItemIndex,
-                            vessel_no: `Cười đi :))) ${newItemIndex}`,
-                            bl_no: '34130097428',
-                            container_no: 'SEGU9790245',
-                            container_type: '40FT',
-                            etd: 'Sep. 23 (Sat)',
-                            eta: 'Oct. 1 (Sun)',
-                            csc_front: '10/2019',
-                            csc_door: '10/2019',
+                            crgi: crgi,
+                            temperature: temperature,
+                            container_temp: containerTemperature,
+                            time: time,
+                            checklist: checklist,
+                            comments: comments,
+                            // vessel_no: crgi.vessel_no,
+                            // bl_no: crgi.bl_no,
+                            // container_no: crgi.container_no,
+                            // container_type: crgi.container_type,
+                            // etd: crgi.etd,
+                            // eta: crgi.eta,
+                            // csc_front: crgi.csc_front,
+                            // csc_door: crgi.csc_door,
                             color: DRAFT_COLOR,
                             status_all: [
-                                { id: 1, status: 'Draft', created_at: '20/11/2023' },
+                                { id: 1, status: 'Draft', created_at: crgi.date },
                             ],
                             photo: [
                                 { id: 1, uri: require('../../../assets/images/container-report/TA1.png'), type: 'Damaged', alt: 'Damaged Front Wall TA1' },
@@ -94,7 +174,8 @@ function NewShipment(props) {
                                 // { url }
                             ],
                             messages: [],
-                            claim: []
+                            claim: [],
+
                         }),
                             setNewItemIndex(newItemIndex + 1);
                         navigation.navigate(Route.MAIN_TAB, { screen: Route.Main.BOTTOM_TAB, params: { screen: Route.Main.BottomTab.HOME_TAB } });
@@ -192,7 +273,7 @@ const styles = StyleSheet.create({
         borderWidth: 0,
     },
     cname_input: {
-        fontSize: INPUT_FONTSIZE - 2,
+        fontSize: GLOBAL_FONTSIZE,
         fontWeight: '700',
     },
     cname_logo: {

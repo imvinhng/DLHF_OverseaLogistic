@@ -30,7 +30,7 @@ const findUserTypeByPhone = (phone) => {
     }
 }
 
-
+// TODO: Need to read shipment detail from CONTAINER_REPORT
 function ShipmentDetail(props) {
     const route = useRoute();
     const { Order } = route.params;
@@ -209,10 +209,10 @@ function ShipmentDetail(props) {
                         <Text style={styles.text_bold}>Container Type:</Text>
                     </View>
                     <View>
-                        <Text style={styles.text_regular}>{Order.vessel_no}</Text>
-                        <Text style={styles.text_regular}>{Order.bl_no}</Text>
-                        <Text style={styles.text_regular}>{Order.container_no}</Text>
-                        <Text style={styles.text_regular}>{Order.container_type}</Text>
+                        <Text style={styles.text_regular}>{Order.crgi.vessel_no}</Text>
+                        <Text style={styles.text_regular}>{Order.crgi.bl_no}</Text>
+                        <Text style={styles.text_regular}>{Order.crgi.container_no}</Text>
+                        <Text style={styles.text_regular}>{Order.crgi.container_type}</Text>
                     </View>
                     <View>
                         <Text style={[styles.text_bold, styles.order_r1]}>Status:</Text>
@@ -223,21 +223,21 @@ function ShipmentDetail(props) {
                     </View>
                     <View>
                         <Text style={[styles.text_bgray, styles.order_r1]}>{Order.status_all[Order.status_all.length - 1].status}</Text>
-                        <Text style={styles.text_regular}>{Order.etd}</Text>
-                        <Text style={styles.text_regular}>{Order.eta}</Text>
-                        <Text style={styles.text_regular}>{Order.csc_front}</Text>
-                        <Text style={styles.text_regular}>{Order.csc_door}</Text>
+                        <Text style={styles.text_regular}>{Order.crgi.etd}</Text>
+                        <Text style={styles.text_regular}>{Order.crgi.eta}</Text>
+                        <Text style={styles.text_regular}>{Order.crgi.csc_front}</Text>
+                        <Text style={styles.text_regular}>{Order.crgi.csc_door}</Text>
                     </View>
                 </View>
 
                 {showViewMore &&
                     <View>
-                        <CRGI audience={userType == 'receiver' ? 'receiver' : 'sender'} />
-                        <Temperature audience={userType == 'receiver' ? 'receiver' : 'sender'} />
-                        <ContainerTemperature audience={userType == 'receiver' ? 'receiver' : 'sender'} />
-                        <Time audience={userType == 'receiver' ? 'receiver' : 'sender'} />
-                        <Checklist audience={userType == 'receiver' ? 'receiver' : 'sender'} />
-                        <Comments audience={userType == 'receiver' ? 'receiver' : 'sender'} />
+                        <CRGI audience={userType == 'receiver' ? 'receiver' : 'sender'} crgi={Order.crgi} />
+                        <Temperature audience={userType == 'receiver' ? 'receiver' : 'sender'} temperature={Order.temperature} />
+                        <ContainerTemperature audience={userType == 'receiver' ? 'receiver' : 'sender'} container_temp={Order.container_temp} />
+                        <Time audience={userType == 'receiver' ? 'receiver' : 'sender'} time={Order.time} />
+                        <Checklist audience={userType == 'receiver' ? 'receiver' : 'sender'} checklist={Order.checklist} />
+                        <Comments audience={userType == 'receiver' ? 'receiver' : 'sender'} comments={Order.comments} />
                     </View>}
 
                 <View style={styles.view_more}>

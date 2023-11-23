@@ -3,6 +3,7 @@ import { Dimensions, StyleSheet } from "react-native"
 import { black, darkgray, lightgray } from "./Colors";
 
 export const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get('screen');
+export const GLOBAL_FONTSIZE = 16;  // Management requested font size on page to be at least 16 to be readable
 
 const GlobalStyle = StyleSheet.create({
     box_shadow: {

@@ -3,7 +3,7 @@ import { Dimensions, Platform, StyleSheet, Text, View } from 'react-native';
 import { white, tan, yellow } from '../assets/styles/Colors';
 import { useNavigation } from '@react-navigation/native';
 import { NotificationButton, PromotionButton, RoundButton, RoundButton_Image, SquareButton } from './CustomButton';
-import GlobalStyle from '../assets/styles/GlobalStyle';
+import GlobalStyle, { ScreenWidth } from '../assets/styles/GlobalStyle';
 import SearchBar from './SearchBar';
 import { Line } from './Line';
 import { USERS } from '../database/Credentials';
@@ -158,7 +158,7 @@ export const HomeHeader = (props) => {
                 <SquareButton
                     includeIcon
                     iconName={'plus'}
-                    iconSize={16}
+                    iconSize={PLUS_ICON_SIZE}
                     buttonStyle={homeStyle.plusButton}
                     onPress={() => navigation.navigate(Route.MAIN_TAB, { screen: Route.Main.NEW_SHIPMENT_SCREEN })}
                 />
@@ -170,16 +170,22 @@ export const HomeHeader = (props) => {
     )
 }
 
-const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get('screen');
-const headerHeight = Platform.OS == 'ios' ? 120 : 80; const headerWidth = ScreenWidth;
-const searchInputLength = ScreenWidth * 0.75;
-const searchContainerMargin = 10;
-const bottomHeaderHeight = 50;
-const searchbarHeight = 50;
-const iconSize = 50;
+const HEADER_HEIGHT = Platform.OS == 'ios' ? 120 : 80;
+const BOTTOM_HEADER_HEIGHT = 50;
+const SEARCH_INPUT_HEIGHT = 50;
+
+const HEADER_WIDTH = ScreenWidth;
+const SEARCH_INPUT_WIDTH = ScreenWidth * 0.75;
+
+const PLUS_ICON_SIZE = 16;
+const PROFILE_PIC_SIZE = 50;
 const SEARCH_FONT_SIZE = 14;
-const plusButtonMargin = 5;
-const plusButtonWidth = ScreenWidth - (searchInputLength + iconSize + 2 * searchContainerMargin + 2 * plusButtonMargin);
+
+const SEARCH_CONTAINER_MARGIN = 10;
+
+const PLUS_BUTTON_PADDING = 5;
+
+const PLUS_BUTTON_WIDTH = HEADER_WIDTH - (SEARCH_INPUT_WIDTH + 2 * SEARCH_CONTAINER_MARGIN) - (PLUS_ICON_SIZE + 2 * PLUS_BUTTON_PADDING);
 
 const styles = StyleSheet.create({
     header: {
@@ -191,8 +197,8 @@ const styles = StyleSheet.create({
         paddingBottom: 10,
         paddingHorizontal: 10,
 
-        height: headerHeight,
-        width: headerWidth,
+        height: HEADER_HEIGHT,
+        width: HEADER_WIDTH,
     },
     sub_header_left: {
         flexDirection: 'row',
@@ -240,7 +246,7 @@ const homeStyle = StyleSheet.create({
         paddingHorizontal: 10,
     },
     bottom_header: {
-        height: bottomHeaderHeight, // to be change
+        height: BOTTOM_HEADER_HEIGHT, // to be change
         alignItems: 'center',
         marginTop: 10,
         marginBottom: 15,
@@ -262,32 +268,32 @@ const homeStyle = StyleSheet.create({
         fontWeight: 'bold',
     },
     icon_image: {
-        height: iconSize,
-        width: iconSize,
+        height: PROFILE_PIC_SIZE,
+        width: PROFILE_PIC_SIZE,
         borderRadius: 25,
     },
     search_container: {
-        margin: searchContainerMargin,
+        margin: SEARCH_CONTAINER_MARGIN,
     },
     search_close: {
         position: 'absolute',
-        left: searchInputLength + searchContainerMargin,
+        left: SEARCH_INPUT_WIDTH + SEARCH_CONTAINER_MARGIN,
         top: '30%',
     },
     search_input: {
-        width: searchInputLength,
-        height: searchbarHeight,
+        width: SEARCH_INPUT_WIDTH,
+        height: SEARCH_INPUT_HEIGHT,
         fontSize: SEARCH_FONT_SIZE,
     },
     plusButton: {
-        height: searchbarHeight,
+        height: SEARCH_INPUT_HEIGHT,
+        width: PLUS_BUTTON_WIDTH,
         position: 'absolute',
-        right: 5,
-        width: plusButtonWidth,
+        right: 0,
     },
     profile_pic_btn: {
-        marginLeft: iconSize / 10,
-        marginRight: iconSize / 5,
+        marginLeft: PROFILE_PIC_SIZE / 10,
+        marginRight: PROFILE_PIC_SIZE / 5,
 
     },
 })

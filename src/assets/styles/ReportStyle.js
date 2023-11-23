@@ -1,6 +1,6 @@
 import { Dimensions, StyleSheet } from "react-native";
 import { darkgray, green, lightgray, placeholderGray, white, yellow } from "./Colors";
-import GlobalStyle from "./GlobalStyle";
+import GlobalStyle, { GLOBAL_FONTSIZE } from "./GlobalStyle";
 
 const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get('screen');
 
@@ -9,14 +9,14 @@ const HEADER_HEIGHT = ScreenHeight / 20;
 const HEADER_CIRCLE_WIDTH = HEADER_HEIGHT / 2;
 const HEADER_CIRCLE_HEIGHT = HEADER_HEIGHT / 2;
 const HEADER_MARGIN = 10;
-export const HEADER_PADDING = 20;
+export const HEADER_PADDING = 10;
 const CRGI_3C_MARGIN = 10;
 const CRGI_2C_MARGIN = 10;
 const INPUT_HEIGHT = 40;  // need to be at least 40 to fit on Android and IOS
 const ITEM_MARGIN = 10;
 const ITEM_PADDING = 5;
 const TEMPERATURE_PLUS_WIDTH = 20;
-const INPUT_FONTSIZE = 16; // don't go pass 8 or text will break
+const INPUT_FONTSIZE = GLOBAL_FONTSIZE;
 const ITEM_WIDTH = ScreenWidth - 4 * ITEM_MARGIN;
 const ITEM_HALF_WIDTH = ScreenWidth / 2 - 2 * ITEM_MARGIN;
 const SUBMIT_BUTTON_HEIGHT = 50;
@@ -65,11 +65,17 @@ const ReportStyle = StyleSheet.create({
     },
     input: {
         height: INPUT_HEIGHT,
-        width: ScreenWidth / 2,
+        width: 'auto',
         paddingLeft: 5,
+        justifyContent: 'center',
         fontSize: INPUT_FONTSIZE,
         fontWeight: '700',
         // backgroundColor: 'yellow'
+    },
+    input_txt: {
+        paddingLeft: 5,
+        fontSize: INPUT_FONTSIZE,
+        fontWeight: '700',
     },
     item: {
         width: ITEM_WIDTH,
@@ -115,6 +121,7 @@ const ReportStyle = StyleSheet.create({
     },
     header_text: {
         fontWeight: '600',
+        fontSize: GLOBAL_FONTSIZE + 2,
     },
     header_down: {
         position: 'absolute',

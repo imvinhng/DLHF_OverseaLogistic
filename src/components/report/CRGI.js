@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { ReportStyleheet, View, Text, SafeAreaView, Dimensions, ScrollView, Image, TextInput } from 'react-native';
+import { ReportStyleheet, View, Text, SafeAreaView, Dimensions, ScrollView, Image, TextInput, TouchableOpacity, Pressable } from 'react-native';
 import { backgroundGray, black, blue, darkgray, green, lightgray, placeholderGray, white, yellow } from '../../assets/styles/Colors';
 import GlobalStyle from '../../assets/styles/GlobalStyle';
-import { Radio2Button, RoundButton, SquareButton } from '../../components/CustomButton';
+import { LongButton, Radio2Button, RoundButton, SquareButton } from '../../components/CustomButton';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { Line } from '../../components/Line';
 import { CUSTOMER_NAME } from '../../database/CustomerList';
@@ -12,7 +12,8 @@ import { CONTAINER_TYPE_OPTIONS, WEATHER_OPTIONS } from '../../database/Options'
 import ReportStyle, { HEADER_PADDING } from '../../assets/styles/ReportStyle';
 import { useDispatch, useSelector } from 'react-redux';
 import { USERS } from '../../database/Credentials';
-import { crgiAction } from '../../services/redux/actions';
+import DatePicker from 'react-native-date-picker';
+import { CONTAINER_REPORT } from '../../database/ContainerReport';
 
 const findUserNameByPhone = (phone) => {
     const database = USERS;
@@ -24,27 +25,56 @@ const findUserNameByPhone = (phone) => {
     }
 }
 
+// export let valueDate = new Date();
+// export let valueWeather = false;
+// export let valueVesselNo = '';
+// export let valueBLNo = '';
+// export let valueContainerNo = '';
+// export let valueContainerType = false;
+// export let valueETD = new Date();
+// export let valueETA = new Date();
+// export let valueCSCFront = new Date();
+// export let valueCSCDoor = new Date();
+
 const CRGI = (props) => {
+    const { crgi, setCrgi } = props
     const { username } = useSelector(state => state.userReducer);
-    const dispatch = useDispatch();
 
     const userName = findUserNameByPhone(username);
 
     const [openCRGI, setOpenCRGI] = useState(false);
+    const [openDate, setOpenDate] = useState(false);
     const [openWeather, setOpenWeather] = useState(false);
+    const [openETD, setOpenETD] = useState(false);
+    const [openETA, setOpenETA] = useState(false);
+    const [openCSCDoor, setOpenCSCDoor] = useState(false);
+    const [openCSCFront, setOpenCSCFront] = useState(false);
     const [openContainerType, setOpenContainerType] = useState(false);
 
     // TODO: Need to export these variables to NewShipment
-    const [valueDate, setValueDate] = useState('20 Sep. 2023');
+    const [valueDate, setValueDate] = useState(new Date());
     const [valueWeather, setValueWeather] = useState(false);
     const [valueVesselNo, setValueVesselNo] = useState('');
     const [valueBLNo, setValueBLNo] = useState('');
     const [valueContainerNo, setValueContainerNo] = useState('');
     const [valueContainerType, setValueContainerType] = useState(false);
-    const [valueETD, setValueETD] = useState('');
-    const [valueETA, setValueETA] = useState('');
-    const [valueCSCFront, setValueCSCFront] = useState('');
-    const [valueCSCDoor, setValueCSCDoor] = useState('');
+    const [valueETD, setValueETD] = useState(new Date());
+    const [valueETA, setValueETA] = useState(new Date());
+    const [valueCSCFront, setValueCSCFront] = useState(new Date());
+    const [valueCSCDoor, setValueCSCDoor] = useState(new Date());
+
+    const [valueDateString, setValueDateString] = useState('');
+    const [valueETDString, setValueETDString] = useState('');
+    const [valueETAString, setValueETAString] = useState('');
+    const [valueCSCFrontString, setValueCSCFrontString] = useState('');
+    const [valueCSCDoorString, setValueCSCDoorString] = useState('');
+
+    // let valueDateString = '';
+    // let valueETDString = '';
+    // let valueETAString = '';
+    // let valueCSCFrontString = '';
+    // let valueCSCDoorString = '';
+
 
     return (
         <View style={{ zIndex: 99 }}>
@@ -73,8 +103,32 @@ const CRGI = (props) => {
                         {/* TODO: Add DatePicker */}
                         <View style={ReportStyle.CRGI_3c_item}>
                             <Text style={ReportStyle.item_title}>Date:</Text>
-                            <TextInput style={ReportStyle.input} value={valueDate} />
+                            <Pressable style={ReportStyle.input} onPress={() => setOpenDate(true)}>
+                                <Text style={ReportStyle.input_txt}>{valueDateString}</Text>
+                            </Pressable>
                             <Line color={placeholderGray} style={ReportStyle.mb5} />
+
+                            <DatePicker
+                                modal
+                                locale={'vi'}
+                                mode={'date'}
+                                title={'Select date'}
+                                open={openDate}
+                                date={valueDate}
+                                onConfirm={(date) => {
+                                    setOpenDate(false)
+                                    setValueDate(date)
+
+                                    const [DOTW, month, day, year] = date.toDateString().split(' ')
+                                    setValueDateString(`${day} ${month} ${year}`)
+
+                                    setCrgi({ ...crgi, date: `${day} ${month} ${year}` })
+
+                                }}
+                                onCancel={() => {
+                                    setOpenDate(false)
+                                }}
+                            />
                         </View>
                         <View style={ReportStyle.CRGI_3c_item}>
                             <Text style={ReportStyle.item_title}>Weather:</Text>
@@ -90,6 +144,7 @@ const CRGI = (props) => {
                                 placeholder={'Select.'}
                                 listMode='SCROLLVIEW'
                                 containerProps={[ReportStyle.dropdown, { paddingLeft: 0 }]}
+                                onChangeValue={(value) => setCrgi({ ...crgi, weather: value })}
                             // dropDownContainerStyle={ReportStyle.cname_dropdown}
                             />
                             <Line color={placeholderGray} style={ReportStyle.mb5} />
@@ -104,15 +159,16 @@ const CRGI = (props) => {
                     <View style={ReportStyle.CRGI_2c}>
                         <View style={ReportStyle.CRGI_2c_item}>
                             <Text style={ReportStyle.item_title}>Vessel No.</Text>
-                            <TextInput style={ReportStyle.input} value={valueVesselNo} onChangeText={(text) => setValueVesselNo(text)} />
+                            {/* BEWARE: setCrgi might not exist in outside of NewShipment, so calling the fn might break the program!!! */}
+                            <TextInput style={ReportStyle.input} value={crgi.vessel_no} onChangeText={(text) => setCrgi({ ...crgi, vessel_no: text })} />
                             <Line color={placeholderGray} style={ReportStyle.mb5} />
 
                             <Text style={ReportStyle.item_title}>B/L No.</Text>
-                            <TextInput style={ReportStyle.input} value={valueBLNo} onChangeText={(text) => setValueBLNo(text)} />
+                            <TextInput style={ReportStyle.input} value={crgi.bl_no} onChangeText={(text) => setCrgi({ ...crgi, bl_no: text })} />
                             <Line color={placeholderGray} style={ReportStyle.mb5} />
 
                             <Text style={ReportStyle.item_title}>Container No.</Text>
-                            <TextInput style={ReportStyle.input} value={valueContainerNo} onChangeText={(text) => setValueContainerNo(text)} />
+                            <TextInput style={ReportStyle.input} value={crgi.container_no} onChangeText={(text) => setCrgi({ ...crgi, container_no: text })} />
                             <Line color={placeholderGray} style={ReportStyle.mb5} />
 
                             <Text style={ReportStyle.item_title}>Container Type</Text>
@@ -128,26 +184,117 @@ const CRGI = (props) => {
                                 placeholder={'Select type'}
                                 listMode='SCROLLVIEW'
                                 containerProps={[ReportStyle.dropdown, { paddingLeft: 0 }]}
+                                onChangeValue={(value) => setCrgi({ ...crgi, container_type: value })}
                             // dropDownContainerStyle={ReportStyle.cname_dropdown}
                             />
                             <Line color={placeholderGray} style={ReportStyle.mb5} />
                         </View >
                         <View style={ReportStyle.CRGI_2c_item}>
                             <Text style={ReportStyle.item_title}>ETD</Text>
-                            <TextInput style={ReportStyle.input} value={valueETD} onChangeText={(date) => setValueETD(date)} />
+                            <Pressable style={ReportStyle.input} onPress={() => setOpenETD(true)}>
+                                <Text style={ReportStyle.input_txt}>{valueETDString}</Text>
+                            </Pressable>
                             <Line color={placeholderGray} style={ReportStyle.mb5} />
+
+                            <DatePicker
+                                modal
+                                locale={'vi'}
+                                mode={'date'}
+                                title={'Select date'}
+                                open={openETD}
+                                date={valueETD}
+                                onConfirm={(date) => {
+                                    setOpenETD(false)
+                                    setValueETD(date)
+
+                                    const [DOTW, month, day, year] = date.toDateString().split(' ')
+                                    setValueETDString(`${month} ${day} (${DOTW})`)
+
+                                    setCrgi({ ...crgi, etd: `${month} ${day} (${DOTW})` })
+                                }}
+                                onCancel={() => {
+                                    setOpenETD(false)
+                                }}
+                            />
 
                             <Text style={ReportStyle.item_title}>ETA</Text>
-                            <TextInput style={ReportStyle.input} value={valueETA} onChangeText={(date) => setValueETA(date)} />
+                            <Pressable style={ReportStyle.input} onPress={() => setOpenETA(true)}>
+                                <Text style={ReportStyle.input_txt}>{valueETAString}</Text>
+                            </Pressable>
                             <Line color={placeholderGray} style={ReportStyle.mb5} />
+
+                            <DatePicker
+                                modal
+                                locale={'vi'}
+                                mode={'date'}
+                                title={'Select date'}
+                                open={openETA}
+                                date={valueETA}
+                                onConfirm={(date) => {
+                                    setOpenETA(false)
+                                    setValueETA(date)
+                                    const [DOTW, month, day, year] = date.toDateString().split(' ')
+                                    setValueETAString(`${month} ${day} (${DOTW})`)
+
+                                    setCrgi({ ...crgi, eta: `${month} ${day} (${DOTW})` })
+                                }}
+                                onCancel={() => {
+                                    setOpenETA(false)
+                                }}
+                            />
 
                             <Text style={ReportStyle.item_title}>CSC (Front)</Text>
-                            <TextInput style={ReportStyle.input} value={valueCSCFront} onChangeText={(date) => setValueCSCFront(date)} />
+                            <Pressable style={ReportStyle.input} onPress={() => setOpenCSCFront(true)}>
+                                <Text style={ReportStyle.input_txt}>{valueCSCFrontString}</Text>
+                            </Pressable>
                             <Line color={placeholderGray} style={ReportStyle.mb5} />
 
+                            <DatePicker
+                                modal
+                                locale={'vi'}
+                                mode={'date'}
+                                title={'Select date'}
+                                open={openCSCFront}
+                                date={valueCSCFront}
+                                onConfirm={(date) => {
+                                    setOpenCSCFront(false)
+                                    setValueCSCFront(date)
+
+                                    const [day, month, year] = date.toLocaleDateString('vi').split('/')
+                                    setValueCSCFrontString(`${month}/${year}`)
+
+                                    setCrgi({ ...crgi, csc_front: `${month}/${year}` })
+                                }}
+                                onCancel={() => {
+                                    setOpenCSCFront(false)
+                                }}
+                            />
+
                             <Text style={ReportStyle.item_title}>CSC (Door)</Text>
-                            <TextInput style={ReportStyle.input} value={valueCSCDoor} onChangeText={(date) => setValueCSCDoor(date)} />
+                            <Pressable style={ReportStyle.input} onPress={() => setOpenCSCDoor(true)}>
+                                <Text style={ReportStyle.input_txt}>{valueCSCDoorString}</Text>
+                            </Pressable>
                             <Line color={placeholderGray} style={ReportStyle.mb5} />
+
+                            <DatePicker
+                                modal
+                                locale={'vi'}
+                                mode={'date'}
+                                title={'Select date'}
+                                open={openCSCDoor}
+                                date={valueCSCDoor}
+                                onConfirm={(date) => {
+                                    setOpenCSCDoor(false)
+                                    setValueCSCDoor(date)
+                                    const [day, month, year] = date.toLocaleDateString('vi').split('/')
+                                    setValueCSCDoorString(`${month}/${year}`)
+
+                                    setCrgi({ ...crgi, csc_door: `${month}/${year}` })
+                                }}
+                                onCancel={() => {
+                                    setOpenCSCDoor(false)
+                                }}
+                            />
                         </View>
 
                     </View>

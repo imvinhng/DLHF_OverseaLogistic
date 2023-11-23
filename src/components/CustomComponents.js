@@ -22,8 +22,8 @@ export const Item = ({ order }) => {
         >
             <View>
                 <Image
-                    source={require('../assets/images/icons/american-flag.png')}
-                    style={styles.order_r1}
+                    source={require('../assets/images/icons/japanese-flag.jpeg')}
+                    style={[styles.flag, styles.order_r1]}
                 />
                 <Text style={styles.text_bold}>Vessel No.:</Text>
                 <Text style={styles.text_bold}>B/L No.:</Text>
@@ -31,10 +31,10 @@ export const Item = ({ order }) => {
                 <Text style={styles.text_bold}>Container Type:</Text>
             </View>
             <View>
-                <Text style={styles.text_regular}>{order.vessel_no}</Text>
-                <Text style={styles.text_regular}>{order.bl_no}</Text>
-                <Text style={styles.text_regular}>{order.container_no}</Text>
-                <Text style={styles.text_regular}>{order.container_type}</Text>
+                <Text style={styles.text_regular}>{order.crgi.vessel_no}</Text>
+                <Text style={styles.text_regular}>{order.crgi.bl_no}</Text>
+                <Text style={styles.text_regular}>{order.crgi.container_no}</Text>
+                <Text style={styles.text_regular}>{order.crgi.container_type}</Text>
             </View>
             <View>
                 <Text style={[styles.text_bold, styles.order_r1]}>Status:</Text>
@@ -45,10 +45,10 @@ export const Item = ({ order }) => {
             </View>
             <View>
                 <Text style={[styles.text_bgray, styles.order_r1]}>{order.status_all[order.status_all.length - 1].status}</Text>
-                <Text style={styles.text_regular}>{order.etd}</Text>
-                <Text style={styles.text_regular}>{order.eta}</Text>
-                <Text style={styles.text_regular}>{order.csc_front}</Text>
-                <Text style={styles.text_regular}>{order.csc_door}</Text>
+                <Text style={styles.text_regular}>{order.crgi.etd}</Text>
+                <Text style={styles.text_regular}>{order.crgi.eta}</Text>
+                <Text style={styles.text_regular}>{order.crgi.csc_front}</Text>
+                <Text style={styles.text_regular}>{order.crgi.csc_door}</Text>
             </View>
         </Pressable>
     )
@@ -92,6 +92,10 @@ const styles = StyleSheet.create({
     order_r1: {
         position: 'absolute',
         top: -(itemHeight / 2) + itemPadding * 2, // cause of padding
-    }
+    },
+    flag: {
+        width: 40 * 0.8,
+        height: 30 * 0.8,
+    },
 })
 
