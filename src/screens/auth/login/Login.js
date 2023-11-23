@@ -29,16 +29,16 @@ const Login = (props) => {
         }
 
         for (let i = 0; i < USERS.length; i++) {
-            if (database[i].phone_number == phoneNumber && database[i].password == password) {
+            if (database[i].username == phoneNumber && database[i].password == password) {
                 navigation.navigate('Main', {
                     screen: 'Home', params: {
-                        screen: 'HomeScreen', params: { loggedIn: true, phone_number: phoneNumber }
+                        screen: 'HomeScreen', params: { loggedIn: true, username: phoneNumber }
                     }
                 })
                 setPhoneNumber('')
                 setPassword('')
                 // Redux
-                dispatch(loginAction({ phone_number: phoneNumber, name: database[i].name, password: database[i].password }))
+                dispatch(loginAction({ username: phoneNumber, name: database[i].name, password: database[i].password }))
             }
         }
     }

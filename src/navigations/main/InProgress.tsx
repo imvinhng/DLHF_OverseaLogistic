@@ -2,25 +2,24 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Route } from '../Route';
 
-import HomeScreen from '../../screens/main/bottom-tab/Home';
+import InProgressScreen from '../../screens/main/bottom-tab/InProgress';
 import ShipmentDetailScreen from '../../screens/main/utils/ShipmentDetail';
 
 const Stack = createStackNavigator();
 
-function Home(): JSX.Element {
+function InProgress(): JSX.Element {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen
-                name={Route.Main.BottomTab.Home.HOME_SCREEN}
-                component={HomeScreen}
+                name={Route.Main.BottomTab.InProgress.INPROGRESS_SCREEN}
+                component={InProgressScreen}
             />
             <Stack.Screen
-                name={Route.Main.BottomTab.Home.SHIPMENT_DETAIL_SCREEN}
+                name={Route.Main.SHIPMENT_DETAIL_SCREEN}
                 component={ShipmentDetailScreen}
             />
         </Stack.Navigator>
     )
 }
 
-export default Home;
-
+export default InProgress;

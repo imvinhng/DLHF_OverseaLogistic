@@ -7,8 +7,9 @@ import GlobalStyle from '../assets/styles/GlobalStyle';
 import SearchBar from './SearchBar';
 import { Line } from './Line';
 import { USERS } from '../database/Credentials';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Route } from '../navigations/Route';
+import { loginAction } from '../services/redux/actions';
 
 export const Header = (props) => {
     return (
@@ -84,11 +85,21 @@ export const HeaderNBack = (props) => {
     )
 }
 
-const findNameByPhone = (phone) => {
+const findNameByUsername = (username) => {
     const database = USERS;
     for (let i = 0; i < USERS.length; i++) {
-        if (database[i].phone_number == phone) {
+        if (database[i].username == username) {
             return database[i].name;
+        }
+
+    }
+}
+
+const findProfilePicByUsername = (username) => {
+    const database = USERS;
+    for (let i = 0; i < USERS.length; i++) {
+        if (database[i].username == username) {
+            return database[i].profile_pic_uri;
         }
 
     }
@@ -96,9 +107,11 @@ const findNameByPhone = (phone) => {
 
 export const HomeHeader = (props) => {
     const [searchPhrase, setSearchPhrase] = useState('');
-    const { phone_number } = useSelector(state => state.userReducer)
-    const userName = findNameByPhone(phone_number);
+    const { username } = useSelector(state => state.userReducer)
+    const userName = findNameByUsername(username);
+    const profilePicURI = findProfilePicByUsername(username);
     const navigation = useNavigation();
+    const dispatch = useDispatch();
 
     return (
         <View style={homeStyle.header}>
@@ -106,9 +119,10 @@ export const HomeHeader = (props) => {
                 <View style={homeStyle.sub_header_left}>
                     <RoundButton
                         includeImage
-                        image_uri={require('../assets/images/icons/red-flower-icon.png')}
+                        image_uri={profilePicURI}
                         backgroundColor={tan}
-                        iconStyle={homeStyle.icon_image}
+                        imageStyle={homeStyle.icon_image}
+                        buttonStyle={homeStyle.profile_pic_btn}  // temp
                     />
                     <View>
                         <Text style={homeStyle.headerText_regular}>Good morning!</Text>
@@ -118,6 +132,17 @@ export const HomeHeader = (props) => {
 
                 <View style={homeStyle.sub_header_right}>
                     <NotificationButton />
+                    <RoundButton
+                        includeIcon
+                        iconType='MaterialIcons'
+                        iconName='logout'
+                        iconSize={30}
+                        buttonStyle={{ marginLeft: 10, marginRight: -5 }}
+                        onPress={() => {
+                            dispatch(loginAction({ username: '', name: '', password: '' }))
+                            navigation.navigate(Route.AUTH_TAB, { screen: Route.Auth.LOGIN_TAB })
+                        }}
+                    />
                 </View>
             </View>
 
@@ -151,7 +176,7 @@ const searchInputLength = ScreenWidth * 0.75;
 const searchContainerMargin = 10;
 const bottomHeaderHeight = 50;
 const searchbarHeight = 50;
-const iconSize = 25;
+const iconSize = 50;
 const SEARCH_FONT_SIZE = 14;
 const plusButtonMargin = 5;
 const plusButtonWidth = ScreenWidth - (searchInputLength + iconSize + 2 * searchContainerMargin + 2 * plusButtonMargin);
@@ -206,12 +231,13 @@ const homeStyle = StyleSheet.create({
     header: {
         ...GlobalStyle.column_wrapper,
         backgroundColor: tan,
-        paddingTop: 10,
+        paddingTop: Platform.OS == 'ios' ? 10 : 20,
     },
     top_header: {
         ...GlobalStyle.row_wrapper,
         justifyContent: 'space-between',
         marginBottom: 10,
+        paddingHorizontal: 10,
     },
     bottom_header: {
         height: bottomHeaderHeight, // to be change
@@ -222,7 +248,6 @@ const homeStyle = StyleSheet.create({
     },
     sub_header_right: {
         ...GlobalStyle.row_wrapper,
-        marginRight: 10,
     },
     sub_header_left: {
         ...GlobalStyle.row_wrapper,
@@ -239,7 +264,7 @@ const homeStyle = StyleSheet.create({
     icon_image: {
         height: iconSize,
         width: iconSize,
-        margin: 10,
+        borderRadius: 25,
     },
     search_container: {
         margin: searchContainerMargin,
@@ -259,5 +284,10 @@ const homeStyle = StyleSheet.create({
         position: 'absolute',
         right: 5,
         width: plusButtonWidth,
-    }
+    },
+    profile_pic_btn: {
+        marginLeft: iconSize / 10,
+        marginRight: iconSize / 5,
+
+    },
 })

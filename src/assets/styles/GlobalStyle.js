@@ -1,6 +1,8 @@
 import React from "react"
-import { StyleSheet } from "react-native"
+import { Dimensions, StyleSheet } from "react-native"
 import { black, darkgray, lightgray } from "./Colors";
+
+export const { width: ScreenWidth, height: ScreenHeight } = Dimensions.get('screen');
 
 const GlobalStyle = StyleSheet.create({
     box_shadow: {

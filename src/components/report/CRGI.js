@@ -17,7 +17,7 @@ import { crgiAction } from '../../services/redux/actions';
 const findUserNameByPhone = (phone) => {
     const database = USERS;
     for (let i = 0; i < USERS.length; i++) {
-        if (database[i].phone_number == phone) {
+        if (database[i].username == phone) {
             return database[i].name;
         }
 
@@ -25,10 +25,10 @@ const findUserNameByPhone = (phone) => {
 }
 
 const CRGI = (props) => {
-    const { phone_number } = useSelector(state => state.userReducer);
+    const { username } = useSelector(state => state.userReducer);
     const dispatch = useDispatch();
 
-    const userName = findUserNameByPhone(phone_number);
+    const userName = findUserNameByPhone(username);
 
     const [openCRGI, setOpenCRGI] = useState(false);
     const [openWeather, setOpenWeather] = useState(false);

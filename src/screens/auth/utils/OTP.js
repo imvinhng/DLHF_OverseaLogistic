@@ -48,7 +48,7 @@ export const OTP_Login = (props) => {
                                 }
                             ]}
                         >
-                            {/* {props.phone_number} */}
+                            {/* {props.username} */}
                         </Text>
                     </View>
                     <Text style={styles.text2}>Enter code to continue</Text>
@@ -62,7 +62,7 @@ export const OTP_Login = (props) => {
                     handleTextChange={(code) => {
                         if (code == otpValue) {
                             navigation.navigate('Main', { screen: 'HomeScreen', params: { loggedIn: true } })
-                            dispatch(loginAction({ phone_number: props.phone_number }))
+                            dispatch(loginAction({ username: props.username }))
                         }
                     }}
                 />
@@ -109,7 +109,7 @@ export function OTP_Register(props) {
                                 }
                             ]}
                         >
-                            {/* {route.params.phone_number} */}
+                            {/* {route.params.username} */}
                         </Text>
                     </View>
                     <Text style={styles.text2}>Enter code to continue</Text>

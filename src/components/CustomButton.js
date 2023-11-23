@@ -4,6 +4,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Octicons from 'react-native-vector-icons/Octicons';
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import { useNavigation } from '@react-navigation/native';
 import { black, darkgray, darkorange, lightgray, lightorange, offwhite, tan, white } from '../assets/styles/Colors';
 import GlobalStyle from '../assets/styles/GlobalStyle';
@@ -28,8 +29,10 @@ export const RoundButton = (props) => {
                 <Octicons name={props.iconName} size={props.iconSize} color={props.iconColor} />}
             {props.includeIcon && props.iconType == 'Ionicons' &&
                 <Ionicons name={props.iconName} size={props.iconSize} color={props.iconColor} />}
+            {props.includeIcon && props.iconType == 'MaterialIcons' &&
+                <MaterialIcons name={props.iconName} size={props.iconSize} color={props.iconColor} />}
             {props.includeImage &&
-                <Image source={props.image_uri} style={props.iconStyle} />}
+                <Image source={props.image_uri} style={props.imageStyle} />}
         </Pressable>
     );
 }

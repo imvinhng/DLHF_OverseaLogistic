@@ -4,10 +4,10 @@ import { useRoute } from '@react-navigation/native';
 
 function Login_OTP(props) {
     const route = useRoute();
-    const { phone_number } = route.params;
+    const { username } = route.params;
 
     return (
-        <OTP_Login phone_number={phone_number} />
+        <OTP_Login username={username} />
     );
 }
 

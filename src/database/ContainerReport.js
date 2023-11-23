@@ -63,7 +63,7 @@ export let CONTAINER_REPORT = [
         status_all: [
             { id: 1, status: 'Draft', created_at: '01/08/2023' },
             { id: 2, status: 'Submitted', created_at: '08/08/2023' },
-            { id: 3, status: 'On Delivery', created_at: '15/8/2023' },
+            { id: 3, status: 'In Progress', created_at: '15/8/2023' },
         ],
         photo: [
             { id: 1, uri: require('../assets/images/container-report/TA1.png'), type: 'Damaged', alt: 'Damaged Front Wall TA1' },
@@ -90,7 +90,7 @@ export let CONTAINER_REPORT = [
         status_all: [
             { id: 1, status: 'Draft', created_at: '01/08/2023' },
             { id: 2, status: 'Submitted', created_at: '08/08/2023' },
-            { id: 3, status: 'On Delivery', created_at: '15/8/2023' },
+            { id: 3, status: 'In Progress', created_at: '15/8/2023' },
             { id: 4, status: 'Arrived', created_at: '22/8/2023' },
         ],
         photo: [
@@ -117,7 +117,7 @@ export let CONTAINER_REPORT = [
         status_all: [
             { id: 1, status: 'Draft', created_at: '01/08/2023' },
             { id: 2, status: 'Submitted', created_at: '08/08/2023' },
-            { id: 3, status: 'On Delivery', created_at: '15/8/2023' },
+            { id: 3, status: 'In Progress', created_at: '15/8/2023' },
             { id: 4, status: 'Arrived', created_at: '22/8/2023' },
             { id: 4, status: 'Claimed', created_at: '29/8/2023' },
         ],
@@ -142,7 +142,7 @@ export let CONTAINER_REPORT = [
         status_all: [
             { id: 1, status: 'Draft', created_at: '01/08/2023' },
             { id: 2, status: 'Submitted', created_at: '08/08/2023' },
-            { id: 3, status: 'On Delivery', created_at: '15/8/2023' },
+            { id: 3, status: 'In Progress', created_at: '15/8/2023' },
             { id: 4, status: 'Arrived', created_at: '22/8/2023' },
             { id: 4, status: 'Claimed', created_at: '29/8/2023' },
             { id: 5, status: 'Completed', created_at: '10/9/2023' },

@@ -15,33 +15,38 @@
 
 export const USERS = [
     {
-        phone_number: 'admin',
+        username: 'admin',
         password: 'admin',
         name: 'Admin',
         type: 'sales_order_creator',
+        profile_pic_uri: require('../assets/images/profile-pics/default-profile.jpeg'),
     },
     {
-        phone_number: 'thanhnga',
+        username: 'thanhnga',
         password: 'thanhnga',
         name: 'Thanh Nga',
         type: 'manager',
+        profile_pic_uri: require('../assets/images/profile-pics/thanh_nga-profile.png'),
     },
     {
-        phone_number: 'thedong',
+        username: 'thedong',
         password: 'thedong',
         name: 'The Dong',
         type: 'customers',
+        profile_pic_uri: require('../assets/images/profile-pics/angel_girl-profile.png'),
     },
     {
-        phone_number: 'thevinh',
+        username: 'thevinh',
         password: 'thevinh',
         name: 'The Vinh',
         type: 'customers',
+        profile_pic_uri: require('../assets/images/profile-pics/goku-profile.jpeg'),
     },
     {
-        phone_number: 'receiver',
+        username: 'receiver',
         password: 'receiver',
         name: 'Receiver',
         type: 'receiver',
+        profile_pic_uri: require('../assets/images/profile-pics/default-profile.jpeg'),
     },
 ]

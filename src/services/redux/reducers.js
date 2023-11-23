@@ -1,7 +1,7 @@
 import { SET_LOGIN } from './actions';
 
 const initialState = {
-    phone_number: '',
+    username: '',
     password: '',
     name: '',
 }
@@ -10,7 +10,7 @@ function userReducer(state = initialState, action) {
     switch (action.type) {
         case SET_LOGIN:
             return {
-                phone_number: action.payload.phone_number,
+                username: action.payload.username,
                 password: action.payload.password,
                 name: action.payload.name
             };

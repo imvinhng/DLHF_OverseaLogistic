@@ -23,7 +23,7 @@ import Comments from '../../../components/report/Comments';
 const findUserTypeByPhone = (phone) => {
     const database = USERS;
     for (let i = 0; i < USERS.length; i++) {
-        if (database[i].phone_number == phone) {
+        if (database[i].username == phone) {
             return database[i].type;
         }
 
@@ -34,8 +34,8 @@ const findUserTypeByPhone = (phone) => {
 function ShipmentDetail(props) {
     const route = useRoute();
     const { Order } = route.params;
-    const { phone_number } = useSelector(state => state.userReducer);
-    const userType = findUserTypeByPhone(phone_number);
+    const { username } = useSelector(state => state.userReducer);
+    const userType = findUserTypeByPhone(username);
 
     const [openPhotoType, setOpenPhotoType] = useState(false);
     const [valuePhotoType, setValuePhotoType] = useState('');

@@ -17,15 +17,15 @@ function ForgetPassword(props) {
         setLoginBtnBorderColor(lightorange);
     }
 
-    function login(phone_number) {
-        setPhoneNumber(phone_number)
+    function login(username) {
+        setPhoneNumber(username)
     }
 
     function promptOTP() {
         navigation.navigate('Login', { screen: 'OTPLoginScreen' })
 
         // TODO: Make registerAction
-        // dispatch(loginAction({ phone_number: phoneNumber, name: database[i].name, password: database[i].password }))
+        // dispatch(loginAction({ username: phoneNumber, name: database[i].name, password: database[i].password }))
     }
 
     return (

@@ -3,33 +3,29 @@ export const Route = {
     Main: {
         BOTTOM_TAB: 'BOTTOM_TAB',
         BottomTab: {
-            HOME_TAB: 'Home',
-            Home: {
-                HOME_SCREEN: 'HOME_SCREEN',
-                SHIPMENT_DETAIL_SCREEN: 'SHIPMENT_DETAIL_SCREEN',
+            DRAFT_TAB: 'Draft',
+            Draft: {
+                DRAFT_SCREEN: 'DRAFT_SCREEN',
             },
-
-            SHIPMENT_TAB: 'Shipments',
-            Shipment: {
-                SHIPMENT_SCREEN: 'SHIPMENT_SCREEN',
+            SUBMITTED_TAB: 'Submitted',
+            Submitted: {
+                SUBMITTED_SCREEN: 'SUBMITTED_SCREEN',
             },
-
-            PHOTO_TAB: 'Photos',
-            Photo: {
-                PHOTO_SCREEN: 'PHOTO_SCREEN',
+            INPROGRESS_TAB: 'In Progress',
+            InProgress: {
+                INPROGRESS_SCREEN: 'INPROGRESS_SCREEN',
             },
-
-            CLAIM_TAB: 'Claims',
-            Claim: {
-                CLAIM_SCREEN: 'CLAIM_SCREEN',
+            ARRIVED_TAB: 'Arrived',
+            Arrived: {
+                ARRIVED_SCREEN: 'ARRIVED_SCREEN',
             },
-
-            OTHER_TAB: 'Others',
-            Other: {
-                OTHER_SCREEN: 'OTHER_SCREEN',
+            COMPLETED_TAB: 'Completed',
+            Completed: {
+                COMPLETED_SCREEN: 'COMPLETED_SCREEN',
             },
         },
-        NEW_SHIPMENT_SCREEN: 'NewShipmentScreen'
+        NEW_SHIPMENT_SCREEN: 'NewShipmentScreen',
+        SHIPMENT_DETAIL_SCREEN: 'SHIPMENT_DETAIL_SCREEN',
     },
 
     AUTH_TAB: 'Auth',
