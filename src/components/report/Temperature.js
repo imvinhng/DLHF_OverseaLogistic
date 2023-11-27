@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { ReportStyleheet, View, Text, SafeAreaView, Dimensions, ScrollView, Image, TextInput } from 'react-native';
+import { ReportStyleheet, View, Text, SafeAreaView, Dimensions, ScrollView, Image, TextInput, TouchableOpacity } from 'react-native';
 import { black, blue, darkgray, green, lightgray, placeholderGray, white, yellow } from '../../assets/styles/Colors';
 import GlobalStyle from '../../assets/styles/GlobalStyle';
 import { Radio2Button, RoundButton, SquareButton } from '../../components/CustomButton';
@@ -12,25 +12,57 @@ import ReportStyle from '../../assets/styles/ReportStyle';
 
 
 export const Temperature = (props) => {
+    const { temperature, setTemperature } = props;
+
     const [openTemperature, setOpenTemperature] = useState(false);
     const [numLines, setNumLines] = useState(1);
-    const [boxSeriNumber, setBoxSeriNumber] = useState([]);
-    const [boxTemp, setBoxTemp] = useState([]);
-    const [outsideTemp, setOutsideTemp] = useState('');
+
+    const [boxSeriNumber, setBoxSeriNumber] = useState(temperature.box_seri_no);
+    const [boxTemp, setBoxTemp] = useState(temperature.box_temp);
+    // const [outsideTemp, setOutsideTemp] = useState('');
 
 
-    const populateBSNLine = useCallback(() => {
+    const populateBSNLine = () => {
         return <>{Array(numLines).fill(<TextInput style={ReportStyle.input} />)}</>
 
-    }, [numLines])
-    const populateBTLine = useCallback(() => {
+        // TODO: Get this to update to Main Page
+        // const list = [];
+        // for (let index = 0; index < numLines; index++) {
+        //     list[index] =
+        //         <TextInput
+        //             style={ReportStyle.input}
+        //             value={boxSeriNumber[index]}
+        //             onChangeText={(text) => {
+        //                 setBoxSeriNumber({ ...boxSeriNumber, boxSeriNumber: text })
+        //                 setTemperature({ ...temperature, box_seri_no: boxSeriNumber })
+        //                 console.log(boxSeriNumber)
+        //             }} />;
+        // }
+        // return list;
+
+    }
+    const populateBTLine = () => {
         return <>{Array(numLines).fill(<TextInput style={ReportStyle.input} />)}</>
 
-    }, [numLines])
+        // TODO: Get this to update to Main Page
+        // const list = [];
+        // for (let index = 0; index < numLines; index++) {
+        //     list[index] =
+        //         <TextInput
+        //             style={ReportStyle.input}
+        //             value={boxTemp[index]}
+        //             onChangeText={(text) => {
+        //                 setBoxTemp({ ...boxTemp, text })
+        //                 setTemperature({ ...temperature, box_temp: boxTemp })
+        //                 console.log(boxTemp)
+        //             }} />;
+        // }
+        // return list;
+    }
 
     return (
         <View>
-            <View style={ReportStyle.header_container}>
+            <TouchableOpacity style={ReportStyle.header_container} onPress={() => setOpenTemperature(!openTemperature)}>
                 <View style={ReportStyle.header_circle}>
                     <Text style={ReportStyle.header_text}>
                         1
@@ -45,7 +77,7 @@ export const Temperature = (props) => {
                     buttonStyle={ReportStyle.header_down}
                     onPress={() => setOpenTemperature(!openTemperature)}
                 />
-            </View>
+            </TouchableOpacity>
 
             {openTemperature &&
                 props.audience == 'sender' &&
@@ -57,7 +89,7 @@ export const Temperature = (props) => {
                             <Line color={placeholderGray} style={ReportStyle.mb5} />
                         </View>
                         <View style={ReportStyle.temperature_2c_item}>
-                            <Text style={ReportStyle.item_title}>Box Temperature</Text>
+                            <Text style={ReportStyle.item_title}>Box Temp. (°C)</Text>
                             {populateBTLine()}
                             <Line color={placeholderGray} style={ReportStyle.mb5} />
                         </View>
@@ -83,8 +115,11 @@ export const Temperature = (props) => {
                             }}
                         />
                         <View style={ReportStyle.temperature_2c_item}>
-                            <Text style={ReportStyle.item_title}>Outside Temperature</Text>
-                            <TextInput style={ReportStyle.input} value={outsideTemp} onChangeText={(text) => setOutsideTemp(text)} />
+                            <Text style={ReportStyle.item_title}>Outside Temperature (°C)</Text>
+                            <TextInput
+                                style={ReportStyle.input}
+                                value={temperature.outside_temp}
+                                onChangeText={(text) => setTemperature({ ...temperature, outside_temp: text })} />
                             <Line color={placeholderGray} style={ReportStyle.mb5} />
                         </View>
                     </View>
@@ -100,14 +135,14 @@ export const Temperature = (props) => {
                             <TextInput style={ReportStyle.input} placeholder={'27.6'} editable={false} />
                         </View>
                         <View style={ReportStyle.temperature_2c_item}>
-                            <Text style={ReportStyle.item_title}>Box Temperature</Text>
+                            <Text style={ReportStyle.item_title}>Box Temp. (°C)</Text>
                             <TextInput style={ReportStyle.input} placeholder={'3.4oC'} editable={false} />
                             <TextInput style={ReportStyle.input} placeholder={'3.4oC'} editable={false} />
                             <TextInput style={ReportStyle.input} placeholder={'3.3oC'} editable={false} />
                         </View>
                         <Line color={placeholderGray} style={ReportStyle.mb5} />
                         <View style={ReportStyle.temperature_2c_item}>
-                            <Text style={ReportStyle.item_title}>Outside Temperature</Text>
+                            <Text style={ReportStyle.item_title}>Outside Temp. (°C)</Text>
                             <TextInput style={ReportStyle.input} placeholder={'24.0oC'} editable={false} />
                             <Line color={placeholderGray} style={ReportStyle.mb5} />
                         </View>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { StyleSheet, View, Text, SafeAreaView, Dimensions, ScrollView, Image, TextInput } from 'react-native';
+import { StyleSheet, View, Text, SafeAreaView, Dimensions, ScrollView, Image, TextInput, TouchableOpacity } from 'react-native';
 import { black, blue, darkgray, green, lightgray, placeholderGray, white, yellow } from '../../assets/styles/Colors';
 import GlobalStyle from '../../assets/styles/GlobalStyle';
 import { Radio2Button, RoundButton, SquareButton } from '../../components/CustomButton';
@@ -12,11 +12,12 @@ import ReportStyle from '../../assets/styles/ReportStyle';
 
 
 export const Time = (props) => {
+    const { time, setTime } = props;
     const [openTime, setOpenTime] = useState(false);
 
     return (
         <View>
-            <View style={ReportStyle.header_container}>
+            <TouchableOpacity style={ReportStyle.header_container} onPress={() => setOpenTime(!openTime)}>
                 <View style={ReportStyle.header_circle}>
                     <Text style={ReportStyle.header_text}>
                         3
@@ -31,24 +32,24 @@ export const Time = (props) => {
                     buttonStyle={ReportStyle.header_down}
                     onPress={() => setOpenTime(!openTime)}
                 />
-            </View>
+            </TouchableOpacity>
 
             {openTime &&
                 props.audience == 'sender' &&
                 <View style={ReportStyle.halfbox}>
                     <View style={ReportStyle.item_half}>
                         <Text style={ReportStyle.item_title}>Start Loading Time</Text>
-                        <TextInput style={ReportStyle.input} />
+                        <TextInput style={ReportStyle.input} value={time.start_loading_time} onChangeText={(text) => setTime({ ...time, start_loading_time: text })} />
                         <Line color={placeholderGray} style={ReportStyle.mb5} />
                     </View>
                     <View style={ReportStyle.item_half}>
                         <Text style={ReportStyle.item_title}>Finish Loading Time</Text>
-                        <TextInput style={ReportStyle.input} />
+                        <TextInput style={ReportStyle.input} value={time.finish_loading_time} onChangeText={(text) => setTime({ ...time, finish_loading_time: text })} />
                         <Line color={placeholderGray} style={ReportStyle.mb5} />
                     </View>
                     <View style={ReportStyle.item_half}>
                         <Text style={ReportStyle.item_title}>Departure Daron Time</Text>
-                        <TextInput style={ReportStyle.input} />
+                        <TextInput style={ReportStyle.input} value={time.dept_daron_time} onChangeText={(text) => setTime({ ...time, dept_daron_time: text })} />
                         <Line color={placeholderGray} style={ReportStyle.mb5} />
                     </View>
                 </View>}

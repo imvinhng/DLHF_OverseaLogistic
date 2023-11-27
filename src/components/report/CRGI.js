@@ -37,7 +37,7 @@ const findUserNameByPhone = (phone) => {
 // export let valueCSCDoor = new Date();
 
 const CRGI = (props) => {
-    const { crgi, setCrgi } = props
+    const { crgi, setCrgi } = props;
     const { username } = useSelector(state => state.userReducer);
 
     const userName = findUserNameByPhone(username);
@@ -51,23 +51,22 @@ const CRGI = (props) => {
     const [openCSCFront, setOpenCSCFront] = useState(false);
     const [openContainerType, setOpenContainerType] = useState(false);
 
-    // TODO: Need to export these variables to NewShipment
     const [valueDate, setValueDate] = useState(new Date());
-    const [valueWeather, setValueWeather] = useState(false);
+    const [valueWeather, setValueWeather] = useState(crgi.weather);
     const [valueVesselNo, setValueVesselNo] = useState('');
     const [valueBLNo, setValueBLNo] = useState('');
     const [valueContainerNo, setValueContainerNo] = useState('');
-    const [valueContainerType, setValueContainerType] = useState(false);
+    const [valueContainerType, setValueContainerType] = useState(crgi.container_type);
     const [valueETD, setValueETD] = useState(new Date());
     const [valueETA, setValueETA] = useState(new Date());
     const [valueCSCFront, setValueCSCFront] = useState(new Date());
     const [valueCSCDoor, setValueCSCDoor] = useState(new Date());
 
-    const [valueDateString, setValueDateString] = useState('');
-    const [valueETDString, setValueETDString] = useState('');
-    const [valueETAString, setValueETAString] = useState('');
-    const [valueCSCFrontString, setValueCSCFrontString] = useState('');
-    const [valueCSCDoorString, setValueCSCDoorString] = useState('');
+    const [valueDateString, setValueDateString] = useState(crgi.date ? crgi.date : '');
+    const [valueETDString, setValueETDString] = useState(crgi.etd ? crgi.etd : '');
+    const [valueETAString, setValueETAString] = useState(crgi.eta ? crgi.eta : '');
+    const [valueCSCFrontString, setValueCSCFrontString] = useState(crgi.csc_front ? crgi.csc_front : '');
+    const [valueCSCDoorString, setValueCSCDoorString] = useState(crgi.csc_door ? crgi.csc_door : '');
 
     // let valueDateString = '';
     // let valueETDString = '';
@@ -77,7 +76,7 @@ const CRGI = (props) => {
 
 
     return (
-        <View style={{ zIndex: 99 }}>
+        <TouchableOpacity style={{ zIndex: 99 }} onPress={() => setOpenCRGI(!openCRGI)}>
 
             <View style={ReportStyle.header_container}>
                 <Text style={[
@@ -100,7 +99,6 @@ const CRGI = (props) => {
                 props.audience == 'sender' &&
                 <View>
                     <View style={[ReportStyle.CRGI_3c, { zIndex: 99 }]}>
-                        {/* TODO: Add DatePicker */}
                         <View style={ReportStyle.CRGI_3c_item}>
                             <Text style={ReportStyle.item_title}>Date:</Text>
                             <Pressable style={ReportStyle.input} onPress={() => setOpenDate(true)}>
@@ -144,7 +142,15 @@ const CRGI = (props) => {
                                 placeholder={'Select.'}
                                 listMode='SCROLLVIEW'
                                 containerProps={[ReportStyle.dropdown, { paddingLeft: 0 }]}
-                                onChangeValue={(value) => setCrgi({ ...crgi, weather: value })}
+                                onChangeValue={(value) => {
+                                    setCrgi({ ...crgi, weather: value })
+                                    // console.log('====================================');
+                                    // console.log('current val: ', value)
+                                    // console.log('weather value set', value)
+                                    // console.log('weather crgi set', crgi.weather)
+                                    // console.log('====================================');
+
+                                }}
                             // dropDownContainerStyle={ReportStyle.cname_dropdown}
                             />
                             <Line color={placeholderGray} style={ReportStyle.mb5} />
@@ -360,7 +366,7 @@ const CRGI = (props) => {
                     </View>
 
                 </View>}
-        </View>
+        </TouchableOpacity>
 
     )
 }

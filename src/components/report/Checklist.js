@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { StyleSheet, View, Text, SafeAreaView, Dimensions, ScrollView, Image, TextInput } from 'react-native';
+import { StyleSheet, View, Text, SafeAreaView, Dimensions, ScrollView, Image, TextInput, TouchableOpacity } from 'react-native';
 import { backgroundGray, black, blue, darkgray, green, lightgray, placeholderGray, white, yellow } from '../../assets/styles/Colors';
 import GlobalStyle from '../../assets/styles/GlobalStyle';
 import { Radio2Button, RoundButton, SquareButton } from '../../components/CustomButton';
@@ -12,11 +12,12 @@ import ReportStyle from '../../assets/styles/ReportStyle';
 
 
 export const Checklist = (props) => {
+    const { checklist, setChecklist } = props;
     const [openChecklist, setOpenChecklist] = useState(false);
 
     return (
         <View>
-            <View style={ReportStyle.header_container}>
+            <TouchableOpacity style={ReportStyle.header_container} onPress={() => setOpenChecklist(!openChecklist)}>
                 <View style={ReportStyle.header_circle}>
                     <Text style={ReportStyle.header_text}>
                         4
@@ -31,7 +32,22 @@ export const Checklist = (props) => {
                     buttonStyle={ReportStyle.header_down}
                     onPress={() => setOpenChecklist(!openChecklist)}
                 />
-            </View>
+            </TouchableOpacity>
+
+            {/* : 0,
+            : null,
+            : 0,
+            : '',
+            : 0,
+            drainage_holes: null,
+            clean_inside_container: null,
+            outside_wall_dmg: null,
+            inside_front_wall_dmg: null,
+            inside_wall_floor_ceilling_dmg: null,
+            plastic_cover: null,
+            : 0,
+            fumigation_stamp: null,
+            : 0, */}
 
             {openChecklist &&
                 props.audience == 'sender' &&
@@ -39,49 +55,47 @@ export const Checklist = (props) => {
                     <View style={ReportStyle.checklist_item}>
                         <View style={ReportStyle.item}>
                             <Text style={ReportStyle.item_title}># of of pallets</Text>
-                            <TextInput style={ReportStyle.input} />
+                            <TextInput style={ReportStyle.input} value={checklist.no_of_pallets} onChangeText={(text) => setChecklist({ ...checklist, no_of_pallets: text })} />
                             <Line color={placeholderGray} style={ReportStyle.mb5} />
                         </View>
                     </View>
                     <View style={ReportStyle.checklist_item}>
                         <View style={ReportStyle.item}>
                             <Text style={ReportStyle.item_title}>Is all pallets tightly strapped?</Text>
+                            {/* TODO: Need to find a way to export these boolean value to Main */}
                             <Radio2Button
                                 buttonGroupStyle={ReportStyle.radio}
                                 textStyle={ReportStyle.radio_text}
+                                value={checklist.pallets_strapped}
                             />
                         </View>
                     </View>
                     <View style={ReportStyle.checklist_item}>
                         <View style={ReportStyle.item}>
                             <Text style={ReportStyle.item_title}># of corner strips</Text>
-                            <TextInput style={ReportStyle.input} />
+                            <TextInput style={ReportStyle.input} value={checklist.no_of_corner_strips} onChangeText={(text) => setChecklist({ ...checklist, no_of_corner_strips: text })} />
                             <Line color={placeholderGray} style={ReportStyle.mb5} />
                         </View>
                     </View>
                     <View style={ReportStyle.checklist_item}>
                         <View style={ReportStyle.item}>
                             <Text style={ReportStyle.item_title}>Ventilation setting</Text>
-                            <TextInput style={ReportStyle.input} />
+                            <TextInput style={ReportStyle.input} value={checklist.ventilation_setting} onChangeText={(text) => setChecklist({ ...checklist, ventilation_setting: text })} />
                             <Line color={placeholderGray} style={ReportStyle.mb5} />
                         </View>
                     </View>
                     <View style={ReportStyle.checklist_item}>
                         <View style={ReportStyle.item}>
                             <Text style={ReportStyle.item_title}>Drainage valves</Text>
-                            <TextInput style={ReportStyle.input} />
+                            <TextInput style={ReportStyle.input} value={checklist.drainage_valves} onChangeText={(text) => setChecklist({ ...checklist, drainage_valves: text })} />
                             <Line color={placeholderGray} style={ReportStyle.mb5} />
                         </View>
                     </View>
                     <View style={ReportStyle.checklist_item}>
                         <View style={ReportStyle.item}>
-                            <Text style={ReportStyle.item_title}>4 drainage holes</Text>
-                            <Radio2Button
-                                option1Text={'Opened'}
-                                option2Text={'Closed'}
-                                buttonGroupStyle={ReportStyle.radio}
-                                textStyle={ReportStyle.radio_text}
-                            />
+                            <Text style={ReportStyle.item_title}>Drainage holes opened</Text>
+                            <TextInput style={ReportStyle.input} value={checklist.d_holes_opened} onChangeText={(text) => setChecklist({ ...checklist, d_holes_opened: text })} />
+                            <Line color={placeholderGray} style={ReportStyle.mb5} />
                         </View>
                     </View>
                     <View style={ReportStyle.checklist_item}>
@@ -90,6 +104,7 @@ export const Checklist = (props) => {
                             <Radio2Button
                                 buttonGroupStyle={ReportStyle.radio}
                                 textStyle={ReportStyle.radio_text}
+                                value={checklist.clean_inside_container}
                             />
                         </View>
                     </View>
@@ -99,6 +114,7 @@ export const Checklist = (props) => {
                             <Radio2Button
                                 buttonGroupStyle={ReportStyle.radio}
                                 textStyle={ReportStyle.radio_text}
+                                value={checklist.outside_wall_dmg}
                             />
                         </View>
                     </View>
@@ -108,6 +124,7 @@ export const Checklist = (props) => {
                             <Radio2Button
                                 buttonGroupStyle={ReportStyle.radio}
                                 textStyle={ReportStyle.radio_text}
+                                value={checklist.inside_front_wall_dmg}
                             />
                         </View>
                     </View>
@@ -117,6 +134,7 @@ export const Checklist = (props) => {
                             <Radio2Button
                                 buttonGroupStyle={ReportStyle.radio}
                                 textStyle={ReportStyle.radio_text}
+                                value={checklist.inside_wall_floor_ceilling_dmg}
                             />
                         </View>
                     </View>
@@ -126,13 +144,14 @@ export const Checklist = (props) => {
                             <Radio2Button
                                 buttonGroupStyle={ReportStyle.radio}
                                 textStyle={ReportStyle.radio_text}
+                                value={checklist.plastic_cover}
                             />
                         </View>
                     </View>
                     <View style={ReportStyle.checklist_item}>
                         <View style={ReportStyle.item}>
                             <Text style={ReportStyle.item_title}>Space between front wall and first pallets</Text>
-                            <TextInput style={ReportStyle.input} />
+                            <TextInput style={ReportStyle.input} value={checklist.space_btw_front_and_first} onChangeText={(text) => setChecklist({ ...checklist, space_btw_front_and_first: text })} />
                             <Line color={placeholderGray} style={ReportStyle.mb5} />
                         </View>
                     </View>
@@ -142,13 +161,14 @@ export const Checklist = (props) => {
                             <Radio2Button
                                 buttonGroupStyle={ReportStyle.radio}
                                 textStyle={ReportStyle.radio_text}
+                                value={checklist.fumigation_stamp}
                             />
                         </View>
                     </View>
                     <View style={ReportStyle.checklist_item}>
                         <View style={ReportStyle.item}>
                             <Text style={ReportStyle.item_title}>Drainage Plug</Text>
-                            <TextInput style={ReportStyle.input} />
+                            <TextInput style={ReportStyle.input} value={checklist.drainage_plug} onChangeText={(text) => setChecklist({ ...checklist, drainage_plug: text })} />
                             <Line color={placeholderGray} style={ReportStyle.mb5} />
                         </View>
                     </View>

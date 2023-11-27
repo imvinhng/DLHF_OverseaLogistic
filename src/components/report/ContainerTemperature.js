@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { StyleSheet, View, Text, SafeAreaView, Dimensions, ScrollView, Image, TextInput } from 'react-native';
+import { StyleSheet, View, Text, SafeAreaView, Dimensions, ScrollView, Image, TextInput, TouchableOpacity } from 'react-native';
 import { black, blue, darkgray, green, lightgray, placeholderGray, white, yellow } from '../../assets/styles/Colors';
 import GlobalStyle from '../../assets/styles/GlobalStyle';
 import { Radio2Button, RoundButton, SquareButton } from '../../components/CustomButton';
@@ -12,6 +12,7 @@ import ReportStyle from '../../assets/styles/ReportStyle';
 
 
 export const ContainerTemperature = (props) => {
+    const { containerTemperature, setContainerTemperature } = props;
     const [openContainerTemperature, setOpenContainerTemperature] = useState(false);
 
     const [setTemp, setSetTemp] = useState('');
@@ -21,7 +22,7 @@ export const ContainerTemperature = (props) => {
 
     return (
         <View>
-            <View style={ReportStyle.header_container}>
+            <TouchableOpacity style={ReportStyle.header_container} onPress={() => setOpenContainerTemperature(!openContainerTemperature)}>
                 <View style={ReportStyle.header_circle}>
                     <Text style={ReportStyle.header_text}>
                         2
@@ -36,29 +37,29 @@ export const ContainerTemperature = (props) => {
                     buttonStyle={ReportStyle.header_down}
                     onPress={() => setOpenContainerTemperature(!openContainerTemperature)}
                 />
-            </View>
+            </TouchableOpacity>
 
             {openContainerTemperature &&
                 props.audience == 'sender' &&
                 <View>
                     <View style={ReportStyle.item_half}>
-                        <Text style={ReportStyle.item_title}>Set Temp</Text>
-                        <TextInput style={ReportStyle.input} value={setTemp} onChangeText={(text) => setSetTemp(text)} />
+                        <Text style={ReportStyle.item_title}>Set Temp. (°C)</Text>
+                        <TextInput style={ReportStyle.input} value={containerTemperature.set_temp} onChangeText={(text) => setContainerTemperature({ ...containerTemperature, set_temp: text })} />
                         <Line color={placeholderGray} style={ReportStyle.mb5} />
                     </View>
                     <View style={ReportStyle.item_half}>
-                        <Text style={ReportStyle.item_title}>Supply Temp.</Text>
-                        <TextInput style={ReportStyle.input} value={supplyTemp} onChangeText={(text) => setSupplyTemp(text)} />
+                        <Text style={ReportStyle.item_title}>Supply Temp. (°C)</Text>
+                        <TextInput style={ReportStyle.input} value={containerTemperature.supply_temp} onChangeText={(text) => setContainerTemperature({ ...containerTemperature, supply_temp: text })} />
                         <Line color={placeholderGray} style={ReportStyle.mb5} />
                     </View>
                     <View style={ReportStyle.item_half}>
-                        <Text style={ReportStyle.item_title}>Return Temp.</Text>
-                        <TextInput style={ReportStyle.input} value={returnTemp} onChangeText={(text) => setReturnTemp(text)} />
+                        <Text style={ReportStyle.item_title}>Return Temp. (°C)</Text>
+                        <TextInput style={ReportStyle.input} value={containerTemperature.return_temp} onChangeText={(text) => setContainerTemperature({ ...containerTemperature, return_temp: text })} />
                         <Line color={placeholderGray} style={ReportStyle.mb5} />
                     </View>
                     <View style={ReportStyle.item_half}>
-                        <Text style={ReportStyle.item_title}>Before Loading</Text>
-                        <TextInput style={ReportStyle.input} value={beforeLoading} onChangeText={(text) => setBeforeLoading(text)} />
+                        <Text style={ReportStyle.item_title}>Before Loading (°C)</Text>
+                        <TextInput style={ReportStyle.input} value={containerTemperature.before_loading} onChangeText={(text) => setContainerTemperature({ ...containerTemperature, before_loading: text })} />
                         <Line color={placeholderGray} style={ReportStyle.mb5} />
                     </View>
                 </View>

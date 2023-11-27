@@ -9,14 +9,16 @@ import { Line } from '../../components/Line';
 import { CUSTOMER_NAME } from '../../database/CustomerList';
 import { Route } from '../../navigations/Route';
 import ReportStyle from '../../assets/styles/ReportStyle';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 export const Comments = (props) => {
+    const { comments, setComments } = props;
     const [openComments, setOpenComments] = useState(false);
 
     return (
         <View>
-            <View style={ReportStyle.header_container}>
+            <TouchableOpacity style={ReportStyle.header_container} onPress={() => setOpenComments(!openComments)}>
                 <View style={ReportStyle.header_circle}>
                     <Text style={ReportStyle.header_text}>
                         5
@@ -31,14 +33,14 @@ export const Comments = (props) => {
                     buttonStyle={ReportStyle.header_down}
                     onPress={() => setOpenComments(!openComments)}
                 />
-            </View>
+            </TouchableOpacity>
 
             {openComments &&
                 props.audience == 'sender' &&
                 <View>
                     <View style={ReportStyle.item}>
                         <Text style={ReportStyle.item_title}>Any comments?</Text>
-                        <TextInput style={ReportStyle.input} />
+                        <TextInput style={ReportStyle.input} value={comments} onChangeText={(text) => setComments(text)} />
                         <Line color={placeholderGray} style={ReportStyle.mb5} />
                     </View>
                 </View>}

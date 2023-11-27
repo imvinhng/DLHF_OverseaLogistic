@@ -133,11 +133,14 @@ export const HomeHeader = (props) => {
                 <View style={homeStyle.sub_header_right}>
                     <NotificationButton />
                     <RoundButton
-                        includeIcon
-                        iconType='MaterialIcons'
-                        iconName='logout'
-                        iconSize={30}
+                        includeImage
+                        // iconType='FontAwesome5'
+                        // iconName='door-open'
+                        // iconSize={30}
+                        image_uri={require('../assets/images/icons/exit-icon.jpeg')}
+                        imageStyle={{ width: 40, height: 40 }}
                         buttonStyle={{ marginLeft: 10, marginRight: -5 }}
+                        // backgroundColor={white}
                         onPress={() => {
                             dispatch(loginAction({ username: '', name: '', password: '' }))
                             navigation.navigate(Route.AUTH_TAB, { screen: Route.Auth.LOGIN_TAB })

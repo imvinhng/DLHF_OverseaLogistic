@@ -11,18 +11,26 @@ import { Route } from '../../../navigations/Route';
 import { Item } from '../../../components/CustomComponents';
 
 function Completed(props) {
-
+    const [data, setData] = useState(CONTAINER_REPORT)
     return (
         <SafeAreaView style={styles.home}>
             <HomeHeader />
             <FlatList
-                data={CONTAINER_REPORT}
+                refreshing={false}
+                onRefresh={() => {
+                    let newData = []
+                    CONTAINER_REPORT.forEach(item => {
+                        newData.push(item)
+                    });
+                    setData(newData)
+                }}
+                data={data}
                 keyExtractor={item => item.id}
                 // numColumns={2}
 
                 renderItem={({ item }) => {
                     if (item.status_all[item.status_all.length - 1].status == 'Completed') {
-                        return <Item order={item} />
+                        return <Item id={item.id} />
                     }
                 }}
             />

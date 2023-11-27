@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Dimensions, FlatList, Image, Pressable, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import GlobalStyle, { ScreenWidth } from '../assets/styles/GlobalStyle';
 import { useNavigation, useRoute } from '@react-navigation/native';
@@ -10,15 +10,21 @@ import { CONTAINER_REPORT } from '../database/ContainerReport';
 import { Route } from '../navigations/Route';
 
 
-export const Item = ({ order }) => {
+export const Item = (props) => {
     const navigation = useNavigation();
+    const [order, setOrder] = useState(CONTAINER_REPORT[props.id - 1]);
+
+    useEffect(() => {
+        setOrder(CONTAINER_REPORT[props.id - 1])
+    }, [CONTAINER_REPORT[props.id - 1]])
+
     return (
         <Pressable
             style={[
                 styles.order_item,
                 { backgroundColor: order.color }
             ]}
-            onPress={() => { navigation.navigate(Route.Main.SHIPMENT_DETAIL_SCREEN, { Order: order }) }}
+            onPress={() => { navigation.navigate(Route.Main.SHIPMENT_DETAIL_SCREEN, { id: order.id }) }}
         >
             <View>
                 <Image

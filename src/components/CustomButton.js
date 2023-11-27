@@ -5,6 +5,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Octicons from 'react-native-vector-icons/Octicons';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import { useNavigation } from '@react-navigation/native';
 import { black, darkgray, darkorange, lightgray, lightorange, offwhite, tan, white } from '../assets/styles/Colors';
 import GlobalStyle from '../assets/styles/GlobalStyle';
@@ -31,6 +32,8 @@ export const RoundButton = (props) => {
                 <Ionicons name={props.iconName} size={props.iconSize} color={props.iconColor} />}
             {props.includeIcon && props.iconType == 'MaterialIcons' &&
                 <MaterialIcons name={props.iconName} size={props.iconSize} color={props.iconColor} />}
+            {props.includeIcon && props.iconType == 'MaterialCommunityIcons' &&
+                <MaterialCommunityIcons name={props.iconName} size={props.iconSize} color={props.iconColor} />}
             {props.includeImage &&
                 <Image source={props.image_uri} style={props.imageStyle} />}
         </Pressable>
@@ -409,6 +412,7 @@ export const Radio2Button = (props) => {
                     onPress={() => {
                         setOption1Selected(true)
                         setOption2Selected(false)
+                        props.value = true
                     }}>
                     {
                         props.option1Selected || option1Selected ?
@@ -439,6 +443,7 @@ export const Radio2Button = (props) => {
                     onPress={() => {
                         setOption1Selected(false)
                         setOption2Selected(true)
+                        props.value = false
                     }}>
                     {
                         props.option2Selected || option2Selected ?

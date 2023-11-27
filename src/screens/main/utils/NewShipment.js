@@ -27,8 +27,8 @@ function NewShipment(props) {
     const [newItemIndex, setNewItemIndex] = useState(CONTAINER_REPORT.length + 1);
 
     const [crgi, setCrgi] = useState({
-        id: '',
         date: '',
+        weather: '',
         vessel_no: '',
         bl_no: '',
         container_no: '',
@@ -55,18 +55,18 @@ function NewShipment(props) {
         departure_daron_time: '',
     })
     const [checklist, setChecklist] = useState({
-        no_of_pallets: 0,
+        no_of_pallets: '',
         pallets_strapped: null,
-        no_of_corner_strips: 0,
-        ventilation_setting: string,
-        drainage_valves: 0,
-        drainage_holes: null,
+        no_of_corner_strips: '',
+        ventilation_setting: '',
+        drainage_valves: '',
+        d_holes_opened: '',
         clean_inside_container: null,
         outside_wall_dmg: null,
         inside_front_wall_dmg: null,
         inside_wall_floor_ceilling_dmg: null,
         plastic_cover: null,
-        space_btw_front_and_first: 0,
+        space_btw_front_and_first: '',
         fumigation_stamp: null,
         drainage_plug: 0,
     })
@@ -106,7 +106,6 @@ function NewShipment(props) {
                 <View>
                     <CRGI
                         audience={'sender'}
-
                         crgi={crgi}
                         setCrgi={setCrgi}
                     />
@@ -154,14 +153,6 @@ function NewShipment(props) {
                             time: time,
                             checklist: checklist,
                             comments: comments,
-                            // vessel_no: crgi.vessel_no,
-                            // bl_no: crgi.bl_no,
-                            // container_no: crgi.container_no,
-                            // container_type: crgi.container_type,
-                            // etd: crgi.etd,
-                            // eta: crgi.eta,
-                            // csc_front: crgi.csc_front,
-                            // csc_door: crgi.csc_door,
                             color: DRAFT_COLOR,
                             status_all: [
                                 { id: 1, status: 'Draft', created_at: crgi.date },
@@ -177,7 +168,8 @@ function NewShipment(props) {
                             claim: [],
 
                         }),
-                            setNewItemIndex(newItemIndex + 1);
+                            console.log(crgi)
+                        setNewItemIndex(newItemIndex + 1);
                         navigation.navigate(Route.MAIN_TAB, { screen: Route.Main.BOTTOM_TAB, params: { screen: Route.Main.BottomTab.HOME_TAB } });
                     }}
                 />

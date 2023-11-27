@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { HeaderNBack } from '../../../components/Header';
 import { Dimensions, FlatList, Image, PermissionsAndroid, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { black, darkgray, darkorange, lightgray, red, tan, white } from '../../../assets/styles/Colors';
@@ -30,10 +30,12 @@ const findUserTypeByPhone = (phone) => {
     }
 }
 
-// TODO: Need to read shipment detail from CONTAINER_REPORT
 function ShipmentDetail(props) {
     const route = useRoute();
-    const { Order } = route.params;
+    // const { Order } = route.params;
+    const { id } = route.params;
+    const [order, setOrder] = useState(CONTAINER_REPORT[id - 1]);
+
     const { username } = useSelector(state => state.userReducer);
     const userType = findUserTypeByPhone(username);
 
@@ -158,38 +160,6 @@ function ShipmentDetail(props) {
         }
     };
 
-    const chooseFile = (type) => {
-
-        let options = {
-            mediaType: type,
-            maxWidth: 300,
-            maxHeight: 550,
-            quality: 1,
-        };
-        launchImageLibrary(options, (response) => {
-            if (response.didCancel) {
-                alert('User cancelled camera picker');
-                return;
-            } else if (response.errorCode == 'camera_unavailable') {
-                alert('Camera not available on device');
-                return;
-            } else if (response.errorCode == 'permission') {
-                alert('Permission not satisfied');
-                return;
-            } else if (response.errorCode == 'others') {
-                alert(response.errorMessage);
-                return;
-            }
-
-            setPhotoDB(
-                [
-                    ...photoDB,
-                    { id: nextID, uri: response.assets[0].uri, alt: FILE_NAME }
-                ]
-            )
-            setNextID(nextID + 1);
-        });
-    };
 
 
     return (
@@ -200,8 +170,8 @@ function ShipmentDetail(props) {
                 <View style={styles.description}>
                     <View>
                         <Image
-                            source={require('../../../assets/images/icons/american-flag.png')}
-                            style={styles.order_r1}
+                            source={require('../../../assets/images/icons/japanese-flag.jpeg')}
+                            style={[styles.flag, styles.order_r1]}
                         />
                         <Text style={styles.text_bold}>Vessel No.:</Text>
                         <Text style={styles.text_bold}>B/L No.:</Text>
@@ -209,10 +179,10 @@ function ShipmentDetail(props) {
                         <Text style={styles.text_bold}>Container Type:</Text>
                     </View>
                     <View>
-                        <Text style={styles.text_regular}>{Order.crgi.vessel_no}</Text>
-                        <Text style={styles.text_regular}>{Order.crgi.bl_no}</Text>
-                        <Text style={styles.text_regular}>{Order.crgi.container_no}</Text>
-                        <Text style={styles.text_regular}>{Order.crgi.container_type}</Text>
+                        <Text style={styles.text_regular}>{order.crgi.vessel_no}</Text>
+                        <Text style={styles.text_regular}>{order.crgi.bl_no}</Text>
+                        <Text style={styles.text_regular}>{order.crgi.container_no}</Text>
+                        <Text style={styles.text_regular}>{order.crgi.container_type}</Text>
                     </View>
                     <View>
                         <Text style={[styles.text_bold, styles.order_r1]}>Status:</Text>
@@ -222,22 +192,66 @@ function ShipmentDetail(props) {
                         <Text style={styles.text_bold}>CSC (Door):</Text>
                     </View>
                     <View>
-                        <Text style={[styles.text_bgray, styles.order_r1]}>{Order.status_all[Order.status_all.length - 1].status}</Text>
-                        <Text style={styles.text_regular}>{Order.crgi.etd}</Text>
-                        <Text style={styles.text_regular}>{Order.crgi.eta}</Text>
-                        <Text style={styles.text_regular}>{Order.crgi.csc_front}</Text>
-                        <Text style={styles.text_regular}>{Order.crgi.csc_door}</Text>
+                        <Text style={[styles.text_bgray, styles.order_r1]}>{order.status_all[order.status_all.length - 1].status}</Text>
+                        <Text style={styles.text_regular}>{order.crgi.etd}</Text>
+                        <Text style={styles.text_regular}>{order.crgi.eta}</Text>
+                        <Text style={styles.text_regular}>{order.crgi.csc_front}</Text>
+                        <Text style={styles.text_regular}>{order.crgi.csc_door}</Text>
                     </View>
                 </View>
 
                 {showViewMore &&
                     <View>
-                        <CRGI audience={userType == 'receiver' ? 'receiver' : 'sender'} crgi={Order.crgi} />
-                        <Temperature audience={userType == 'receiver' ? 'receiver' : 'sender'} temperature={Order.temperature} />
-                        <ContainerTemperature audience={userType == 'receiver' ? 'receiver' : 'sender'} container_temp={Order.container_temp} />
-                        <Time audience={userType == 'receiver' ? 'receiver' : 'sender'} time={Order.time} />
-                        <Checklist audience={userType == 'receiver' ? 'receiver' : 'sender'} checklist={Order.checklist} />
-                        <Comments audience={userType == 'receiver' ? 'receiver' : 'sender'} comments={Order.comments} />
+                        <CRGI
+                            audience={userType == 'receiver' ? 'receiver' : 'sender'}
+                            crgi={order.crgi}
+                            setCrgi={(crgi) => {
+                                setOrder({ ...order, order, crgi: crgi })
+                                CONTAINER_REPORT[id - 1].crgi = crgi;
+
+                                console.log(CONTAINER_REPORT[id - 1].crgi)
+                            }}
+                        />
+                        <Temperature
+                            audience={userType == 'receiver' ? 'receiver' : 'sender'}
+                            temperature={order.temperature}
+                            setTemperature={(temperature) => {
+                                setOrder({ ...order, order, temperature: temperature })
+                                CONTAINER_REPORT[id - 1].temperature = temperature;
+                            }}
+                        />
+                        <ContainerTemperature
+                            audience={userType == 'receiver' ? 'receiver' : 'sender'}
+                            containerTemperature={order.container_temp}
+                            setContainerTemperature={(container_temp) => {
+                                setOrder({ ...order, order, container_temp: container_temp })
+                                CONTAINER_REPORT[id - 1].container_temp = container_temp;
+                            }}
+                        />
+                        <Time
+                            audience={userType == 'receiver' ? 'receiver' : 'sender'}
+                            time={order.time}
+                            setTime={(time) => {
+                                setOrder({ ...order, order, time: time })
+                                CONTAINER_REPORT[id - 1].time = time;
+                            }}
+                        />
+                        <Checklist
+                            audience={userType == 'receiver' ? 'receiver' : 'sender'}
+                            checklist={order.checklist}
+                            setChecklist={(checklist) => {
+                                setOrder({ ...order, order, checklist: checklist })
+                                CONTAINER_REPORT[id - 1].checklist = checklist;
+                            }}
+                        />
+                        <Comments
+                            audience={userType == 'receiver' ? 'receiver' : 'sender'}
+                            comments={order.comments}
+                            setComments={(comments) => {
+                                setOrder({ ...order, order, comments: comments })
+                                CONTAINER_REPORT[id - 1].comments = comments;
+                            }}
+                        />
                     </View>}
 
                 <View style={styles.view_more}>
@@ -281,7 +295,7 @@ function ShipmentDetail(props) {
                 <View style={{ zIndex: 99 }}>
                     {showStatus &&
                         <View style={styles.status_container}>
-                            {Order.status_all.slice(0).reverse().map((item, index) => (
+                            {order.status_all.slice(0).reverse().map((item, index) => (
                                 <View style={styles.status_item} key={index}>
                                     <RoundButton
                                         includeIcon
@@ -290,7 +304,7 @@ function ShipmentDetail(props) {
                                         iconColor='green'
                                         iconSize={18}
                                     />
-                                    {index != Order.status_all.length - 1
+                                    {index != order.status_all.length - 1
                                         && <DashedLine axis='vertical' dashColor='green' style={styles.status_dashed_line} />}
 
                                     <Text style={index == 0 && styles.text_bold}>{item.created_at}</Text>
@@ -360,7 +374,7 @@ function ShipmentDetail(props) {
                                 </View>
                             }
                             <View style={styles.photo_container}>
-                                {Order.photo.map((item, index) => {
+                                {order.photo.map((item, index) => {
                                     if (valuePhotoType == 'All' || valuePhotoType == '') {
                                         return (
                                             <View key={index} style={styles.photo_item}>
@@ -378,7 +392,6 @@ function ShipmentDetail(props) {
                                     }
                                 })}
 
-                                {/* TODO: Make this work */}
                                 {photoDB.map((item, index) => {
                                     return (
                                         <View key={index} style={styles.photo_item}>
@@ -561,5 +574,9 @@ const styles = StyleSheet.create({
     },
     photoTypeSelectorText: {
         fontSize: 16,
-    }
+    },
+    flag: {
+        width: 40 * 0.8,
+        height: 30 * 0.8,
+    },
 })

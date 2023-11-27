@@ -23,9 +23,6 @@ function ForgetPassword(props) {
 
     function promptOTP() {
         navigation.navigate('Login', { screen: 'OTPLoginScreen' })
-
-        // TODO: Make registerAction
-        // dispatch(loginAction({ username: phoneNumber, name: database[i].name, password: database[i].password }))
     }
 
     return (
